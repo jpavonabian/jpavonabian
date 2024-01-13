@@ -1,0 +1,306 @@
+<feed xmlns="http://www.w3.org/2005/Atom"><title>El Blog de un informático que sueña con mejorar el mundo</title><link href="https://jesuspavonabian.es/feed.xml" rel="self"/><link href="https://jesuspavonabian.es/"/><updated>2024-01-03T20:32:32+01:00</updated><id>https://jesuspavonabian.es/</id><author><name>Jesús Pavón Abián</name><email>correo@jesuspavonabian.es</email></author><generator>Hugo -- gohugo.io</generator><entry><title type="html">Adiós, contraseñas</title><link href="https://jesuspavonabian.es/post/adioscontrasenyas/"/><id>https://jesuspavonabian.es/post/adioscontrasenyas/</id><author><name>Jesús Pavón Abián</name></author><published>2024-01-03T20:32:32+01:00</published><updated>2024-01-03T20:32:32+01:00</updated><content type="html"><![CDATA[<p>Llevo un par de semanas utilizando un gestor de contraseñas. Y me ha cambiado la vida.</p>
+<p>En un principio usaba el Llavero de Apple. Pero la sincronización con Windows mediante sus extensiones de navegador es simplemente horrorosa. Además, es un sistema cerrado, no da pie a hacer experimentos con él.</p>
+<p>Por suerte para mi, encontré <a href="https://bitwarden.com/">Bitwarden</a> y todos mis problemas se acabaron.</p>
+<p>En un principio dudé. ¿Debía alojarlo en algún servidor utilizando <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a> o debía pagar a Bitwarden? La decisión era difícil.</p>
+<p>Si alojaba Vaultwarden me evitaría pagar el premium de Bitwarden. Pero claro, eso significaría que tendría que contratar otro servidor. Podría aprovechar para instalar en él también <a href="https://wallabag.org/">Wallabag</a> y matar dos pájaros de un tiro, pero estamos hablando de contraseñas y soy novato en esto. El más mínimo error de configuración en el servidor, una actualización mal hecha o cualquier otra cosa que se escapara a mis manos y tendría un problema gordísimo.</p>
+<h2 id="por-qué-bitwardenhttpsbitwardencom-y-no-otro-gestor-de-contraseñas">¿Por qué <a href="https://bitwarden.com/">Bitwarden</a> y no otro gestor de contraseñas?</h2>
+<p>El principal motivo no es otro que la accesibilidad. Me estuve informando y leí que tratan siempre que pueden hacer que sus aplicaciones cumplan el nivel AA de las WCAG.</p>
+<p>Por otro lado, es código libre y existe como he comentado más arriba <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>. Si me da por ahí y hago el cambio de servidores para ahorrar gastos, que tengo varias máquinas dispersas que podría unificar, podría salirme rentable autoalojar.</p>
+<p>Existe también bw, una aplicación que permite gestionar las contraseñas desde la línea de comandos. Esto me ha permitido alojar en la bóveda las claves ssh y tenerlas sincronizadas entre varios equipos. Acceder con <code>bssh root@ip</code> al servidor de turno desde uno de mis dos equipos es una pasada, haré una entrada explicando cómo he montado el invento.</p>
+<p>Como decía antes, no conozco ninguna de mis contraseñas. Y si la conozco, la voy cambiando. Bitwarden se integra bien con iOS y puede sustituir incluso a la aplicación autenticator. He acabado con mis problemas de sincronización de credenciales de un plumazo.</p>
+]]></content></entry><entry><title type="html">añadir S3 a una instancia de Mastodon y migrar sus datos</title><link href="https://jesuspavonabian.es/post/anadir-s3-a-una-instancia-de-mastodon-y-migrar-sus-datos/"/><id>https://jesuspavonabian.es/post/anadir-s3-a-una-instancia-de-mastodon-y-migrar-sus-datos/</id><author><name>Jesús Pavón Abián</name></author><published>2023-12-12T15:15:42+01:00</published><updated>2023-12-12T15:15:42+01:00</updated><content type="html"><![CDATA[<p>Llevo un tiempo administrando la instancia de Mastodon <a href="https://mst.universoalterno.es">Universo alterno (se abre en una nueva ventana)</a>. Al principio, todo iba bien. hasta que el disco duro comenzó a llenarse. Los usuarios subían contenidos y el contenido de las instancias federadas se cacheaba, lo que ocasionó que tuviese que limpiar la caché y varios elementos una vez al día.</p>
+<p>Obviamente esto no era óptimo, porque muchos usuarios perdían notificaciones, había contenido que desaparecía con muchísima rapidez&hellip; Un jaleo horroroso. Como solución temporal servía, pero había que darle una vuelta al tema.</p>
+<p>Así pues decidí dejar de complicarme la vida. Ampliar el servidor no era una opción, se me iba de precio con una facilidad pasmosa, además de de tener que ir ampliando si la instancia crecía. Por suerte, existen los almacenamientos de objetos S3.</p>
+<p>Lo primero que tuve que hacer fue una búsqueda de cuál me interesaba más. Al final, tras mucho investigar, me decidí por Scaleway. ¿Por qué Scaleway? Porque es barato, cobran en euro y porque sus centros de datos están en Europa.</p>
+<p>Como la información que encontré estaba bastante difuminada y no hay nada en español con este servicio, me he decidido a escribir un tutorial unificando los trozos de información que fui recogiendo de aquí y de allá. Vamos al lío.</p>
+<h2 id="registro-en-scaleway">Registro en Scaleway</h2>
+<p>Lo primero que necesitaremos será crearnos una cuenta en <a href="https://www.scaleway.com/">Scaleway (se abre en una nueva ventana)</a>. el registro no es complicado; lo más difícil será verificar el método de pago, que requerirá introducir un código que nos llegará al banco al hacer un pago de un euro que luego nos devolverán.</p>
+<h2 id="creando-el-object-storage">Creando el Object Storage</h2>
+<p>Tras iniciar sesión y verificar nuestro método de pago, tenemos que crear un Object Storage. allí será donde enviaremos los archivos de nuestra instancia y donde se subirán los nuevos.</p>
+<p>Para ello, pulsamos el botón Storage y el enlace Object Storage.</p>
+<p>Crearlo es sencillo; escogemos la región más cercana al servidor de la instancia y nos aseguramos de que el bucket sea privado, pues no queremos que google u otros rastreadores puedan acceder al listado de medios de nuestra instancia, pero sí queremos que se puedan acceder a los archivos mediante URLs específicas.</p>
+<p>Importante: Tenemos que tener cuidado con qué nombre le ponemos al Bucket. No podemos usar puntos. Mi.instancia no sería válido, nos dará problemas a futuro. Por el contrario, mi-instancia sí que lo es. Mi consejo es que lo llameis como el nombre de vuestra instancia. Por ejemplo en mi caso el nombre es, sin las comillas, &ldquo;universoalterno&rdquo;.</p>
+<p>Una vez creado, nos aparecerá la información del Bucket. Deberemos guardarla para tenerla a mano.</p>
+<h2 id="configurando-un-proxy-nginx">Configurando un proxy Nginx</h2>
+<p>Esto es opcional, pero es altamente recomendable para ahorrar dinero. básicamente, lo que hacemos aquí es cachear el contenido para que no tengamos que hacerle una petición al Bucket cada vez que queramos acceder a él y podamos ahorrar tráfico. Para ello, el procedimiento es el siguiente:</p>
+<p>En primer lugar, necesitamos crear un registro A en la zona DNS de nuestro dominio para añadir un subdominio. A ese subdominio irán las peticiones de multimedia. Deberemos apuntar ese registro a la máquina que contiene la instancia. En mi caso he creado un media.universoalterno.es que apunta a la misma ip que mst.universoalterno.es.</p>
+<p>hecho esto, deberemos configurar el proxy Nginx. Accedemos a la máquina que contiene la instancia y tecleamos sin las comillas (con sudo delante si no somos root) &ldquo;nano /etc/nginx/sites-available/media&rdquo; para entrar al editor de textos y crear un archivo nuevo. El contenido será el siguiente:</p>
+<p><code>server { listen 443 ssl http2; listen [::]:443 ssl http2; server_name files.example.com; root /var/www/html;  keepalive_timeout 30;  location = / { index index.html; }  location / { try_files $uri @s3; }  set $s3_backend 'https://YOUR_BUCKET_NAME.YOUR_S3_HOSTNAME';  location @s3 { limit_except GET { deny all; }  resolver 8.8.8.8; proxy_set_header Host YOUR_BUCKET_NAME.YOUR_S3_HOSTNAME; proxy_set_header Connection ''; proxy_set_header Authorization ''; proxy_hide_header Set-Cookie; proxy_hide_header 'Access-Control-Allow-Origin'; proxy_hide_header 'Access-Control-Allow-Methods'; proxy_hide_header 'Access-Control-Allow-Headers'; proxy_hide_header x-amz-id-2; proxy_hide_header x-amz-request-id; proxy_hide_header x-amz-meta-server-side-encryption; proxy_hide_header x-amz-server-side-encryption; proxy_hide_header x-amz-bucket-region; proxy_hide_header x-amzn-requestid; proxy_ignore_headers Set-Cookie; proxy_pass $s3_backend$uri; proxy_intercept_errors off;  proxy_cache CACHE; proxy_cache_valid 200 48h; proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504; proxy_cache_lock on;  expires 1y; add_header Cache-Control public; add_header 'Access-Control-Allow-Origin' '*'; add_header X-Cache-Status $upstream_cache_status; add_header X-Content-Type-Options nosniff; add_header Content-Security-Policy &quot;default-src 'none'; form-action 'none'&quot;; } }</code></p>
+<p>Tenemos que reemplazar files.example.com por nuestro dominio (en mi caso media.universoalterno.es), YOUR_BUCKET_NAME por el nombre de nuestro bucket (en mi caso universoalterno), YOUR_S3_HOSTNAME por el host de nuestro bucket (lo conseguimos cuando creamos el Bucket, es lo que viene después del punto que va después del nombre).</p>
+<p>Guardamos el archivo con ctrl + x y respondiendo y y generamos un enlace al archivo con el siguiente comando (sin comillas) &ldquo;ln -s /etc/nginx/sites-available/media /etc/nginx/sites-enabled/&rdquo;.</p>
+<p>Casi terminamos con esto. Lo siguiente que tenemos que hacer es reiniciar el servidor web y generar un certificado SSL, cosa que haremos con &ldquo;systemctl reload nginx&rdquo;, &ldquo;certbot &ndash;nginx -d files.example.com&rdquo; (Tenemos que reemplazar files.example.com por nuestro subdominio) y otra vez &ldquo;systemctl reload nginx&rdquo; para que pille los cambios del certificado.</p>
+<h2 id="subiendo-datos-al-bucket-y-configurando-mastodon">Subiendo datos al Bucket y configurando Mastodon</h2>
+<p>Casi lo tenemos hecho. solo nos falta decirle a Mastodon donde debe ir a buscar los datos y subir los que tenemos en el servidor al Bucket. Para ello, deberemos conseguir las claves de acceso para nuestro Bucket. En Scaleway pulsamos en el avatar (una imagen sin etiquetar si usas lector de pantallas) y después pulsamos en Manage Identity and Access with IAM.</p>
+<p>Una vez hecho esto, pulsamos en la pestaña api-keys y luego en Generate API key.</p>
+<p>Seguimos las instrucciones (no es complicado) y guardamos la clave de acceso y la clave secreta en un lugar seguro.</p>
+<p>Teniendo estos datos, podemos configurar nuestro mastodon. en primer lugar, abriremos otra sesión a parte para ir subiendo los datos mientras tanto.</p>
+<p>Subir los datos no es difícil. Nos logueamos como usuario mastodon (su mastodon) y nos vamos al directorio live, que suele estar en /home/mastodon/live al menos que lo tengas en otro lado por tener una configuración personalizada. Una vez allí, instalamos awscli con &ldquo;pip install awscli&rdquo;.</p>
+<p>Lo siguiente que tenemos que hacer es configurarlo, así que ejecutamos aws configure y seguimos los pasos:</p>
+<ul>
+<li>Ingresamos la clave conforme nos las va pidiendo.</li>
+<li>en región, si escogimos parís ponemos &ldquo;fr-par&rdquo; y si escogimos Ámsterdam &ldquo;nl-ams&rdquo; (sin las comillas).</li>
+<li>En la pregunta de output format nos limitamos a pulsar enter.</li>
+</ul>
+<p>Casi estamos listos. Podríamos intentar subir todo nuestro contenido tal cual, pero es preferible hacer algo de limpieza primero, así que ejecutamos los siguientes comandos, sin comillas y esperando que termine de ejecutarse el primero para ejecutar el segundo. &ldquo;RAILS_ENV=production bin/tootctl media remove&rdquo; y &ldquo;RAILS_ENV=production bin/tootctl media remove-orphans&rdquo;.</p>
+<p>Ya está todo configurado y estamos listos para subir nuestro contenido multimedia. en teoría, si hemos seguido bien el artículo, estaremos en /home/mastodon/live y podremos proceder. Para ello, tecleamos el siguiente comando (adáptalo con tus datos): aws s3 sync &ndash;acl public-read public/system/ s3://universoalterno &ndash;endpoint=https://s3.fr-par.scw.cloud</p>
+<p>Esto puede tardar (y lo hará), así que dejamos esa ventana abierta y nos ponemos con el resto de configuraciones: En /home/mastodon/live realizamos lo siguiente:</p>
+<p>en primer lugar y para evitar sustos, hacemos una copia del archivo .env.production de la siguiente forma: cp .env.production copia.env.production</p>
+<p>A continuación añadimos el siguiente contenido (reemplaza los datos necesarios) al final del archivo .env.production: nano .env.production</p>
+<p><code>S3_ENABLED=true S3_BUCKET=universoalterno AWS_ACCESS_KEY_ID=tu_clave AWS_SECRET_ACCESS_KEY=tu_clave_secreta S3_ALIAS_HOST=media.universoalterno.es S3_HOSTNAME=media.universoalterno.es S3_REGION=fr-par S3_ENDPOINT=https://s3.fr-par.scw.cloud</code></p>
+<p>Guardamos, salimos del usuario mastodon con &ldquo;exit&rdquo; y reiniciamos los servicios: &ldquo;systemctl restart mastodon-sidekiq&rdquo; y &ldquo;systemctl reload mastodon-web&rdquo;.</p>
+<p>¡Listo! A partir de ahora, los datos irán a parar a nuestro Bucket y podremos dejar de sufrir por el espacio en disco del servidor.</p>
+<p>Es probable que mientras toqueteábamos configuraciones alguien hiciera algo y sus cambios quedaran en el limbo. No pasa nada. Cuando termine de copiar los archivos, vuelve a ejecutar el comando para subirlos todos.</p>
+]]></content></entry><entry><title type="html">El DNS público europeo que hace tu Internet más seguro</title><link href="https://jesuspavonabian.es/post/dnsseguroeuropeo/"/><id>https://jesuspavonabian.es/post/dnsseguroeuropeo/</id><author><name>Jesús Pavón Abián</name></author><published>2023-12-12T15:15:42+01:00</published><updated>2023-12-12T15:15:42+01:00</updated><content type="html"><![CDATA[<p>El título de esta entrada suena a Clickbait, ya lo sé. Pero tras probarlo he comprobado que es cierto, <a href="https://www.dns0.eu/es">dns0</a> cumple lo que promete. hacer la navegación por internet más segura.</p>
+<h2 id="qué-hace-exactamente">¿Qué hace exactamente?</h2>
+<p>Resumiendo mucho, bloquea dominios maliciosos e impide que entres a ellos.</p>
+<p>Por ejemplo, esta mañana me llegó un SMS de estafa en el que ponía que mi paquete estaba retenido porque la dirección estaba incompleta. en ese mensajito venía un enlace la mar de mono para recopilar datos. Por supuesto, la dirección no tenía nada que ver con Correos. Por hacer la prueba lo pulsé y DNS0 entró en acción. Al estar el dominio en su lista negra lo bloqueó, impidiendo que pasara algo grabe.</p>
+<p>Pero esto no es todo. DNS0 no solo permite bloquear dominios maliciosos. Permite activar una especie de control parental para hacer más segura la navegación para niños bloqueando dominios de adultos o webs de citas, entre otras opciones.</p>
+<h2 id="cómo-lo-configuro">¿Cómo lo configuro?</h2>
+<p>Utilizar este servicio gratuito es sencillo. Solo tienes que utilizar uno de sus servidores DNS para gestionar las peticiones que se hacen a internet.</p>
+<p>Basta con acceder a la web de <a href="https://www.dns0.eu/es">dns0</a> y seguir sus instrucciones para configurar sus DNS en nuestros dispositivos.</p>
+<p>Lo que yo he hecho ha sido configurar las DNS de la <a href="https://jesuspavonabian.es/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/">VPN y del Pi-hole</a> utilizando las instrucciones para configurar las DNS en un Router.</p>
+<p>A partir de ahora, siempre que navegue utilizando la VPN o desde la red local de casa estaré bastante protejido.</p>
+]]></content></entry><entry><title type="html">Crear una VPN con Wireguard más PiHole para olvidarnos de los anuncios y acceder a nuestras cosas desde cualquier lugar</title><link href="https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/"/><id>https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/</id><author><name>Jesús Pavón Abián</name></author><published>2023-06-23T00:00:00+00:00</published><updated>2023-06-23T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Vamos con otro tutorial. Esta vez sobre cómo montar una VPN más Pihole para eliminar los anuncios de la red.</p>
+<h2 id="cuál-es-el-punto">¿Cuál es el punto?</h2>
+<p>Odio los anuncios. De verdad, me ponen de una mala leche increíble, tengo una guerra eterna contra ellos. Desde que instalé Pihole los hice medio desaparecer, pero no es suficiente. ¡Si me voy de casa los sigo viendo!</p>
+<p>Así que nada mejor que montar una VPN a la cual poder conectarme. Así, de paso, tengo acceso a todos los cacharros que están en mi red de casa desde cualquier lado.</p>
+<h2 id="eh-yo-también-quiero-qué-necesito">¡Eh, yo también quiero! ¿Qué necesito?</h2>
+<p>Apunta, necesitarás lo siguiente:</p>
+<ul>
+<li>Un ordenador fijo con Linux. Una raspberry pi te hace el apaño si no tienes uno. Necesitamos algo conectado 24/7 al router de casa. Un VPS también puede valer si tienes suficiente tráfico.</li>
+<li>Una velocidad medio en condiciones.</li>
+<li>Abrir puertos en el router si no usas VPS.</li>
+</ul>
+<h2 id="vale-tengo-todo-al-lío">Vale, tengo todo, ¡al lío!</h2>
+<p>Venga, vamos. Lo primero, necesitamos Debian o Ubuntu. Yo prefiero Debian, Raspbian en mi caso. Tras instalarlo, usaremos Raspbian como referencia, pero sirve igual para otros sistemas, configuraremos la IP estática de la máquina. Necesitamos asegurarnos de que no nos da la lata el cambio de IP, así que comprobamos en nuestro router cuál es el rango de DHCP y le metemos una que esté fuera del rango. En mi caso, como 192.168.1.1 es una IP muy común y al acceder a cacharros desde fuera me daba conflicto porque fuera también hay 192.168.1.1, decidí cambiarla a 10.0.0.1 y tener el DHCP empezando en 10.0.0.33. Con esto me aseguro de que los cacharros conectados a la red tengan 10.0.0.34, 10.0.0.35, etc., y que todo lo que meta por debajo de 33 no va a entrar en conflicto. PiHole nos configura la IP estática el solito cuando se instala. Una vez nuestro sistema está instalado y configurado haremos lo siguiente:</p>
+<ol>
+<li>Entrar como root. Si no podemos: <code>sudo su</code></li>
+<li>Actualizar repositorios: <code>apt update</code></li>
+<li>Actualizar el sistema: <code>apt upgrade</code></li>
+<li>Instalar curl si no lo tenemos: <code>apt install curl</code></li>
+<li>Instalar PiHole: <code>curl -sSL https://install.pi-hole.net | bash</code></li>
+</ol>
+<p>Nos saldrá un asistente muy chulo. Si usas DHCP en el router, decidle que no lo active. Nos preguntará varias cosas, entre ellas si queremos dejar la IP actual como estática. Decidle que sí. También nos dejará escoger DNS, es un instalador intuitivo. Cuando os pida DNS, podéis decirle que 8.8.8.8 y 1.1.1.1 o algún otro servicio de esos chulos de DNS. Os dará los datos de acceso por web para que podáis tocar cosas. Aunque ya por cómo viene por defecto se cepilla suficientes anuncios, yo he metido alguna lista más. Google puede ayudar en este caso.</p>
+<p>Si queremos, cambiamos la contraseña de PiHole: <code>pihole -a -p</code></p>
+<p>Cambiamos las DNS del router a la IP de nuestro cacharro. Cada router es un mundo, así que ahí no me meto. Reiniciamos el cacharro con <code>sudo reboot</code> y nos mentalizamos para instalar Wireguard. Para ello usaremos pivpn, un script que nos facilita mucho el trabajo. Asumiremos que tenemos un usuario llamado dherhion.</p>
+<p>En primer lugar nos vamos a su home, para ello teclearemos lo siguiente:<br>
+<code>cd /home/dherhion/</code></p>
+<p>Ahora procedemos a actualizar los repositorios, sé que lo hemos hecho antes, pero bueno:<br>
+<code>sudo apt update</code></p>
+<p>Continuamos por fin instalando Wireguard:<br>
+<code>sudo curl -L https://install.pivpn.io | bash</code></p>
+<p>Cuando pregunte qué VPN queremos, escogemos Wireguard. Cuando nos pregunte si queremos usar IP o DNS, escogemos DNS. Sé que no hemos configurado nada todavía, pero eso se hace luego. Nos pedirá un dominio. Yo uso duckdns con un cron y lo explicaré más adelante, así que dherhion.duckdns.org en mi caso. Podéis usar noip, zapto o cualquiera de los gratuitos. Hay routers que permiten actualizar la IP automáticamente. El instalador ahora detectará que tenemos PiHole instalado y nos preguntará si queremos usarla en la VPN. Le decimos que sí, obviamente.</p>
+<p>Una vez el asistente finalice, tenemos que hacer que la VPN se inicie con el sistema:<br>
+<code>sudo systemctl enable wg-quick@wg0.service</code><br>
+<code>sudo systemctl start wg-quick@wg0.service</code></p>
+<p>Casi terminamos. Lo siguiente que tenemos que hacer es abrir el puerto 51820 en el router y configurar el dominio.</p>
+<h2 id="crear-usuarios-configurar-dominio-dinámico-y-conectar">Crear usuarios, configurar dominio dinámico y conectar</h2>
+<p>Para continuar, vamos a crear dos usuarios y conectarnos a la VPN. Sigue los pasos a continuación:</p>
+<ol>
+<li>Usa el comando <code>pivpn -a</code> para crear un usuario llamado &ldquo;pepeordenador&rdquo; y otro llamado &ldquo;pepemovil&rdquo;. Si prefieres ahorrarte preguntas, puedes utilizar <code>pivpn -a -n pepeordenador</code>. Esto creará perfiles de usuario en la carpeta &ldquo;configs&rdquo;. Deberías tener los archivos &ldquo;pepeordenador.conf&rdquo; y &ldquo;pepemovil.conf&rdquo; listos para usar.</li>
+<li>Ahora, vamos a configurar el DNS antes de generar el QR para el usuario &ldquo;pepemovil&rdquo;. Regístrate en duckdns.org y crea una cuenta. Luego, añade un dominio. Para que la ip a la que apunta el dominio se actualice sola, añade la siguiente línea al crontab utilizando el comando <code>crontab -e</code>:</li>
+</ol>
+<p><code>*/1 * * * * /home/dherhion/actualizarip.sh &gt;/dev/null 2&gt;&amp;1</code></p>
+<p>Crea un archivo llamado &ldquo;actualizarip.sh&rdquo; en la ruta &ldquo;/home/dherhion/&rdquo; utilizando el comando <code>nano /home/dherhion/actualizarip.sh</code> y añade el siguiente contenido:</p>
+<p><code>echo url=&quot;https://www.duckdns.org/update?domains=dherhion&amp;token=tu_token&amp;ip=&quot; | curl -k -o ~/duckdns/duck.log -K -</code></p>
+<p>Reemplaza &ldquo;dherhion&rdquo; y &ldquo;tu_token&rdquo; por los valores correspondientes. Luego, ejecuta <code>chmod +x actualizarip.sh</code> para darle permisos de ejecución al script.</p>
+<h2 id="cómo-probar-si-funciona">¿Cómo probar si funciona?</h2>
+<p>Casi lo tenemos. ¡Probemos a conectar! Explicaré cómo hacerlo desde un móvil, pero conectar desde Windows, Mac o Linux no es difícil, solo tienes que importar el archivo .conf que se genera en configs.</p>
+<ol>
+<li>Descarga la aplicación Wireguard desde Google Play Store o App Store.</li>
+<li>Abre la aplicación y selecciona la opción para escanear un código QR.</li>
+<li>Maximiza la pantalla de la terminal en tu dispositivo.</li>
+<li>Ejecuta el comando <code>pivpn -qr</code>.</li>
+<li>Selecciona el perfil correspondiente al usuario &ldquo;pepemovil&rdquo;.</li>
+<li>En el móvil, agrega un nuevo túnel utilizando la configuración generada.</li>
+<li>¡Listo! Desconecta la conexión Wi-Fi y activa el nuevo túnel creado. Navega durante unos minutos y luego utiliza el comando <code>pivpn -c</code> en la terminal de tu ordenador para ver los dispositivos conectados. Si todo está configurado correctamente, deberías poder acceder al panel de PiHole cuando te conectes a la VPN.</li>
+</ol>
+<h2 id="bonus-acceder-a-los-dispositivos-de-la-red-como-si-estuvieras-conectado-localmente">Bonus: Acceder a los dispositivos de la red como si estuvieras conectado localmente</h2>
+<p>Para acceder a los dispositivos de la red como si estuvieras conectado localmente, sigue estos pasos:</p>
+<p><code>sudo nano /etc/sysctl.conf</code></p>
+<p>Descomenta la línea:<br>
+<code>net.ipv4.ip_forward = 1</code></p>
+<p>Guarda los cambios con <code>Ctrl + X</code>. Luego, ejecuta el comando <code>ip route list default</code> para obtener la interfaz de red.</p>
+<p>Abre el archivo de configuración de Wireguard utilizando el comando:<br>
+<code>sudo nano /etc/wireguard/wg0.conf</code></p>
+<p>Agrega las siguientes líneas debajo de la configuración existente en la sección &ldquo;ListenPort&rdquo;, asegurándote de no duplicar líneas:</p>
+<p><code>SaveConfig = true</code><br>
+<code>PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE</code><br>
+<code>PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</code></p>
+<p>Guarda los cambios con <code>Ctrl + X</code>. Finalmente, reinicia el sistema con <code>sudo reboot</code>.</p>
+<p>¡Listo! Ahora puedes acceder a los dispositivos de tu red como si estuvieras conectado localmente.</p>
+<p>P.D.: Dherhion.duckdns.org no existe.</p>
+]]></content></entry><entry><title type="html">Tu guiador: Un proyecto nuevo</title><link href="https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/"/><id>https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/</id><author><name>Jesús Pavón Abián</name></author><published>2023-01-02T00:00:00+00:00</published><updated>2023-01-02T00:00:00+00:00</updated><content type="html"><![CDATA[<p>soy una persona que cuando tiene que ir a un sitio apunta los recorridos para no olvidarse. Concienzudamente, además. Cualquier mínimo detalle, por mínimo que sea, me sirve. Sobre todo lo hago si es un recorrido que haré pocas veces o que haré muchas veces, pero espaciadas en el tiempo.</p>
+<p>En un principio utilizaba la aplicación de Notas de Apple, pero llegué a la conclusión de que necesitaba algo más. Los recorridos se me quedaban desordenados, tenía dificultades para leer las notas en medio de la calle&hellip; No era práctico</p>
+<p>Así que decidí crear mi propia aplicación en seguida me topé con el primer problema: Necesitaba aprender Swift y SwiftUI. Un curso de 100 días lo solucionó.</p>
+<p>en principio parecía fácil. Una base de datos para apuntar los recorridos, un par de botones&hellip; No pintaba demasiado complicado.</p>
+<p>Y en efecto, no es demasiado complicado. el problema fue que yo me empeñé en complicarlo.</p>
+<p>Cuando tuve algo que funcionaba, lo comenté con un par de colegas y me dijeron algo como&hellip; &ldquo;La idea mola, pero le falta algo que no se qué es&rdquo;. Y ahí quedó la cosa hasta que hablé con <a href="https://programaraciegas.net">este señor (abre en una nueva ventana)</a>, que además de recordarme reglas básicas de programación que no había seguido, me dio un par de ideas para simplificar el código y añadirle alguna cosilla más.</p>
+<p>Y aquello quedó ahí. Tenía que rehacerlo todo y me daba una pereza horrorosa, y eso que el primer beneficiado de la aplicación soy yo.</p>
+<p>Finalmente me decidí. Borré todo lo que había hecho, aunque algo podría haber reutilizado y creé un nuevo repositorio privado.</p>
+<p>Iba a empezar de cero, y lo iba a hacer bien. la primera regla era tener un código limpio. La segunda era comentar el código, de forma que cuando lo tuviera que mirar más adelante no tuviera que perder tiempo releyéndolo para saber qué hacía.</p>
+<p>Y así empecé a programar. Y salió el chat de GPT.</p>
+<p>Y cuando le pregunté por curiosidad una cosa sobre mi código, me encontró errores en los que yo no había caído.</p>
+<p>Así que tocó reescribir la aplicación otra vez. Mismo proceso, borrar y volver a programar. Podría haberlo intentado arreglar, pero el código estaba volviéndose demasiado engorroso.</p>
+<p>Dicen que a la tercera va la vencida y tienen razón.</p>
+<p>ahora todo está en su sitio, y modificar una cosa no me rompe otras dos.</p>
+<p>Cada función hace lo que tiene que hacer, y no depende de otra. Los nombres de variables son claros y la interfaz se limita a mostrar cosas por pantalla, dejando la lógica de la aplicación al controlador.</p>
+<p>Por ejemplo, una de las funciones de la aplicación es, una vez guardado un recorrido, poderlo compartir con alguien. Para ello, se envía un json a la persona, y la persona ya lo importa en su aplicación.</p>
+<p>Pues todo está separado. El botón por su lado, el crear el json por otro y el acceso al recorrido por otro.</p>
+<p>func obtenerJSONRecorrido(recorrido: Recorrido) -&gt; String { let encoder = JSONEncoder() if let data = try? encoder.encode(recorrido), let jsonString = String(data: data, encoding: .utf8) { return jsonString } else { return &quot;&quot; } }</p>
+<p>A la aplicación todavía le falta para poderse lanzar, aunque he de decir que la he probado y cumple con lo que yo necesito.</p>
+<ul>
+<li>Puedes añadir recorridos.</li>
+<li>Puedes editarlos desde una sola pantalla.</li>
+<li>Puedes mostrar los detalles del recorrido e ir avanzando paso por paso con dos botones, siguiente y anterior.</li>
+<li>Puedes compartirlos con alguien usando tu app favorita.</li>
+</ul>
+<p>Me falta por revisar la parte visual, que sospecho que la aplicación es bastante mejorable en ese aspecto. Por otro lado, me gustaría cambiar algunas cosillas del código, que pese a que me he esforzado, no le vendría mal que le refactorizara algunas cosillas. ¡Pronto daré más información! Por cierto, como curiosidad, del diseño para probar la app, se ha encargado el chat de gpt. He tenido que adaptar todo lo que me ha enviado como respuesta, pero facilita muchísimo la vida cuando sabes qué estás haciendo.</p>
+]]></content></entry><entry><title type="html">domótica accesible</title><link href="https://jesuspavonabian.es/post/domotica-accesible/"/><id>https://jesuspavonabian.es/post/domotica-accesible/</id><author><name>Jesús Pavón Abián</name></author><published>2022-02-25T00:00:00+00:00</published><updated>2022-02-25T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Hoy quiero escribir sobre domótica. Ya saben ustedes, eso de las casas inteligentes. Cuando yo era pequeño, mi madre me decía&hellip; -Cuando tengas tu casa y vaya a visitarte, el portero te dirá&hellip; &ldquo;Ya está aquí la pesá de tu madre, ¿le abro?&rdquo; Al principio me hacía gracia. ¿Cómo iba a saber el telefonillo quién quería entrar? Os hablo de la época de los primeros teléfonos móviles y de las primeras conexiones a internet. ¿Soy muy viejo si recuerdo conectarme con un modem a 56KBPS y desconectarme porque alguien levantaba el teléfono? Años después, descubrí que mi madre tenía razón, actualmente es más o menos posible hacer algo así, aunque no tengo yo muy claro que sea legal guardarte una foto de alguien para identificarle o poner una cámara en la calle. El caso es que yo llevaba queriendo domotizar la casa desde hace tiempo. vivo de alquiler, así que quería cosas que pudiera llevarme a otra casa sin mucha complicación. Qué narices. Por querer, quiero interruptores inteligentes, bombillas inteligentes con un par de sensores de movimiento y un aire acondicionado inteligente que se active dependiendo de lo que arrojen un par de sensores de temperatura. Pero estando de alquiler es un poco complicado. Hace un par de semanas me avisaron de que me convocaban para el curso de perro guía. Y además de la ilusión y esas cosas, que me voy a ahorrar comentar porque hay mil entradas en mil Blogs describiendo la experiencia, se me encendió la bombilla. Ya tenía la excusa ideal para aprovechar para domotizar. Lo primero el robot de limpieza. Sabemos que un perro de estos suelta pelo para dar y regalar, y yo no se a ustedes, pero me gusta tener la casa limpia. Escogí uno de los robots que había en oferta. nada mejor para ello que tener a <a href="https://www.salvadomenech.es/">Salva</a> de amigo. el cabrón es como un traficante de drogas pero con los cacharros y la comida. Encuentra ofertas con una facilidad pasmosa. en concreto, este cacharrito.</p>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B08TZVD711&amp;linkId=3b71eb07d98eb68381d478f4ae4c8a69"></iframe>
+<p>Pone que es compatible con Alexa, pero yo no conseguí que el Echo lo detectara. De accesibilidad no va nada mal, si quitamos el hecho de que no podemos programar la limpieza sin ayuda. Pero ese problema se soluciona con HomeBridge para hacerlo compatible con HomeKit, pues puedes programar una automatización desde la aplicación de casa de Apple y asunto solucionado. Haré una entrada explicando cómo configurar HomeBridge y cómo hacer el cacharro compatible, porque hecho uno es fácil hacer el resto si hace falta. Lo siguiente que he hecho inteligente ha sido la puerta de la nevera. Parecerá una estupidez, pero hay veces que se queda abierta o que se abre sola, y tener una notificación en el teléfono y el HomePod pegando berridos ayuda a solucionar ese detallito. Adiós, acumulación de hielo en la nevera. para ello he utilizado el sensor de puertas y ventanas de Aqara. Con su correspondiente Hub, por supuesto. En este caso es bueno, barato, compatible con HomeKit sin hacer tonterías y accesible sin morir en el intento. Prometo hacer la entrada de cómo configurarlos uno de estos días, que es fácil hacerlo mal y tirarte una hora dándole vueltas al sensor para poner las dos partes en su sitio.</p>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B07D37VDM3&amp;linkId=e603e87c094ef6d2f425e2e5668bd883"></iframe>
+<p>encontrar el Hub ha sido una pesadilla. Tras pelearme con Amazon y un vendedor que pasaba olímpicamente de enviarlo, compré a una tienda española el <a href="https://eversoc.com/productos-inteligentes-hogar/59-hub-m2-aqara.html">Aqara M2 Hub</a>. Dos días tardó, un servicio impecable. Y lo mejor es que casi todo lo de Aqara es bastante accesible, así que en tema sensores, es difícil equivocarse por lo que me han contado. ¿Planes futuros? si me quedo en esta casa, comprar un dedo domótico que pulse el botón del aire acondicionado cuando la temperatura que arroje un sensor sea inferior a 20 grados. sí, existe.</p>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B07B4D9KVX&amp;linkId=0702904449bfd6cb166313901c42a086"></iframe>
+<p>Por supuesto, iré ampliando esta entrada con toda cosa domótica que caiga en mis manos. ¡nos leemos pronto!</p>
+]]></content></entry><entry><title type="html">¿Hacer streaming siendo ciego?</title><link href="https://jesuspavonabian.es/post/hacer-streaming-siendo-ciego/"/><id>https://jesuspavonabian.es/post/hacer-streaming-siendo-ciego/</id><author><name>Jesús Pavón Abián</name></author><published>2021-09-29T00:00:00+00:00</published><updated>2021-09-29T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Soy ciego y quiero montar mi canal de Youtube, Twitch y demás, pues considero que tengo cosas que mostrarle al mundo. ¿Se puede sin morir en el intento? ¡He buscado en Google y me he quedado igual!</p>
+<p>Claro que se puede, aunque he de decir que el resultado no será el adecuado sin un poco de ayuda visual. Pero al menos, si me lees, harás algo menos el ridículo. ¡Adiós, transmisiones con pantalla negra! Os dejo por aquí a modo de guía rápida (o de recolección de recursos) todo lo necesario para empezar.</p>
+<p>Es cierto que hay bastante información (no estoy escribiendo nada nuevo, la hay incluso repetida), pero suele estar en vídeos o en audiotutoriales. Y voy a ser franco, muchas veces acaban con mi paciencia. Prefiero lo escrito, que puedo leer cuantas veces necesite y sin complicarme la existencia. Iré actualizando esta entrada o creando otras nuevas con los recursos que me vaya encontrando por la red. Sin más, vamos a lo que nos interesa.</p>
+<h2 id="equipamiento-necesario">Equipamiento necesario</h2>
+<p>Para dar inicio a tu aventura en el streaming necesitarás:</p>
+<ul>
+<li>Un ordenador con Windows 10 como mínimo, una buena tarjeta gráfica y bastante memoria RAM.</li>
+<li>La última versión de <a href="https://nvda.es">NVDA (Abre en una nueva ventana)</a>. Podrías usar JAWS o Narrador, pero la forma más fiable de asegurar que todo funcione bien la he encontrado con este lector de pantallas.</li>
+<li>Necesitarás saber manejar el navegador de objetos de NVDA, así como el OCR que viene integrado. Si no sabes, antes de seguir adelante con esto, es un buen momento para aprender.</li>
+<li>La última versión de <a href="https://obsproject.com/es/download">OBS (abre en una nueva ventana)</a>.</li>
+<li>El <a href="https://nvda.es/2021/07/02/obs-studio/">complemento de NVDA para OBS Studio (abre en una nueva ventana)</a> (opcional, yo no lo utilizo).</li>
+<li>Una cuenta en Twitch y/o YouTube.</li>
+<li>Si usas Twitch o YouTube, <a href="https://github.com/metalalchemist/VeTube">descarga VeTube (abre en una nueva ventana)</a> para leer chats.</li>
+</ul>
+<h2 id="comenzando">Comenzando</h2>
+<p>Bien, ya tenemos todo lo que necesitamos. Podemos continuar.</p>
+<p>Lo primero que tenemos que hacer es instalar OBS Studio. No me voy a detener aquí pues es una instalación bastante sencilla.</p>
+<p>Cuando lo abramos por primera vez, nos saldrá un asistente de configuración. hay quien prefiere saltarlo y configurarlo todo luego desde los ajustes, pero si se tiene claro para qué se desea el programa, es bastante útil, pues acaba ahorrando más de un dolor de cabeza. ¡Aprovéchalo!</p>
+<p>Lo siguiente que tenemos que hacer, una vez abierto el programa, es ignorar la ventana de Twitch o Youtube, si es que nos sale alguna. Usa el navegador de objetos para desplazarte a la ventana del programa y mueve el foco a dicha ventana para continuar.</p>
+<p>Por lo general, OBS nos pilla algunos ajustes ya por defecto. Pero no está demás ir a la barra de menús con alt y revisar en los ajustes. Por defecto, nos capturará el audio del escritorio (todo lo que se escuche por nuestros altavoces o auriculares) y el micrófono predeterminado.</p>
+<p>Comencemos. Lo primero que tenemos que hacer es, si no lo hemos hecho en el asistente de configuración, configurar el destino de nuestra transmisión. En ajuste tienes todas las opciones, revísalas bien y sigue las instrucciones.</p>
+<p>Lo siguiente que haremos será crear tres escenas que incluirán varias fuentes. Nos detendremos un momento aquí para explicar el concepto de forma bastante rápida.</p>
+<p>Una escena es una colección de fuentes que pueden o no mostrarse.</p>
+<p>Una fuente es, como su nombre indica, una fuente de contenido. Puede ser desde nuestra pantalla del ordenador hasta un archivo multimedia, pasando incluso por lo que nos devuelva un navegador web. ¡Anímate a buscar en google para más información!</p>
+<p>En mi caso particular, yo utilizo tres escenas. Una llamada cara, otra llamada pantalla y otra llamada cámara y pantalla. El contenido de cada una son las siguientes fuentes, sin contar alertas y cosas más avanzadas que pueden añadirse:</p>
+<h3 id="cara">Cara</h3>
+<p>Contiene una única fuente que ocupa todo el tamaño de la pantalla. para crearla he seguido los siguientes pasos, una vez en la ventana principal de OBS.</p>
+<ul>
+<li>Con navegador de objetos me he desplazado a la ventana de escenas. He accedido a la barra de herramientas y he pulsado en el botón agregar. En el cuadro de edición para darle un nombre he escrito cara y he pulsado enter.</li>
+<li>A continuación, de vuelta en la ventana principal de OBS, he pulsado ctrl+n para añadir una vuente y he seleccionado una fuente de captura de dispositivo de vídeo. He seguido el asistente, le he puesto de nombre cámara para fuente cara y he seleccionado mi cámara, no he tocado nada más.</li>
+<li>para acabar, he seleccionado la fuente con control 1 y le he dado a CTRL + f para ajustarla a la pantalla.</li>
+</ul>
+<p>`</p>
+<h3 id="pantalla">Pantalla</h3>
+<p>Esta escena consiste exactamente en hacer lo mismo que la anterior, pero cambiando la fuente de dispositivo de captura de vídeo por la de captura de pantalla. Ponle un nombre descriptivo y deja el resto de ajustes tal cuál están. ¡No olvides pulsar cuando termines CTRL+f para ajustarla a toda la pantalla!</p>
+<h3 id="cara-y-pantalla">Cara y pantalla</h3>
+<p>Esta escena es una mezcla de las dos anteriores. Cuidado que tiene su aquel. Creé una que se llamó pantalla y cara y seguí estas instrucciones.</p>
+<ul>
+<li>En primer lugar, pulsé CTRL+n para añadir una fuente captura de pantalla.</li>
+<li>Cuando la tuve, no pulsé CTRL+f, pues no queremos ajustarla a la pantalla, necesitamos que la siguiente se superponga y quede más o menos bien.</li>
+<li>Para acabar, añadí la fuente de captura de dispositivo de vídeo, donde seleccioné mi cámara.</li>
+</ul>
+<p>Por alguna razón que tiene su lógica pero que yo no puedo explicaros con exactitud (cosas de no ver), hay que seguir dicho orden para que ambas fuentes se vean.</p>
+<p>En lo que respecta al audio, hay una nueva fuente disponible que permite capturar el audio de una aplicación específica, lo cual es útil si no deseas capturar todo el audio del sistema.</p>
+<h2 id="atajos-de-teclado">Atajos de teclado</h2>
+<p>Una de las cosas buenas que tiene OBS es que permite personalizar los atajos de teclado para hacer la mayoría de sus acciones de forma rápida. Ve a los ajustes y explora la parte de teclado. El navegador de objetos te será útil aquí. Una de las primeras cosas que añadí a los atajos fue el cambiar entre escenas. Shift f1 me lleva a la escena de solo pantalla, shift f2 me lleva a la escena de solo cámara y shift f3 me lleva a la de cámara y pantalla. Es muy útil si estás transmitiendo y necesitas cambiar rápidamente.</p>
+<p>Truco: Con tabulador puedes moverte entre cuadros de edición y botones, Usa la convinación de teclas para mover el navegador de objetos hacia atrás para ver en qué opción estás, pues esa parte no termina de ir bien con NVDA. si no te consigues aclarar, escribe un comentario y lo explico con más detalle.</p>
+<h2 id="pantalla-en-negro">Pantalla en negro</h2>
+<p>Hay una última cosa que me gustaría comentar en este artículo. La pantalla en negro. Es una comprobación que hago siempre cuando instalo OBS antes que nada. Por alguna razón, en determinados portátiles, cuando capturas una pantalla se ve en negro.</p>
+<p>La forma rápida de comprobarlo siendo ciego, si no tenemos unos ojitos que nos puedan echar una mano, es la siguiente:</p>
+<ul>
+<li>Activa una escena donde solo se capture tu pantalla.</li>
+<li>Inicia una grabación.</li>
+<li>Dirígete a un procesador de textos y escribe cualquier cosa. si puedes abrir un documento con mucho texto, mejor. Maximízalo.</li>
+<li>Mantén esa ventana al frente durante unos 30 o 40 segundos. Después, finaliza la grabación.</li>
+<li>Abre el vídeo y pásale el OCR con NVDA. si puedes leer parte del texto, tu pantalla no se ve en negro.</li>
+</ul>
+<p>Si por alguna razón No te funciona este truco, pide ayuda a alguien que vea para garantizar que en efecto tu pantalla se ve en negro. si te ha tocado este caso lo siento, te toca buscar en google y probar a ver qué solución te funciona a ti.</p>
+<h2 id="para-finalizar">Para finalizar</h2>
+<p>Utiliza tantas escenas como necesites. Desde que escribí este artículo fui añadiendo escenas más específicas. Por ejemplo, una para capturar juegos, otra para juegos y cámara, otra para una aplicación específica, otra para una aplicación específica con cámara y una que lo único que hace es mostrar una imagen donde pone &ldquo;BRB, I&rsquo;m AFK&rdquo; para cuando necesite ausentarme.</p>
+<p>Investiga mucho y pide ayuda a gente que vea. Podemos llegar hasta un punto, pero terminar de configurarlo todo requiere que unos ojitos funcionales nos echen una mano. Técnicamente con lo explicado aquí se puede transmitir, pero seamos sinceros, queda más bonito que un vidente te encuadre la fuente de la cámara en un marco con colorines ajustado a la temática de tu Stream, por ejemplo. Lo bueno es que solo necesitarás ayuda una vez. cuando esté todo configurado, puedes hacerte una copia de la configuración.</p>
+<p>Hay mucho más que contar, por supuesto. Pero lo dejaré aquí por hoy. Como habrás podido comprobar, he dejado cosas en los requisitos de las cuales no he escrito nada. Las dejaré para futuras entradas, aunque tienes una buena base para investigar por ti mismo, creo que lo básico está cubierto.</p>
+<p>¡Los comentarios están abiertos para dudas y sugerencias!</p>
+]]></content></entry><entry><title type="html">Conocer los procesos que más memoria RAM ocupan en un VPS</title><link href="https://jesuspavonabian.es/post/conocer-los-procesos-que-mas-memoria-ram-ocupan-en-un-vps/"/><id>https://jesuspavonabian.es/post/conocer-los-procesos-que-mas-memoria-ram-ocupan-en-un-vps/</id><author><name>Jesús Pavón Abián</name></author><published>2021-07-19T00:00:00+00:00</published><updated>2021-07-19T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Iba yo a escribir una entrada para este blog cuando la RAM de mi VPS se disparó. Se conoce que tengo algo chupando memoria RAM a lo burro. De hecho, he tenido que aumentar memoria al menos temporalmente, hasta ver qué le pica al servidor. el caso es que tras conseguir acceso por ssh, cosa que costó lágrimas, sudor y sangre, di con parte de la solución a mi problema: Saber qué procesos consumen más memoria y cuánta está consumiendo cada uno. La magia la realiza el comando ps de la siguiente manera: ps aux &ndash;width 30 &ndash;sort -rss | head Con este sencillo comando podremos ver los 10 procesos que consumen más memoria RAM en nuestro VPS. Fácil y sencillo. Ahora me falta saber por qué se está comiendo casi toda la memoria un simple script .js.</p>
+]]></content></entry><entry><title type="html">Ver anime y leer subtítulos con NVDA</title><link href="https://jesuspavonabian.es/post/ver-anime-y-leer-subtitulos-con-nvda/"/><id>https://jesuspavonabian.es/post/ver-anime-y-leer-subtitulos-con-nvda/</id><author><name>Jesús Pavón Abián</name></author><published>2021-03-03T00:00:00+00:00</published><updated>2021-03-03T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Los ciegos tenemos un problema bastante evidente: Que no vemos. Y el no ver nos impide hacer cosas que otro tipo de personas pueden hacer con normalidad. como ver anime en versión original. Por suerte, aquí estoy yo, para poner remedio a ese pequeñito problema. Te voy a enseñar a ver anime en japonés y enterarte de qué se está diciendo gracias a los subtítulos. Sí, como lo lees, en japonés subtitulado.</p>
+<h2 id="consiguiendo-lo-necesario">Consiguiendo lo necesario</h2>
+<h3 id="crunchiroll">Crunchiroll</h3>
+<p>Tenemos que registrarnos en Crunchiroll. No es necesario pagar el premium si no lo deseamos. Crunchiroll es la única página que he encontrado que nos ahorra encontrar subtítulos sincronizados correctamente. Se pueden sincronizar sin ver, pero es un poco más complicado. Así que si nos lo podemos ahorrar, bienvenido sea.</p>
+<h3 id="potplayer">PotPlayer</h3>
+<p>para esto, nada mejor que seguir <a href="https://nvda.es/2018/12/05/tutorial-como-leer-subtitulos-automaticamente-con-nvda-usando-pot-player/">este tutorial para leer subtítulos con NVDA</a> y una vez finalizado, hacer lo siguiente para que nos lea subtítulos de Crunchiroll:</p>
+<ol>
+<li>Acceder a las preferencias con F5.</li>
+<li>Ir a accesibilidad y marcar la casilla &ldquo;Leer los subtítulos de la película compuesta por texto&rdquo; que está fuera del grupo de TTS. Cuidado, no nos interesa el TTS porque si lo pulsamos nos tirará de voces de Microsoft y no es lo que nos interesa.</li>
+</ol>
+<p>Y con esto lo tenemos todo. Lo siguiente es descargar los capítulos que queramos y abrirlos con PotPlayer.</p>
+<h2 id="descargar-capítulos-y-reproducirlos">Descargar capítulos y reproducirlos</h2>
+<p>Lo siguiente que tenemos que hacer es conseguir el archivo del capítulo de Crunchiroll. Por motivos legales, retiraré la explicación de cómo se hace aquí. Una vez conseguido el capítulo con subtítulos en formato mkv podremos reproducirlo con el programa anteriormente instalado y NVDA nos leerá los subtítulos.</p>
+]]></content></entry><entry><title type="html">Una plancha accesible para todos: La Tefal Optigrill GC712D12</title><link href="https://jesuspavonabian.es/post/una-plancha-accesible-la-tefal-optigrill-gc712d12/"/><id>https://jesuspavonabian.es/post/una-plancha-accesible-la-tefal-optigrill-gc712d12/</id><author><name>Jesús Pavón Abián</name></author><published>2019-04-23T00:00:00+00:00</published><updated>2019-04-23T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Buenas, hoy toca recomendar una plancha accesible para cocinar, en concreto la Tefal Optigrill GC712D12. sí, soy informático y quiero cambiar el mundo, pero también tengo que comer, y disfruto con ello.</p>
+<p>La plancha avisa mediante sonidos y luces cuando está lista para cocinar, cuando está la comida poco hecha, cuando está en su punto y cuando está muy hecha. Por este motivo, es ideal para las personas ciegas o con baja visión. Descubrí el cacharrito gracias al canal de <a href="http://www.alibluebox.com/">AliblueBox (abre en nueva ventana)</a> y estoy encantado con él. Por desgracia, el vídeo ya no está disponible.</p>
+<h2 id="qué-hace-la-plancha">¿Qué hace la plancha?</h2>
+<p>Con la <a href="https://amzn.to/2W1X5su">plancha accesible Tefal Optigrill GC712D12 (abre en una nueva ventana)</a> puedes cocinar utilizando sus programas predefinidos:</p>
+<ul>
+<li>Hamburguesas.</li>
+<li>Aves.</li>
+<li>sandwitches.</li>
+<li>Salchichas.</li>
+<li>Carnes.</li>
+<li>Pescados.</li>
+</ul>
+<p>También dispone de un modo manual, que te permite cocinar lo que quieras.</p>
+<p>Cuando escoges una opción del programa, solo tienes que esperar a que la plancha se caliente, que suenen los tres pitidos, abrirla, meter la comida, cerrarla, y esperar a escuchar los pititos que indican el estado de la comida..</p>
+<h2 id="funcionamiento">funcionamiento</h2>
+<p>El funcionamiento es sencillo. Lo primero que tenemos que hacer es montarla. al principio cuesta lo indecible, hasta que le pillas el truco al sistema de pestañas que encajan las planchas en sus soportes.</p>
+<p>Tras abrirla (recuerda a una sandwitchera) tenemos que colocar las dos placas. La cuestión es no forzarlas y encajarlas correctamente. No es complicado, pero como he dicho arriba cuesta. si al encajarlas se mueven levemente, algo hemos hecho mal. Luego tenemos que colocar la bandeja extraíble, donde caerán los jugos de la comida que cocinemos.</p>
+<p>Una vez montada la plancha, tenemos que enchufarla y cerrarla. Frente a nosotros quedará el asa con la botonera.</p>
+<h3 id="botones-de-la-plancha-de-izquierda-a-derecha">Botones de la plancha, (de izquierda a derecha)</h3>
+<ol>
+<li>Botón power.</li>
+<li>botón descongelar.</li>
+<li>botón hamburguesas.</li>
+<li>Botón aves.</li>
+<li>botón Sandwitch.</li>
+<li>botón salchichas.</li>
+<li>botón carne.</li>
+<li>Botón pescado.</li>
+<li>botón manual.</li>
+<li>botón OK.</li>
+</ol>
+<h3 id="uso-de-la-plancha">Uso de la plancha</h3>
+<p>cocinar con la <a href="https://amzn.to/2W1X5su">plancha accesible Tefal Optigrill GC712D12 (abre en una nueva ventana)</a> es realmente sencillo.</p>
+<ol>
+<li>en primer lugar pulsamos el botón power. Oiremos un pitido.</li>
+<li>A continuación, si lo deseamos, pulsamos el botón de descongelar y nos avisará con otro pitido.</li>
+<li>Tanto si hemos pulsado el botón de descongelar como si no pulsamos el botón que corresponda a lo que queremos cocinar y escucharemos otro pitido.</li>
+<li>Pulsamos OK y esperamos que la plancha se caliente, momento en el que escucharemos una serie de pitidos</li>
+<li>Cuando la plancha esté lista, la abriremos y meteremos la comida. Tendremos que darnos prisa, y volver a cerrarla cuanto antes, pues si no posiblemente se enfriará y no avisará bien.</li>
+<li>Esperaremos a que la comida esté lista. la plancha nos avisará mediante pitidos.
+<ul>
+<li>Los tresp primeros pitidos indicarán que la comida está poco hecha.</li>
+<li>Los tres segundos pitidos indicará que la comida está en su punto.</li>
+<li>Y para finalizar, los tres últimos pitidos indicarán que la comida está muy hecha. Importante retirarla en este punto, pues la plancha no se apaga sola y se quemará la comida.</li>
+</ul>
+</li>
+<li>cuando tengamos la comida en el estado que queramos, solo tenemos que pulsar power para apagar la plancha (sonará un pitido) y abrirla. Con cuidado sacarla y servirla.</li>
+</ol>
+<p>mención especial al modo manual: Tras pulsar power, tenemos que usar el modo manual si no queremos usar un modo predefinido. Tiene tres modos de uso. Baja potencia, potencia media y potencia alta. Tras pulsar una, dos o tres veces el botón manual pulsaremos OK y esperaremos que la plancha alcance la temperatura ideal.</p>
+<p>Cuidado aquí, pues el aviso de temperatura será el único que nos dará. Tendremos que estar atentos a que la comida no se queme.</p>
+<h2 id="un-cacharrito-bastante-útil-si-tienes-prisa">Un cacharrito bastante útil si tienes prisa</h2>
+<p>como he dicho, la <a href="https://amzn.to/2W1X5su">plancha accesible Tefal Optigrill GC712D12 (abre en una nueva ventana)</a> es una plancha bastante recomendable. la comida sale genial, y si tienes prisa te puede sacar de más de un apuro. en el modo manual haces unas tostadas bastante buenas, por ejemplo, aunque lo que más uso son los programas predefinidos, es una maravilla dejar la carne cocinándose y ponerte a hacer otras cosas en la cocina sin tener que preocuparte de darle la vuelta.</p>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B01CI29NHI&amp;linkId=3dd5e76cd191d8ee5881f998bdf27822"></iframe>
+]]></content></entry><entry><title type="html">¿Quién soy?</title><link href="https://jesuspavonabian.es/about/"/><id>https://jesuspavonabian.es/about/</id><author><name>Jesús Pavón Abián</name></author><published>2018-10-30T00:00:00+00:00</published><updated>2018-10-30T00:00:00+00:00</updated><content type="html"><![CDATA[<p>Mi nombre, como habrás podido deducir de la dirección del Blog, es Jesús Pavón Abián.</p>
+<p>Nací el 08/05/1993 en Huelva.</p>
+<p>Me encanta la informática y cacharrear con cosas. Soy bastante fricki, de hecho, soy informático. Pero no quiero hablarte solo de informática y de tecnologías, aunque quizás abunden los artículos de esa temática, no quiero cerrarme.</p>
+<p>Si me conoces sabrás que soy ciego. si no, ahora lo sabes. Pero tampoco pienso crear un Blog para dicho colectivo, ya está bien de autoencerrarnos en una burbuja. Intentaré que todo lo que comparta pueda ser usado o disfrutado por cualquier persona.</p>
+<p>Y ahí está la clave. cualquier persona. Si navegas un rato por la web, entenderás a qué me refiero.</p>
+<p>Puedes encontrarme en</p>
+<ul>
+<li><a href="https://mst.universoalterno.es/@jpavonabian">Mastodon</a></li>
+<li><a href="https://www.facebook.com/jesus.pavonabian/">Facebook</a></li>
+</ul>
+]]></content></entry></feed>
