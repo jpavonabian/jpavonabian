@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es-es"><head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  
+    Crear una VPN con Wireguard más PiHole para olvidarnos de los anuncios y acceder a nuestras cosas desde cualquier lugar - El Blog de un informático que sueña con mejorar el mundo
+  
+</title>
+    
+    
+
+    
+    <link rel="shortcut icon" href="https://jesuspavonabian.es/favicon.ico">
+    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-16x16.png" sizes="16x16" />
+
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    <link rel="me" href="https://github.com/jpavonabian" />
+    <link rel="me" href="https://twitter.com/jpa_apj" />
+    <link rel="me" href="https://mst.universoalterno.es/@jpavonabian" />
+
+    
+    <link rel="stylesheet" href="https://jesuspavonabian.es/css/layout.css" crossorigin="anonymous" media="screen">
+    
+    
+    
+    <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention" />
+    <link rel="pingback" href="https://webmention.io/jesuspavonabian.es/xmlrpc" />
+    
+    
+    <link rel="micropub" href="https://jesuspavonabian.es/.netlify/functions/micropub">
+    <link rel="microsub" href="https://aperture.p3k.io/microsub/jesuspavonabian">
+    
+    
+    <meta property="og:url" content="https://jesuspavonabian.es" />
+    <meta property="og:title" content="El Blog de un informático que sueña con mejorar el mundo" />
+    <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo" />
+    <meta property="og:type" content="website" />
+    
+    
+    
+    <meta name="twitter:title" content="El Blog de un informático que sueña con mejorar el mundo" />
+    
+    
+</head>
+<body>
+<header aria-label="Cabecera del sitio">
+    <section>
+        <div class="header flex row">
+            <div class="header__item flex row">
+                
+                <a id="site__name" href="https://jesuspavonabian.es">
+                    El Blog de un informático que sueña con mejorar el mundo
+                </a>
+            </div>
+            <div class="flex row">
+                <nav aria-label="Menú principal" class="flex row">
+                    <ul role="menubar" class="flex row">
+                        <li role="none">
+                            <a aria-label="Ir al inicio" class="menu__item" href="https://jesuspavonabian.es">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                </svg>
+                            </a>
+                        </li>
+        <li role="none">
+            <a class="menu__item" href="https://jesuspavonabian.es/about/">
+                Sobre mí
+            </a>
+        </li>
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main aria-role="main">
+    <section>
+        <ul id="feed__ul">
+            <li class="feed__li h-entry">
+                <div class="feed__content">
+                    <time class="hidden dt-published">2023-06-23 00:00:00 &#43;0000 UTC</time>
+                    <div class="flex properties__row ">
+                        <div rel="author" class="flex left p-author h-card">
+                            <img class="u-photo"
+                                src="https://picsum.photos/120.webp"
+                                alt="Jesús Pavón Abián" id="author-img">
+                            <div>
+                                <p rel="me" class="p-name" id="author-name">
+                                    
+                                    Jesús Pavón Abián
+                                    
+                                </p>
+                                <p class="properties">
+                                    
+                                    Jun 23, 2023
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex right properties">
+                            
+                            <a class="icon u-url" href="https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                            <article class="md p-summary e-content">
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/">Crear una VPN con Wireguard más PiHole para olvidarnos de los anuncios y acceder a nuestras cosas desde cualquier lugar</a></h2>
+                                
+                                <p>Vamos con otro tutorial. Esta vez sobre cómo montar una VPN más Pihole para eliminar los anuncios de la red.</p>
+<h2 id="cuál-es-el-punto">¿Cuál es el punto?</h2>
+<p>Odio los anuncios. De verdad, me ponen de una mala leche increíble, tengo una guerra eterna contra ellos. Desde que instalé Pihole los hice medio desaparecer, pero no es suficiente. ¡Si me voy de casa los sigo viendo!</p>
+<p>Así que nada mejor que montar una VPN a la cual poder conectarme. Así, de paso, tengo acceso a todos los cacharros que están en mi red de casa desde cualquier lado.</p>
+<h2 id="eh-yo-también-quiero-qué-necesito">¡Eh, yo también quiero! ¿Qué necesito?</h2>
+<p>Apunta, necesitarás lo siguiente:</p>
+<ul>
+<li>Un ordenador fijo con Linux. Una raspberry pi te hace el apaño si no tienes uno. Necesitamos algo conectado 24/7 al router de casa. Un VPS también puede valer si tienes suficiente tráfico.</li>
+<li>Una velocidad medio en condiciones.</li>
+<li>Abrir puertos en el router si no usas VPS.</li>
+</ul>
+<h2 id="vale-tengo-todo-al-lío">Vale, tengo todo, ¡al lío!</h2>
+<p>Venga, vamos. Lo primero, necesitamos Debian o Ubuntu. Yo prefiero Debian, Raspbian en mi caso. Tras instalarlo, usaremos Raspbian como referencia, pero sirve igual para otros sistemas, configuraremos la IP estática de la máquina. Necesitamos asegurarnos de que no nos da la lata el cambio de IP, así que comprobamos en nuestro router cuál es el rango de DHCP y le metemos una que esté fuera del rango. En mi caso, como 192.168.1.1 es una IP muy común y al acceder a cacharros desde fuera me daba conflicto porque fuera también hay 192.168.1.1, decidí cambiarla a 10.0.0.1 y tener el DHCP empezando en 10.0.0.33. Con esto me aseguro de que los cacharros conectados a la red tengan 10.0.0.34, 10.0.0.35, etc., y que todo lo que meta por debajo de 33 no va a entrar en conflicto. PiHole nos configura la IP estática el solito cuando se instala. Una vez nuestro sistema está instalado y configurado haremos lo siguiente:</p>
+<ol>
+<li>Entrar como root. Si no podemos: <code>sudo su</code></li>
+<li>Actualizar repositorios: <code>apt update</code></li>
+<li>Actualizar el sistema: <code>apt upgrade</code></li>
+<li>Instalar curl si no lo tenemos: <code>apt install curl</code></li>
+<li>Instalar PiHole: <code>curl -sSL https://install.pi-hole.net | bash</code></li>
+</ol>
+<p>Nos saldrá un asistente muy chulo. Si usas DHCP en el router, decidle que no lo active. Nos preguntará varias cosas, entre ellas si queremos dejar la IP actual como estática. Decidle que sí. También nos dejará escoger DNS, es un instalador intuitivo. Cuando os pida DNS, podéis decirle que 8.8.8.8 y 1.1.1.1 o algún otro servicio de esos chulos de DNS. Os dará los datos de acceso por web para que podáis tocar cosas. Aunque ya por cómo viene por defecto se cepilla suficientes anuncios, yo he metido alguna lista más. Google puede ayudar en este caso.</p>
+<p>Si queremos, cambiamos la contraseña de PiHole: <code>pihole -a -p</code></p>
+<p>Cambiamos las DNS del router a la IP de nuestro cacharro. Cada router es un mundo, así que ahí no me meto. Reiniciamos el cacharro con <code>sudo reboot</code> y nos mentalizamos para instalar Wireguard. Para ello usaremos pivpn, un script que nos facilita mucho el trabajo. Asumiremos que tenemos un usuario llamado dherhion.</p>
+<p>En primer lugar nos vamos a su home, para ello teclearemos lo siguiente:<br>
+<code>cd /home/dherhion/</code></p>
+<p>Ahora procedemos a actualizar los repositorios, sé que lo hemos hecho antes, pero bueno:<br>
+<code>sudo apt update</code></p>
+<p>Continuamos por fin instalando Wireguard:<br>
+<code>sudo curl -L https://install.pivpn.io | bash</code></p>
+<p>Cuando pregunte qué VPN queremos, escogemos Wireguard. Cuando nos pregunte si queremos usar IP o DNS, escogemos DNS. Sé que no hemos configurado nada todavía, pero eso se hace luego. Nos pedirá un dominio. Yo uso duckdns con un cron y lo explicaré más adelante, así que dherhion.duckdns.org en mi caso. Podéis usar noip, zapto o cualquiera de los gratuitos. Hay routers que permiten actualizar la IP automáticamente. El instalador ahora detectará que tenemos PiHole instalado y nos preguntará si queremos usarla en la VPN. Le decimos que sí, obviamente.</p>
+<p>Una vez el asistente finalice, tenemos que hacer que la VPN se inicie con el sistema:<br>
+<code>sudo systemctl enable wg-quick@wg0.service</code><br>
+<code>sudo systemctl start wg-quick@wg0.service</code></p>
+<p>Casi terminamos. Lo siguiente que tenemos que hacer es abrir el puerto 51820 en el router y configurar el dominio.</p>
+<h2 id="crear-usuarios-configurar-dominio-dinámico-y-conectar">Crear usuarios, configurar dominio dinámico y conectar</h2>
+<p>Para continuar, vamos a crear dos usuarios y conectarnos a la VPN. Sigue los pasos a continuación:</p>
+<ol>
+<li>Usa el comando <code>pivpn -a</code> para crear un usuario llamado &ldquo;pepeordenador&rdquo; y otro llamado &ldquo;pepemovil&rdquo;. Si prefieres ahorrarte preguntas, puedes utilizar <code>pivpn -a -n pepeordenador</code>. Esto creará perfiles de usuario en la carpeta &ldquo;configs&rdquo;. Deberías tener los archivos &ldquo;pepeordenador.conf&rdquo; y &ldquo;pepemovil.conf&rdquo; listos para usar.</li>
+<li>Ahora, vamos a configurar el DNS antes de generar el QR para el usuario &ldquo;pepemovil&rdquo;. Regístrate en duckdns.org y crea una cuenta. Luego, añade un dominio. Para que la ip a la que apunta el dominio se actualice sola, añade la siguiente línea al crontab utilizando el comando <code>crontab -e</code>:</li>
+</ol>
+<p><code>*/1 * * * * /home/dherhion/actualizarip.sh &gt;/dev/null 2&gt;&amp;1</code></p>
+<p>Crea un archivo llamado &ldquo;actualizarip.sh&rdquo; en la ruta &ldquo;/home/dherhion/&rdquo; utilizando el comando <code>nano /home/dherhion/actualizarip.sh</code> y añade el siguiente contenido:</p>
+<p><code>echo url=&quot;https://www.duckdns.org/update?domains=dherhion&amp;token=tu_token&amp;ip=&quot; | curl -k -o ~/duckdns/duck.log -K -</code></p>
+<p>Reemplaza &ldquo;dherhion&rdquo; y &ldquo;tu_token&rdquo; por los valores correspondientes. Luego, ejecuta <code>chmod +x actualizarip.sh</code> para darle permisos de ejecución al script.</p>
+<h2 id="cómo-probar-si-funciona">¿Cómo probar si funciona?</h2>
+<p>Casi lo tenemos. ¡Probemos a conectar! Explicaré cómo hacerlo desde un móvil, pero conectar desde Windows, Mac o Linux no es difícil, solo tienes que importar el archivo .conf que se genera en configs.</p>
+<ol>
+<li>Descarga la aplicación Wireguard desde Google Play Store o App Store.</li>
+<li>Abre la aplicación y selecciona la opción para escanear un código QR.</li>
+<li>Maximiza la pantalla de la terminal en tu dispositivo.</li>
+<li>Ejecuta el comando <code>pivpn -qr</code>.</li>
+<li>Selecciona el perfil correspondiente al usuario &ldquo;pepemovil&rdquo;.</li>
+<li>En el móvil, agrega un nuevo túnel utilizando la configuración generada.</li>
+<li>¡Listo! Desconecta la conexión Wi-Fi y activa el nuevo túnel creado. Navega durante unos minutos y luego utiliza el comando <code>pivpn -c</code> en la terminal de tu ordenador para ver los dispositivos conectados. Si todo está configurado correctamente, deberías poder acceder al panel de PiHole cuando te conectes a la VPN.</li>
+</ol>
+<h2 id="bonus-acceder-a-los-dispositivos-de-la-red-como-si-estuvieras-conectado-localmente">Bonus: Acceder a los dispositivos de la red como si estuvieras conectado localmente</h2>
+<p>Para acceder a los dispositivos de la red como si estuvieras conectado localmente, sigue estos pasos:</p>
+<p><code>sudo nano /etc/sysctl.conf</code></p>
+<p>Descomenta la línea:<br>
+<code>net.ipv4.ip_forward = 1</code></p>
+<p>Guarda los cambios con <code>Ctrl + X</code>. Luego, ejecuta el comando <code>ip route list default</code> para obtener la interfaz de red.</p>
+<p>Abre el archivo de configuración de Wireguard utilizando el comando:<br>
+<code>sudo nano /etc/wireguard/wg0.conf</code></p>
+<p>Agrega las siguientes líneas debajo de la configuración existente en la sección &ldquo;ListenPort&rdquo;, asegurándote de no duplicar líneas:</p>
+<p><code>SaveConfig = true</code><br>
+<code>PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE</code><br>
+<code>PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</code></p>
+<p>Guarda los cambios con <code>Ctrl + X</code>. Finalmente, reinicia el sistema con <code>sudo reboot</code>.</p>
+<p>¡Listo! Ahora puedes acceder a los dispositivos de tu red como si estuvieras conectado localmente.</p>
+<p>P.D.: Dherhion.duckdns.org no existe.</p>
+
+                                
+                                <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
+                                <a class="hidden" href="https://brid.gy/publish/twitter"></a>
+                                <a class="hidden" href="https://fed.brid.gy/"></a>
+                                <data class="p-bridgy-omit-link" value="false"></data>
+                            </article>
+                            <div class="flex properties__row properties">
+    <div class="flex left properties">
+        <span class="properties">
+            
+            <span class="dt-published hidden">2023-06-23 00:00:00 &#43;0000 UTC</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/">
+                
+                
+                
+                
+                
+                hace 204 días
+                
+            </a>
+            
+        </span>
+    </div>
+    <div class="flex right">
+        
+    </div>
+</div>
+
+                </div>
+                
+<a id="wm-link" href="https://webmention.io/jesuspavonabian.es/webmention" target="_blank">Haz una webmention&nbsp;
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-external-link">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+    </svg>
+</a>
+
+
+
+<script src="/js/wm.min.js" data-wordcount="100" async></script>
+
+                
+                <div id="webmentions"></div>
+            </li>
+        </ul>
+    </section>
+</main>
+
+</body>
+</html>
