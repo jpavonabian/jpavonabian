@@ -8,7 +8,22 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Wed, 03 Jan 2024 20:32:32 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 18:28:35 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prueba para el Fediverso</title>
+      <link>https://jesuspavonabian.es/post/prueba-fediverso/</link>
+      <pubDate>Sat, 13 Jan 2024 18:28:35 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/prueba-fediverso/</guid>
+      <description>Esta publicación debería publicarse automáticamente en el fediverso.
+Como podeis ver, la web ha cambiado por completo. Ahora soporta cosas como Webmentions y permite autentificarme en algunos sitios utilizando el nombre del dominio.</description>
+      <content:encoded>
+      &lt;p&gt;Esta publicación debería publicarse automáticamente en el fediverso.&lt;/p&gt;
+&lt;p&gt;Como podeis ver, la web ha cambiado por completo. Ahora soporta cosas como Webmentions y permite autentificarme en algunos sitios utilizando el nombre del dominio.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Adiós, contraseñas</title>
       <link>https://jesuspavonabian.es/post/adioscontrasenyas/</link>
