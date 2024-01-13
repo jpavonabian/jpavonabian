@@ -1,0 +1,84 @@
+baseURL: https://jesuspavonabian.es
+languageCode: es-es
+title: El Blog de un informático que sueña con mejorar el mundo
+theme: indiefeed
+
+# How many feed entries to load at once
+paginate: 12
+
+taxonomies:
+  category: categorías
+  tag: etiquetas
+
+author:
+  name: Jesús Pavón Abián
+  image: # relative to static/
+  about: La tecnología debe estar al servicio de las personas.
+  nickname: "@jpavonabian"
+  email: correo@jesuspavonabian.es
+  domain: https://jesuspavonabian.es
+
+params: # All of these are optional
+  # logo: heart.png # relative to ./static/
+  dateform: January 2, 2006
+  # customCSS: css/style.css # relative to ./static/
+  webmentionUrl: https://webmention.io/jesuspavonabian.es/webmention
+  pingbackUrl: https://webmention.io/jesuspavonabian.es/xmlrpc
+  micropubUrl: https://jesuspavonabian.es/.netlify/functions/micropub
+  microsubUrl: https://aperture.p3k.io/microsub/jesuspavonabian
+  # For IndieAuth
+  githubuser: jpavonabian
+  twitteruser: jpa_apj # no @ in front
+  mastodon: https://mst.universoalterno.es/@jpavonabian # full link to your instance profile
+  # monetization: $xxxxxxx # Web Monetization payment pointer
+  # socialImage: static/img/social.png
+
+mediaTypes:
+  "application/atom+xml":
+    suffixes:
+      - "xml"
+
+outputFormats:
+  Atom:
+    name: "Atom"
+    mediaType: "application/atom+xml"
+    # generated file: <baseName>.<mediaType."application/atom+xml".suffixes[0]> = atom.xml
+    baseName: "atom"
+    isPlainText: false
+    rel: "alternate"
+    isHTML: false
+    permalinkable: false
+  Json:
+    name: "Json"
+    mediaType: "application/json"
+    # generated file: <baseName>.<mediaType."application/feed+json".suffixes[0]> = feed.json
+    baseName: "feed"
+    isPlainText: false
+    rel: "alternate"
+    isHTML: false
+    permalinkable: false
+
+outputs:
+  home:
+    - HTML
+    - ATOM
+    - JSON
+    - RSS
+  page:
+    - HTML
+  section:
+    - HTML
+  taxonomy:
+    - HTML
+  term:
+    - HTML
+    - ATOM
+    - JSON
+    - RSS
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: dracula
