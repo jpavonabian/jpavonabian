@@ -7,7 +7,7 @@ theme: indiefeed
 paginate: 12
 
 taxonomies:
-  category: categorías
+  category: categorias
   tag: etiquetas
 
 author:
