@@ -2,13 +2,45 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2024-01-13T18:28:35+01:00</updated>
+  <updated>2024-01-13T22:36:31+01:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[¡Qué Hartura!]]></title>
+    <link href="https://jesuspavonabian.es/post/que-hartura/"/>
+    <id>https://jesuspavonabian.es/post/que-hartura/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2024-01-13T22:36:31+01:00</published>
+    <updated>2024-01-13T22:36:31+01:00</updated>
+    
+    <content type="html"><![CDATA[<p>Estoy harto. Harto de entrar a una web y que antes de poder empezar a navegar tenga que pelearme con el aviso de Cookies.
+Harto de la publicidad que no me deja navegar tranquilo, cada vez es más complicado saltarla con lector de pantallas.
+Harto de esas ventanitas que piden iniciar sesión con Google o con algún otro servicio.
+Harto de los acortadores de URLs que para llevarte al destino te machacan con no se cuantas webs intermedias, y eso si consigues llegar.
+Y aunque lo llevo viendo una semana como mucho, estoy harto de la nueva modalidad de negocio de los periódicos, consistente en cobrarte por rechazar las Cookies.
+Así que he decidido poner remedio al tema, así de paso reduzco mi dependencia de google, aunque eso lo tocaré en otra entrada.</p>
+<h2 id="firefox-al-rescate">Firefox al rescate</h2>
+<p>Lo primero que he hecho ha sido cambiar a <a href="https://www.mozilla.org/es-ES/">Firefox</a>. Antes utilizaba Chrome y cambié incluso a Edge, pero finalmente he descubierto que estoy más cómodo en este navegador.
+Las últimas actualizaciones me llamaron muchísimo la atención. Me tiró mucho el poder copiar enlaces sin opciones de rastreo de forma nativa. Me daba un poco de pánico que no hubiera extensión de Bitwarden, pero tardé medio minuto en comprobar que había una.</p>
+<h2 id="minimizando-el-problema">Minimizando el problema</h2>
+<p>Además del PiHole y la VPN, me he hecho con unas cuantas extensiones para Firefox, por si algo se le escapa.
+Las he recopilado todas en <a href="https://addons.mozilla.org/es/firefox/collections/14165543/P-S/">una colección</a> para que me sea más fácil a mi mismo encontrarlos en un futuro, y de paso, así puedo ir añadiendo los complementos o extensiones que vaya utilizando sin tener que actualizar esta entrada.
+Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.</p>
+<h3 id="para-qué-tampermonkey">¿Para qué Tampermonkey?</h3>
+<p>Hay muchísimos scripts que permiten aumentar la privacidad o simplemente eliminar modales y cosas así, como este, que permite <a href="https://greasyfork.org/es/scripts/431691-bypass-all-shortlinks">saltarse todos los enlaces acortados</a>, aunque me consta que existen extensiones para ello (actualizaré la entrada y la colección cuando encuentre una en condiciones).</p>
+<h3 id="por-qué-adnauseam">¿Por qué AdNauseam?</h3>
+<p>Por tocar las narices y fastidiar a quien me fastidia, solo y exclusivamente por esa razón.
+<a href="https://adnauseam.io/">AdNauseam</a> está desarrollado a partir de uBlock Origin, y su funcionamiento es casi idéntico. Bloquea los anuncios para que no te aparezcan. La diferencia es que realiza automáticamente clics en los anuncios que bloquea, generando registros de visitas en los sistemas de las redes de publicidad. Estos clics falsos fastidian los datos, pues no reflejan intereses reales de los usuarios, lo que impide que el rastreo sea efectivo.</p>
+<p>Por ahora los comentarios están desactivados, pero si quieres comentarme algo, podrás encontrarme en <a href="https://mst.universoalterno.es/@jpavonabian">Mastodon</a>.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Prueba para el Fediverso]]></title>
     <link href="https://jesuspavonabian.es/post/prueba-fediverso/"/>

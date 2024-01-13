@@ -8,7 +8,38 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Sat, 13 Jan 2024 18:28:35 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 22:36:31 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¡Qué Hartura!</title>
+      <link>https://jesuspavonabian.es/post/que-hartura/</link>
+      <pubDate>Sat, 13 Jan 2024 22:36:31 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/que-hartura/</guid>
+      <description>Estoy harto. Harto de entrar a una web y que antes de poder empezar a navegar tenga que pelearme con el aviso de Cookies. Harto de la publicidad que no me deja navegar tranquilo, cada vez es más complicado saltarla con lector de pantallas. Harto de esas ventanitas que piden iniciar sesión con Google o con algún otro servicio. Harto de los acortadores de URLs que para llevarte al destino te machacan con no se cuantas webs intermedias, y eso si consigues llegar.</description>
+      <content:encoded>
+      &lt;p&gt;Estoy harto. Harto de entrar a una web y que antes de poder empezar a navegar tenga que pelearme con el aviso de Cookies.
+Harto de la publicidad que no me deja navegar tranquilo, cada vez es más complicado saltarla con lector de pantallas.
+Harto de esas ventanitas que piden iniciar sesión con Google o con algún otro servicio.
+Harto de los acortadores de URLs que para llevarte al destino te machacan con no se cuantas webs intermedias, y eso si consigues llegar.
+Y aunque lo llevo viendo una semana como mucho, estoy harto de la nueva modalidad de negocio de los periódicos, consistente en cobrarte por rechazar las Cookies.
+Así que he decidido poner remedio al tema, así de paso reduzco mi dependencia de google, aunque eso lo tocaré en otra entrada.&lt;/p&gt;
+&lt;h2 id=&#34;firefox-al-rescate&#34;&gt;Firefox al rescate&lt;/h2&gt;
+&lt;p&gt;Lo primero que he hecho ha sido cambiar a &lt;a href=&#34;https://www.mozilla.org/es-ES/&#34;&gt;Firefox&lt;/a&gt;. Antes utilizaba Chrome y cambié incluso a Edge, pero finalmente he descubierto que estoy más cómodo en este navegador.
+Las últimas actualizaciones me llamaron muchísimo la atención. Me tiró mucho el poder copiar enlaces sin opciones de rastreo de forma nativa. Me daba un poco de pánico que no hubiera extensión de Bitwarden, pero tardé medio minuto en comprobar que había una.&lt;/p&gt;
+&lt;h2 id=&#34;minimizando-el-problema&#34;&gt;Minimizando el problema&lt;/h2&gt;
+&lt;p&gt;Además del PiHole y la VPN, me he hecho con unas cuantas extensiones para Firefox, por si algo se le escapa.
+Las he recopilado todas en &lt;a href=&#34;https://addons.mozilla.org/es/firefox/collections/14165543/P-S/&#34;&gt;una colección&lt;/a&gt; para que me sea más fácil a mi mismo encontrarlos en un futuro, y de paso, así puedo ir añadiendo los complementos o extensiones que vaya utilizando sin tener que actualizar esta entrada.
+Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.&lt;/p&gt;
+&lt;h3 id=&#34;para-qué-tampermonkey&#34;&gt;¿Para qué Tampermonkey?&lt;/h3&gt;
+&lt;p&gt;Hay muchísimos scripts que permiten aumentar la privacidad o simplemente eliminar modales y cosas así, como este, que permite &lt;a href=&#34;https://greasyfork.org/es/scripts/431691-bypass-all-shortlinks&#34;&gt;saltarse todos los enlaces acortados&lt;/a&gt;, aunque me consta que existen extensiones para ello (actualizaré la entrada y la colección cuando encuentre una en condiciones).&lt;/p&gt;
+&lt;h3 id=&#34;por-qué-adnauseam&#34;&gt;¿Por qué AdNauseam?&lt;/h3&gt;
+&lt;p&gt;Por tocar las narices y fastidiar a quien me fastidia, solo y exclusivamente por esa razón.
+&lt;a href=&#34;https://adnauseam.io/&#34;&gt;AdNauseam&lt;/a&gt; está desarrollado a partir de uBlock Origin, y su funcionamiento es casi idéntico. Bloquea los anuncios para que no te aparezcan. La diferencia es que realiza automáticamente clics en los anuncios que bloquea, generando registros de visitas en los sistemas de las redes de publicidad. Estos clics falsos fastidian los datos, pues no reflejan intereses reales de los usuarios, lo que impide que el rastreo sea efectivo.&lt;/p&gt;
+&lt;p&gt;Por ahora los comentarios están desactivados, pero si quieres comentarme algo, podrás encontrarme en &lt;a href=&#34;https://mst.universoalterno.es/@jpavonabian&#34;&gt;Mastodon&lt;/a&gt;.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Prueba para el Fediverso</title>
       <link>https://jesuspavonabian.es/post/prueba-fediverso/</link>
