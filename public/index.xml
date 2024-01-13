@@ -8,7 +8,20 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Sat, 13 Jan 2024 18:28:35 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 19:32:33 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prueba2 para el fediverso</title>
+      <link>https://jesuspavonabian.es/post/prueba2/</link>
+      <pubDate>Sat, 13 Jan 2024 19:32:33 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/prueba2/</guid>
+      <description>Esto es otra prueba más.</description>
+      <content:encoded>
+      &lt;p&gt;Esto es otra prueba más.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Prueba para el Fediverso</title>
       <link>https://jesuspavonabian.es/post/prueba-fediverso/</link>
