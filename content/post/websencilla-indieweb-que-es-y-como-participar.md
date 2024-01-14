@@ -32,4 +32,4 @@ Parece complejo, pero salvo el tema de [webmention](https://en.wikipedia.org/wik
 
 En un futuro editaré la entrada para ampliarla con más detalles.
 
-¿Quieres comentarme algo? Utiliza el enlace para dejar una webmention o (escríbeme en Mastodon)[https://mst.universoalterno.es/@jpavonabian].
+¿Quieres comentarme algo? Utiliza el enlace para dejar una webmention o [escríbeme en Mastodon](https://mst.universoalterno.es/@jpavonabian).
