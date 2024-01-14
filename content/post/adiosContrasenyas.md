@@ -2,7 +2,7 @@
 title: "Adiós, contraseñas"
 date: 2024-01-03T20:32:32+01:00
 reply:
-uri:  https://jesuspavonabian.es/post/adiosContrasenyas
+uri:  https://jesuspavonabian.es/post/adioscontrasenyas
 categories: ["anything else"] # note, reply, anything else
 tags: ["Informática"]
 draft: false
