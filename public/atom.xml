@@ -241,6 +241,28 @@ Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.
     
   </entry>
   <entry>
+    <title type="html"><![CDATA[Tu guiador]]></title>
+    <link href="https://jesuspavonabian.es/tu-guiador/"/>
+    <id>https://jesuspavonabian.es/tu-guiador/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2023-04-11T00:00:00+00:00</published>
+    <updated>2023-04-11T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Gestiona y comparte recorridos de forma sencilla. Con Tu guiador, puedes añadir recorridos y compartirlos con tus contactos con el objetivo de anotar indicaciones específicas para llegar a un lugar de forma sencilla y cómoda.</p>
+<h2 id="alguna-vez-te-has-perdido-y-olvidado-de-por-dónde-tenías-que-ir">¿Alguna vez te has perdido y olvidado de por dónde tenías que ir?</h2>
+<p>Con Tu guiador no volverá a pasarte. Añade un recorrido a la aplicación, con todos los pasos del mismo detallados y consúltalo cuando lo necesites.</p>
+<p>Si quieres, podrás compartirlo con tus contactos para que ellos puedan importarlo en su aplicación con solo pulsar un botón.</p>
+<p>Escribe indicaciones y visualízalas cuando las necesites de forma ordenada.</p>
+<p>Por supuesto, todo esto de forma accesible.</p>
+<h2 id="política-de-privacidad">Política de privacidad</h2>
+<p>Esta aplicación no recopila datos, pero sí utiliza el iCloud del usuario que la instala para almacenar un archivo .json con los recorridos en un directorio que crea.</p>
+<p>Gracias a la sincronización de esta nube, podemos utilizar los recorridos en los distintos dispositivos que estén vinculados a la misma id de Apple.</p>
+]]></content>
+    
+  </entry>
+  <entry>
     <title type="html"><![CDATA[Tu guiador: Un proyecto nuevo]]></title>
     <link href="https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/"/>
     <id>https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/</id> 

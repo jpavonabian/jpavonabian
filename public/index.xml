@@ -244,6 +244,28 @@ Así que nada mejor que montar una VPN a la cual poder conectarme.</description>
     </item>
     
     <item>
+      <title>Tu guiador</title>
+      <link>https://jesuspavonabian.es/tu-guiador/</link>
+      <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/tu-guiador/</guid>
+      <description>Gestiona y comparte recorridos de forma sencilla. Con Tu guiador, puedes añadir recorridos y compartirlos con tus contactos con el objetivo de anotar indicaciones específicas para llegar a un lugar de forma sencilla y cómoda.
+¿Alguna vez te has perdido y olvidado de por dónde tenías que ir? Con Tu guiador no volverá a pasarte. Añade un recorrido a la aplicación, con todos los pasos del mismo detallados y consúltalo cuando lo necesites.</description>
+      <content:encoded>
+      &lt;p&gt;Gestiona y comparte recorridos de forma sencilla. Con Tu guiador, puedes añadir recorridos y compartirlos con tus contactos con el objetivo de anotar indicaciones específicas para llegar a un lugar de forma sencilla y cómoda.&lt;/p&gt;
+&lt;h2 id=&#34;alguna-vez-te-has-perdido-y-olvidado-de-por-dónde-tenías-que-ir&#34;&gt;¿Alguna vez te has perdido y olvidado de por dónde tenías que ir?&lt;/h2&gt;
+&lt;p&gt;Con Tu guiador no volverá a pasarte. Añade un recorrido a la aplicación, con todos los pasos del mismo detallados y consúltalo cuando lo necesites.&lt;/p&gt;
+&lt;p&gt;Si quieres, podrás compartirlo con tus contactos para que ellos puedan importarlo en su aplicación con solo pulsar un botón.&lt;/p&gt;
+&lt;p&gt;Escribe indicaciones y visualízalas cuando las necesites de forma ordenada.&lt;/p&gt;
+&lt;p&gt;Por supuesto, todo esto de forma accesible.&lt;/p&gt;
+&lt;h2 id=&#34;política-de-privacidad&#34;&gt;Política de privacidad&lt;/h2&gt;
+&lt;p&gt;Esta aplicación no recopila datos, pero sí utiliza el iCloud del usuario que la instala para almacenar un archivo .json con los recorridos en un directorio que crea.&lt;/p&gt;
+&lt;p&gt;Gracias a la sincronización de esta nube, podemos utilizar los recorridos en los distintos dispositivos que estén vinculados a la misma id de Apple.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
+    <item>
       <title>Tu guiador: Un proyecto nuevo</title>
       <link>https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
