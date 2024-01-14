@@ -2,7 +2,7 @@
 title: "añadir S3 a una instancia de Mastodon y migrar sus datos"
 date: 2023-12-12T15:15:42+01:00
 reply:
-uri:
+uri: https://jesuspavonabian.es/post/anadir-s3-a-una-instancia-de-mastodon-y-migrar-sus-datos
 categories: ["anything else"] # note, reply, anything else
 tags: ["Mastodon", "S3"]
 draft: false

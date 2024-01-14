@@ -2,7 +2,7 @@
 title: "¿Hacer streaming siendo ciego?"
 date: "2021-09-29"
 reply:
-uri:
+uri: https://jesuspavonabian.es/post/hacer-streaming-siendo-ciego
 categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false

@@ -2,7 +2,7 @@
 title: "Tu guiador: Un proyecto nuevo"
 date: "2023-01-02"
 reply:
-uri:
+uri: https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo
 categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false

@@ -2,7 +2,7 @@
 title: "Prueba para el Fediverso"
 date: 2024-01-13T18:28:35+01:00
 reply:
-uri:
+uri: https://jesuspavonabian.es/post/prueba-fediverso
 categories: ["note"] # note, reply, anything else
 tags:
 draft: false

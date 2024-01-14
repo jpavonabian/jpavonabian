@@ -2,7 +2,7 @@
 title: "Ver anime y leer subtítulos con NVDA"
 date: "2021-03-03"
 reply:
-uri:
+uri: https://jesuspavonabian.es/post/ver-anime-y-leer-subtitulos-con-nvda
 categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false

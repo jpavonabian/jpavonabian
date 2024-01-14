@@ -2,7 +2,7 @@
 title: "Una plancha accesible para todos: La Tefal Optigrill GC712D12"
 date: "2019-04-23"
 reply:
-uri:
+uri: https://jesuspavonabian.es/post/una-plancha-accesible-la-tefal-optigrill-gc712d12
 categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
