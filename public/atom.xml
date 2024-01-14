@@ -412,6 +412,20 @@ Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.
     
   </entry>
   <entry>
+    <title type="html"><![CDATA[Tu Afinador]]></title>
+    <link href="https://jesuspavonabian.es/tu-afinador/"/>
+    <id>https://jesuspavonabian.es/tu-afinador/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2021-05-14T00:00:00+00:00</published>
+    <updated>2021-05-14T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Tu afinador es una aplicación para google Asistant. Te permite afinar instrumentos mediante tu oído. Solamente tienes que decir OK Google y seguir las instrucciones que ofrece mediante voz. La aplicación reproducirá un sonido (una nota la) y permitirá al usuario usarla como base para afinar su instrumento. Esta aplicación no recopila ningún dato de usuario, pues solo se limita a reproducir un audio de unos segundos. En ningún momento se guarda en ningún lugar ni las solicitudes enviadas a la aplicación ni ningún otro dato que pueda identificar al usuario.</p>
+]]></content>
+    
+  </entry>
+  <entry>
     <title type="html"><![CDATA[Ver anime y leer subtítulos con NVDA]]></title>
     <link href="https://jesuspavonabian.es/post/ver-anime-y-leer-subtitulos-con-nvda/"/>
     <id>https://jesuspavonabian.es/post/ver-anime-y-leer-subtitulos-con-nvda/</id> 
