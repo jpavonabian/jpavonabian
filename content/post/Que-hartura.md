@@ -11,7 +11,7 @@ Estoy harto. Harto de entrar a una web y que antes de poder empezar a navegar te
 Harto de la publicidad que no me deja navegar tranquilo, cada vez es más complicado saltarla con lector de pantallas.
 Harto de esas ventanitas que piden iniciar sesión con Google o con algún otro servicio.
 Harto de los acortadores de URLs que para llevarte al destino te machacan con no se cuantas webs intermedias, y eso si consigues llegar.
-Y aunque lo llevo viendo una semana como mucho, estoy harto de la nueva modalidad de negocio de los periódicos, consistente en cobrarte por rechazar las Cookies.
+Y aunque lo llevo viendo una semana como mucho, estoy harto de la nueva modalidad de negocio de los periódicos, consistente en cobrarte por rechazar las Cookies [aquí más información](https://maldita.es/malditatecnologia/20240111/cambio-cookies-cobrar-no-aceptan/).
 Así que he decidido poner remedio al tema, así de paso reduzco mi dependencia de google, aunque eso lo tocaré en otra entrada.
 ## Firefox al rescate
 Lo primero que he hecho ha sido cambiar a [Firefox](https://www.mozilla.org/es-ES/). Antes utilizaba Chrome y cambié incluso a Edge, pero finalmente he descubierto que estoy más cómodo en este navegador.
