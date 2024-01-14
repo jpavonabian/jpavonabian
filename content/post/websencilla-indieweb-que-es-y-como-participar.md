@@ -2,7 +2,7 @@
 title: "#WebSencilla e IndieWeb: ¿Qué es? ¿Cómo participar?"
 date: 2024-01-14T10:15:29+01:00
 reply:
-uri:
+uri:  post/websencilla-indieweb-que-es-y-como-participar
 categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
