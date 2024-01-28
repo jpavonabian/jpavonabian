@@ -2,7 +2,7 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 reply:
-uri: "{{ .Permalink }}"
+uri: "https://jesuspavonabian.es/post/{{ .Name }}"
 categories: ["note"] # note, reply, anything else
 tags:
 draft: true
