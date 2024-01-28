@@ -21,7 +21,9 @@ Quizás me esté volviendo paranoico, quizás me haya dado muy fuerte y tenga el
 - Uso Software Libre.
 
 ## Primero, el correo
-Ha sido lo más fácil, aunque suene extraño. Una de las características más útiles de ProtonMail para mi gusto es la opción de reenviar automáticamente los correos de la antigua cuenta de Gmail al nuevo correo. Avisar a la gente de que he cambiado de correo es un coñazo y lo estoy tomando con calma, pero gracias a esto puedo permitirme ese lujo.
+Ha sido lo más fácil, aunque suene extraño. Una de las características más útiles de [ProtonMail](https://proton.me/es-419) para mi gusto es la opción de reenviar automáticamente los correos de la antigua cuenta de Gmail al nuevo correo. Avisar a la gente de que he cambiado de correo es un coñazo y lo estoy tomando con calma, pero gracias a esto puedo permitirme ese lujo.
 
 Otra cosa que mola de ProtonMail es la gran cantidad de enlaces directos a las opciones para cambiar el correo de distintos sitios. ¿Quieres cambiar tu correo de GitHub, por decir algún servicio? Pulsas el enlace adecuado y plaf, directo a la opción.
+
+Como dije más arriba, los correos están cifrados. Según [su web](https://proton.me/es-419/about), "Proton nació en Suiza en 2014, cuando un equipo de científicos que se conocieron en el CERN (la Organización Europea de Investigación Nuclear) decidió construir un mejor Internet con la privacidad como estandarte."
 
