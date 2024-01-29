@@ -8,7 +8,47 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Sun, 14 Jan 2024 10:15:29 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Jan 2024 23:01:28 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Desgooglezando Mi Vida</title>
+      <link>https://jesuspavonabian.es/post/desgooglezando-mi-vida/</link>
+      <pubDate>Sun, 28 Jan 2024 23:01:28 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/desgooglezando-mi-vida/</guid>
+      <description>Que google sabe muchísimo sobre nosotros es un hecho, no estoy diciéndoos nada nuevo. Lee nuestros correos electrónicos, utiliza nuestros recivos de compras para registrarlas (a saber con qué objetivo, no quiero pensarlo mucho), sabe dónde estamos y cuánto tiempo hemos estado en algún sitio, si queremos comprarnos una lavadora nueva porque lo hemos buscado en su potentísimo buscador&amp;hellip; Lo dicho, No os digo nada nuevo. Cuando el servicio es gratis, el producto es el usuario.</description>
+      <content:encoded>
+      &lt;p&gt;Que google sabe muchísimo sobre nosotros es un hecho, no estoy diciéndoos nada nuevo. Lee nuestros correos electrónicos, utiliza nuestros recivos de compras para registrarlas (a saber con qué objetivo, no quiero pensarlo mucho), sabe dónde estamos y cuánto tiempo hemos estado en algún sitio, si queremos comprarnos una lavadora nueva porque lo hemos buscado en su potentísimo buscador&amp;hellip; Lo dicho, No os digo nada nuevo. Cuando el servicio es gratis, el producto es el usuario.&lt;/p&gt;
+&lt;p&gt;Y a la mayoría de la gente le da igual. Las cosas funcionan y no tienen que complicarse la vida. De hecho, cuando lo he comentado con familiares y amigos, la respuesta ha sido algo como &amp;ldquo;ya, ¿y qué? Estamos fichados por todos lados. ¿Qué van a sacar de ti porque sepan que quieras comerte una pizza?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Quizás me esté volviendo paranoico, quizás me haya dado muy fuerte y tenga el coco comido de tanto leer gente en el Fediverso, pero desde que he empezado a des-googlear mi vida estoy más tranquilo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Los anuncios han desaparecido casi por completo como comenté en &lt;a href=&#34;https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/&#34;&gt;otra entrada&lt;/a&gt;, y los que veo, ya no están tan personalizados, algún que otro servicio queda por ahí rastreando.&lt;/li&gt;
+&lt;li&gt;Sé que mi correo es &amp;ldquo;mío&amp;rdquo; (cuidado con las comillas) y está cifrado.&lt;/li&gt;
+&lt;li&gt;Mis resultados de búsqueda han variado muchísimo. Os parecerá mentira, pero he llegado a notar el sesgo, pude comprobarlo al buscar desde dispositivos distintos, variaban los resultados.&lt;/li&gt;
+&lt;li&gt;No dependo de un solo proveedor. Al final, depender del servicio que sea únicamente no siempre es lo mejor.&lt;/li&gt;
+&lt;li&gt;Uso Software Libre.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;primero-el-correo&#34;&gt;Primero, el correo&lt;/h2&gt;
+&lt;p&gt;Ha sido lo más fácil, aunque suene extraño. Una de las características más útiles de &lt;a href=&#34;https://proton.me/es-419&#34;&gt;ProtonMail&lt;/a&gt; para mi gusto es la opción de reenviar automáticamente los correos de la antigua cuenta de Gmail al nuevo correo. Avisar a la gente de que he cambiado de correo es un coñazo y lo estoy tomando con calma, pero gracias a esto puedo permitirme ese lujo.&lt;/p&gt;
+&lt;p&gt;Otra cosa que mola de ProtonMail es la gran cantidad de enlaces directos a las opciones para cambiar el correo de distintos sitios. ¿Quieres cambiar tu correo de GitHub, por decir algún servicio? Pulsas el enlace adecuado y plaf, directo a la opción.&lt;/p&gt;
+&lt;p&gt;Como dije más arriba, los correos están cifrados. Según &lt;a href=&#34;https://proton.me/es-419/about&#34;&gt;su web&lt;/a&gt;, &amp;ldquo;Proton nació en Suiza en 2014, cuando un equipo de científicos que se conocieron en el CERN (la Organización Europea de Investigación Nuclear) decidió construir un mejor Internet con la privacidad como estandarte.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Tienen una cuenta de pagho que permite usar dominio propio, así que creo que acabaré migrando el correo que tengo con Apple, así unifico de paso ambos correos y no tengo todo esperriado por la red y me quito la dependencia de otra BigTech.&lt;/p&gt;
+&lt;p&gt;En un principio me planteé hacer SelfHost del correo, pero por muy tentador que es, hay cosas que prefiero que gestione gente que sabe más que yo, que me minimizan riesgos.&lt;/p&gt;
+&lt;h2 id=&#34;searxng-el-metabuscador&#34;&gt;SearxNG, el metabuscador&lt;/h2&gt;
+&lt;p&gt;Está clarísimo. Si hablamos de buscar en internet, lo primero que se nos viene a la cabeza es Google. Es cierto que hay otros como Bing, pero la gran mayoría de mis conocidos es lo que usa.&lt;/p&gt;
+&lt;p&gt;Le estuve dando vueltas a la cuestión durante mucho tiempo. Podría usar &lt;a href=&#34;https://duckduckgo.com/&#34;&gt;DuckDuckGo&lt;/a&gt; o un navegador similar, pero por alguna razón, nunca dí el paso. Estaba también &lt;a href=&#34;https://www.ecosia.org/?c=es&#34;&gt;Ecosia, el buscador que planta árboles&lt;/a&gt;, pero tampoco pude migrar a él.&lt;/p&gt;
+&lt;p&gt;Finalmente descubrí &lt;a href=&#34;https://searxng.org/&#34;&gt;SearxNG&lt;/a&gt; y tras hprobarlo durante un tiempo, acabó como buscador principal en Firefox.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://searxng.org/&#34;&gt;SearxNG&lt;/a&gt; no es un buscador per se. Es lo que se llama un Metabuscador. Lo que hace es utilizar varios buscadores para mostrarte los resultados, sin almacenar las búsquedas que realizas. Respeta la privacidad y hace imposible a cualquiera de dichos buscadores rastrear tus búsquedas.&lt;/p&gt;
+&lt;p&gt;Puedes usar una instancia pública o crear la tuya propia, como he hecho yo. No pide registros de ningún tipo. Cuando accedes, si modificas las preferencias, guarda una Cookie en tu navegador con ellas para actuar como tú quieras que actúe.&lt;/p&gt;
+&lt;p&gt;Es código libre, por lo que cualquiera puede echar una mano o plantear mejoras al proyecto, o si se tiene la inspiración suficiente, crear una bifurcación.&lt;/p&gt;
+&lt;p&gt;Es bastante flexible y poderoso. ¿Quieres evitar los muros de pago? Configúralo en las preferencias.&lt;/p&gt;
+&lt;h2 id=&#34;todavía-falta&#34;&gt;Todavía falta&lt;/h2&gt;
+&lt;p&gt;Lo siguiente que voy a fusilar va a ser Dropbox, Google Drive e iCloud Drive, en ese orden. Haré otra entrada explicando qué voy a montarme.&lt;/p&gt;
+&lt;p&gt;La idea no es dejar de usar definitivamente estos servicios, sea Google o sea cual sea. La idea es usarlos lo menos posible, controlar qué datos tienen míos y usarlos para lo que yo quiero usarlos, como  yo quiero usarlos y cuando yo quiero usarlos. ¿Sería lo ideal prescindir de ellos por completo? Sí, pero actualmente es complicado.&lt;/p&gt;
+&lt;p&gt;La tecnología tiene que estar al servicio de las personas.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>#WebSencilla e IndieWeb: ¿Qué es? ¿Cómo participar?</title>
       <link>https://jesuspavonabian.es/post/websencilla-indieweb-que-es-y-como-participar/</link>
@@ -182,90 +222,6 @@ Por ejemplo, esta mañana me llegó un SMS de estafa en el que ponía que mi paq
 &lt;p&gt;Basta con acceder a la web de &lt;a href=&#34;https://www.dns0.eu/es&#34;&gt;dns0&lt;/a&gt; y seguir sus instrucciones para configurar sus DNS en nuestros dispositivos.&lt;/p&gt;
 &lt;p&gt;Lo que yo he hecho ha sido configurar las DNS de la &lt;a href=&#34;https://jesuspavonabian.es/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/&#34;&gt;VPN y del Pi-hole&lt;/a&gt; utilizando las instrucciones para configurar las DNS en un Router.&lt;/p&gt;
 &lt;p&gt;A partir de ahora, siempre que navegue utilizando la VPN o desde la red local de casa estaré bastante protejido.&lt;/p&gt;
-
-      </content:encoded>
-    </item>
-    
-    <item>
-      <title>Crear una VPN con Wireguard más PiHole para olvidarnos de los anuncios y acceder a nuestras cosas desde cualquier lugar</title>
-      <link>https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/</link>
-      <pubDate>Fri, 23 Jun 2023 00:00:00 +0000</pubDate>
-      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
-      <guid>https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/</guid>
-      <description>Vamos con otro tutorial. Esta vez sobre cómo montar una VPN más Pihole para eliminar los anuncios de la red.
-¿Cuál es el punto? Odio los anuncios. De verdad, me ponen de una mala leche increíble, tengo una guerra eterna contra ellos. Desde que instalé Pihole los hice medio desaparecer, pero no es suficiente. ¡Si me voy de casa los sigo viendo!
-Así que nada mejor que montar una VPN a la cual poder conectarme.</description>
-      <content:encoded>
-      &lt;p&gt;Vamos con otro tutorial. Esta vez sobre cómo montar una VPN más Pihole para eliminar los anuncios de la red.&lt;/p&gt;
-&lt;h2 id=&#34;cuál-es-el-punto&#34;&gt;¿Cuál es el punto?&lt;/h2&gt;
-&lt;p&gt;Odio los anuncios. De verdad, me ponen de una mala leche increíble, tengo una guerra eterna contra ellos. Desde que instalé Pihole los hice medio desaparecer, pero no es suficiente. ¡Si me voy de casa los sigo viendo!&lt;/p&gt;
-&lt;p&gt;Así que nada mejor que montar una VPN a la cual poder conectarme. Así, de paso, tengo acceso a todos los cacharros que están en mi red de casa desde cualquier lado.&lt;/p&gt;
-&lt;h2 id=&#34;eh-yo-también-quiero-qué-necesito&#34;&gt;¡Eh, yo también quiero! ¿Qué necesito?&lt;/h2&gt;
-&lt;p&gt;Apunta, necesitarás lo siguiente:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Un ordenador fijo con Linux. Una raspberry pi te hace el apaño si no tienes uno. Necesitamos algo conectado 24/7 al router de casa. Un VPS también puede valer si tienes suficiente tráfico.&lt;/li&gt;
-&lt;li&gt;Una velocidad medio en condiciones.&lt;/li&gt;
-&lt;li&gt;Abrir puertos en el router si no usas VPS.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;vale-tengo-todo-al-lío&#34;&gt;Vale, tengo todo, ¡al lío!&lt;/h2&gt;
-&lt;p&gt;Venga, vamos. Lo primero, necesitamos Debian o Ubuntu. Yo prefiero Debian, Raspbian en mi caso. Tras instalarlo, usaremos Raspbian como referencia, pero sirve igual para otros sistemas, configuraremos la IP estática de la máquina. Necesitamos asegurarnos de que no nos da la lata el cambio de IP, así que comprobamos en nuestro router cuál es el rango de DHCP y le metemos una que esté fuera del rango. En mi caso, como 192.168.1.1 es una IP muy común y al acceder a cacharros desde fuera me daba conflicto porque fuera también hay 192.168.1.1, decidí cambiarla a 10.0.0.1 y tener el DHCP empezando en 10.0.0.33. Con esto me aseguro de que los cacharros conectados a la red tengan 10.0.0.34, 10.0.0.35, etc., y que todo lo que meta por debajo de 33 no va a entrar en conflicto. PiHole nos configura la IP estática el solito cuando se instala. Una vez nuestro sistema está instalado y configurado haremos lo siguiente:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Entrar como root. Si no podemos: &lt;code&gt;sudo su&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Actualizar repositorios: &lt;code&gt;apt update&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Actualizar el sistema: &lt;code&gt;apt upgrade&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Instalar curl si no lo tenemos: &lt;code&gt;apt install curl&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Instalar PiHole: &lt;code&gt;curl -sSL https://install.pi-hole.net | bash&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Nos saldrá un asistente muy chulo. Si usas DHCP en el router, decidle que no lo active. Nos preguntará varias cosas, entre ellas si queremos dejar la IP actual como estática. Decidle que sí. También nos dejará escoger DNS, es un instalador intuitivo. Cuando os pida DNS, podéis decirle que 8.8.8.8 y 1.1.1.1 o algún otro servicio de esos chulos de DNS. Os dará los datos de acceso por web para que podáis tocar cosas. Aunque ya por cómo viene por defecto se cepilla suficientes anuncios, yo he metido alguna lista más. Google puede ayudar en este caso.&lt;/p&gt;
-&lt;p&gt;Si queremos, cambiamos la contraseña de PiHole: &lt;code&gt;pihole -a -p&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Cambiamos las DNS del router a la IP de nuestro cacharro. Cada router es un mundo, así que ahí no me meto. Reiniciamos el cacharro con &lt;code&gt;sudo reboot&lt;/code&gt; y nos mentalizamos para instalar Wireguard. Para ello usaremos pivpn, un script que nos facilita mucho el trabajo. Asumiremos que tenemos un usuario llamado dherhion.&lt;/p&gt;
-&lt;p&gt;En primer lugar nos vamos a su home, para ello teclearemos lo siguiente:&lt;br&gt;
-&lt;code&gt;cd /home/dherhion/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Ahora procedemos a actualizar los repositorios, sé que lo hemos hecho antes, pero bueno:&lt;br&gt;
-&lt;code&gt;sudo apt update&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Continuamos por fin instalando Wireguard:&lt;br&gt;
-&lt;code&gt;sudo curl -L https://install.pivpn.io | bash&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Cuando pregunte qué VPN queremos, escogemos Wireguard. Cuando nos pregunte si queremos usar IP o DNS, escogemos DNS. Sé que no hemos configurado nada todavía, pero eso se hace luego. Nos pedirá un dominio. Yo uso duckdns con un cron y lo explicaré más adelante, así que dherhion.duckdns.org en mi caso. Podéis usar noip, zapto o cualquiera de los gratuitos. Hay routers que permiten actualizar la IP automáticamente. El instalador ahora detectará que tenemos PiHole instalado y nos preguntará si queremos usarla en la VPN. Le decimos que sí, obviamente.&lt;/p&gt;
-&lt;p&gt;Una vez el asistente finalice, tenemos que hacer que la VPN se inicie con el sistema:&lt;br&gt;
-&lt;code&gt;sudo systemctl enable wg-quick@wg0.service&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;sudo systemctl start wg-quick@wg0.service&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Casi terminamos. Lo siguiente que tenemos que hacer es abrir el puerto 51820 en el router y configurar el dominio.&lt;/p&gt;
-&lt;h2 id=&#34;crear-usuarios-configurar-dominio-dinámico-y-conectar&#34;&gt;Crear usuarios, configurar dominio dinámico y conectar&lt;/h2&gt;
-&lt;p&gt;Para continuar, vamos a crear dos usuarios y conectarnos a la VPN. Sigue los pasos a continuación:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Usa el comando &lt;code&gt;pivpn -a&lt;/code&gt; para crear un usuario llamado &amp;ldquo;pepeordenador&amp;rdquo; y otro llamado &amp;ldquo;pepemovil&amp;rdquo;. Si prefieres ahorrarte preguntas, puedes utilizar &lt;code&gt;pivpn -a -n pepeordenador&lt;/code&gt;. Esto creará perfiles de usuario en la carpeta &amp;ldquo;configs&amp;rdquo;. Deberías tener los archivos &amp;ldquo;pepeordenador.conf&amp;rdquo; y &amp;ldquo;pepemovil.conf&amp;rdquo; listos para usar.&lt;/li&gt;
-&lt;li&gt;Ahora, vamos a configurar el DNS antes de generar el QR para el usuario &amp;ldquo;pepemovil&amp;rdquo;. Regístrate en duckdns.org y crea una cuenta. Luego, añade un dominio. Para que la ip a la que apunta el dominio se actualice sola, añade la siguiente línea al crontab utilizando el comando &lt;code&gt;crontab -e&lt;/code&gt;:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;*/1 * * * * /home/dherhion/actualizarip.sh &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Crea un archivo llamado &amp;ldquo;actualizarip.sh&amp;rdquo; en la ruta &amp;ldquo;/home/dherhion/&amp;rdquo; utilizando el comando &lt;code&gt;nano /home/dherhion/actualizarip.sh&lt;/code&gt; y añade el siguiente contenido:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;echo url=&amp;quot;https://www.duckdns.org/update?domains=dherhion&amp;amp;token=tu_token&amp;amp;ip=&amp;quot; | curl -k -o ~/duckdns/duck.log -K -&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Reemplaza &amp;ldquo;dherhion&amp;rdquo; y &amp;ldquo;tu_token&amp;rdquo; por los valores correspondientes. Luego, ejecuta &lt;code&gt;chmod +x actualizarip.sh&lt;/code&gt; para darle permisos de ejecución al script.&lt;/p&gt;
-&lt;h2 id=&#34;cómo-probar-si-funciona&#34;&gt;¿Cómo probar si funciona?&lt;/h2&gt;
-&lt;p&gt;Casi lo tenemos. ¡Probemos a conectar! Explicaré cómo hacerlo desde un móvil, pero conectar desde Windows, Mac o Linux no es difícil, solo tienes que importar el archivo .conf que se genera en configs.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Descarga la aplicación Wireguard desde Google Play Store o App Store.&lt;/li&gt;
-&lt;li&gt;Abre la aplicación y selecciona la opción para escanear un código QR.&lt;/li&gt;
-&lt;li&gt;Maximiza la pantalla de la terminal en tu dispositivo.&lt;/li&gt;
-&lt;li&gt;Ejecuta el comando &lt;code&gt;pivpn -qr&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Selecciona el perfil correspondiente al usuario &amp;ldquo;pepemovil&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;En el móvil, agrega un nuevo túnel utilizando la configuración generada.&lt;/li&gt;
-&lt;li&gt;¡Listo! Desconecta la conexión Wi-Fi y activa el nuevo túnel creado. Navega durante unos minutos y luego utiliza el comando &lt;code&gt;pivpn -c&lt;/code&gt; en la terminal de tu ordenador para ver los dispositivos conectados. Si todo está configurado correctamente, deberías poder acceder al panel de PiHole cuando te conectes a la VPN.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;bonus-acceder-a-los-dispositivos-de-la-red-como-si-estuvieras-conectado-localmente&#34;&gt;Bonus: Acceder a los dispositivos de la red como si estuvieras conectado localmente&lt;/h2&gt;
-&lt;p&gt;Para acceder a los dispositivos de la red como si estuvieras conectado localmente, sigue estos pasos:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo nano /etc/sysctl.conf&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Descomenta la línea:&lt;br&gt;
-&lt;code&gt;net.ipv4.ip_forward = 1&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Guarda los cambios con &lt;code&gt;Ctrl + X&lt;/code&gt;. Luego, ejecuta el comando &lt;code&gt;ip route list default&lt;/code&gt; para obtener la interfaz de red.&lt;/p&gt;
-&lt;p&gt;Abre el archivo de configuración de Wireguard utilizando el comando:&lt;br&gt;
-&lt;code&gt;sudo nano /etc/wireguard/wg0.conf&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Agrega las siguientes líneas debajo de la configuración existente en la sección &amp;ldquo;ListenPort&amp;rdquo;, asegurándote de no duplicar líneas:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;SaveConfig = true&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Guarda los cambios con &lt;code&gt;Ctrl + X&lt;/code&gt;. Finalmente, reinicia el sistema con &lt;code&gt;sudo reboot&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;¡Listo! Ahora puedes acceder a los dispositivos de tu red como si estuvieras conectado localmente.&lt;/p&gt;
-&lt;p&gt;P.D.: Dherhion.duckdns.org no existe.&lt;/p&gt;
 
       </content:encoded>
     </item>
