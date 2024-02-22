@@ -21,3 +21,4 @@ Hoy quiero escribir sobre domótica. Ya saben ustedes, eso de las casas intelige
 <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B07B4D9KVX&amp;linkId=0702904449bfd6cb166313901c42a086"></iframe>
 
 Por supuesto, iré ampliando esta entrada con toda cosa domótica que caiga en mis manos. ¡nos leemos pronto!
+Este artículo posee enlaces de amazon Afiliados. Recibo comisión por cada compra.
