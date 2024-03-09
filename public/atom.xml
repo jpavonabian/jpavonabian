@@ -43,6 +43,7 @@
 <p>Puedes usar una instancia pública o crear la tuya propia, como he hecho yo. No pide registros de ningún tipo. Cuando accedes, si modificas las preferencias, guarda una Cookie en tu navegador con ellas para actuar como tú quieras que actúe.</p>
 <p>Es código libre, por lo que cualquiera puede echar una mano o plantear mejoras al proyecto, o si se tiene la inspiración suficiente, crear una bifurcación.</p>
 <p>Es bastante flexible y poderoso. ¿Quieres evitar los muros de pago? Configúralo en las preferencias.</p>
+<p>Si quieres, puedes probarlo <a href="https://buscador.universoalterno.es/">accediendo a la instancia que he montado</a>, que tras un par de meses de pruebas he decidido hacer pública.</p>
 <h2 id="todavía-falta">Todavía falta</h2>
 <p>Lo siguiente que voy a fusilar va a ser Dropbox, Google Drive e iCloud Drive, en ese orden. Haré otra entrada explicando qué voy a montarme.</p>
 <p>La idea no es dejar de usar definitivamente estos servicios, sea Google o sea cual sea. La idea es usarlos lo menos posible, controlar qué datos tienen míos y usarlos para lo que yo quiero usarlos, como  yo quiero usarlos y cuando yo quiero usarlos. ¿Sería lo ideal prescindir de ellos por completo? Sí, pero actualmente es complicado.</p>

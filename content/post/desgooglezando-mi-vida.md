@@ -46,6 +46,7 @@ Es código libre, por lo que cualquiera puede echar una mano o plantear mejoras 
 
 Es bastante flexible y poderoso. ¿Quieres evitar los muros de pago? Configúralo en las preferencias.
 
+Si quieres, puedes probarlo [accediendo a la instancia que he montado](https://buscador.universoalterno.es/), que tras un par de meses de pruebas he decidido hacer pública.
 ## Todavía falta
 
 Lo siguiente que voy a fusilar va a ser Dropbox, Google Drive e iCloud Drive, en ese orden. Haré otra entrada explicando qué voy a montarme.
