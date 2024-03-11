@@ -111,21 +111,6 @@ Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.
     
   </entry>
   <entry>
-    <title type="html"><![CDATA[Prueba para el Fediverso]]></title>
-    <link href="https://jesuspavonabian.es/post/prueba-fediverso/"/>
-    <id>https://jesuspavonabian.es/post/prueba-fediverso/</id> 
-    <author>
-      <name>Jesús Pavón Abián</name>
-    </author>
-    <published>2024-01-13T18:28:35+01:00</published>
-    <updated>2024-01-13T18:28:35+01:00</updated>
-    
-    <content type="html"><![CDATA[<p>Esta publicación debería publicarse automáticamente en el fediverso.</p>
-<p>Como podeis ver, la web ha cambiado por completo. Ahora soporta cosas como Webmentions y permite autentificarme en algunos sitios utilizando el nombre del dominio.</p>
-]]></content>
-    
-  </entry>
-  <entry>
     <title type="html"><![CDATA[Adiós, contraseñas]]></title>
     <link href="https://jesuspavonabian.es/post/adioscontrasenyas/"/>
     <id>https://jesuspavonabian.es/post/adioscontrasenyas/</id> 
