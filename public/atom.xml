@@ -212,6 +212,89 @@ Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.
     
   </entry>
   <entry>
+    <title type="html"><![CDATA[Crear una VPN con Wireguard más PiHole para olvidarnos de los anuncios y acceder a nuestras cosas desde cualquier lugar]]></title>
+    <link href="https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/"/>
+    <id>https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2023-06-23T00:00:00+00:00</published>
+    <updated>2023-06-23T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Vamos con otro tutorial. Esta vez sobre cómo montar una VPN más Pihole para eliminar los anuncios de la red.</p>
+<h2 id="cuál-es-el-punto">¿Cuál es el punto?</h2>
+<p>Odio los anuncios. De verdad, me ponen de una mala leche increíble, tengo una guerra eterna contra ellos. Desde que instalé Pihole los hice medio desaparecer, pero no es suficiente. ¡Si me voy de casa los sigo viendo!</p>
+<p>Así que nada mejor que montar una VPN a la cual poder conectarme. Así, de paso, tengo acceso a todos los cacharros que están en mi red de casa desde cualquier lado.</p>
+<h2 id="eh-yo-también-quiero-qué-necesito">¡Eh, yo también quiero! ¿Qué necesito?</h2>
+<p>Apunta, necesitarás lo siguiente:</p>
+<ul>
+<li>Un ordenador fijo con Linux. Una raspberry pi te hace el apaño si no tienes uno. Necesitamos algo conectado 24/7 al router de casa. Un VPS también puede valer si tienes suficiente tráfico.</li>
+<li>Una velocidad medio en condiciones.</li>
+<li>Abrir puertos en el router si no usas VPS.</li>
+</ul>
+<h2 id="vale-tengo-todo-al-lío">Vale, tengo todo, ¡al lío!</h2>
+<p>Venga, vamos. Lo primero, necesitamos Debian o Ubuntu. Yo prefiero Debian, Raspbian en mi caso. Tras instalarlo, usaremos Raspbian como referencia, pero sirve igual para otros sistemas, configuraremos la IP estática de la máquina. Necesitamos asegurarnos de que no nos da la lata el cambio de IP, así que comprobamos en nuestro router cuál es el rango de DHCP y le metemos una que esté fuera del rango. En mi caso, como 192.168.1.1 es una IP muy común y al acceder a cacharros desde fuera me daba conflicto porque fuera también hay 192.168.1.1, decidí cambiarla a 10.0.0.1 y tener el DHCP empezando en 10.0.0.33. Con esto me aseguro de que los cacharros conectados a la red tengan 10.0.0.34, 10.0.0.35, etc., y que todo lo que meta por debajo de 33 no va a entrar en conflicto. PiHole nos configura la IP estática el solito cuando se instala. Una vez nuestro sistema está instalado y configurado haremos lo siguiente:</p>
+<ol>
+<li>Entrar como root. Si no podemos: <code>sudo su</code></li>
+<li>Actualizar repositorios: <code>apt update</code></li>
+<li>Actualizar el sistema: <code>apt upgrade</code></li>
+<li>Instalar curl si no lo tenemos: <code>apt install curl</code></li>
+<li>Instalar PiHole: <code>curl -sSL https://install.pi-hole.net | bash</code></li>
+</ol>
+<p>Nos saldrá un asistente muy chulo. Si usas DHCP en el router, decidle que no lo active. Nos preguntará varias cosas, entre ellas si queremos dejar la IP actual como estática. Decidle que sí. También nos dejará escoger DNS, es un instalador intuitivo. Cuando os pida DNS, podéis decirle que 8.8.8.8 y 1.1.1.1 o algún otro servicio de esos chulos de DNS. Os dará los datos de acceso por web para que podáis tocar cosas. Aunque ya por cómo viene por defecto se cepilla suficientes anuncios, yo he metido alguna lista más. Google puede ayudar en este caso.</p>
+<p>Si queremos, cambiamos la contraseña de PiHole: <code>pihole -a -p</code></p>
+<p>Cambiamos las DNS del router a la IP de nuestro cacharro. Cada router es un mundo, así que ahí no me meto. Reiniciamos el cacharro con <code>sudo reboot</code> y nos mentalizamos para instalar Wireguard. Para ello usaremos pivpn, un script que nos facilita mucho el trabajo. Asumiremos que tenemos un usuario llamado dherhion.</p>
+<p>En primer lugar nos vamos a su home, para ello teclearemos lo siguiente:<br>
+<code>cd /home/dherhion/</code></p>
+<p>Ahora procedemos a actualizar los repositorios, sé que lo hemos hecho antes, pero bueno:<br>
+<code>sudo apt update</code></p>
+<p>Continuamos por fin instalando Wireguard:<br>
+<code>sudo curl -L https://install.pivpn.io | bash</code></p>
+<p>Cuando pregunte qué VPN queremos, escogemos Wireguard. Cuando nos pregunte si queremos usar IP o DNS, escogemos DNS. Sé que no hemos configurado nada todavía, pero eso se hace luego. Nos pedirá un dominio. Yo uso duckdns con un cron y lo explicaré más adelante, así que dherhion.duckdns.org en mi caso. Podéis usar noip, zapto o cualquiera de los gratuitos. Hay routers que permiten actualizar la IP automáticamente. El instalador ahora detectará que tenemos PiHole instalado y nos preguntará si queremos usarla en la VPN. Le decimos que sí, obviamente.</p>
+<p>Una vez el asistente finalice, tenemos que hacer que la VPN se inicie con el sistema:<br>
+<code>sudo systemctl enable wg-quick@wg0.service</code><br>
+<code>sudo systemctl start wg-quick@wg0.service</code></p>
+<p>Casi terminamos. Lo siguiente que tenemos que hacer es abrir el puerto 51820 en el router y configurar el dominio.</p>
+<h2 id="crear-usuarios-configurar-dominio-dinámico-y-conectar">Crear usuarios, configurar dominio dinámico y conectar</h2>
+<p>Para continuar, vamos a crear dos usuarios y conectarnos a la VPN. Sigue los pasos a continuación:</p>
+<ol>
+<li>Usa el comando <code>pivpn -a</code> para crear un usuario llamado &ldquo;pepeordenador&rdquo; y otro llamado &ldquo;pepemovil&rdquo;. Si prefieres ahorrarte preguntas, puedes utilizar <code>pivpn -a -n pepeordenador</code>. Esto creará perfiles de usuario en la carpeta &ldquo;configs&rdquo;. Deberías tener los archivos &ldquo;pepeordenador.conf&rdquo; y &ldquo;pepemovil.conf&rdquo; listos para usar.</li>
+<li>Ahora, vamos a configurar el DNS antes de generar el QR para el usuario &ldquo;pepemovil&rdquo;. Regístrate en duckdns.org y crea una cuenta. Luego, añade un dominio. Para que la ip a la que apunta el dominio se actualice sola, añade la siguiente línea al crontab utilizando el comando <code>crontab -e</code>:</li>
+</ol>
+<p><code>*/1 * * * * /home/dherhion/actualizarip.sh &gt;/dev/null 2&gt;&amp;1</code></p>
+<p>Crea un archivo llamado &ldquo;actualizarip.sh&rdquo; en la ruta &ldquo;/home/dherhion/&rdquo; utilizando el comando <code>nano /home/dherhion/actualizarip.sh</code> y añade el siguiente contenido:</p>
+<p><code>echo url=&quot;https://www.duckdns.org/update?domains=dherhion&amp;token=tu_token&amp;ip=&quot; | curl -k -o ~/duckdns/duck.log -K -</code></p>
+<p>Reemplaza &ldquo;dherhion&rdquo; y &ldquo;tu_token&rdquo; por los valores correspondientes. Luego, ejecuta <code>chmod +x actualizarip.sh</code> para darle permisos de ejecución al script.</p>
+<h2 id="cómo-probar-si-funciona">¿Cómo probar si funciona?</h2>
+<p>Casi lo tenemos. ¡Probemos a conectar! Explicaré cómo hacerlo desde un móvil, pero conectar desde Windows, Mac o Linux no es difícil, solo tienes que importar el archivo .conf que se genera en configs.</p>
+<ol>
+<li>Descarga la aplicación Wireguard desde Google Play Store o App Store.</li>
+<li>Abre la aplicación y selecciona la opción para escanear un código QR.</li>
+<li>Maximiza la pantalla de la terminal en tu dispositivo.</li>
+<li>Ejecuta el comando <code>pivpn -qr</code>.</li>
+<li>Selecciona el perfil correspondiente al usuario &ldquo;pepemovil&rdquo;.</li>
+<li>En el móvil, agrega un nuevo túnel utilizando la configuración generada.</li>
+<li>¡Listo! Desconecta la conexión Wi-Fi y activa el nuevo túnel creado. Navega durante unos minutos y luego utiliza el comando <code>pivpn -c</code> en la terminal de tu ordenador para ver los dispositivos conectados. Si todo está configurado correctamente, deberías poder acceder al panel de PiHole cuando te conectes a la VPN.</li>
+</ol>
+<h2 id="bonus-acceder-a-los-dispositivos-de-la-red-como-si-estuvieras-conectado-localmente">Bonus: Acceder a los dispositivos de la red como si estuvieras conectado localmente</h2>
+<p>Para acceder a los dispositivos de la red como si estuvieras conectado localmente, sigue estos pasos:</p>
+<p><code>sudo nano /etc/sysctl.conf</code></p>
+<p>Descomenta la línea:<br>
+<code>net.ipv4.ip_forward = 1</code></p>
+<p>Guarda los cambios con <code>Ctrl + X</code>. Luego, ejecuta el comando <code>ip route list default</code> para obtener la interfaz de red.</p>
+<p>Abre el archivo de configuración de Wireguard utilizando el comando:<br>
+<code>sudo nano /etc/wireguard/wg0.conf</code></p>
+<p>Agrega las siguientes líneas debajo de la configuración existente en la sección &ldquo;ListenPort&rdquo;, asegurándote de no duplicar líneas:</p>
+<p><code>SaveConfig = true</code><br>
+<code>PostUp = iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE</code><br>
+<code>PreDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</code></p>
+<p>Guarda los cambios con <code>Ctrl + X</code>. Finalmente, reinicia el sistema con <code>sudo reboot</code>.</p>
+<p>¡Listo! Ahora puedes acceder a los dispositivos de tu red como si estuvieras conectado localmente.</p>
+<p>P.D.: Dherhion.duckdns.org no existe.</p>
+]]></content>
+    
+  </entry>
+  <entry>
     <title type="html"><![CDATA[Tu guiador]]></title>
     <link href="https://jesuspavonabian.es/tu-guiador/"/>
     <id>https://jesuspavonabian.es/tu-guiador/</id> 
