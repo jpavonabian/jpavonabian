@@ -14,7 +14,7 @@ Lo que se ha hecho es añadir un atributo alt avisando de que no hay descripció
 
 Así que me he hecho un [script de Tampermonkey](https://jesuspavonabian.es/files/anyadirAltImagenes.js) que arregla el problema. No tiene acceso a un descriptor de imágenes (más que nada porque pese a que sería posible sería también carísimo pedirle a GPT o similares descripciones cada vez que se carga una imagen sin alt), pero para hacer auditorías de accesibilidad y para navegar por algunas páginas webs donde las imágenes deberían tener un alt especificando qué son y directamente no lo tienen me es bastante útil.
 
-Lo dejo por aquí porque si sabes qué estás haciendo (o buscando) puede ahorraros varios dolores de cabeza.
+Lo dejo por aquí porque si sabes qué estás haciendo (o buscando) puede ahorrar varios dolores de cabeza.
 
 Solo necesitais (una vez instalada la extensión) pulsar en el [enlace del script de Tampermonkey](https://jesuspavonabian.es/files/anyadirAltImagenes.js) instalarlo y dejar que haga su magia.
 
