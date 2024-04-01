@@ -16,6 +16,6 @@ Así que me he hecho un [script de Tampermonkey](https://jesuspavonabian.es/file
 
 Lo dejo por aquí porque si sabes qué estás haciendo (o buscando) puede ahorrar varios dolores de cabeza.
 
-Solo necesitais (una vez instalada la extensión) pulsar en el [enlace del script de Tampermonkey](https://jesuspavonabian.es/files/anyadirAltImagenes.js) instalarlo y dejar que haga su magia.
+Solo necesitais (una vez instalada la extensión) pulsar en el [enlace del script de Tampermonkey](https://jesuspavonabian.es/files/anyadirAltImagenes.js), instalarlo y dejar que haga su magia.
 
 Cuando navegueis por la web y se encuentre una imagen sin atributo alt, el script le añadirá uno avisando de que la imagen no tiene alt.
