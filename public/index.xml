@@ -597,5 +597,24 @@ Si me conoces sabrás que soy ciego. si no, ahora lo sabes. Pero tampoco pienso 
       </content:encoded>
     </item>
     
+    <item>
+      <title>Script para añadir alt a imágenes</title>
+      <link>https://jesuspavonabian.es/post/script-anadir-alt-a-imagenes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/script-anadir-alt-a-imagenes/</guid>
+      <description>Una de las cosas que echaba de menos en Firefox es el cambio que se hizo en el motor Chromium con respecto al tema de las imágenes sin alt.
+Lo que se ha hecho es añadir un atributo alt avisando de que no hay descripción en las imágenes que no tienen dicho atributo. Y puede parecer una tontería, pero a ellos les viene bien para que le des click derecho y actives el autodescriptor de imágenes, bien sea el de Google o el de Edge, y a los que utilizamos lector de pantallas nos viene espectacular porque tengamos o no la descripción inteligente de imágenes activa sabemos que hay una imagen y puede ser importante (aunque en la mayoría de casos, al menos en mi experiencia sea decorativa).</description>
+      <content:encoded>
+      &lt;p&gt;Una de las cosas que echaba de menos en Firefox es el cambio que se hizo en el motor Chromium con respecto al tema de las imágenes sin alt.&lt;/p&gt;
+&lt;p&gt;Lo que se ha hecho es añadir un atributo alt avisando de que no hay descripción en las imágenes que no tienen dicho atributo. Y puede parecer una tontería, pero a ellos les viene bien para que le des click derecho y actives el autodescriptor de imágenes, bien sea el de Google o el de Edge, y a los que utilizamos lector de pantallas nos viene espectacular porque tengamos o no la descripción inteligente de imágenes activa sabemos que hay una imagen y puede ser importante (aunque en la mayoría de casos, al menos en mi experiencia sea decorativa).&lt;/p&gt;
+&lt;p&gt;Así que me he hecho un &lt;a href=&#34;https://jesuspavonabian.es/files/anyadirAltImagenes.js&#34;&gt;script de Tampermonkey&lt;/a&gt; que arregla el problema. No tiene acceso a un descriptor de imágenes (más que nada porque pese a que sería posible sería también carísimo pedirle a GPT o similares descripciones cada vez que se carga una imagen sin alt), pero para hacer auditorías de accesibilidad y para navegar por algunas páginas webs donde las imágenes deberían tener un alt especificando qué son y directamente no lo tienen me es bastante útil.&lt;/p&gt;
+&lt;p&gt;Lo dejo por aquí porque si sabes qué estás haciendo (o buscando) puede ahorraros varios dolores de cabeza.&lt;/p&gt;
+&lt;p&gt;Solo necesitais (una vez instalada la extensión) pulsar en el &lt;a href=&#34;https://jesuspavonabian.es/files/anyadirAltImagenes.js&#34;&gt;enlace del script de Tampermonkey&lt;/a&gt; instalarlo y dejar que haga su magia.&lt;/p&gt;
+&lt;p&gt;Cuando navegueis por la web y se encuentre una imagen sin atributo alt, el script le añadirá uno avisando de que la imagen no tiene alt.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
   </channel>
 </rss>
