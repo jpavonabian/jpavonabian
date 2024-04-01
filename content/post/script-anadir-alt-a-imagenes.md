@@ -1,10 +1,10 @@
 ---
 title: "Script para añadir alt a imágenes"
-date: 2024-04-00T18:30:01+02:00
+date: 2024-03-31T00:00:00+02:00
 reply:
 uri: "https://jesuspavonabian.es/post/script-anadir-alt-a-imagenes"
 categories: ["anything else"]
-tags:
+["Informática"]
 draft: false
 ---
 
