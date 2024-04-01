@@ -255,6 +255,7 @@ Salvo Bitwarden y Tampermonkey son extensiones de instalar y olvidarse de ellas.
 <code>sudo systemctl enable wg-quick@wg0.service</code><br>
 <code>sudo systemctl start wg-quick@wg0.service</code></p>
 <p>Casi terminamos. Lo siguiente que tenemos que hacer es abrir el puerto 51820 en el router y configurar el dominio.</p>
+<p>Actualización: Existe <a href="https://github.com/angristan/wireguard-install">este script</a> que ahorra todo el proceso, no necesita usar pivpn y crea los servicios automáticamente. Viene también con un script para eliminar y añadir usuarios a la VPN.</p>
 <h2 id="crear-usuarios-configurar-dominio-dinámico-y-conectar">Crear usuarios, configurar dominio dinámico y conectar</h2>
 <p>Para continuar, vamos a crear dos usuarios y conectarnos a la VPN. Sigue los pasos a continuación:</p>
 <ol>
