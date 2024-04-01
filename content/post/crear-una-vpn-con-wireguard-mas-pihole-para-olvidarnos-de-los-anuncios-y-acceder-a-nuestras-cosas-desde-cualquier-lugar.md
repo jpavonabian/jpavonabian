@@ -57,6 +57,7 @@ Una vez el asistente finalice, tenemos que hacer que la VPN se inicie con el sis
 
 Casi terminamos. Lo siguiente que tenemos que hacer es abrir el puerto 51820 en el router y configurar el dominio.
 
+Actualización: Existe [este script](https://github.com/angristan/wireguard-install) que ahorra todo el proceso, no necesita usar pivpn y crea los servicios automáticamente. Viene también con un script para eliminar y añadir usuarios a la VPN.
 ## Crear usuarios, configurar dominio dinámico y conectar
 
 Para continuar, vamos a crear dos usuarios y conectarnos a la VPN. Sigue los pasos a continuación:
