@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jesuspavonabian.es/</loc>
-    <lastmod>2024-03-31T00:00:00+02:00</lastmod>
+    <lastmod>2024-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/</loc>
+    <lastmod>2024-06-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jesuspavonabian.es/post/</loc>
-    <lastmod>2024-03-31T00:00:00+02:00</lastmod>
+    <lastmod>2024-06-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jesuspavonabian.es/post/script-anadir-alt-a-imagenes/</loc>
     <lastmod>2024-03-31T00:00:00+02:00</lastmod>
@@ -62,7 +65,5 @@
     <loc>https://jesuspavonabian.es/categorias/</loc>
   </url><url>
     <loc>https://jesuspavonabian.es/etiquetas/</loc>
-  </url><url>
-    <loc>https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/</loc>
   </url>
 </urlset>
