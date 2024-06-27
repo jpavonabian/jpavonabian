@@ -94,6 +94,8 @@ La forma rápida de comprobarlo siendo ciego, si no tenemos unos ojitos que nos 
 
 Si por alguna razón No te funciona este truco, pide ayuda a alguien que vea para garantizar que en efecto tu pantalla se ve en negro. si te ha tocado este caso lo siento, te toca buscar en google y probar a ver qué solución te funciona a ti.
 
+En mi caso, el problema se arregló con cerrar OBS y borrar el contenido de la carpeta "C:\ProgramData\obs-studio-hook\" y recreando las fuentes de captura de juegos, pero otros necesitarán cambiar la gráfica por la que se ejecuta el programa o lo que desean capturar.
+
 ## Para finalizar
 
 Utiliza tantas escenas como necesites. Desde que escribí este artículo fui añadiendo escenas más específicas. Por ejemplo, una para capturar juegos, otra para juegos y cámara, otra para una aplicación específica, otra para una aplicación específica con cámara y una que lo único que hace es mostrar una imagen donde pone "BRB, I'm AFK" para cuando necesite ausentarme.
@@ -101,5 +103,3 @@ Utiliza tantas escenas como necesites. Desde que escribí este artículo fui añ
 Investiga mucho y pide ayuda a gente que vea. Podemos llegar hasta un punto, pero terminar de configurarlo todo requiere que unos ojitos funcionales nos echen una mano. Técnicamente con lo explicado aquí se puede transmitir, pero seamos sinceros, queda más bonito que un vidente te encuadre la fuente de la cámara en un marco con colorines ajustado a la temática de tu Stream, por ejemplo. Lo bueno es que solo necesitarás ayuda una vez. cuando esté todo configurado, puedes hacerte una copia de la configuración.
 
 Hay mucho más que contar, por supuesto. Pero lo dejaré aquí por hoy. Como habrás podido comprobar, he dejado cosas en los requisitos de las cuales no he escrito nada. Las dejaré para futuras entradas, aunque tienes una buena base para investigar por ti mismo, creo que lo básico está cubierto.
-
-¡Los comentarios están abiertos para dudas y sugerencias!
