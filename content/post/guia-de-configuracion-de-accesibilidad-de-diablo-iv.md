@@ -7,7 +7,7 @@ categories: ["anything else"]
 tags:
 draft: false
 ---
-
+Actualizada el 27 de Junio de 2024.
 Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español.
 Así pués, basándome en [esta guía del foro de audiogames](https://forum.audiogames.net/topic/53635/diablo-iv-getting-started-totally-blind-players/) he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.
 
@@ -30,9 +30,13 @@ A lo largo de todo este tiempo la comunidad ha estado creando cosas increíbles 
 
 ### navegación y uso del juego
 
-Una de las preguntas más comunes que la gente tiene es cómo navegar por el juego. Resumen: A fecha de hoy, 24 de Junio de 2024 no hay una asistencia de navegación completa y deberías prepararte para deambular durante algún tiempo y guiarte mucho por diferentes señales de audio posicionales, pero Blizzard ha aumentado mucho la accesibilidad en este aspecto.
+Una de las preguntas más comunes que la gente tiene es cómo navegar por el juego. Resumen: A fecha de hoy, 24 de Junio de 2024 no hay una asistencia de navegación completa y deberías prepararte para deambular durante algún tiempo y guiarte mucho por diferentes señales de audio posicionales.
 
-Mañana día 25 se abrirá el acceso anticipado a la nueva temporada y entre sus novedades destaca la [navegación de audio](https://news.blizzard.com/en-us/diablo4/24111472/the-diablo-iv-season-5-ptr-what-you-need-to-know), por lo que iré modificando esta entrada cuando sea necesario.
+Se ha abierto el acceso anticipado a la nueva temporada y entre sus novedades destaca la [navegación de audio](https://news.blizzard.com/en-us/diablo4/24111472/the-diablo-iv-season-5-ptr-what-you-need-to-know), por lo que iré modificando esta entrada cuando sea necesario.
+
+Tras probar la beta puedo decir que la navegación de audio funciona, pero si llega a la temporada 5, no será suficiente, pues no funciona en mazmorras.
+
+Según he leído en el servidor de Discord, la navegación de audio en mazmorras llegará en Octubre. Pese a este inconveniente, lo que he probado funciona estupendamente. El sistema de navegación no se limita a girar el personaje como en otros juegos. Mediante un beep configurable va indicando al jugador por dónde tiene que caminar, de forma que si lo necesitas, puedes desviarte de la ruta y como el sonido es constante, volver a ella cuando lo necesites.
 
 Uno de los botones que usarás mucho es el botón para la pantalla del mapa. En Xbox es el botón de vista o menú (el izquierdo opuesto a pausa/inicio), en el teclado es m, y en PlayStation es el panel táctil. En este punto necesitas recordar dos cosas. primero, puedes teletransportarte a los puntos de referencia en el mapa una vez que los hayas encontrado. segundo, necesitas explorar usando el mapa y haciendo zoom para encontrar cosas. por ejemplo, abre la pantalla del mapa. Para hacer zoom usas el stick derecho (escucharás un sonido de vibración cuando cambie el nivel de zoom), usa el stick derecho hacia abajo para alejar, el stick derecho hacia arriba para acercar. aleja todo el camino, luego acércate un nivel. usa el stick izquierdo, muévelo ligeramente hacia la derecha, luego presiónalo para centrar la cámara en ti mismo. muévelo hacia arriba y hacia la derecha, centra. luego hacia arriba, luego centra. luego hacia arriba y hacia la izquierda, luego presiónalo para centrar de nuevo. Así es como encuentras cosas. también puedes ir arriba arriba centro, abajo abajo centro, si algo está más lejos. a medida que te acerques, acércate más y luego dirígete en la dirección de lo que necesitas encontrar. Recuerda que no todos los caminos son rectos y es posible que necesites rodear obstáculos y cosas así para llegar a lo que necesitas. Cuando hay puntos de misión, el lector de pantalla te notificará y podrás rastrear estos puntos y se te dirá cuando los alcances. También puedes presionar el stick derecho en la pantalla del mapa para filtrar qué lugares se te anuncian a medida que te mueves por el mapa. Cuando desbloqueas un punto de referencia, en el mapa, cada vez que lo encuentras puedes presionar el botón X en él para teletransportarte. Cuando estés en la primera parte del prólogo, Anochecer en la Montaña, te encontrarás con algunos enemigos a los que tendrás que atacar. El juego tiene audio posicional para que puedas apuntar y atacar con éxito y también puedes configurar desde las opciones si el bloqueo de enemigos se realiza automáticamente y también puedes usar el stick derecho para seleccionar y presionarlo para bloquear un objetivo. También es una buena idea tener el complemento de Speech history de NVDA, ya que algunos controles, como en la pantalla del mapa, no se anuncian ya que el discurso se trunca de alguna manera incluso con el lector de pantalla incluido, y anuncia los dos últimos, pero si revisas el texto anunciado aquí se revelará todo.
 
