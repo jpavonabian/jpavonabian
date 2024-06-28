@@ -2,13 +2,33 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2024-06-24T00:00:00+00:00</updated>
+  <updated>2024-06-28T00:00:00+00:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[TTS No Habla]]></title>
+    <link href="https://jesuspavonabian.es/post/tts-no-habla/"/>
+    <id>https://jesuspavonabian.es/post/tts-no-habla/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2024-06-28T00:00:00+00:00</published>
+    <updated>2024-06-28T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Los otros días me encontré con que las voces de Microsoft no reproducían contenido, aparentemente.</p>
+<p>Tras mucho darle vueltas y Googlear en el soporte de Microsoft no encontré nada y acabé bastante frustrado.</p>
+<p>Resulta que al final, en contra de lo que yo pensaba, sí que se reproducían los audios que generaban esas voces. Tuve que hacerme un Script en Python para poder probarlo.</p>
+<p>Entonces, si los audios se reproducen, ¿por qué yo no escuchaba nada?</p>
+<p>La respuesta estaba en el configurador de Sapi, que no puede estar más escondido. Se había cambiado el dispositivo de salida de estas voces.</p>
+<p>¿La solución? ir a &ldquo;C:\Windows\SysWOW64\Speech\SpeechUX\sapi.cpl&rdquo; y cambiar el dispositivo de salida al predeterminado del sistema.</p>
+<p>¡Espero que a alguien le sirva este minipost!</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Guía de configuración de la accesibilidad de Diablo IV]]></title>
     <link href="https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/"/>

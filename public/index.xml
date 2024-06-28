@@ -8,7 +8,29 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Mon, 24 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TTS No Habla</title>
+      <link>https://jesuspavonabian.es/post/tts-no-habla/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/tts-no-habla/</guid>
+      <description>Los otros días me encontré con que las voces de Microsoft no reproducían contenido, aparentemente.
+Tras mucho darle vueltas y Googlear en el soporte de Microsoft no encontré nada y acabé bastante frustrado.
+Resulta que al final, en contra de lo que yo pensaba, sí que se reproducían los audios que generaban esas voces. Tuve que hacerme un Script en Python para poder probarlo.
+Entonces, si los audios se reproducen, ¿por qué yo no escuchaba nada?</description>
+      <content:encoded>
+      &lt;p&gt;Los otros días me encontré con que las voces de Microsoft no reproducían contenido, aparentemente.&lt;/p&gt;
+&lt;p&gt;Tras mucho darle vueltas y Googlear en el soporte de Microsoft no encontré nada y acabé bastante frustrado.&lt;/p&gt;
+&lt;p&gt;Resulta que al final, en contra de lo que yo pensaba, sí que se reproducían los audios que generaban esas voces. Tuve que hacerme un Script en Python para poder probarlo.&lt;/p&gt;
+&lt;p&gt;Entonces, si los audios se reproducen, ¿por qué yo no escuchaba nada?&lt;/p&gt;
+&lt;p&gt;La respuesta estaba en el configurador de Sapi, que no puede estar más escondido. Se había cambiado el dispositivo de salida de estas voces.&lt;/p&gt;
+&lt;p&gt;¿La solución? ir a &amp;ldquo;C:\Windows\SysWOW64\Speech\SpeechUX\sapi.cpl&amp;rdquo; y cambiar el dispositivo de salida al predeterminado del sistema.&lt;/p&gt;
+&lt;p&gt;¡Espero que a alguien le sirva este minipost!&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Guía de configuración de la accesibilidad de Diablo IV</title>
       <link>https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/</link>
