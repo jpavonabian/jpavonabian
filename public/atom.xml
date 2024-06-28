@@ -22,7 +22,7 @@
     <content type="html"><![CDATA[<p>Los otros días me encontré con que las voces de Microsoft no reproducían contenido, aparentemente.</p>
 <p>Tras mucho darle vueltas y Googlear en el soporte de Microsoft no encontré nada y acabé bastante frustrado.</p>
 <p>Resulta que al final, en contra de lo que yo pensaba, sí que se reproducían los audios que generaban esas voces. Tuve que hacerme un Script en Python para poder probarlo.</p>
-<p>Entonces, si los audios se reproducen, ¿por qué yo no escuchaba nada?</p>
+<p>Entonces, si los audios se reproducían, ¿por qué yo no escuchaba nada?</p>
 <p>La respuesta estaba en el configurador de Sapi, que no puede estar más escondido. Se había cambiado el dispositivo de salida de estas voces.</p>
 <p>¿La solución? ir a &ldquo;C:\Windows\SysWOW64\Speech\SpeechUX\sapi.cpl&rdquo; y cambiar el dispositivo de salida al predeterminado del sistema.</p>
 <p>¡Espero que a alguien le sirva este minipost!</p>

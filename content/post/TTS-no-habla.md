@@ -13,7 +13,7 @@ Tras mucho darle vueltas y Googlear en el soporte de Microsoft no encontré nada
 
 Resulta que al final, en contra de lo que yo pensaba, sí que se reproducían los audios que generaban esas voces. Tuve que hacerme un Script en Python para poder probarlo.
 
-Entonces, si los audios se reproducen, ¿por qué yo no escuchaba nada?
+Entonces, si los audios se reproducían, ¿por qué yo no escuchaba nada?
 
 La respuesta estaba en el configurador de Sapi, que no puede estar más escondido. Se había cambiado el dispositivo de salida de estas voces.
 
