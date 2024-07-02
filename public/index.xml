@@ -8,7 +8,75 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalar un cliente Torrent en una raspberry Pi</title>
+      <link>https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi/</link>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi/</guid>
+      <description>¡Buenas! Hoy os traigo un tutorial para instalar y configurar un cliente Torrent en una Raspberry Pi. Lo tenía configurado desde hace un par de meses pero soy un desastre, así que he decidido convertir mis apuntes en un tutorial para que no se me olvide. Con suerte le vale a alguien.
+Utilizaremos Transmission, un cliente Torrent ligero y eficiente. También configuraremos un disco duro externo como almacenamiento para nuestras descargas.</description>
+      <content:encoded>
+      &lt;p&gt;¡Buenas!
+Hoy os traigo un tutorial para instalar y configurar un cliente Torrent en una Raspberry Pi. Lo tenía configurado desde hace un par de meses pero soy un desastre, así que he decidido convertir mis apuntes en un tutorial para que no se me olvide. Con suerte le vale a alguien.&lt;/p&gt;
+&lt;p&gt;Utilizaremos Transmission, un cliente Torrent ligero y eficiente. También configuraremos un disco duro externo como almacenamiento para nuestras descargas.&lt;/p&gt;
+&lt;h3 id=&#34;paso-1-conectar-el-disco-duro&#34;&gt;Paso 1: Conectar el Disco Duro&lt;/h3&gt;
+&lt;p&gt;Si vamos a usar un disco duro externo para almacenar nuestras descargas, primero debemos conectarlo a la Raspberry Pi y verificar su ubicación en el sistema. Abrimos una terminal y utilizamos el siguiente comando para identificar el disco duro:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;lsblk -fm&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;En mi caso, el disco duro está ubicado en /dev/sda1.&lt;/p&gt;
+&lt;h3 id=&#34;paso-2-montar-el-disco-duro&#34;&gt;Paso 2: Montar el Disco Duro&lt;/h3&gt;
+&lt;p&gt;Montamos el disco duro en el sistema editando el archivo /etc/fstab:&lt;/p&gt;
+&lt;p&gt;`sudo nano /etc/fstab```&lt;/p&gt;
+&lt;p&gt;Añadimos la siguiente línea al final del archivo para montar el disco duro en /mnt/disco (puede cambiarse &amp;ldquo;disco&amp;rdquo; por otro nombre si se prefiere):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/dev/sda1 /mnt/disco ntfs defaults 0 0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER. Luego, reiniciamos el sistema para aplicar los cambios:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo reboot&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Asumiremos que la ruta de nuestro disco es /mnt/disco.&lt;/p&gt;
+&lt;h3 id=&#34;paso-3-instalar-transmission&#34;&gt;Paso 3: Instalar Transmission&lt;/h3&gt;
+&lt;p&gt;Una vez que el disco duro está montado, procedemos a instalar Transmission:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo apt install transmission-daemon&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Detenemos el servicio de Transmission para configurarlo:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo service transmission-daemon stop&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;paso-4-configurar-transmission&#34;&gt;Paso 4: Configurar Transmission&lt;/h3&gt;
+&lt;p&gt;Editamos el archivo de configuración de Transmission:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo nano /etc/transmission-daemon/settings.json&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Realizamos las siguientes modificaciones:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Directorio de descargas: Configuramos la ruta donde se guardarán nuestros archivos descargados.
+&amp;#34;download-dir&amp;#34;: &amp;#34;/mnt/disco/descargas&amp;#34;,
+Número máximo de peers globales.
+&amp;#34;max-peers-global&amp;#34;: 200,
+Puerto de conexión.
+&amp;#34;peer-port&amp;#34;: 51413,
+Límite de peers por torrent.
+&amp;#34;peer-limit-per-torrent&amp;#34;: 50,
+Usuario y contraseña para la interfaz web: Configuramos el usuario y la contraseña (se cifrará automáticamente al iniciar el servicio).
+&amp;#34;rpc-username&amp;#34;: &amp;#34;USUARIO&amp;#34;,
+&amp;#34;rpc-password&amp;#34;: &amp;#34;CONTRASEÑA&amp;#34;,
+Puerto para la interfaz web.
+&amp;#34;rpc-port&amp;#34;: 9091,
+Whitelist para la interfaz web: Desactivamos la whitelist para permitir el acceso a la interfaz web desde cualquier IP.
+&amp;#34;rpc-whitelist-enabled&amp;#34;: false,
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER.&lt;/p&gt;
+&lt;h3 id=&#34;paso-5-gestionar-permisos&#34;&gt;Paso 5: Gestionar Permisos&lt;/h3&gt;
+&lt;p&gt;Editamos el archivo de inicio de Transmission para cambiar el usuario a root:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo nano /etc/init.d/transmission-daemon&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Modificamos la línea USER=debian-transmission a USER=root.
+Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER.
+A continuación, cambiamos el propietario y los permisos del directorio del disco:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-sudo&#34; data-lang=&#34;sudo&#34;&gt;sudo chmod -R 755 /mnt/disco```
+
+### Paso 6: Iniciar Transmission
+Finalmente, iniciamos el servicio de Transmission:
+
+```sudo service transmission-daemon start```
+
+### Paso 7: Disfrutar
+¡Eso es todo! Ahora podemos acceder a http://ip:9091 e iniciar sesión con las credenciales que pusimos en el archivo de configuración.
+&lt;/code&gt;&lt;/pre&gt;
+      </content:encoded>
+    </item>
+    
     <item>
       <title>TTS No Habla</title>
       <link>https://jesuspavonabian.es/post/tts-no-habla/</link>
