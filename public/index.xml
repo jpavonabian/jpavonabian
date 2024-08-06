@@ -64,16 +64,14 @@ Whitelist para la interfaz web: Desactivamos la whitelist para permitir el acces
 &lt;p&gt;Modificamos la línea USER=debian-transmission a USER=root.
 Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER.
 A continuación, cambiamos el propietario y los permisos del directorio del disco:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-sudo&#34; data-lang=&#34;sudo&#34;&gt;sudo chmod -R 755 /mnt/disco```
+&lt;p&gt;&lt;code&gt;sudo chown -R root /mnt/disco&lt;/code&gt;
+&lt;code&gt;sudo chmod -R 755 /mnt/disco&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;paso-6-iniciar-transmission&#34;&gt;Paso 6: Iniciar Transmission&lt;/h3&gt;
+&lt;p&gt;Finalmente, iniciamos el servicio de Transmission:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo service transmission-daemon start&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;paso-7-disfrutar&#34;&gt;Paso 7: Disfrutar&lt;/h3&gt;
+&lt;p&gt;¡Eso es todo! Ahora podemos acceder a http://ip:9091 e iniciar sesión con las credenciales que pusimos en el archivo de configuración.&lt;/p&gt;
 
-### Paso 6: Iniciar Transmission
-Finalmente, iniciamos el servicio de Transmission:
-
-```sudo service transmission-daemon start```
-
-### Paso 7: Disfrutar
-¡Eso es todo! Ahora podemos acceder a http://ip:9091 e iniciar sesión con las credenciales que pusimos en el archivo de configuración.
-&lt;/code&gt;&lt;/pre&gt;
       </content:encoded>
     </item>
     

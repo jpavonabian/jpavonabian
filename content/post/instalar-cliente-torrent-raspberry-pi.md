@@ -76,8 +76,8 @@ Modificamos la línea USER=debian-transmission a USER=root.
 Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER.
 A continuación, cambiamos el propietario y los permisos del directorio del disco:
 
-```sudo chown -R root /mnt/disco
-sudo chmod -R 755 /mnt/disco```
+```sudo chown -R root /mnt/disco```
+```sudo chmod -R 755 /mnt/disco```
 
 ### Paso 6: Iniciar Transmission
 Finalmente, iniciamos el servicio de Transmission:
