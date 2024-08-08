@@ -8,12 +8,13 @@ tags:
 draft: false
 ---
 Actualizada el 27 de Junio de 2024.
+
 Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español.
 Así pués, basándome en [esta guía del foro de audiogames](https://forum.audiogames.net/topic/53635/diablo-iv-getting-started-totally-blind-players/) he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.
 
 Gracias, UltraLeetJ.
 
-Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas. Hay algunos hilos en en el foro de Audiogames sobre la discusión general del juego, pero el más completo es [este (preguntas sobre diablo en inglés)](https://forum.audiogames.net/topic/48574/diablo-questions/). También hay una [versión recuperada del año pasado para la ¿wiki ciega?](https://web.archive.org/web/20230620085008/https://diablo-iv-blind-accessibility-resource.fandom.com/wiki/Diablo_IV_Blind_Accessibility_Resource_Wiki) y un [servidor de discord para hablar sobre el juegot en inglés también](https://discord.gg/mrFkV6SVYw).
+Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas. Hay algunos hilos en en el foro de Audiogames sobre la discusión general del juego, pero el más completo es [este (preguntas sobre diablo en inglés)](https://forum.audiogames.net/topic/48574/diablo-questions/). También hay una [versión recuperada del año pasado para la ¿wiki ciega?](https://web.archive.org/web/20230620085008/https://diablo-iv-blind-accessibility-resource.fandom.com/wiki/Diablo_IV_Blind_Accessibility_Resource_Wiki) y un [servidor de discord para hablar sobre el juego en inglés también](https://discord.gg/mrFkV6SVYw).
 
 Diablo IV es un juego de rol de acción en línea, de rastreo de mazmorras, desarrollado y publicado por Blizzard Entertainment en 2023. Usas tus habilidades para completar misiones a través del combate. También puedes tener un clan y hacer combates jugador contra jugador. Lee todo sobre ello en [su entrada en wikipedia](https://en.wikipedia.org/wiki/Diablo_IV). Para obtener el juego puedes hacerlo desde [el sitio de Diablo IV de Blizzard](https://diablo4.blizzard.com/), el juego está [también disponible en Steam](https://store.steampowered.com/app/2344520/Diablo_IV/). Para jugar, puedes usar un ratón y teclado o un controlador, o ambos, aunque para la mejor experiencia un controlador es esencial, ya que puedes navegar y configurar las opciones del juego de esta manera. El juego también tiene descuentos de vez en cuando, así que estate atento.
 
