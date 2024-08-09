@@ -25,7 +25,7 @@ params: # All of these are optional
   webmentionUrl: https://webmention.io/jesuspavonabian.es/webmention
   pingbackUrl: https://webmention.io/jesuspavonabian.es/xmlrpc
   micropubUrl: https://jesuspavonabian.es/netlify/functions/micropub
-  microsubUrl: https://aperture.p3k.io/microsub/jesuspavonabian
+  microsubUrl: https://aperture.p3k.io/microsub/969
   # For IndieAuth
   githubuser: jpavonabian
   twitteruser: jpa_apj # no @ in front
