@@ -219,6 +219,9 @@ class OyeElAdblock {
 		oyeElAdBlockElement.setAttribute('aria-hidden', this.hasAdBlockActive)
 	}
 }
+document.addEventListener("DOMContentLoaded", function() {
+        const adBlockWarning = new OyeElAdblock();
+    });
 </script>
 </head>
 <body>
