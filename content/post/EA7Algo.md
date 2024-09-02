@@ -2,7 +2,7 @@
 title: "EA7Algo"
 date: 2024-09-02T00:00:00
 reply:
-uri: "https://jesuspavonabian.es/post/EA7Algo"
+uri: "https://jesuspavonabian.es/post/ea7algo"
 categories: ["anything else"]
 tags:
 draft: false
