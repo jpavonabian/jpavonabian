@@ -2,13 +2,37 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2024-07-02T00:00:00+00:00</updated>
+  <updated>2024-09-02T00:00:00+00:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[EA7Algo]]></title>
+    <link href="https://jesuspavonabian.es/post/ea7algo/"/>
+    <id>https://jesuspavonabian.es/post/ea7algo/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2024-09-02T00:00:00+00:00</published>
+    <updated>2024-09-02T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Por culpa de <a href="http://qcsalon.net/es/forum5000000/topic126690">esto</a> he recuperado las ganas de sacarme la licencia de Radioaficionado.</p>
+<p>No, no voy a dar una charla escrita sobre radioafición ni nada parecido, pues si algo me caracteriza por estas fechas es que no tengo ni puta idea.</p>
+<p>Si quereis cotillear sobre radioafición accesible teneis a <a href="https://ea3gza.es/">EA3GZA (Miguel), radioaficionado ciego)</a> que os podrá contar muchísimo mejor que yo lo que mola esto, lo accesible que es (o no) y lo que se puede o no puede hacer. De hecho le escribí a su correo de la <a href="https://www.ure.es/">unión de radioaficionados españoles</a> y me envió un tochaco importante para luego seguir hablando por WhatsApp.</p>
+<p>Lo que voy a hacer en esta entrada es recopilar recursos accesibles para aprobar el examen que da derecho a pedir el indicativo, entre otras cosas para tenerlos yo a mano, ya que los voy descubriendo y se me olvidan. Cuando lo consiga, haré una entrada a modo de curiosidad sobre el equipo que me compre, que si os soy sincero, no tengo ni la más mínima idea de cuál va a ser. Tampoco me he puesto a mirar mucho; no quiero correr antes de aprender a andar, que luego me llevo una hostia tamaño <span lang="en-GB">king size</span> y no es plan.</p>
+<p>Si queremos poder operar una estación de Radioaficionado necesitamos conseguir una autorización administrativa individualizada otorgada por la Secretaría de Estado para la Sociedad de la Información y la Agenda Digital. Lo que viene siendo, simplificando mucho, que tenemos que aprobar un examen y luego pedir el indicativo antes de hacer cualquier otra cosa, porque si no estaremos incumpliendo la ley e incumplir la ley es malo. <a href="https://www.ure.es/obtener-autorizacion/">Teneis el proceso que hay que seguir aquí.</a></p>
+<p>Por desgracia para mi, aunque la URE tiene una cantidad de información brutal, me perdí con solo leer el enlace anterior. Por suerte me pasaron <a href="https://www.youtube.com/watch?v=oqZn069FfEo">un vídeo donde se explica el proceso de una forma bastante amena</a> que incluso tiene enlaces en la descripción para que no tengamos que preocuparnos en encontrar lo necesario.</p>
+<p>Con esto claro decidí centrarme en aprobar el examen. Nuevamente la URE vino a mi rescate, pues pone a nuestra disposición <a href="https://www.ure.es/examenes/">un montón de exámenes para practicar</a>. Por desgracia para mi la parte de radioelectricidad no me entraba en la cabeza por mucho que estudiaba y buscaba en internet. Basta con acertar 15 preghuntas, pero entre las de dibujitos y que me faltaban conocimientos básicos la cosa estaba chunga chunga.</p>
+<p><a href="https://ea3gza.es/">EA3GZA</a> vino a mi rescate y me comentó que hay un libro en la biblioteca digital de la ONCE para preparar el examen. Y raudo y veloz fui a descargarlo&hellip; Para decepcionarme rapidísimo. Tengo un problema con la lectura en formato DAISY. No me sirve para estudiar, acabo con la cabeza hecha un bombo, la lectura no me es cómoda. Está por suerte también en formato .bra, pero pese a abrirlo con el visualizador Braille que viene en el Gestor de libros digitales aquello era ilegible. Los números se leen como almoadilla abcd, por ejemplo. Y puede que sea algo en mi configuración y que sea más torpe que un guardagujas, pero hasta la fecha no he sido capaz de leer con comodidad tampoco en ese formato. me comentó también que hay un libro llamado &ldquo;La radioafición mola&rdquo;, pero al ir a buscarlo en digital no parece estar por ningún sitio, así que F.</p>
+<p>El <a href="https://www.ea5rca.es/">Radio Club Utiel</a> ha publicado en su web un <a href="https://www.ea5rca.es/PDF/LibroE.pdf">libro para preparar el examen en pdf</a> que se puede leer con alguna que otra dificultad, pues no tiene etiquetas y el Adobe Acrobat tiene que inventárselas.</p>
+<p>Pero como soy medio cazurro y me faltan conocimientos de electricidad solo me sirve para estudiarme las preguntas a saco y aprobar sin saber el por qué.</p>
+<p>Tras meditarlo durante un par de días decidí inscribirme al <a href="https://tienda.ure.es/cursos/62-curso-autorizacion-radioaficionado.html">Curso para preparar el examen de la URE</a> y se solucionaron mis problemas. Lo explica todo desde el inicio, Empezando por qué es una molécula. Y lo mejor de todo, simple para cazurros como yo, que lo único que sabía de la electricidad es que da calambre y que hace que las cosas funcionen. Es curioso como de Software puedo tirarme hablando horas y en el momento que me meto con algo de Hardware me cortocircuita el cerebro.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Instalar un cliente Torrent en una raspberry Pi]]></title>
     <link href="https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi/"/>
