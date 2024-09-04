@@ -28,3 +28,5 @@ El [Radio Club Utiel](https://www.ea5rca.es/) ha publicado en su web un [libro p
 Pero como soy medio cazurro y me faltan conocimientos de electricidad solo me sirve para estudiarme las preguntas a saco y aprobar sin saber el por qué.
 
 Tras meditarlo durante un par de días decidí inscribirme al [Curso para preparar el examen de la URE](https://tienda.ure.es/cursos/62-curso-autorizacion-radioaficionado.html) y se solucionaron mis problemas. Lo explica todo desde el inicio, Empezando por qué es una molécula. Y lo mejor de todo, simple para cazurros como yo, que lo único que sabía de la electricidad es que da calambre y que hace que las cosas funcionen. Es curioso como de Software puedo tirarme hablando horas y en el momento que me meto con algo de Hardware me cortocircuita el cerebro.
+
+el examen hay que solicitarlo con Cl@ve o  Certificado Digital. [Tienes todo lo necesario aquí](https://sedediatid.mineco.gob.es/es-es/procedimientoselectronicos/Paginas/detalle-procedimientos.aspx?IdProcedimiento=147).
