@@ -53,4 +53,4 @@ RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount statuses
 ```
 ## Modo de uso:
 Tras guardarlo como limpiar.sh podeis meterlo en un Crontab y ejecutarlo una vez al mes o ejecutarlo a mano, como os resulte más práctico.
-
+¡Cuidado con Docker! No olvideis cambiar la variable CONTAINER_NAME para que apunte a vuestro contenedor de web.

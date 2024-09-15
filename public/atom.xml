@@ -56,7 +56,8 @@ RAILS_ENV=production /home/mastodon/live/bin/tootctl emoji purge --remote-only
 RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount accounts
 RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount statuses
 </code></pre><h2 id="modo-de-uso">Modo de uso:</h2>
-<p>Tras guardarlo como limpiar.sh podeis meterlo en un Crontab y ejecutarlo una vez al mes o ejecutarlo a mano, como os resulte más práctico.</p>
+<p>Tras guardarlo como limpiar.sh podeis meterlo en un Crontab y ejecutarlo una vez al mes o ejecutarlo a mano, como os resulte más práctico.
+¡Cuidado con Docker! No olvideis cambiar la variable CONTAINER_NAME para que apunte a vuestro contenedor de web.</p>
 ]]></content>
     
   </entry>
