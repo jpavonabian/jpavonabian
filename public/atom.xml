@@ -2,13 +2,64 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2024-09-02T00:00:00+00:00</updated>
+  <updated>2024-09-15T13:15:29+02:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Limpiar instancia de Mastodon]]></title>
+    <link href="https://jesuspavonabian.es/post/limpiar_instancia_de_mastodon/"/>
+    <id>https://jesuspavonabian.es/post/limpiar_instancia_de_mastodon/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2024-09-15T13:15:29+02:00</published>
+    <updated>2024-09-15T13:15:29+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Hace poco cambié la instancia de Mastodon para que se ejecutase utilizando Docker. Esto me facilitó la vida en muchos aspectos y me la complicó en el de limpiarla. El script que tenía para ello no funcionaba.</p>
+<p>Así que cuando saqué un poco de tiempo libre decidí arreglar el asunto.</p>
+<p>Os comparto aquí ambos scripts por si a alguien le sirve.</p>
+<h2 id="script-para-mastodon-en-docker">Script para Mastodon en Docker</h2>
+<pre tabindex="0"><code>#!/bin/bash
+# Limpiamos la instancia de Mastodon en Docker
+# Definir el nombre del contenedor
+CONTAINER_NAME=live_web_1
+# Ejecutar los comandos dentro del contenedor
+docker exec -it $CONTAINER_NAME bin/tootctl statuses remove --days 90
+docker exec -it $CONTAINER_NAME bin/tootctl media remove --days 5
+docker exec -it $CONTAINER_NAME bin/tootctl media remove --prune-profiles --days 5
+docker exec -it $CONTAINER_NAME bin/tootctl media remove --attachments --avatars --headers --days 5
+docker exec -it $CONTAINER_NAME bin/tootctl media remove-orphans
+docker exec -it $CONTAINER_NAME bin/tootctl preview_cards remove --days 90
+docker exec -it $CONTAINER_NAME bin/tootctl accounts prune
+docker exec -it $CONTAINER_NAME bin/tootctl accounts cull
+docker exec -it $CONTAINER_NAME bin/tootctl cache clear
+docker exec -it $CONTAINER_NAME bin/tootctl emoji purge --remote-only
+docker exec -it $CONTAINER_NAME bin/tootctl cache recount accounts
+docker exec -it $CONTAINER_NAME bin/tootctl cache recount statuses
+</code></pre><h2 id="script-para-mastodon-sin-docker">Script para Mastodon sin Docker</h2>
+<pre tabindex="0"><code>#!/bin/bash
+# Limpiamos la instancia
+RAILS_ENV=production /home/mastodon/live/bin/tootctl statuses remove --days 90
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove --days 5
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove --prune-profiles --days 5
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove --attachments --avatars --headers --days 5
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove-orphans
+RAILS_ENV=production /home/mastodon/live/bin/tootctl preview_cards remove --days 90
+RAILS_ENV=production /home/mastodon/live/bin/tootctl accounts prune
+RAILS_ENV=production /home/mastodon/live/bin/tootctl accounts cull
+RAILS_ENV=production /home/mastodon/live/bin/tootctl cache clear
+RAILS_ENV=production /home/mastodon/live/bin/tootctl emoji purge --remote-only
+RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount accounts
+RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount statuses
+</code></pre><h2 id="modo-de-uso">Modo de uso:</h2>
+<p>Tras guardarlo como limpiar.sh podeis meterlo en un Crontab y ejecutarlo una vez al mes o ejecutarlo a mano, como os resulte más práctico.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[EA7Algo]]></title>
     <link href="https://jesuspavonabian.es/post/ea7algo/"/>

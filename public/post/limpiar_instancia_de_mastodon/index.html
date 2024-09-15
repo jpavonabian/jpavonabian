@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
   
-    Conocer los procesos que más memoria RAM ocupan en un VPS - El Blog de un informático que sueña con mejorar el mundo
+    Limpiar instancia de Mastodon - El Blog de un informático que sueña con mejorar el mundo
   
 </title>
     
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <ul id="feed__ul">
             <li class="feed__li h-entry">
                 <div class="feed__content">
-                    <time class="hidden dt-published">2021-07-19 00:00:00 &#43;0000 UTC</time>
+                    <time class="hidden dt-published">2024-09-15 13:15:29 &#43;0200 CEST</time>
                     <div class="flex properties__row ">
                         <div rel="author" class="flex left p-author h-card">
                             <img class="u-photo"
@@ -278,13 +278,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </p>
                                 <p class="properties">
                                     
-                                    Jul 19, 2021
+                                    Sep 15, 2024
                                 </p>
                             </div>
                         </div>
                         <div class="flex right properties">
                             
-                            <a class="icon u-url" href="https://jesuspavonabian.es/post/conocer-los-procesos-que-mas-memoria-ram-ocupan-en-un-vps/">
+                            <a class="icon u-url" href="https://jesuspavonabian.es/post/limpiar_instancia_de_mastodon/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-bookmark">
@@ -295,9 +295,46 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     
                             <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/conocer-los-procesos-que-mas-memoria-ram-ocupan-en-un-vps/">Conocer los procesos que más memoria RAM ocupan en un VPS</a></h2>
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/limpiar_instancia_de_mastodon/">Limpiar instancia de Mastodon</a></h2>
                                 
-                                <p>Iba yo a escribir una entrada para este blog cuando la RAM de mi VPS se disparó. Se conoce que tengo algo chupando memoria RAM a lo burro. De hecho, he tenido que aumentar memoria al menos temporalmente, hasta ver qué le pica al servidor. el caso es que tras conseguir acceso por ssh, cosa que costó lágrimas, sudor y sangre, di con parte de la solución a mi problema: Saber qué procesos consumen más memoria y cuánta está consumiendo cada uno. La magia la realiza el comando ps de la siguiente manera: ps aux &ndash;width 30 &ndash;sort -rss | head Con este sencillo comando podremos ver los 10 procesos que consumen más memoria RAM en nuestro VPS. Fácil y sencillo. Ahora me falta saber por qué se está comiendo casi toda la memoria un simple script .js.</p>
+                                <p>Hace poco cambié la instancia de Mastodon para que se ejecutase utilizando Docker. Esto me facilitó la vida en muchos aspectos y me la complicó en el de limpiarla. El script que tenía para ello no funcionaba.</p>
+<p>Así que cuando saqué un poco de tiempo libre decidí arreglar el asunto.</p>
+<p>Os comparto aquí ambos scripts por si a alguien le sirve.</p>
+<h2 id="script-para-mastodon-en-docker">Script para Mastodon en Docker</h2>
+<pre tabindex="0"><code>#!/bin/bash
+# Limpiamos la instancia de Mastodon en Docker
+# Definir el nombre del contenedor
+CONTAINER_NAME=live_web_1
+# Ejecutar los comandos dentro del contenedor
+docker exec -it $CONTAINER_NAME bin/tootctl statuses remove --days 90
+docker exec -it $CONTAINER_NAME bin/tootctl media remove --days 5
+docker exec -it $CONTAINER_NAME bin/tootctl media remove --prune-profiles --days 5
+docker exec -it $CONTAINER_NAME bin/tootctl media remove --attachments --avatars --headers --days 5
+docker exec -it $CONTAINER_NAME bin/tootctl media remove-orphans
+docker exec -it $CONTAINER_NAME bin/tootctl preview_cards remove --days 90
+docker exec -it $CONTAINER_NAME bin/tootctl accounts prune
+docker exec -it $CONTAINER_NAME bin/tootctl accounts cull
+docker exec -it $CONTAINER_NAME bin/tootctl cache clear
+docker exec -it $CONTAINER_NAME bin/tootctl emoji purge --remote-only
+docker exec -it $CONTAINER_NAME bin/tootctl cache recount accounts
+docker exec -it $CONTAINER_NAME bin/tootctl cache recount statuses
+</code></pre><h2 id="script-para-mastodon-sin-docker">Script para Mastodon sin Docker</h2>
+<pre tabindex="0"><code>#!/bin/bash
+# Limpiamos la instancia
+RAILS_ENV=production /home/mastodon/live/bin/tootctl statuses remove --days 90
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove --days 5
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove --prune-profiles --days 5
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove --attachments --avatars --headers --days 5
+RAILS_ENV=production /home/mastodon/live/bin/tootctl media remove-orphans
+RAILS_ENV=production /home/mastodon/live/bin/tootctl preview_cards remove --days 90
+RAILS_ENV=production /home/mastodon/live/bin/tootctl accounts prune
+RAILS_ENV=production /home/mastodon/live/bin/tootctl accounts cull
+RAILS_ENV=production /home/mastodon/live/bin/tootctl cache clear
+RAILS_ENV=production /home/mastodon/live/bin/tootctl emoji purge --remote-only
+RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount accounts
+RAILS_ENV=production /home/mastodon/live/bin/tootctl cache recount statuses
+</code></pre><h2 id="modo-de-uso">Modo de uso:</h2>
+<p>Tras guardarlo como limpiar.sh podeis meterlo en un Crontab y ejecutarlo una vez al mes o ejecutarlo a mano, como os resulte más práctico.</p>
 
                                 
                                 <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
@@ -309,14 +346,10 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="flex left properties">
         <span class="properties">
             
-            <span class="dt-published hidden">2021-07-19 00:00:00 &#43;0000 UTC</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/conocer-los-procesos-que-mas-memoria-ram-ocupan-en-un-vps/">
+            <span class="dt-published hidden">2024-09-15 13:15:29 &#43;0200 CEST</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/limpiar_instancia_de_mastodon/">
                 
-                
-                
-                
-                
-                hace 1154 días
+                hoy mismo
                 
             </a>
             
