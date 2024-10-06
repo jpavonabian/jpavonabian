@@ -28,95 +28,133 @@ Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de
 &lt;p&gt;¿Tenemos todo? Podemos continuar.&lt;/p&gt;
 &lt;h2 id=&#34;preparando-el-csv&#34;&gt;Preparando el CSV&lt;/h2&gt;
 &lt;p&gt;Un CSV es un archivo que almacena elementos separados por comas en forma de tabla. Lo verás más claro con un ejemplo:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;`
-Nombre,Apellido
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Nombre,Apellido
 José,Pérez
 Antonio,Flóres
-`
-Como ves, en la primera línea ponemos lo que sería la cabecera de la tabla y en las siguientes colocamos los distintos valores. Eso se guarda como archivo con extensión csv y se puede usar para alimentar bases de datos, para leerlo más tarde, para exportar contenido a un formato legible por distintas aplicaciones al ser texto plano...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Como ves, en la primera línea ponemos lo que sería la cabecera de la tabla y en las siguientes colocamos los distintos valores. Eso se guarda como archivo con extensión csv y se puede usar para alimentar bases de datos, para leerlo más tarde, para exportar contenido a un formato legible por distintas aplicaciones al ser texto plano&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Pues un CSV es lo que necesitamos para configurar nuestro cacharro, ya que meter los datos a mano es inaccesible, aunque sería mucho más cómodo y menos propenso a errores.
+Los campos que requiere nuestro CSV son los siguientes:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,Mode,TStep,Comment
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Colocando eso como primera línea en nuestro archivo .csv solo tendríamos que rellenar las siguientes filas con la información de los canales que queremos añadir, dejando vacíos los campos que no nos interesen. Por ejemplo:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;6,ISS,437.800000,-,-0.145000,CTCSS,67.0,67.0,023,NN,FM,5,&amp;#34;ISS Repeater&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;´Significa lo siguiente:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Location&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Es el canal o ubicación en una lista de repetidores. En este caso, el número 6 está asociado a este repetidor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Name&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;ISS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Nombre del repetidor. En este caso, es el repetidor de la Estación Espacial Internacional (International Space Station, ISS).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Frequency&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;437.800000 MHz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Frecuencia de operación del repetidor. En este caso, transmite en 437.8 MHz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Duplex&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;-&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: El valor &amp;ldquo;-&amp;rdquo; indica que la frecuencia es de bajada (downlink), es decir, la frecuencia a la que el repetidor transmite hacia los usuarios. Si estuviera vacío, indicaría que no hay una diferencia entre la frecuencia de transmisión y recepción.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Offset&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;-0.145000 MHz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Diferencia entre la frecuencia de recepción (transmisión del usuario) y la frecuencia de transmisión del repetidor. Aquí se especifica un desplazamiento negativo de 145 kHz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tone&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;CTCSS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Tipo de tono usado para acceder al repetidor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;rToneFreq&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;67.0 Hz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: La frecuencia del tono CTCSS (tono de silenciamiento) para transmisión (TX). Aquí, el tono requerido es 67.0 Hz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;cToneFreq&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;67.0 Hz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: La frecuencia del tono CTCSS para recepción (RX). En este caso, es también 67.0 Hz, coincidiendo con el tono de transmisión.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DtcsCode&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;023&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Código DCS (Digital Coded Squelch) que puede ser usado en lugar del CTCSS. Aquí se especifica el código 023.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DtcsPolarity&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;NN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Polaridad DCS, que indica la dirección de la codificación digital (normal o invertido). Aquí &lt;code&gt;NN&lt;/code&gt; significa normal en transmisión y normal en recepción.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mode&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;FM&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: El modo de transmisión que utiliza el repetidor. En este caso, es FM (Frecuencia Modulada).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TStep&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;5&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Este es el paso de frecuencia o el &amp;ldquo;step&amp;rdquo; que se utiliza al ajustar manualmente la frecuencia. Aquí, es un paso de 5 kHz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Comment&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Valor: &lt;code&gt;&amp;quot;ISS Repeater&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Explicación: Comentario adicional o información descriptiva sobre el repetidor. En este caso, se menciona que es el repetidor de la ISS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Otro ejemplo de repetidor es el siguiente:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;2,&amp;#34;ED7YAX Huelva&amp;#34;,438.625000,-,7.6,Tone,88.5,88.5,023,NN,FM,5,&amp;#34;Huelva&amp;#34;,
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Resuelto el tema de los CSV (&lt;a href=&#34;https://www.repeaterbook.com/&#34;&gt;Repeater Book&lt;/a&gt; es tu amigo si no quieres hacerlos a mano o modificarlos lo mínimo posible) toca subirlos a la radio.&lt;/p&gt;
+&lt;h2 id=&#34;subir-el-csv-a-la-radio&#34;&gt;Subir el CSV a la radio&lt;/h2&gt;
+&lt;p&gt;No es difícil, aún así lo dejo documentado.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Encendemos la radio con el volumen al máximo.&lt;/li&gt;
+&lt;li&gt;Le colocamos el cable de programación y lo enchufamos a un USB libre.
+&amp;ndash; Abrimos CHIRP.&lt;/li&gt;
+&lt;li&gt;Pulsamos alt para ir a la barra de menús y buscamos el menú radio con las flechas.&lt;/li&gt;
+&lt;li&gt;Pulsamos en la opción de descargar desde radio.&lt;/li&gt;
+&lt;li&gt;Seleccionamos el controlador y el puerto.&lt;/li&gt;
+&lt;li&gt;Pulsamos aceptar y esperamos que la barra de porcentaje llegue al 100.&lt;/li&gt;
+&lt;li&gt;Guardamos con CTRL + S la imagen de la radio por si algo sale mal poder restaurarla.&lt;/li&gt;
+&lt;li&gt;Pulsamos CTRL+Tab hasta llegar a la lista de pestañas y seleccionamos la de memoria.&lt;/li&gt;
+&lt;li&gt;Con la pestaña seleccionada, sin hacer nada más que seleccionarla, pulsamos alt para ir a la barra de menú y seleccionamos importar.&lt;/li&gt;
+&lt;li&gt;Localizamos nuestro archivo CSV y volvemos a darle a importar.&lt;/li&gt;
+&lt;li&gt;cuando esté todo listo, volvemos a la barra de menú y le damos a cargar a la radio desde el menú radio, seguimos las instrucciones y si todo va bien y no tenemos ningún error tendremos los canales colocados en nuestra Baofeng y podemos desconectarla.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;y-entonces-para-qué-me-has-hecho-descargar-el-software-de-programación-original&#34;&gt;¿Y entonces para qué me has hecho descargar el software de programación original?&lt;/h2&gt;
+&lt;p&gt;Con CHIRP no podemos acceder a programar todos los parámetros. Con el Software de programación original y la ayuda del navegador de objetos y mucha paciencia podemos toquetear el resto de parámetros. Es bastante intuitivo, y si hemos hecho todo bien, tendremos un .img con la configuración de fábrica que podremos restaurar desde CHIRP desde la opción adecuada de la barra de menú, abriéndolo antes de enchufar la radio y cargándolo sin bajar los datos antes.&lt;/p&gt;
+&lt;p&gt;Espero que este post sirva al menos para poder empezar a trastear con estos equipos.
+Por cierto, el Martes pasado me dieron el indicativo, soy &lt;strong&gt;EA7LEE&lt;/strong&gt;.&lt;/p&gt;
 
-Pues un CSV es lo que necesitamos para configurar nuestro cacharro, ya que meter los datos a mano es inaccesible, aunque sería mucho más cómodo y menos propenso a errores.
-Los campos que requiere nuestro CSV son los siguientes:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,Mode,TStep,Comment&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Colocando eso como primera línea en nuestro archivo .csv solo tendríamos que rellenar las siguientes filas con la información de los canales que queremos añadir, dejando vacíos los campos que no nos interesen. Por ejemplo:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;6,ISS,437.800000,-,-0.145000,CTCSS,67.0,67.0,023,NN,FM,5,&amp;ldquo;ISS Repeater&amp;rdquo;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;´Significa lo siguiente:
-1. **Location**:  
-   - Valor: `6`
-   - Explicación: Es el canal o ubicación en una lista de repetidores. En este caso, el número 6 está asociado a este repetidor.
-
-2. **Name**:  
-   - Valor: `ISS`
-   - Explicación: Nombre del repetidor. En este caso, es el repetidor de la Estación Espacial Internacional (International Space Station, ISS).
-
-3. **Frequency**:  
-   - Valor: `437.800000 MHz`
-   - Explicación: Frecuencia de operación del repetidor. En este caso, transmite en 437.8 MHz.
-
-4. **Duplex**:  
-   - Valor: `-`
-   - Explicación: El valor &amp;#34;-&amp;#34; indica que la frecuencia es de bajada (downlink), es decir, la frecuencia a la que el repetidor transmite hacia los usuarios. Si estuviera vacío, indicaría que no hay una diferencia entre la frecuencia de transmisión y recepción.
-
-5. **Offset**:  
-   - Valor: `-0.145000 MHz`
-   - Explicación: Diferencia entre la frecuencia de recepción (transmisión del usuario) y la frecuencia de transmisión del repetidor. Aquí se especifica un desplazamiento negativo de 145 kHz.
-
-6. **Tone**:  
-   - Valor: `CTCSS`
-   - Explicación: Tipo de tono usado para acceder al repetidor.
-
-7. **rToneFreq**:  
-   - Valor: `67.0 Hz`
-   - Explicación: La frecuencia del tono CTCSS (tono de silenciamiento) para transmisión (TX). Aquí, el tono requerido es 67.0 Hz.
-
-8. **cToneFreq**:  
-   - Valor: `67.0 Hz`
-   - Explicación: La frecuencia del tono CTCSS para recepción (RX). En este caso, es también 67.0 Hz, coincidiendo con el tono de transmisión.
-
-9. **DtcsCode**:  
-   - Valor: `023`
-   - Explicación: Código DCS (Digital Coded Squelch) que puede ser usado en lugar del CTCSS. Aquí se especifica el código 023.
-
-10. **DtcsPolarity**:  
-    - Valor: `NN`
-    - Explicación: Polaridad DCS, que indica la dirección de la codificación digital (normal o invertido). Aquí `NN` significa normal en transmisión y normal en recepción.
-
-11. **Mode**:  
-    - Valor: `FM`
-    - Explicación: El modo de transmisión que utiliza el repetidor. En este caso, es FM (Frecuencia Modulada).
-
-12. **TStep**:  
-    - Valor: `5`
-    - Explicación: Este es el paso de frecuencia o el &amp;#34;step&amp;#34; que se utiliza al ajustar manualmente la frecuencia. Aquí, es un paso de 5 kHz.
-
-13. **Comment**:  
-    - Valor: `&amp;#34;ISS Repeater&amp;#34;`
-    - Explicación: Comentario adicional o información descriptiva sobre el repetidor. En este caso, se menciona que es el repetidor de la ISS.
-
-Otro ejemplo de repetidor es el siguiente:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2,&amp;ldquo;ED7YAX Huelva&amp;rdquo;,438.625000,-,7.6,Tone,88.5,88.5,023,NN,FM,5,&amp;ldquo;Huelva&amp;rdquo;,&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Resuelto el tema de los CSV ([Repeater Book](https://www.repeaterbook.com/) es tu amigo si no quieres hacerlos a mano o modificarlos lo mínimo posible) toca subirlos a la radio.
-## Subir el CSV a la radio
-No es difícil, aún así lo dejo documentado.
-- Encendemos la radio con el volumen al máximo.
-- Le colocamos el cable de programación y lo enchufamos a un USB libre.
--- Abrimos CHIRP.
-- Pulsamos alt para ir a la barra de menús y buscamos el menú radio con las flechas.
-- Pulsamos en la opción de descargar desde radio.
-- Seleccionamos el controlador y el puerto.
-- Pulsamos aceptar y esperamos que la barra de porcentaje llegue al 100.
-- Guardamos con CTRL + S la imagen de la radio por si algo sale mal poder restaurarla.
-- Pulsamos CTRL+Tab hasta llegar a la lista de pestañas y seleccionamos la de memoria.
-- Con la pestaña seleccionada, sin hacer nada más que seleccionarla, pulsamos alt para ir a la barra de menú y seleccionamos importar.
-- Localizamos nuestro archivo CSV y volvemos a darle a importar.
-- cuando esté todo listo, volvemos a la barra de menú y le damos a cargar a la radio desde el menú radio, seguimos las instrucciones y si todo va bien y no tenemos ningún error tendremos los canales colocados en nuestra Baofeng y podemos desconectarla.
-
-## ¿Y entonces para qué me has hecho descargar el software de programación original?
-Con CHIRP no podemos acceder a programar todos los parámetros. Con el Software de programación original y la ayuda del navegador de objetos y mucha paciencia podemos toquetear el resto de parámetros. Es bastante intuitivo, y si hemos hecho todo bien, tendremos un .img con la configuración de fábrica que podremos restaurar desde CHIRP desde la opción adecuada de la barra de menú, abriéndolo antes de enchufar la radio y cargándolo sin bajar los datos antes.
-
-Espero que este post sirva al menos para poder empezar a trastear con estos equipos.
-Por cierto, el Martes pasado me dieron el indicativo, soy **EA7LEE**.
-&lt;/code&gt;&lt;/pre&gt;
       </content:encoded>
     </item>
     

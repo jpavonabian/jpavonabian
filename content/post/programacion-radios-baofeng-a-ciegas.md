@@ -18,11 +18,10 @@ Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de
 ## Preparando el CSV
 Un CSV es un archivo que almacena elementos separados por comas en forma de tabla. Lo verás más claro con un ejemplo:
 ```
-`
 Nombre,Apellido
 José,Pérez
 Antonio,Flóres
-`
+```
 Como ves, en la primera línea ponemos lo que sería la cabecera de la tabla y en las siguientes colocamos los distintos valores. Eso se guarda como archivo con extensión csv y se puede usar para alimentar bases de datos, para leerlo más tarde, para exportar contenido a un formato legible por distintas aplicaciones al ser texto plano...
 
 Pues un CSV es lo que necesitamos para configurar nuestro cacharro, ya que meter los datos a mano es inaccesible, aunque sería mucho más cómodo y menos propenso a errores.
