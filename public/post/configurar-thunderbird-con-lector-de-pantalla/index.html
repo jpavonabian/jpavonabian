@@ -6,7 +6,7 @@
     <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
     <title>
   
-    TTS No Habla - El Blog de un informático que sueña con mejorar el mundo
+    Configurar Thunderbird con Lector de pantalla - El Blog de un informático que sueña con mejorar el mundo
   
 </title>
     
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <ul id="feed__ul">
             <li class="feed__li h-entry">
                 <div class="feed__content">
-                    <time class="hidden dt-published">2024-06-28 00:00:00 &#43;0000 UTC</time>
+                    <time class="hidden dt-published">2024-10-26 00:00:00 &#43;0000 UTC</time>
                     <div class="flex properties__row ">
                         <div rel="author" class="flex left p-author h-card">
                             <img class="u-photo"
@@ -279,13 +279,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </p>
                                 <p class="properties">
                                     
-                                    Jun 28, 2024
+                                    Oct 26, 2024
                                 </p>
                             </div>
                         </div>
                         <div class="flex right properties">
                             
-                            <a class="icon u-url" href="https://jesuspavonabian.es/post/tts-no-habla/">
+                            <a class="icon u-url" href="https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-bookmark">
@@ -296,15 +296,33 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     
                             <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/tts-no-habla/">TTS No Habla</a></h2>
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/">Configurar Thunderbird con Lector de pantalla</a></h2>
                                 
-                                <p>Los otros días me encontré con que las voces de Microsoft no reproducían contenido, aparentemente.</p>
-<p>Tras mucho darle vueltas y Googlear en el soporte de Microsoft no encontré nada y acabé bastante frustrado.</p>
-<p>Resulta que al final, en contra de lo que yo pensaba, sí que se reproducían los audios que generaban esas voces. Tuve que hacerme un Script en Python para poder probarlo.</p>
-<p>Entonces, si los audios se reproducían, ¿por qué yo no escuchaba nada?</p>
-<p>La respuesta estaba en el configurador de Sapi, que no puede estar más escondido. Se había cambiado el dispositivo de salida de estas voces.</p>
-<p>¿La solución? ir a &ldquo;C:\Windows\SysWOW64\Speech\SpeechUX\sapi.cpl&rdquo; y cambiar el dispositivo de salida al predeterminado del sistema.</p>
-<p>¡Espero que a alguien le sirva este minipost!</p>
+                                <p>Hace unos días me instalé Thunderbird porque estaba harto de Outlook. Para mi gusto es lento y no termina de ir bien y no me gusta el correo web.</p>
+<p>Lo había intentado usar varias veces pero siempre me pasaba lo mismo. Demasiadas cosas en pantalla y la navegación se me hacía engorrosa.</p>
+<p>Por suerte encontré en Mastodon instrucciones para dejarlo perfecto para el uso con un lector de pantallas.</p>
+<p>Las dejo por aquí. Pueden hacerse en el orden que a cada uno le sea más cómodo.</p>
+<ol>
+<li>Añade una cuenta. El asistente para ello aparecerá al iniciar el programa.</li>
+<li>Cuando veas las carpetas de bandeja de entrada, borradores y demás estarás en la pantalla principal de Thunderbird. Pulsa F8 para desactivar la vista previa, tu yo futuro te lo agradecerá.</li>
+<li>Abre el menú herramientas pulsando Alt+T, luego pulsa flecha arriba hasta llegar a Ajustes y pulsa Enter.</li>
+<li>A continuación busca los siguientes elementos y asegúrate de que están configurados como se indica.</li>
+</ol>
+<ul>
+<li>Bajo el encabezado General encontrarás una casilla llamada &ldquo;Al iniciarse Thunderbird, mostrar la página de inicio en el área de mensajes&rdquo;. Desactívala. Esto eliminará elementos innecesarios en la pantalla principal.</li>
+<li>Bajo el mismo encabezado encontrarás una casilla llamada &ldquo;Cuando se minimiza Thunderbird, moverlo a la bandeja del sistema&rdquo;. Si quieres encontrarlo más fácil, desmárcala. A gusto del consumidor.</li>
+<li>En el encabezado Idioma y apariencia encontrarás una casilla llamada &ldquo;Ocultar la barra de título de la ventana del sistema&rdquo;. Desmárcala. Siempre es bueno obtener toda la información posible.</li>
+<li>En el encabezado Mensajes entrantes encontrarás opciones para modificar el comportamiento del programa. A mi me gusta que las cosas hagan el mínimo de ruído posible, así que tengo desmarcada la casilla de &ldquo;Mostrar una alerta&rdquo; y marcadas las casillas &ldquo;Usar la notificación del sistema&rdquo; y &ldquo;Reproducir un sonido&rdquo;.</li>
+<li>Bajo el encabezado Lectura y visualización marca la casilla &ldquo;Abrir mensajes Una ventana mens. nueva&rdquo; y si quieres, marca &ldquo;marcar automáticamente mensajes como leídos tras mostrarlos&rdquo;, a gusto del consumidor. Marca también opcionalmente la casilla &ldquo;Cerrar ventana/pestaña del mensaje al moverlo o eliminarlo&rdquo;.</li>
+<li>Cierra la ventana con CTRL + W.</li>
+</ul>
+<ol start="6">
+<li>Abre el menú ver con Alt+V y pulsa la flecha derecha en el menú barras de herramientas. Desmarca todo salvo la barra de estado. Esto eliminará cosas innecesarias de la ventana principal.</li>
+<li>Vuelve al menú Ver con Alt+V y pulsa flecha derecha en Disposición. Pulsa enter en Vista clásica. Esto optimizará la ventana para lector de pantalla.</li>
+<li>En la ventana principal de Thunderbird  pulsa Shift+Tab hasta que encuentres un botón llamado &ldquo;Opciones de visualización de la lista de mensajes&rdquo;. Púlsalo y aparecerá un menú de contexto. Marca la opción &ldquo;Vista de tabla&rdquo;.</li>
+<li>Finalmente pulsa tab hasta que encuentres una tabla con cabeceras de columna. Si pulsas Alt + Flechas podrás moverlas de sitio, lo que permitirá cambiar la forma en la que aparecerán los distintos datos de los mensajes. si pulsas Enter sobre uno de esos botones, los mensajes se ordenarán por esa columna.</li>
+</ol>
+<p>¡Eso es todo!</p>
 
                                 
                                 <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
@@ -316,14 +334,10 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="flex left properties">
         <span class="properties">
             
-            <span class="dt-published hidden">2024-06-28 00:00:00 &#43;0000 UTC</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/tts-no-habla/">
+            <span class="dt-published hidden">2024-10-26 00:00:00 &#43;0000 UTC</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/">
                 
-                
-                
-                
-                
-                hace 120 días
+                hoy mismo
                 
             </a>
             

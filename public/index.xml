@@ -8,7 +8,47 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Sun, 06 Oct 2024 16:47:59 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configurar Thunderbird con Lector de pantalla</title>
+      <link>https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/</link>
+      <pubDate>Sat, 26 Oct 2024 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/</guid>
+      <description>Hace unos días me instalé Thunderbird porque estaba harto de Outlook. Para mi gusto es lento y no termina de ir bien y no me gusta el correo web.
+Lo había intentado usar varias veces pero siempre me pasaba lo mismo. Demasiadas cosas en pantalla y la navegación se me hacía engorrosa.
+Por suerte encontré en Mastodon instrucciones para dejarlo perfecto para el uso con un lector de pantallas.
+Las dejo por aquí.</description>
+      <content:encoded>
+      &lt;p&gt;Hace unos días me instalé Thunderbird porque estaba harto de Outlook. Para mi gusto es lento y no termina de ir bien y no me gusta el correo web.&lt;/p&gt;
+&lt;p&gt;Lo había intentado usar varias veces pero siempre me pasaba lo mismo. Demasiadas cosas en pantalla y la navegación se me hacía engorrosa.&lt;/p&gt;
+&lt;p&gt;Por suerte encontré en Mastodon instrucciones para dejarlo perfecto para el uso con un lector de pantallas.&lt;/p&gt;
+&lt;p&gt;Las dejo por aquí. Pueden hacerse en el orden que a cada uno le sea más cómodo.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Añade una cuenta. El asistente para ello aparecerá al iniciar el programa.&lt;/li&gt;
+&lt;li&gt;Cuando veas las carpetas de bandeja de entrada, borradores y demás estarás en la pantalla principal de Thunderbird. Pulsa F8 para desactivar la vista previa, tu yo futuro te lo agradecerá.&lt;/li&gt;
+&lt;li&gt;Abre el menú herramientas pulsando Alt+T, luego pulsa flecha arriba hasta llegar a Ajustes y pulsa Enter.&lt;/li&gt;
+&lt;li&gt;A continuación busca los siguientes elementos y asegúrate de que están configurados como se indica.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Bajo el encabezado General encontrarás una casilla llamada &amp;ldquo;Al iniciarse Thunderbird, mostrar la página de inicio en el área de mensajes&amp;rdquo;. Desactívala. Esto eliminará elementos innecesarios en la pantalla principal.&lt;/li&gt;
+&lt;li&gt;Bajo el mismo encabezado encontrarás una casilla llamada &amp;ldquo;Cuando se minimiza Thunderbird, moverlo a la bandeja del sistema&amp;rdquo;. Si quieres encontrarlo más fácil, desmárcala. A gusto del consumidor.&lt;/li&gt;
+&lt;li&gt;En el encabezado Idioma y apariencia encontrarás una casilla llamada &amp;ldquo;Ocultar la barra de título de la ventana del sistema&amp;rdquo;. Desmárcala. Siempre es bueno obtener toda la información posible.&lt;/li&gt;
+&lt;li&gt;En el encabezado Mensajes entrantes encontrarás opciones para modificar el comportamiento del programa. A mi me gusta que las cosas hagan el mínimo de ruído posible, así que tengo desmarcada la casilla de &amp;ldquo;Mostrar una alerta&amp;rdquo; y marcadas las casillas &amp;ldquo;Usar la notificación del sistema&amp;rdquo; y &amp;ldquo;Reproducir un sonido&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Bajo el encabezado Lectura y visualización marca la casilla &amp;ldquo;Abrir mensajes Una ventana mens. nueva&amp;rdquo; y si quieres, marca &amp;ldquo;marcar automáticamente mensajes como leídos tras mostrarlos&amp;rdquo;, a gusto del consumidor. Marca también opcionalmente la casilla &amp;ldquo;Cerrar ventana/pestaña del mensaje al moverlo o eliminarlo&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Cierra la ventana con CTRL + W.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Abre el menú ver con Alt+V y pulsa la flecha derecha en el menú barras de herramientas. Desmarca todo salvo la barra de estado. Esto eliminará cosas innecesarias de la ventana principal.&lt;/li&gt;
+&lt;li&gt;Vuelve al menú Ver con Alt+V y pulsa flecha derecha en Disposición. Pulsa enter en Vista clásica. Esto optimizará la ventana para lector de pantalla.&lt;/li&gt;
+&lt;li&gt;En la ventana principal de Thunderbird  pulsa Shift+Tab hasta que encuentres un botón llamado &amp;ldquo;Opciones de visualización de la lista de mensajes&amp;rdquo;. Púlsalo y aparecerá un menú de contexto. Marca la opción &amp;ldquo;Vista de tabla&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Finalmente pulsa tab hasta que encuentres una tabla con cabeceras de columna. Si pulsas Alt + Flechas podrás moverlas de sitio, lo que permitirá cambiar la forma en la que aparecerán los distintos datos de los mensajes. si pulsas Enter sobre uno de esos botones, los mensajes se ordenarán por esa columna.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;¡Eso es todo!&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Programación de radios Baofeng a ciegas</title>
       <link>https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/</link>
