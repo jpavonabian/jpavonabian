@@ -9,7 +9,7 @@ draft: false
 ---
 Llevo ya un tiempo con el indicativo, unos dos meses y pico. Y aunque menos de lo que me gustaría, he podido salir al aire... Más o menos. Os cuento mis peripecias.
 
-## Primeros compras
+## Primeras compras
 Poner una antena en la azotea no es una opción ahora mismo. en su momento me planteé pillar una con base magnética y plantarla en el balcón, pero he decidido esperar. estoy en trámites de comprarme un piso, no tiene sentido poner nada aquí si me voy a acabar yendo. Esto  me limita muchísimo. Solo puedo acceder a las bandas de 2M y 70CM y a los modos digitales. Me encantaría poder salir en HF (soy bastante ambicioso, quiero acceso a la mayoría de bandas) pero bueno, ya habrá tiempo para mejorar.
 
 De momento me he pillado lo siguiente:
