@@ -32,6 +32,7 @@ También me registré en [eQSL.cc](https://www.eqsl.cc/), un sitio web para regi
 Finalmente me registré en [LoTW](https://lotw.arrl.org/) que es el sitio que se suele tomar como referencia para considerar que un contacto es válido.
 
 Para gestionar todo esto utilizo [Amateur Contact Log](http://www.n3fjp.com/aclog.html) que es bueno, bonito y accesible. Es de pago, pero merece la pena cuando le pillas el tranquillo (y eso que todavía no puedo sacarle todo el partido porque no tengo acceso a HF). El colega EA3GZA escribió [un post](https://ea3gza.es/recomendacion-de-libro-de-guardia-accesible-amateur-contact-log/) comentando las bondades del programa.
+
 También he desarrollado un complemento para NVDA que en mi caso particular me facilita un poco la vida. Se llama [Amateur Radio Add-on for NVDA](https://github.com/jpavonabian/AMRadio-Addon/) y lo iré actualizando conforme lo vaya necesitando. ¡Se aceptan ideas y Pull Requests!
 
 Para el DMR utilizo bien sea el walkie o si quiero limitarme a estar en QAP (a la escucha) dejo Mumble abierto, no me gusta usarlo para salir al aire, suena fatal. En DMR conseguí mi primer diploma.
