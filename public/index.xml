@@ -8,7 +8,43 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Sat, 26 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EA7LEE: Salir al aire</title>
+      <link>https://jesuspavonabian.es/post/ea7lee_salir_al_aire/</link>
+      <pubDate>Thu, 19 Dec 2024 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/ea7lee_salir_al_aire/</guid>
+      <description>Llevo ya un tiempo con el indicativo, unos dos meses y pico. Y aunque menos de lo que me gustaría, he podido salir al aire&amp;hellip; Más o menos. Os cuento mis peripecias.
+Primeros compras Poner una antena en la azotea no es una opción ahora mismo. en su momento me planteé pillar una con base magnética y plantarla en el balcón, pero he decidido esperar. estoy en trámites de comprarme un piso, no tiene sentido poner nada aquí si me voy a acabar yendo.</description>
+      <content:encoded>
+      &lt;p&gt;Llevo ya un tiempo con el indicativo, unos dos meses y pico. Y aunque menos de lo que me gustaría, he podido salir al aire&amp;hellip; Más o menos. Os cuento mis peripecias.&lt;/p&gt;
+&lt;h2 id=&#34;primeros-compras&#34;&gt;Primeros compras&lt;/h2&gt;
+&lt;p&gt;Poner una antena en la azotea no es una opción ahora mismo. en su momento me planteé pillar una con base magnética y plantarla en el balcón, pero he decidido esperar. estoy en trámites de comprarme un piso, no tiene sentido poner nada aquí si me voy a acabar yendo. Esto  me limita muchísimo. Solo puedo acceder a las bandas de 2M y 70CM y a los modos digitales. Me encantaría poder salir en HF (soy bastante ambicioso, quiero acceso a la mayoría de bandas) pero bueno, ya habrá tiempo para mejorar.&lt;/p&gt;
+&lt;p&gt;De momento me he pillado lo siguiente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.turiaprint.es/productos/tarjetas-de-pvc-de-radioaficionado/&#34;&gt;Mi tarjeta de radioaficionado en PVC&lt;/a&gt; para poderla llevar en la cartera por si acaso.&lt;/li&gt;
+&lt;li&gt;Un walkie baratillo para acceder a UHF/VHF, con DMR que integra algo parecido a un lector de pantallas (juraría que sin intención) instalando el Firmware OpenGD77 (viene con su cable de programación): &lt;a href=&#34;https://amzn.to/3Og8qlD&#34;&gt;Retevis RT3S DMR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Una antena medio decente, que la de porra del Retevis es más mala que un dolor: &lt;a href=&#34;https://amzn.to/4hySRTm&#34;&gt;Retevis RHD771 SMA-M Walkie Talkie Antena Suave Banda Dual VHF/UHF&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Un Hotspot para DMR ya ensamblado que aquí en Huelva no hay repetidor DMR: &lt;a href=&#34;https://amzn.to/3UCxeaO&#34;&gt;AURSINC MMDVM Hotspot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;como he mencionado, el Retevis RT3S necesita instalar el firmware &lt;a href=&#34;https://www.opengd77.com/&#34;&gt;OpenGD77&lt;/a&gt; para hacerlo hablar. No es difícil, pero sí requiere un poco de tiempo.
+&lt;a href=&#34;https://www.opengd77.com/viewtopic.php?f=19&amp;amp;t=2380&#34;&gt;La guía oficial de instalación de OpenGD77 para Retevis RT3S se puede encontrar aquí&lt;/a&gt; y &lt;a href=&#34;http://spencerweb.net/Downloads/OpenUV380/openuv380.html&#34;&gt;una guía de instalación de OpenGD77 para Retevis RT3S orientada a usuarios de lector de pantalla se puede encontrar aquí&lt;/a&gt;. Yo recomiendo echarle un vistazo a ambas guías, pues en la primera se encontrará tanto lo necesario para devolver la radio a su Firmware original si queremos hacerlo como el controlador necesario para que Windows 11 detecte el cable de programación.&lt;/p&gt;
+&lt;p&gt;Por desgracia, aunque el &lt;a href=&#34;https://www.opengd77.com/&#34;&gt;OpenGD77&lt;/a&gt; está en español, las guías de instalación están en inglés. Si lo necesitais, sentíos libres de contactarme y trataré de echar una mano.&lt;/p&gt;
+&lt;h2 id=&#34;software-y-servicios&#34;&gt;Software y servicios&lt;/h2&gt;
+&lt;p&gt;Lo primero que hice fue registrarme en &lt;a href=&#34;https://www.qrz.com/&#34;&gt;qrz.com&lt;/a&gt;. Es donde se suele buscar el indicativo de la persona con la que hablas. Allí suele aparecer cómo la persona quiere recibir las QSL (tarjetas de confirmación de contacto). También permite llevar un libro de guardia.&lt;/p&gt;
+&lt;p&gt;También me registré en &lt;a href=&#34;https://www.eqsl.cc/&#34;&gt;eQSL.cc&lt;/a&gt;, un sitio web para registrar y confirmar eQSL (lo mismo que las QSL pero en formato electrónico).&lt;/p&gt;
+&lt;p&gt;Finalmente me registré en &lt;a href=&#34;https://lotw.arrl.org/&#34;&gt;LoTW&lt;/a&gt; que es el sitio que se suele tomar como referencia para considerar que un contacto es válido.&lt;/p&gt;
+&lt;p&gt;Para gestionar todo esto utilizo &lt;a href=&#34;http://www.n3fjp.com/aclog.html&#34;&gt;Amateur Contact Log&lt;/a&gt; que es bueno, bonito y accesible. Es de pago, pero merece la pena cuando le pillas el tranquillo (y eso que todavía no puedo sacarle todo el partido porque no tengo acceso a HF). El colega EA3GZA escribió &lt;a href=&#34;https://ea3gza.es/recomendacion-de-libro-de-guardia-accesible-amateur-contact-log/&#34;&gt;un post&lt;/a&gt; comentando las bondades del programa.
+También he desarrollado un complemento para NVDA que en mi caso particular me facilita un poco la vida. Se llama &lt;a href=&#34;https://github.com/jpavonabian/AMRadio-Addon/&#34;&gt;Amateur Radio Add-on for NVDA&lt;/a&gt; y lo iré actualizando conforme lo vaya necesitando. ¡Se aceptan ideas y Pull Requests!&lt;/p&gt;
+&lt;p&gt;Para el DMR utilizo bien sea el walkie o si quiero limitarme a estar en QAP (a la escucha) dejo Mumble abierto, no me gusta usarlo para salir al aire, suena fatal. En DMR conseguí mi primer diploma.&lt;/p&gt;
+&lt;p&gt;Suelo usar bastante Echolink. Descubrí la conferencia &lt;em&gt;AELD-ESP&lt;/em&gt;, hacen actividades curiosas y allí conseguí mi primer contacto con un japonés. Me habría molado que no hubiese sido a través de un modo digital, pero menos da una piedra. También me suelo quedar en QAP en la conferencia &lt;em&gt;EA3SPAIN&lt;/em&gt;, ojalá tener algo así por aquí. Tienen montado un tinglao curioso. Nuevamente EA3GZA &lt;a href=&#34;https://ea3gza.es/es-el-echolink-accesible-para-las-personas-ciegas/&#34;&gt;escribió un post sobre el Echolink&lt;/a&gt;, recomiendo bastante su lectura.&lt;/p&gt;
+&lt;p&gt;Creo que no me dejo nada. ¡Nos leemos en la próxima entrada!&lt;/p&gt;
+&lt;p&gt;73, EA7LEE&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Configurar Thunderbird con Lector de pantalla</title>
       <link>https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/</link>
