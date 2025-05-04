@@ -8,7 +8,7 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Thu, 19 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 May 2025 15:15:05 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>EA7LEE: Salir al aire</title>
       <link>https://jesuspavonabian.es/post/ea7lee_salir_al_aire/</link>
@@ -80,7 +80,7 @@ Las dejo por aquí.</description>
 &lt;li&gt;En la ventana principal de Thunderbird  pulsa Shift+Tab hasta que encuentres un botón llamado &amp;ldquo;Opciones de visualización de la lista de mensajes&amp;rdquo;. Púlsalo y aparecerá un menú de contexto. Marca la opción &amp;ldquo;Vista de tabla&amp;rdquo;.&lt;/li&gt;
 &lt;li&gt;Finalmente pulsa tab hasta que encuentres una tabla con cabeceras de columna. Si pulsas Alt + Flechas podrás moverlas de sitio, lo que permitirá cambiar la forma en la que aparecerán los distintos datos de los mensajes. si pulsas Enter sobre uno de esos botones, los mensajes se ordenarán por esa columna.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;¡Eso es todo!&lt;/p&gt;
+&lt;p&gt;¡Eso es todo! Ahora podrás utilizar F6 y Shift+F6 para moverte por las distintas opciones relevantes del programa en lugar del tabulwador, lo que agilizará la navegación.&lt;/p&gt;
 
       </content:encoded>
     </item>

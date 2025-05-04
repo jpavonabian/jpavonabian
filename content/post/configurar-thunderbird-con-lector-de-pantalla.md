@@ -31,4 +31,4 @@ Las dejo por aquí. Pueden hacerse en el orden que a cada uno le sea más cómod
 8. En la ventana principal de Thunderbird  pulsa Shift+Tab hasta que encuentres un botón llamado "Opciones de visualización de la lista de mensajes". Púlsalo y aparecerá un menú de contexto. Marca la opción "Vista de tabla".
 9. Finalmente pulsa tab hasta que encuentres una tabla con cabeceras de columna. Si pulsas Alt + Flechas podrás moverlas de sitio, lo que permitirá cambiar la forma en la que aparecerán los distintos datos de los mensajes. si pulsas Enter sobre uno de esos botones, los mensajes se ordenarán por esa columna.
 
-¡Eso es todo!
+¡Eso es todo! Ahora podrás utilizar F6 y Shift+F6 para moverte por las distintas opciones relevantes del programa en lugar del tabulwador, lo que agilizará la navegación.

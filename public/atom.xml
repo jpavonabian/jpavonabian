@@ -2,7 +2,7 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2024-12-19T00:00:00+00:00</updated>
+  <updated>2025-05-01T15:15:05+02:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
@@ -79,7 +79,7 @@
 <li>En la ventana principal de Thunderbird  pulsa Shift+Tab hasta que encuentres un botón llamado &ldquo;Opciones de visualización de la lista de mensajes&rdquo;. Púlsalo y aparecerá un menú de contexto. Marca la opción &ldquo;Vista de tabla&rdquo;.</li>
 <li>Finalmente pulsa tab hasta que encuentres una tabla con cabeceras de columna. Si pulsas Alt + Flechas podrás moverlas de sitio, lo que permitirá cambiar la forma en la que aparecerán los distintos datos de los mensajes. si pulsas Enter sobre uno de esos botones, los mensajes se ordenarán por esa columna.</li>
 </ol>
-<p>¡Eso es todo!</p>
+<p>¡Eso es todo! Ahora podrás utilizar F6 y Shift+F6 para moverte por las distintas opciones relevantes del programa en lugar del tabulwador, lo que agilizará la navegación.</p>
 ]]></content>
     
   </entry>
