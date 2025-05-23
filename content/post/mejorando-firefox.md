@@ -31,6 +31,4 @@ Aquí va un resumen de los pasos generales, que no un tutorial:
 3. Pegas el contenido de esos archivos en el archivo `user.js` de tu perfil de Firefox.
 4. Reinicias Firefox.
 
-## ¿Merece la pena?
-
-Pues... No lo sé. Depende de ti. Yo uso Fastfox y Securefox y me va bien.
+Y ya estaría. No es difícil de instalar, aunque aviso que el contenido del repositorio está en inglés.
