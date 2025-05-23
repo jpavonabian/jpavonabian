@@ -6,7 +6,7 @@
     <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
     <title>
   
-    Instalar un cliente Torrent en una raspberry Pi - El Blog de un informático que sueña con mejorar el mundo
+    Mejorando Firefox - El Blog de un informático que sueña con mejorar el mundo
   
 </title>
     
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <ul id="feed__ul">
             <li class="feed__li h-entry">
                 <div class="feed__content">
-                    <time class="hidden dt-published">2024-07-02 00:00:00 &#43;0000 UTC</time>
+                    <time class="hidden dt-published">2025-05-23 00:00:00 &#43;0000 UTC</time>
                     <div class="flex properties__row ">
                         <div rel="author" class="flex left p-author h-card">
                             <img class="u-photo"
@@ -279,13 +279,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </p>
                                 <p class="properties">
                                     
-                                    Jul 02, 2024
+                                    May 23, 2025
                                 </p>
                             </div>
                         </div>
                         <div class="flex right properties">
                             
-                            <a class="icon u-url" href="https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi/">
+                            <a class="icon u-url" href="https://jesuspavonabian.es/post/mejorando-firefox/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-bookmark">
@@ -296,61 +296,29 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     
                             <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi/">Instalar un cliente Torrent en una raspberry Pi</a></h2>
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/mejorando-firefox/">Mejorando Firefox</a></h2>
                                 
-                                <p>¡Buenas!
-Hoy os traigo un tutorial para instalar y configurar un cliente Torrent en una Raspberry Pi. Lo tenía configurado desde hace un par de meses pero soy un desastre, así que he decidido convertir mis apuntes en un tutorial para que no se me olvide. Con suerte le vale a alguien.</p>
-<p>Utilizaremos Transmission, un cliente Torrent ligero y eficiente. También configuraremos un disco duro externo como almacenamiento para nuestras descargas.</p>
-<h3 id="paso-1-conectar-el-disco-duro">Paso 1: Conectar el Disco Duro</h3>
-<p>Si vamos a usar un disco duro externo para almacenar nuestras descargas, primero debemos conectarlo a la Raspberry Pi y verificar su ubicación en el sistema. Abrimos una terminal y utilizamos el siguiente comando para identificar el disco duro:</p>
-<p><code>lsblk -fm</code></p>
-<p>En mi caso, el disco duro está ubicado en /dev/sda1.</p>
-<h3 id="paso-2-montar-el-disco-duro">Paso 2: Montar el Disco Duro</h3>
-<p>Montamos el disco duro en el sistema editando el archivo /etc/fstab:</p>
-<p>`sudo nano /etc/fstab```</p>
-<p>Añadimos la siguiente línea al final del archivo para montar el disco duro en /mnt/disco (puede cambiarse &ldquo;disco&rdquo; por otro nombre si se prefiere):</p>
-<p><code>/dev/sda1 /mnt/disco ntfs defaults 0 0</code></p>
-<p>Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER. Luego, reiniciamos el sistema para aplicar los cambios:</p>
-<p><code>sudo reboot</code></p>
-<p>Asumiremos que la ruta de nuestro disco es /mnt/disco.</p>
-<h3 id="paso-3-instalar-transmission">Paso 3: Instalar Transmission</h3>
-<p>Una vez que el disco duro está montado, procedemos a instalar Transmission:</p>
-<p><code>sudo apt install transmission-daemon</code></p>
-<p>Detenemos el servicio de Transmission para configurarlo:</p>
-<p><code>sudo service transmission-daemon stop</code></p>
-<h3 id="paso-4-configurar-transmission">Paso 4: Configurar Transmission</h3>
-<p>Editamos el archivo de configuración de Transmission:</p>
-<p><code>sudo nano /etc/transmission-daemon/settings.json</code></p>
-<p>Realizamos las siguientes modificaciones:</p>
-<pre tabindex="0"><code>Directorio de descargas: Configuramos la ruta donde se guardarán nuestros archivos descargados.
-&#34;download-dir&#34;: &#34;/mnt/disco/descargas&#34;,
-Número máximo de peers globales.
-&#34;max-peers-global&#34;: 200,
-Puerto de conexión.
-&#34;peer-port&#34;: 51413,
-Límite de peers por torrent.
-&#34;peer-limit-per-torrent&#34;: 50,
-Usuario y contraseña para la interfaz web: Configuramos el usuario y la contraseña (se cifrará automáticamente al iniciar el servicio).
-&#34;rpc-username&#34;: &#34;USUARIO&#34;,
-&#34;rpc-password&#34;: &#34;CONTRASEÑA&#34;,
-Puerto para la interfaz web.
-&#34;rpc-port&#34;: 9091,
-Whitelist para la interfaz web: Desactivamos la whitelist para permitir el acceso a la interfaz web desde cualquier IP.
-&#34;rpc-whitelist-enabled&#34;: false,
-</code></pre><p>Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER.</p>
-<h3 id="paso-5-gestionar-permisos">Paso 5: Gestionar Permisos</h3>
-<p>Editamos el archivo de inicio de Transmission para cambiar el usuario a root:</p>
-<p><code>sudo nano /etc/init.d/transmission-daemon</code></p>
-<p>Modificamos la línea USER=debian-transmission a USER=root.
-Guardamos los cambios presionando Control + X, tecleamos Y y presionamos ENTER.
-A continuación, cambiamos el propietario y los permisos del directorio del disco:</p>
-<p><code>sudo chown -R root /mnt/disco</code>
-<code>sudo chmod -R 755 /mnt/disco</code></p>
-<h3 id="paso-6-iniciar-transmission">Paso 6: Iniciar Transmission</h3>
-<p>Finalmente, iniciamos el servicio de Transmission:</p>
-<p><code>sudo service transmission-daemon start</code></p>
-<h3 id="paso-7-disfrutar">Paso 7: Disfrutar</h3>
-<p>¡Eso es todo! Ahora podemos acceder a http://ip:9091 e iniciar sesión con las credenciales que pusimos en el archivo de configuración.</p>
+                                <p>Como sabeis, uso Firefox desde hace tiempo. Es mi navegador de cabecera, como ya conté en <a href="https://jesuspavonabian.es/post/que-hartura/">esta maravillosa entrada</a>.</p>
+<p>Hace un tiempo navegando por Mastodon me topé con una joyita llamada <a href="https://github.com/yokoffing/Betterfox">Betterfox</a>. ¿La idea? Hacer que Firefox sea más rápido, más privado y por supuesto, más tonto, que siempre se agradece.</p>
+<h2 id="qué-es-betterfox">¿Qué es Betterfox?</h2>
+<p><a href="https://github.com/yokoffing/Betterfox">Betterfox</a> es un conjunto de ficheros que modifican los ajustes de Firefox aplicando JavaScript al perfil de usuario.</p>
+<p>Se divide en varias secciones, según el tipo de usuario que seas o según lo que quieras instalar. Las principales son las siguientes:</p>
+<ul>
+<li>Fastfox: Configuraciones para que el navegador deje de arrastrarse como una babosa coja.</li>
+<li>Securefox: Configuraciones para mejorar la seguridad, el rastreo y esas cosas.</li>
+<li>Peskyfox: para quitar del medio las gilipolleces. Elimina distracciones, no la he probado.</li>
+<li>Smoothfox: trastea con las animaciones. Tampoco la he probado, cosas de no ver.</li>
+</ul>
+<h2 id="cómo-se-instala">¿Cómo se instala?</h2>
+<p>Aquí va un resumen de los pasos generales, que no un tutorial:</p>
+<ol>
+<li>Haces una copia de seguridad de tu perfil por si la pifias.</li>
+<li>Copias del <a href="https://github.com/yokoffing/Betterfox">repositorio</a> los archivos que quieras, puedes instalar uno, varios o todos.</li>
+<li>Pegas el contenido de esos archivos en el archivo <code>user.js</code> de tu perfil de Firefox.</li>
+<li>Reinicias Firefox.</li>
+</ol>
+<h2 id="merece-la-pena">¿Merece la pena?</h2>
+<p>Pues&hellip; No lo sé. Depende de ti. Yo uso Fastfox y Securefox y me va bien.</p>
 
                                 
                                 <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
@@ -362,14 +330,10 @@ A continuación, cambiamos el propietario y los permisos del directorio del disc
     <div class="flex left properties">
         <span class="properties">
             
-            <span class="dt-published hidden">2024-07-02 00:00:00 &#43;0000 UTC</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi/">
+            <span class="dt-published hidden">2025-05-23 00:00:00 &#43;0000 UTC</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/mejorando-firefox/">
                 
-                
-                
-                
-                
-                hace 325 días
+                hoy mismo
                 
             </a>
             

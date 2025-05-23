@@ -2,13 +2,47 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2025-05-01T15:15:05+02:00</updated>
+  <updated>2025-05-23T00:00:00+00:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Mejorando Firefox]]></title>
+    <link href="https://jesuspavonabian.es/post/mejorando-firefox/"/>
+    <id>https://jesuspavonabian.es/post/mejorando-firefox/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2025-05-23T00:00:00+00:00</published>
+    <updated>2025-05-23T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Como sabeis, uso Firefox desde hace tiempo. Es mi navegador de cabecera, como ya conté en <a href="https://jesuspavonabian.es/post/que-hartura/">esta maravillosa entrada</a>.</p>
+<p>Hace un tiempo navegando por Mastodon me topé con una joyita llamada <a href="https://github.com/yokoffing/Betterfox">Betterfox</a>. ¿La idea? Hacer que Firefox sea más rápido, más privado y por supuesto, más tonto, que siempre se agradece.</p>
+<h2 id="qué-es-betterfox">¿Qué es Betterfox?</h2>
+<p><a href="https://github.com/yokoffing/Betterfox">Betterfox</a> es un conjunto de ficheros que modifican los ajustes de Firefox aplicando JavaScript al perfil de usuario.</p>
+<p>Se divide en varias secciones, según el tipo de usuario que seas o según lo que quieras instalar. Las principales son las siguientes:</p>
+<ul>
+<li>Fastfox: Configuraciones para que el navegador deje de arrastrarse como una babosa coja.</li>
+<li>Securefox: Configuraciones para mejorar la seguridad, el rastreo y esas cosas.</li>
+<li>Peskyfox: para quitar del medio las gilipolleces. Elimina distracciones, no la he probado.</li>
+<li>Smoothfox: trastea con las animaciones. Tampoco la he probado, cosas de no ver.</li>
+</ul>
+<h2 id="cómo-se-instala">¿Cómo se instala?</h2>
+<p>Aquí va un resumen de los pasos generales, que no un tutorial:</p>
+<ol>
+<li>Haces una copia de seguridad de tu perfil por si la pifias.</li>
+<li>Copias del <a href="https://github.com/yokoffing/Betterfox">repositorio</a> los archivos que quieras, puedes instalar uno, varios o todos.</li>
+<li>Pegas el contenido de esos archivos en el archivo <code>user.js</code> de tu perfil de Firefox.</li>
+<li>Reinicias Firefox.</li>
+</ol>
+<h2 id="merece-la-pena">¿Merece la pena?</h2>
+<p>Pues&hellip; No lo sé. Depende de ti. Yo uso Fastfox y Securefox y me va bien.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[EA7LEE: Salir al aire]]></title>
     <link href="https://jesuspavonabian.es/post/ea7lee_salir_al_aire/"/>
