@@ -9,7 +9,7 @@ draft: false
 ---
 Desde que hice [el primer post de salir al aire](https://jesuspavonabian.es/post/ea7lee_salir_al_aire/) han pasado unos meses ya. Me he mudado y ahora tengo opciones para montar una estación base. De hecho, estoy en ello.
 
-## ¿Qué voy a montar?
+### ¿Qué voy a montar?
 En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos dicen que siempre y cuando  no moleste que haga lo que quiera, que no van a poner pegas, así que solo me queda que Teleco me diga que sí a la instalación.
 
 Como transceptor el [YAESU FT-991A](https://sonicolor.es/yaesu-ft-991a-portable-movil-c4fm-ams-12520.html) que por supuesto, no es accesible y hay que hacer algo de magia para poder usarlo.
@@ -24,9 +24,11 @@ Hasta tengo mirado el [cable USB que irá desde la radio al ordenador](https://a
 
 Para U/VHF montaré una [diamond x50](https://sonicolor.es/diamond-x-50-base-12131.html) y con eso voy sobradísimo.
 
-Para HF tengo dudas. Estoy esperando que un colega de la URE pueda echarme una mano esta semana, actualizaré la entrada cuando sepa qué montaré. Pero a unas malas le tengo el ojo echado a una vertical que sirve para las bandas de 10 a 40M. Espero tener algo de suerte y poder montar un dipolo o un bigote de gato. Descarto los 80M por temas de tamaño, no es plan de pohner en la azotea un monstruo de 40M por lado.
+Para HF tengo dudas. Estoy esperando que un colega de la URE pueda echarme una mano esta semana, actualizaré la entrada cuando sepa qué montaré. Pero a unas malas le tengo el ojo echado a una vertical que sirve para las bandas de 10 a 40M. Espero tener algo de suerte y poder montar un dipolo o un bigote de gato. Descarto los 80M por temas de tamaño, no es plan de pohner en la azotea un monstruo de 20M por lado.
 
-Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria.
+También me he tomado la molestia de localizar [cable ULTRAFLEX-7 1 ](https://sonicolor.es/ultraflex-7-cable-coaxial-16316.html?utm_source=chatgpt.com) que no es el más barato del mundo pero compensa a la larga.
+
+Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria y consultaré todo esto con el colega de la URE, que es probable que se me haya ido un poco la pinza y haya cosas sustituibles por algo más barato.
 
 Iré actualizando la entrada conforme vaya avanzando.
 
