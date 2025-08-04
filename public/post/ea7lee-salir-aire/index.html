@@ -6,7 +6,7 @@
     <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
     <title>
   
-    Tu guiador: Un proyecto nuevo - El Blog de un informático que sueña con mejorar el mundo
+    EA7LEE: Salir al Aire II - El Blog de un informático que sueña con mejorar el mundo
   
 </title>
     
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <ul id="feed__ul">
             <li class="feed__li h-entry">
                 <div class="feed__content">
-                    <time class="hidden dt-published">2023-01-02 00:00:00 &#43;0000 UTC</time>
+                    <time class="hidden dt-published">2025-08-04 18:24:48 &#43;0200 CEST</time>
                     <div class="flex properties__row ">
                         <div rel="author" class="flex left p-author h-card">
                             <img class="u-photo"
@@ -279,13 +279,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </p>
                                 <p class="properties">
                                     
-                                    Jan 02, 2023
+                                    Aug 04, 2025
                                 </p>
                             </div>
                         </div>
                         <div class="flex right properties">
                             
-                            <a class="icon u-url" href="https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/">
+                            <a class="icon u-url" href="https://jesuspavonabian.es/post/ea7lee-salir-aire/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-bookmark">
@@ -296,34 +296,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     
                             <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/">Tu guiador: Un proyecto nuevo</a></h2>
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/ea7lee-salir-aire/">EA7LEE: Salir al Aire II</a></h2>
                                 
-                                <p>soy una persona que cuando tiene que ir a un sitio apunta los recorridos para no olvidarse. Concienzudamente, además. Cualquier mínimo detalle, por mínimo que sea, me sirve. Sobre todo lo hago si es un recorrido que haré pocas veces o que haré muchas veces, pero espaciadas en el tiempo.</p>
-<p>En un principio utilizaba la aplicación de Notas de Apple, pero llegué a la conclusión de que necesitaba algo más. Los recorridos se me quedaban desordenados, tenía dificultades para leer las notas en medio de la calle&hellip; No era práctico</p>
-<p>Así que decidí crear mi propia aplicación en seguida me topé con el primer problema: Necesitaba aprender Swift y SwiftUI. Un curso de 100 días lo solucionó.</p>
-<p>en principio parecía fácil. Una base de datos para apuntar los recorridos, un par de botones&hellip; No pintaba demasiado complicado.</p>
-<p>Y en efecto, no es demasiado complicado. el problema fue que yo me empeñé en complicarlo.</p>
-<p>Cuando tuve algo que funcionaba, lo comenté con un par de colegas y me dijeron algo como&hellip; &ldquo;La idea mola, pero le falta algo que no se qué es&rdquo;. Y ahí quedó la cosa hasta que hablé con <a href="https://programaraciegas.net">este señor (abre en una nueva ventana)</a>, que además de recordarme reglas básicas de programación que no había seguido, me dio un par de ideas para simplificar el código y añadirle alguna cosilla más.</p>
-<p>Y aquello quedó ahí. Tenía que rehacerlo todo y me daba una pereza horrorosa, y eso que el primer beneficiado de la aplicación soy yo.</p>
-<p>Finalmente me decidí. Borré todo lo que había hecho, aunque algo podría haber reutilizado y creé un nuevo repositorio privado.</p>
-<p>Iba a empezar de cero, y lo iba a hacer bien. la primera regla era tener un código limpio. La segunda era comentar el código, de forma que cuando lo tuviera que mirar más adelante no tuviera que perder tiempo releyéndolo para saber qué hacía.</p>
-<p>Y así empecé a programar. Y salió el chat de GPT.</p>
-<p>Y cuando le pregunté por curiosidad una cosa sobre mi código, me encontró errores en los que yo no había caído.</p>
-<p>Así que tocó reescribir la aplicación otra vez. Mismo proceso, borrar y volver a programar. Podría haberlo intentado arreglar, pero el código estaba volviéndose demasiado engorroso.</p>
-<p>Dicen que a la tercera va la vencida y tienen razón.</p>
-<p>ahora todo está en su sitio, y modificar una cosa no me rompe otras dos.</p>
-<p>Cada función hace lo que tiene que hacer, y no depende de otra. Los nombres de variables son claros y la interfaz se limita a mostrar cosas por pantalla, dejando la lógica de la aplicación al controlador.</p>
-<p>Por ejemplo, una de las funciones de la aplicación es, una vez guardado un recorrido, poderlo compartir con alguien. Para ello, se envía un json a la persona, y la persona ya lo importa en su aplicación.</p>
-<p>Pues todo está separado. El botón por su lado, el crear el json por otro y el acceso al recorrido por otro.</p>
-<p>func obtenerJSONRecorrido(recorrido: Recorrido) -&gt; String { let encoder = JSONEncoder() if let data = try? encoder.encode(recorrido), let jsonString = String(data: data, encoding: .utf8) { return jsonString } else { return &quot;&quot; } }</p>
-<p>A la aplicación todavía le falta para poderse lanzar, aunque he de decir que la he probado y cumple con lo que yo necesito.</p>
-<ul>
-<li>Puedes añadir recorridos.</li>
-<li>Puedes editarlos desde una sola pantalla.</li>
-<li>Puedes mostrar los detalles del recorrido e ir avanzando paso por paso con dos botones, siguiente y anterior.</li>
-<li>Puedes compartirlos con alguien usando tu app favorita.</li>
-</ul>
-<p>Me falta por revisar la parte visual, que sospecho que la aplicación es bastante mejorable en ese aspecto. Por otro lado, me gustaría cambiar algunas cosillas del código, que pese a que me he esforzado, no le vendría mal que le refactorizara algunas cosillas. ¡Pronto daré más información! Por cierto, como curiosidad, del diseño para probar la app, se ha encargado el chat de gpt. He tenido que adaptar todo lo que me ha enviado como respuesta, pero facilita muchísimo la vida cuando sabes qué estás haciendo.</p>
+                                <p>Desde que hice <a href="https://jesuspavonabian.es/post/ea7lee_salir_al_aire/">el primer post de salir al aire</a> han pasado unos meses ya. Me he mudado y ahora tengo opciones para montar una estación base. De hecho, estoy en ello.</p>
+<h2 id="qué-voy-a-montar">¿Qué voy a montar?</h2>
+<p>En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos dicen que siempre y cuando  no moleste que haga lo que quiera, que no van a poner pegas, así que solo me queda que Teleco me diga que sí a la instalación.</p>
+<p>Como transceptor el <a href="https://sonicolor.es/yaesu-ft-991a-portable-movil-c4fm-ams-12520.html">YAESU FT-991A</a> que por supuesto, no es accesible y hay que hacer algo de magia para poder usarlo.</p>
+<p>El radioaficionado <a href="https://yaesu.va2fsq.com/documentation/">va2fsq creó un software que lo hace accesible</a>, pero es de pago. Para no variar, <a href="https://gza.es/">EA3GZA</a> me volvió a echar una mano y me descubrió el software de <a href="http://spencerweb.net/Downloads/FTTalk/fttalk.html">FTTalk</a>, que básicamente hace lo mismo pero sin soltar un euro.</p>
+<p>Valoré un <a href="https://www.kenwood.es/comm/ar/hf_todomodo/TS-590SG/">TS-590SG</a> pero resulta que el chip que lo hace hablar es jodidísimo de encontrar y el Yaesu me da también V y UHF.</p>
+<p>La fuente de alimentación será una <a href="https://sonicolor.es/telecom-rps-1230-swm-fuente-conmutada-20359.html">Telecom RPS-1230-SWM</a>, una conmutada compacta y silenciosa.</p>
+<p>Hasta tengo mirado el <a href="https://amzn.to/45hEb5z">cable USB que irá desde la radio al ordenador</a>.</p>
+<p>Para U/VHF montaré una <a href="https://sonicolor.es/diamond-x-50-base-12131.html">diamond x50</a> y con eso voy sobradísimo.</p>
+<p>Para HF tengo dudas. Estoy esperando que un colega de la URE pueda echarme una mano esta semana, actualizaré la entrada cuando sepa qué montaré. Pero a unas malas le tengo el ojo echado a una vertical que sirve para las bandas de 10 a 40M. Espero tener algo de suerte y poder montar un dipolo o un bigote de gato. Descarto los 80M por temas de tamaño, no es plan de pohner en la azotea un monstruo de 40M por lado.</p>
+<p>Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria.</p>
+<p>Iré actualizando la entrada conforme vaya avanzando.</p>
+<p>73 de EA7LEE</p>
 
                                 
                                 <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
@@ -335,14 +322,10 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="flex left properties">
         <span class="properties">
             
-            <span class="dt-published hidden">2023-01-02 00:00:00 &#43;0000 UTC</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/tu-guiador-un-proyecto-nuevo/">
+            <span class="dt-published hidden">2025-08-04 18:24:48 &#43;0200 CEST</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/ea7lee-salir-aire/">
                 
-                
-                
-                
-                
-                hace 945 días
+                hoy mismo
                 
             </a>
             

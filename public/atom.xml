@@ -2,13 +2,39 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2025-05-23T00:00:00+00:00</updated>
+  <updated>2025-08-04T18:24:48+02:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[EA7LEE: Salir al Aire II]]></title>
+    <link href="https://jesuspavonabian.es/post/ea7lee-salir-aire/"/>
+    <id>https://jesuspavonabian.es/post/ea7lee-salir-aire/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2025-08-04T18:24:48+02:00</published>
+    <updated>2025-08-04T18:24:48+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Desde que hice <a href="https://jesuspavonabian.es/post/ea7lee_salir_al_aire/">el primer post de salir al aire</a> han pasado unos meses ya. Me he mudado y ahora tengo opciones para montar una estación base. De hecho, estoy en ello.</p>
+<h2 id="qué-voy-a-montar">¿Qué voy a montar?</h2>
+<p>En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos dicen que siempre y cuando  no moleste que haga lo que quiera, que no van a poner pegas, así que solo me queda que Teleco me diga que sí a la instalación.</p>
+<p>Como transceptor el <a href="https://sonicolor.es/yaesu-ft-991a-portable-movil-c4fm-ams-12520.html">YAESU FT-991A</a> que por supuesto, no es accesible y hay que hacer algo de magia para poder usarlo.</p>
+<p>El radioaficionado <a href="https://yaesu.va2fsq.com/documentation/">va2fsq creó un software que lo hace accesible</a>, pero es de pago. Para no variar, <a href="https://gza.es/">EA3GZA</a> me volvió a echar una mano y me descubrió el software de <a href="http://spencerweb.net/Downloads/FTTalk/fttalk.html">FTTalk</a>, que básicamente hace lo mismo pero sin soltar un euro.</p>
+<p>Valoré un <a href="https://www.kenwood.es/comm/ar/hf_todomodo/TS-590SG/">TS-590SG</a> pero resulta que el chip que lo hace hablar es jodidísimo de encontrar y el Yaesu me da también V y UHF.</p>
+<p>La fuente de alimentación será una <a href="https://sonicolor.es/telecom-rps-1230-swm-fuente-conmutada-20359.html">Telecom RPS-1230-SWM</a>, una conmutada compacta y silenciosa.</p>
+<p>Hasta tengo mirado el <a href="https://amzn.to/45hEb5z">cable USB que irá desde la radio al ordenador</a>.</p>
+<p>Para U/VHF montaré una <a href="https://sonicolor.es/diamond-x-50-base-12131.html">diamond x50</a> y con eso voy sobradísimo.</p>
+<p>Para HF tengo dudas. Estoy esperando que un colega de la URE pueda echarme una mano esta semana, actualizaré la entrada cuando sepa qué montaré. Pero a unas malas le tengo el ojo echado a una vertical que sirve para las bandas de 10 a 40M. Espero tener algo de suerte y poder montar un dipolo o un bigote de gato. Descarto los 80M por temas de tamaño, no es plan de pohner en la azotea un monstruo de 40M por lado.</p>
+<p>Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria.</p>
+<p>Iré actualizando la entrada conforme vaya avanzando.</p>
+<p>73 de EA7LEE</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Mejorando Firefox]]></title>
     <link href="https://jesuspavonabian.es/post/mejorando-firefox/"/>

@@ -8,7 +8,33 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Aug 2025 18:24:48 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EA7LEE: Salir al Aire II</title>
+      <link>https://jesuspavonabian.es/post/ea7lee-salir-aire/</link>
+      <pubDate>Mon, 04 Aug 2025 18:24:48 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/ea7lee-salir-aire/</guid>
+      <description>Desde que hice el primer post de salir al aire han pasado unos meses ya. Me he mudado y ahora tengo opciones para montar una estación base. De hecho, estoy en ello.
+¿Qué voy a montar? En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos dicen que siempre y cuando no moleste que haga lo que quiera, que no van a poner pegas, así que solo me queda que Teleco me diga que sí a la instalación.</description>
+      <content:encoded>
+      &lt;p&gt;Desde que hice &lt;a href=&#34;https://jesuspavonabian.es/post/ea7lee_salir_al_aire/&#34;&gt;el primer post de salir al aire&lt;/a&gt; han pasado unos meses ya. Me he mudado y ahora tengo opciones para montar una estación base. De hecho, estoy en ello.&lt;/p&gt;
+&lt;h2 id=&#34;qué-voy-a-montar&#34;&gt;¿Qué voy a montar?&lt;/h2&gt;
+&lt;p&gt;En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos dicen que siempre y cuando  no moleste que haga lo que quiera, que no van a poner pegas, así que solo me queda que Teleco me diga que sí a la instalación.&lt;/p&gt;
+&lt;p&gt;Como transceptor el &lt;a href=&#34;https://sonicolor.es/yaesu-ft-991a-portable-movil-c4fm-ams-12520.html&#34;&gt;YAESU FT-991A&lt;/a&gt; que por supuesto, no es accesible y hay que hacer algo de magia para poder usarlo.&lt;/p&gt;
+&lt;p&gt;El radioaficionado &lt;a href=&#34;https://yaesu.va2fsq.com/documentation/&#34;&gt;va2fsq creó un software que lo hace accesible&lt;/a&gt;, pero es de pago. Para no variar, &lt;a href=&#34;https://gza.es/&#34;&gt;EA3GZA&lt;/a&gt; me volvió a echar una mano y me descubrió el software de &lt;a href=&#34;http://spencerweb.net/Downloads/FTTalk/fttalk.html&#34;&gt;FTTalk&lt;/a&gt;, que básicamente hace lo mismo pero sin soltar un euro.&lt;/p&gt;
+&lt;p&gt;Valoré un &lt;a href=&#34;https://www.kenwood.es/comm/ar/hf_todomodo/TS-590SG/&#34;&gt;TS-590SG&lt;/a&gt; pero resulta que el chip que lo hace hablar es jodidísimo de encontrar y el Yaesu me da también V y UHF.&lt;/p&gt;
+&lt;p&gt;La fuente de alimentación será una &lt;a href=&#34;https://sonicolor.es/telecom-rps-1230-swm-fuente-conmutada-20359.html&#34;&gt;Telecom RPS-1230-SWM&lt;/a&gt;, una conmutada compacta y silenciosa.&lt;/p&gt;
+&lt;p&gt;Hasta tengo mirado el &lt;a href=&#34;https://amzn.to/45hEb5z&#34;&gt;cable USB que irá desde la radio al ordenador&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para U/VHF montaré una &lt;a href=&#34;https://sonicolor.es/diamond-x-50-base-12131.html&#34;&gt;diamond x50&lt;/a&gt; y con eso voy sobradísimo.&lt;/p&gt;
+&lt;p&gt;Para HF tengo dudas. Estoy esperando que un colega de la URE pueda echarme una mano esta semana, actualizaré la entrada cuando sepa qué montaré. Pero a unas malas le tengo el ojo echado a una vertical que sirve para las bandas de 10 a 40M. Espero tener algo de suerte y poder montar un dipolo o un bigote de gato. Descarto los 80M por temas de tamaño, no es plan de pohner en la azotea un monstruo de 40M por lado.&lt;/p&gt;
+&lt;p&gt;Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria.&lt;/p&gt;
+&lt;p&gt;Iré actualizando la entrada conforme vaya avanzando.&lt;/p&gt;
+&lt;p&gt;73 de EA7LEE&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Mejorando Firefox</title>
       <link>https://jesuspavonabian.es/post/mejorando-firefox/</link>
