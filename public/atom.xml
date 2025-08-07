@@ -23,7 +23,7 @@
 <h3 id="qué-voy-a-montar">¿Qué voy a montar?</h3>
 <p>En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos dicen que siempre y cuando  no moleste que haga lo que quiera, que no van a poner pegas, así que solo me queda que Teleco me diga que sí a la instalación.</p>
 <p>Como transceptor el <a href="https://sonicolor.es/yaesu-ft-991a-portable-movil-c4fm-ams-12520.html">YAESU FT-991A</a> que por supuesto, no es accesible y hay que hacer algo de magia para poder usarlo.</p>
-<p>El radioaficionado <a href="https://yaesu.va2fsq.com/documentation/">va2fsq creó un software que lo hace accesible</a>, pero es de pago. Para no variar, <a href="https://gza.es/">EA3GZA</a> me volvió a echar una mano y me descubrió el software de <a href="http://spencerweb.net/Downloads/FTTalk/fttalk.html">FTTalk</a>, que básicamente hace lo mismo pero sin soltar un euro.</p>
+<p>El radioaficionado <a href="https://yaesu.va2fsq.com/documentation/">va2fsq creó un software que lo hace accesible</a>, pero es de pago. Para no variar, <a href="https://ea3gza.es/">EA3GZA</a> me volvió a echar una mano y me descubrió el software de <a href="http://spencerweb.net/Downloads/FTTalk/fttalk.html">FTTalk</a>, que básicamente hace lo mismo pero sin soltar un euro.</p>
 <p>Valoré un <a href="https://www.kenwood.es/comm/ar/hf_todomodo/TS-590SG/">TS-590SG</a> pero resulta que el chip que lo hace hablar es jodidísimo de encontrar y el Yaesu me da también V y UHF.</p>
 <p>La fuente de alimentación será una <a href="https://sonicolor.es/telecom-rps-1230-swm-fuente-conmutada-20359.html">Telecom RPS-1230-SWM</a>, una conmutada compacta y silenciosa.</p>
 <p>Hasta tengo mirado el <a href="https://amzn.to/45hEb5z">cable USB que irá desde la radio al ordenador</a>.</p>

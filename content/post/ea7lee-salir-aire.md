@@ -14,7 +14,7 @@ En principio un par de antenas en la azotea del QTH. Tengo suerte, los vecinos d
 
 Como transceptor el [YAESU FT-991A](https://sonicolor.es/yaesu-ft-991a-portable-movil-c4fm-ams-12520.html) que por supuesto, no es accesible y hay que hacer algo de magia para poder usarlo.
 
-El radioaficionado [va2fsq creó un software que lo hace accesible](https://yaesu.va2fsq.com/documentation/), pero es de pago. Para no variar, [EA3GZA](https://gza.es/) me volvió a echar una mano y me descubrió el software de [FTTalk](http://spencerweb.net/Downloads/FTTalk/fttalk.html), que básicamente hace lo mismo pero sin soltar un euro.
+El radioaficionado [va2fsq creó un software que lo hace accesible](https://yaesu.va2fsq.com/documentation/), pero es de pago. Para no variar, [EA3GZA](https://ea3gza.es/) me volvió a echar una mano y me descubrió el software de [FTTalk](http://spencerweb.net/Downloads/FTTalk/fttalk.html), que básicamente hace lo mismo pero sin soltar un euro.
 
 Valoré un [TS-590SG](https://www.kenwood.es/comm/ar/hf_todomodo/TS-590SG/) pero resulta que el chip que lo hace hablar es jodidísimo de encontrar y el Yaesu me da también V y UHF.
 
