@@ -7,6 +7,8 @@ categories: ["anything else"]
 tags:
 draft: false
 ---
+Actualizada a 07/08/2025
+
 Desde que hice [el primer post de salir al aire](https://jesuspavonabian.es/post/ea7lee_salir_al_aire/) han pasado unos meses ya. Me he mudado y ahora tengo opciones para montar una estación base. De hecho, estoy en ello.
 
 ### ¿Qué voy a montar?
@@ -24,11 +26,11 @@ Hasta tengo mirado el [cable USB que irá desde la radio al ordenador](https://a
 
 Para U/VHF montaré una [diamond x50](https://sonicolor.es/diamond-x-50-base-12131.html) y con eso voy sobradísimo.
 
-Para HF tengo dudas. Estoy esperando que un colega de la URE pueda echarme una mano esta semana, actualizaré la entrada cuando sepa qué montaré. Pero a unas malas le tengo el ojo echado a una vertical que sirve para las bandas de 10 a 40M. Espero tener algo de suerte y poder montar un dipolo o un bigote de gato. Descarto los 80M por temas de tamaño, no es plan de pohner en la azotea un monstruo de 20M por lado.
+Para HF, después de informarme, preguntar en varios sitios y que un colega de la [URE](https://ure.es/) viniese a investigar, he decidido montar el [dipolo multibanda no resonante](https://eb4hra-baluns.blogspot.com/2010/12/blog-post.html?m=0) de [EB4HRA](https://www.qrz.com/db/EB4HRA).
 
-También me he tomado la molestia de localizar [cable ULTRAFLEX-7 1 ](https://sonicolor.es/ultraflex-7-cable-coaxial-16316.html?utm_source=chatgpt.com) que no es el más barato del mundo pero compensa a la larga.
+También me he tomado la molestia de localizar [cable ULTRAFLEX-7 1 ](https://sonicolor.es/ultraflex-7-cable-coaxial-16316.html) pero no tengo claro que tire los 60 metros, para HF a lo mejor es pasarse y para U y V sirve igual. El colega de la URE me recomendó otro cable más barato, si las pérdidas no son significativas tiraré por ahí, que el que yo había pensado cuesta una pasta.
 
-Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria y consultaré todo esto con el colega de la URE, que es probable que se me haya ido un poco la pinza y haya cosas sustituibles por algo más barato.
+Antes de comprar nada (como podeis ver hay cosas carillas) esperaré a la aprobación de la memoria.
 
 Iré actualizando la entrada conforme vaya avanzando.
 
