@@ -7,6 +7,7 @@ categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---
+Actualización 18/10/2025: Han cerrado el servicio.
 
 El título de esta entrada suena a Clickbait, ya lo sé. Pero tras probarlo he comprobado que es cierto, [dns0](https://www.dns0.eu/es) cumple lo que promete. hacer la navegación por internet más segura.
 

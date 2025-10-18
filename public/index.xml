@@ -722,11 +722,13 @@ Obviamente esto no era óptimo, porque muchos usuarios perdían notificaciones, 
       <pubDate>Tue, 12 Dec 2023 15:15:42 +0100</pubDate>
       <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
       <guid>https://jesuspavonabian.es/post/dnsseguroeuropeo/</guid>
-      <description>El título de esta entrada suena a Clickbait, ya lo sé. Pero tras probarlo he comprobado que es cierto, dns0 cumple lo que promete. hacer la navegación por internet más segura.
+      <description>Actualización 18/10/2025: Han cerrado el servicio.
+El título de esta entrada suena a Clickbait, ya lo sé. Pero tras probarlo he comprobado que es cierto, dns0 cumple lo que promete. hacer la navegación por internet más segura.
 ¿Qué hace exactamente? Resumiendo mucho, bloquea dominios maliciosos e impide que entres a ellos.
-Por ejemplo, esta mañana me llegó un SMS de estafa en el que ponía que mi paquete estaba retenido porque la dirección estaba incompleta. en ese mensajito venía un enlace la mar de mono para recopilar datos.</description>
+Por ejemplo, esta mañana me llegó un SMS de estafa en el que ponía que mi paquete estaba retenido porque la dirección estaba incompleta.</description>
       <content:encoded>
-      &lt;p&gt;El título de esta entrada suena a Clickbait, ya lo sé. Pero tras probarlo he comprobado que es cierto, &lt;a href=&#34;https://www.dns0.eu/es&#34;&gt;dns0&lt;/a&gt; cumple lo que promete. hacer la navegación por internet más segura.&lt;/p&gt;
+      &lt;p&gt;Actualización 18/10/2025: Han cerrado el servicio.&lt;/p&gt;
+&lt;p&gt;El título de esta entrada suena a Clickbait, ya lo sé. Pero tras probarlo he comprobado que es cierto, &lt;a href=&#34;https://www.dns0.eu/es&#34;&gt;dns0&lt;/a&gt; cumple lo que promete. hacer la navegación por internet más segura.&lt;/p&gt;
 &lt;h2 id=&#34;qué-hace-exactamente&#34;&gt;¿Qué hace exactamente?&lt;/h2&gt;
 &lt;p&gt;Resumiendo mucho, bloquea dominios maliciosos e impide que entres a ellos.&lt;/p&gt;
 &lt;p&gt;Por ejemplo, esta mañana me llegó un SMS de estafa en el que ponía que mi paquete estaba retenido porque la dirección estaba incompleta. en ese mensajito venía un enlace la mar de mono para recopilar datos. Por supuesto, la dirección no tenía nada que ver con Correos. Por hacer la prueba lo pulsé y DNS0 entró en acción. Al estar el dominio en su lista negra lo bloqueó, impidiendo que pasara algo grabe.&lt;/p&gt;
