@@ -8,7 +8,42 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Wed, 01 Oct 2025 15:15:05 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Oct 2025 12:09:01 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Accesibilidad sin garantía</title>
+      <link>https://jesuspavonabian.es/post/accesibilidad-sin-garantia/</link>
+      <pubDate>Sun, 26 Oct 2025 12:09:01 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/accesibilidad-sin-garantia/</guid>
+      <description>Esta vez vengo a quejarme. Porque estoy harto de ser un ciudadano de segunda.
+Videojuegos Últimamente se ha puesto de moda hacer Mods para videojuegos. Gente con tiempo libre y con ganas de que podamos jugar han hecho modificaciones a algunos juegos. Esto nos permite jugar&amp;hellip; con cuidado. Citaré alguno de los más conocidos.
+Hearthstone es uno de los más famosos. Las modificaciones para jugar con lector de pantalla son libres y el código es auditable y mejorable.</description>
+      <content:encoded>
+      &lt;p&gt;Esta vez vengo a quejarme. Porque estoy harto de ser un ciudadano de segunda.&lt;/p&gt;
+&lt;h2 id=&#34;videojuegos&#34;&gt;Videojuegos&lt;/h2&gt;
+&lt;p&gt;Últimamente se ha puesto de moda hacer Mods para videojuegos. Gente con tiempo libre y con ganas de que podamos jugar han hecho modificaciones a algunos juegos. Esto nos permite jugar&amp;hellip; con cuidado. Citaré alguno de los más conocidos.&lt;/p&gt;
+&lt;p&gt;Hearthstone es uno de los más famosos. &lt;a href=&#34;https://hearthstoneaccess.com/&#34;&gt;Las modificaciones para jugar con lector de pantalla&lt;/a&gt; son libres y el código es auditable y mejorable. Por supuesto, es ilegal. Los términos y condiciones del juego impiden modificarlo de cualquier forma. Claro, Blizard hace la vista gorda, incluso ayuda con el proceso. Pero como un día se cabree alguien tienen sus términos y condiciones para echarnos a todos de golpe.&lt;/p&gt;
+&lt;p&gt;Lo mismo ocurre con World of Warcraft. Pese a que este juego sí admite plugins, volvemos a rozar la ilegalidad. Hay uno de ellos que hace (para ganar tiempo) que el personaje gire hacia donde apunta el objetivo. alguien se preguntará ¿y para qué hace falta? Bueno, es la forma fácil que se les ha ocurrido a los modders para permitir que no pierdas media vida girando sin puntos de referencias decentes. Por desgracia, Blizard ya avisó: Como esto salga de la comunidad cieguil nos cargamos la opción, porque al vidente esto le daría una ventaja bestial.&lt;/p&gt;
+&lt;p&gt;Con Yu-gi-oh duel Master pasa un poco lo mismo. Puedes aplicar el mod y &amp;ldquo;jugar&amp;rdquo;, pues hay que tirar de OCR en muchos casos (el juego no permite mucha modificación al parecer) pero no puedes jugar en línea. Y lo entiendo. A mi no me haría gracia que se me conecte al servidor un cliente modificado.&lt;/p&gt;
+&lt;p&gt;Por supuesto, hay modificaciones completamente legales, como la de Stardew Valley, cuyo desarrollador soporta y permite la creación de mods. Y por supuesto, no podemos olvidarnos de joyas como The last of us o el último Mortal Kombat 1, que son accesibles desde que abres el juego.&lt;/p&gt;
+&lt;p&gt;Lo que hacen la mayoría de modificaciones a los videojuegos no es más que darle soporte de lector de pantalla y meter tres o cuatro sonidos más. ¿De verdad eso es tan complicadísimo de hacer en producción para empresas tan grandes como Blizard?&lt;/p&gt;
+&lt;h2 id=&#34;cacharros-varios&#34;&gt;Cacharros varios&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mi robot aspirador no es accesible y no lo va a ser, porque la aplicación tiende a empeorar. Sé que puedo hackearlo y liar la de Dios es Cristo para hacerlo funcionar con Home Asistant, pero ya tengo que andar rompiendo cosas y quedándome sin la garantía del cacharro.&lt;/li&gt;
+&lt;li&gt;La lavadora inteligente que tienen mis padres no es accesible, tiene pantalla táctil. Cuando intenté usar la app que la controla por red descubrí que no es accesible. Si no recuerdo mal leí por algún sitio que se podía hackear para que funcionara con Home Asistant, pero volvemos a lo mismo. Adiós garantía.&lt;/li&gt;
+&lt;li&gt;El Yaesu FT991A que tengo en la mesa no es accesible tampoco. Por suerte esta vez no tengo que pelearme con la garantía porque admite control por puerto CAT y el ordenador me puede hacer de lector de pantalla. pero claro, ya dependo de un ordenador.&lt;/li&gt;
+&lt;li&gt;Ayer vi un equipo QRP que tampoco es accesible. Si le cambias el Firmware y te cargas la garantía lo puedes hacer hablar. Pero hay que cargarse la garantía.&lt;/li&gt;
+&lt;li&gt;El WalkieTalkie que tengo tiene el mismo problema. Lo primero que hice fue cambiarle el Firmware. Tengo un cacharro de 100 euros sin garantía porque para qué vamos a preocuparnos por la accesibilidad.&lt;/li&gt;
+&lt;li&gt;El Mac lo tengo en un rincón. Tristemente, a Apple cada vez le importa menos VoiceOver.&lt;/li&gt;
+&lt;li&gt;el ordenador de mesa que tengo con Windows utiliza NVDA. Narrador podría tener potencial, pero por alguna razón no les interesa.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;y-pese-a-todo-esto&#34;&gt;Y pese a todo Esto&lt;/h2&gt;
+&lt;p&gt;Pese a todo esto tengo que dar las gracias a los que se pelean con estas cosas. Porque al menos, asumiendo muchas veces riesgos se pueden hacer cosas y nos quedamos un poquito menos atrás.&lt;/p&gt;
+&lt;p&gt;Manda cojones, hablando mal y pronto, que en pleno siglo XXI, cuando los políticos se llenan la boca con la ley de accesibilidad de turno, la mayoría de cosas accesibles vengan de los propios discapacitados o de gente que decide echar una mano voluntariamente.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Pmr446</title>
       <link>https://jesuspavonabian.es/post/pmr446/</link>
