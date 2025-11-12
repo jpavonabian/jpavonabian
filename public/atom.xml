@@ -2,13 +2,30 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2025-11-07T16:52:24+01:00</updated>
+  <updated>2025-11-12T18:25:22+01:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Notas]]></title>
+    <link href="https://jesuspavonabian.es/post/notas/"/>
+    <id>https://jesuspavonabian.es/post/notas/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2025-11-12T18:25:22+01:00</published>
+    <updated>2025-11-12T18:25:22+01:00</updated>
+    
+    <content type="html"><![CDATA[<p>Una entrada cortita, para probar el sistema de respuestas del Blog.</p>
+<p>Hace mucho tiempo que buscaba una app para tomar notas. Pero a todas les encontraba un pero. La que me gustaba en un sistema no me gustaba en otro por H o por B.</p>
+<p>Desde que Eric me descubrió <a href="https://joplinapp.org/">Joplin</a> me ha cambiado la vida. Incluso he desplegado un servidor de notas propio.</p>
+<p>No os voy a contar nada que no haya escrito él en el artículo, os recomiendo echarle un ojo.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Café Recalentado, o un recordatorio para mi mismo]]></title>
     <link href="https://jesuspavonabian.es/post/cafe-recalentado/"/>
