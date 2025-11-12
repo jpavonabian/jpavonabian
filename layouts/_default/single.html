@@ -48,7 +48,7 @@
                         {{ else if in .Params.Categories "reply" }}
                         <article class="md p-summary e-content">
                             <h2 class="p-name reply-context"><a class="u-in-reply-to h-cite"
-                                    href="{{.Permalink}}">{{.Title}}</a>
+                                    href="{{.Params.Reply}}">{{.Title}}</a>
                             </h2>
                             {{ else }}
                             <article class="md p-summary e-content">
