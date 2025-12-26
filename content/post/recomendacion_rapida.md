@@ -1,7 +1,7 @@
 ---
 title: "Una recomendación rápida"
 date: 2025-12-26T11:09:05+01:00
-reply:"https://jmdaweb.github.io/posts/apagar-pantalla/"
+reply: "https://jmdaweb.github.io/posts/apagar-pantalla/"
 uri: "https://jesuspavonabian.es/post/recomendacion_rapida"
 categories: ["reply"] # note, reply, anything else
 tags:
