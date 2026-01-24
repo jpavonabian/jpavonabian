@@ -60,7 +60,7 @@ Y dimos con un repositorio que levanta un servidor del juego mediante Docker lla
 &lt;/ul&gt;
 &lt;p&gt;Debería bastar. Arranca el servidor con docker compose up -d y prueba a conectarte tras un par de minutos colocando la IP o el dominio del servidor en el Stardew Valley que tienes instalado en el ordenador.&lt;/p&gt;
 &lt;p&gt;Si por alguna razón no funciona continúa con el siguiente paso.&lt;/p&gt;
-&lt;p&gt;##¡No puedo conectar!&lt;/p&gt;
+&lt;h2 id=&#34;no-puedo-conectar&#34;&gt;¡No puedo conectar!&lt;/h2&gt;
 &lt;p&gt;Tranquilidad, se puede arreglar.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;

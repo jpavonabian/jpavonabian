@@ -60,7 +60,7 @@
 </ul>
 <p>Debería bastar. Arranca el servidor con docker compose up -d y prueba a conectarte tras un par de minutos colocando la IP o el dominio del servidor en el Stardew Valley que tienes instalado en el ordenador.</p>
 <p>Si por alguna razón no funciona continúa con el siguiente paso.</p>
-<p>##¡No puedo conectar!</p>
+<h2 id="no-puedo-conectar">¡No puedo conectar!</h2>
 <p>Tranquilidad, se puede arreglar.</p>
 <ul>
 <li>

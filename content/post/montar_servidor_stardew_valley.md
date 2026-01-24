@@ -77,7 +77,7 @@ Debería bastar. Arranca el servidor con docker compose up -d y prueba a conecta
 
 Si por alguna razón no funciona continúa con el siguiente paso.
 
-##¡No puedo conectar!
+## ¡No puedo conectar!
 
 Tranquilidad, se puede arreglar.
 
