@@ -8,7 +8,93 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Fri, 26 Dec 2025 11:09:05 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Jan 2026 09:28:38 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Montar un servidor de Stardew Valley de forma accesible</title>
+      <link>https://jesuspavonabian.es/post/montar_servidor_stardew_valley/</link>
+      <pubDate>Sat, 24 Jan 2026 09:28:38 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/montar_servidor_stardew_valley/</guid>
+      <description>Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
+El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&amp;hellip; Un engorro, vaya. Así que nos pusimos a investigar&amp;hellip;
+Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server.</description>
+      <content:encoded>
+      &lt;p&gt;Llevo un tiempo jugando &lt;a href=&#34;https://store.steampowered.com/app/413150/Stardew_Valley/?l=spanish&#34;&gt;Stardew Valley&lt;/a&gt;. Tanto en cooperativo como en local.&lt;/p&gt;
+&lt;p&gt;El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&amp;hellip; Un engorro, vaya. Así que nos pusimos a investigar&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado &lt;a href=&#34;https://github.com/truman-world/puppy-stardew-server/&#34;&gt;Puppy Stardew Server&lt;/a&gt;. ¿el problema? Lo conseguíamos levantar, pero requería conectarse mediante VNC para cargar la primera partida. Y claro, ahí no había accesibilidad ninguna.&lt;/p&gt;
+&lt;p&gt;Buscamos por la red. Dimos vueltas a google, encontramos las bolas de dragón y pedimos un deseo&amp;hellip; Y nada. Que a la gente le molaba VNC.&lt;/p&gt;
+&lt;p&gt;así que tiramos de la solución de la cual tiramos muchos cegatos cuando no podemos hacer algo: &amp;ldquo;Persona con ojos más cercana, ¿haces aquí un par de clicks?&amp;rdquo; y el problema se arregló.&lt;/p&gt;
+&lt;p&gt;Pero me molestaba. Muchísimo. Si lo que se necesitaba era tener una partida se podía hacer a mano editando un archivo, seguro.&lt;/p&gt;
+&lt;p&gt;Y se pudo, aprovechando que no podía dormir.&lt;/p&gt;
+&lt;h2 id=&#34;cosas-a-tener-en-cuenta-antes-de-entrar-en-materia&#34;&gt;Cosas a tener en cuenta antes de entrar en materia&lt;/h2&gt;
+&lt;p&gt;No es mucho, pero es conveniente saberlo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El script levanta un servidor con Docker y descarga el juego de una cuenta de Steam. Así que es necesario tener el juego comprado. Solo usa Steam únicamente para descargar los archivos.&lt;/li&gt;
+&lt;li&gt;Intenté ejecutarlo en una Raspberry Pi y petó por todo lo alto. Supongo que alguien con tiempo podría cohnstruir una imagen.&lt;/li&gt;
+&lt;li&gt;Se pueden añadir más mods añadiéndolos a la carpeta Mods. No todos funcionan, ojo cuidao.&lt;/li&gt;
+&lt;li&gt;Si quieres  crear más cabañas porque no configuraste bien la partida, tendrás que liar la de Dios es Cristo, luego lo explico.&lt;/li&gt;
+&lt;li&gt;Si alguien tiene mods de esos de hacer la vida más fácil, como el que sirve para pescar podrá usarlos. Esto garantiza que podemos jugar en cualquier servidor con nuestros mods de accesibilidad. También garantiza que si tienes un colega tramposillo puede hacer lo que le sale del pie, pues el servidor hace de servidor y la mayoría de cosas se gestionan desde los clientes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;al-lío&#34;&gt;Al lío&lt;/h2&gt;
+&lt;p&gt;El primer paso es instalar Docker. No lo explicaré aquí, lo siento.&lt;/p&gt;
+&lt;p&gt;Una vez hecho esto y teniendo a nuestro usuario de turno con permisos para ejecutar docker sin sudo ejecutamos el script oficial de instalación rápida:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;curl -sSL https://raw.githubusercontent.com/truman-world/puppy-stardew-server/main/quick-start.sh | bash
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Nos saldrá un asistente maravilloso en inglés. Le damos a la Y y a enter para meter nuestros datos de Steam y esperamos que haga su magia. llegará un momento que nos preguntará si queremos ver los logs. Podemos decirle alegremente que no con la N y enter. Cuidado con la contraseña de VNC. Pon alguna que sea difícil, no quieres a nadie trasteando con tu granja.&lt;/p&gt;
+&lt;p&gt;Si tenemos SteamGuard activado tenemos que meter el código. Así que como deberíamos estar en el prompt del sistema nos iremos al contenedor docker que nos ha creado:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker attach puppy-stardew
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;No nos preguntará nada al pulsar enter ni veremos tampoco nada. Pegamos el código que nos habrá llegado por correo y le damos enter.&lt;/p&gt;
+&lt;p&gt;Ahora toca un paso delicadísimo: Esperar. En serio, tarda lo suyo. Podemos aprovechar para ir por un café, una cerveza o lo que toque. Cuando termine pulsamos Ctrl + P y luego Ctrl + Q para ¿desacoplarnos? del contenedor. Deberíamos volver al prompt del sistema.&lt;/p&gt;
+&lt;p&gt;ya falta poco. para continuar tenemos que apagar el servidor, pues se ha quedado esperando que alguien entre por VNC.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker compose down
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;crear-la-granja-sin-vnc&#34;&gt;Crear la granja sin VNC&lt;/h2&gt;
+&lt;p&gt;Aquí está el truco. Si lo piensas es sencillo, pero hay que dar con ello.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Abre Stardew Valley en tu ordenador.&lt;/li&gt;
+&lt;li&gt;Crea una granja cooperativa con las cabañas necesarias.&lt;/li&gt;
+&lt;li&gt;Salta la historia.&lt;/li&gt;
+&lt;li&gt;Duerme para que se guarde, siempre puedes retrasar el día perdido con debug world_setday 1.&lt;/li&gt;
+&lt;li&gt;Cierra el juego.&lt;/li&gt;
+&lt;li&gt;Copia la partida: encontrarás su directorio en %appdata%\StardewValley\Saves&lt;/li&gt;
+&lt;li&gt;Copia el save al servidor. No puedo poner la ruta completa porque no sé tu usuario, pero no es difícil de encontrar: puppy-stardew-server/data/saves/Saves&lt;/li&gt;
+&lt;li&gt;Edita con nano puppy-stardew-server/data/game/Mods/ServerAutoLoad/config.json: encontrarás algo como &amp;ldquo;SaveFileName&amp;rdquo;:&amp;quot;&amp;quot;, Coloca entre las comillas vacías el nombre del archivo. Quedará algo como &amp;ldquo;SaveFileName&amp;rdquo;: &amp;ldquo;Granjaprueb_428913504&amp;rdquo;,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Debería bastar. Arranca el servidor con docker compose up -d y prueba a conectarte tras un par de minutos colocando la IP o el dominio del servidor en el Stardew Valley que tienes instalado en el ordenador.&lt;/p&gt;
+&lt;p&gt;Si por alguna razón no funciona continúa con el siguiente paso.&lt;/p&gt;
+&lt;p&gt;##¡No puedo conectar!&lt;/p&gt;
+&lt;p&gt;Tranquilidad, se puede arreglar.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Para el contenedor:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker compose down
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Descarga este zip: &lt;a href=&#34;https://jesuspavonabian.es/files/svConfig.zip&#34;&gt;SVConfig.zip&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Descomprímelo y coloca los dos archivos que están dentro de la carpeta que se genera en puppy-stardew-server/data/saves reemplazando los que ya hay.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ahora sí, debería funcionar. Prueba a levantarlo con docker compose up -d y conecta tras unos minutos.&lt;/p&gt;
+&lt;h2 id=&#34;quiero-crear-otra-cabaña-y-no-quiero-entrar-por-vnc&#34;&gt;¡Quiero crear otra cabaña y no quiero entrar por VNC!&lt;/h2&gt;
+&lt;p&gt;Venga, te doy el truco, aunque sospecho que a estas alturas ya sabes cuál es&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dile a quien juegue contigo que dormir es necesario. si no duerme antes de que hagas el invento este, perderá el día. Quien avisa no es traidor. ¡Dormid todos!&lt;/li&gt;
+&lt;li&gt;Ejecuta docker compose down para apagar el servidor.&lt;/li&gt;
+&lt;li&gt;Descarga el save a tu ordenador.&lt;/li&gt;
+&lt;li&gt;Cópialo a tu juego local.&lt;/li&gt;
+&lt;li&gt;Carga la partida.&lt;/li&gt;
+&lt;li&gt;Ve con Robin y crea una cabaña o las que sean necesarias.&lt;/li&gt;
+&lt;li&gt;Retrasa un día con el comando que coloqué antes.&lt;/li&gt;
+&lt;li&gt;Duerme y sal.&lt;/li&gt;
+&lt;li&gt;Sube el save al servidor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;¡Listo!&lt;/p&gt;
+&lt;p&gt;Dudas, comentarios, tirones de orejas por el formato, mejoras&amp;hellip; Sabéis dónde encontrarme.&lt;/p&gt;
+&lt;p&gt;¡Cultivad mucho!&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Una recomendación rápida</title>
       <link>https://jesuspavonabian.es/post/recomendacion_rapida/</link>

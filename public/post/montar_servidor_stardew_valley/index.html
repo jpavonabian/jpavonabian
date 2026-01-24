@@ -6,7 +6,7 @@
     <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
     <title>
   
-    #WebSencilla e IndieWeb: ¿Qué es? ¿Cómo participar? - El Blog de un informático que sueña con mejorar el mundo
+    Montar un servidor de Stardew Valley de forma accesible - El Blog de un informático que sueña con mejorar el mundo
   
 </title>
     
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <ul id="feed__ul">
             <li class="feed__li h-entry">
                 <div class="feed__content">
-                    <time class="hidden dt-published">2024-01-14 10:15:29 &#43;0100 CET</time>
+                    <time class="hidden dt-published">2026-01-24 09:28:38 &#43;0100 CET</time>
                     <div class="flex properties__row ">
                         <div rel="author" class="flex left p-author h-card">
                             <img class="u-photo"
@@ -279,13 +279,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </p>
                                 <p class="properties">
                                     
-                                    Jan 14, 2024
+                                    Jan 24, 2026
                                 </p>
                             </div>
                         </div>
                         <div class="flex right properties">
                             
-                            <a aria-label="#WebSencilla e IndieWeb: ¿Qué es? ¿Cómo participar?" class="icon u-url" href="https://jesuspavonabian.es/post/websencilla-indieweb-que-es-y-como-participar/">
+                            <a aria-label="Montar un servidor de Stardew Valley de forma accesible" class="icon u-url" href="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-bookmark">
@@ -296,22 +296,80 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     
                             <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/websencilla-indieweb-que-es-y-como-participar/">#WebSencilla e IndieWeb: ¿Qué es? ¿Cómo participar?</a></h2>
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/">Montar un servidor de Stardew Valley de forma accesible</a></h2>
                                 
-                                <p>Hace ya casi un año, cuando creé la instancia de Mastodon <a href="https://mst.universoalterno.es/">Universo alterno</a>, <a href="https://www.sukiletxe.eu/es/">Sukil</a> me comentó algo como &ldquo;Hey, ya que estás con el tema del fediverso, ¿no quieres ser un ciudadano de <a href="https://indieweb.org/">IndieWeb</a>?&rdquo;</p>
-<p>Y como soy una persona curiosa, me puse a investigar. Pero como sabeis, esta página estaba hecha con WordPress. Y aunque no debería ser problema, como pasó por varios hostings y la creé cuando no tenía mucha idea de qué estaba haciendo, aquello daba problemas por todos lados, así que me olvidé del tema después de frustrarme. Que si fallaba el Endpoint de no se qué, que si el archivo patata tenía los permisos escacharraos, que si ahora el plugin no se cuantos no es compatible porque se ha roto el Transfuncionador del Contínuo&hellip;</p>
-<p>Hace un par de semanas llegó a mi Timeline la <a href="https://mst.universoalterno.es/tags/websencilla">#websencilla</a> y me llamó muchísimo la atención el concepto de volver atrás, de darle importancia al contenido, de hacer webs simples que carguen rápido sin cosas de terceros.</p>
-<p>Pero yo estaba limitado por culpa de mi WordPress estropeado. Podría reinstalarlo y darle una vuelta, pero cada vez que pensaba en ponerme a ello, me daba una pereza horrorosa. Y entre otras cosas, la culpa la tenía el editor de bloques, nunca me terminé de acostumbrar, he de confesar que le he cogido una manía horrorosa. Sé que está por ahí el editor clásico en forma de plugin, pero en algún momento dice la teoría que dejará de estarlo. Lo curioso de esto es que llevo un par de webs de conocidos, y todas tienen el WordPress estupendo. Quizás, si no hubiera estado tan mal, podría haberme peleado con el editor de las narices. ¿Quién sabe?</p>
-<p>El caso es que ayer terminé de plantearme cosas, y queriendo ahorrarme un servidor, como dije en otro post, y unos cuantos euros de paso, decidí hacer la migración a <a href="https://gohugo.io/">Hugo</a> utilizando el tema <a href="https://github.com/dianoetic/indiefeed">Indiefeed</a>.</p>
-<h2 id="pero-espera-que-te-vas-por-las-ramas-qué-es-eso-de-la-indieweb">Pero espera, que te vas por las ramas. ¿Qué es eso de la IndieWeb?</h2>
-<p>Parafraseando y traduciendo de <a href="https://indieweb.org/">indieweb.org</a>, La IndieWeb es una alternativa centrada en la gente a la &ldquo;web corporativa&rdquo;. Tu contenido es tuyo. Cuando publicas algo en la web, debería pertenecerte a ti, no a una empresa. Demasiadas compañías han cerrado y perdido todos los datos de sus usuarios. Uniéndote a la IndieWeb, tu contenido continúa siendo tuyo y estando bajo tu control.</p>
-<p>La idea es que el centro de tu vida en la red sea tu página web, que te identifica en los servicios a los que quieras acceder.  ¿Publicas un artículo sobre las bicicletas voladoras? Sin problema. Envías el enlace del artículo a distintos sitios y recibes las interacciones en tu web, independientemente del servicio que utilicen para ello. ¿Quieres responder? Sin problema también. Respondes desde tu página web y se propaga al sitio adecuado.</p>
-<h2 id="me-mola-la-idea-cómo-empiezo">Me mola la idea, ¿cómo empiezo?</h2>
-<p>Lo primero que necesitarás es un dominio. Es lo que usarás para identificarte en la red, así que escoge uno que te represente.</p>
-<p>Cuando lo tengas, puedes seguir <a href="https://indiewebify.me/">esta guía interactiva (en inglés)</a> para completar los tres niveles.</p>
-<p>Parece complejo, pero salvo el tema de <a href="https://en.wikipedia.org/wiki/Webmention">webmention</a> se hace en nada. Por cierto, cuando la completes, siéntete libre de dejar por aquí una webmention.</p>
-<p>En un futuro editaré la entrada para ampliarla con más detalles.</p>
-<p>¿Quieres comentarme algo? Utiliza el enlace para dejar una webmention o <a href="https://mst.universoalterno.es/@jpavonabian">escríbeme en Mastodon</a>.</p>
+                                <p>Llevo un tiempo jugando <a href="https://store.steampowered.com/app/413150/Stardew_Valley/?l=spanish">Stardew Valley</a>. Tanto en cooperativo como en local.</p>
+<p>El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&hellip; Un engorro, vaya. Así que nos pusimos a investigar&hellip;</p>
+<p>Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado <a href="https://github.com/truman-world/puppy-stardew-server/">Puppy Stardew Server</a>. ¿el problema? Lo conseguíamos levantar, pero requería conectarse mediante VNC para cargar la primera partida. Y claro, ahí no había accesibilidad ninguna.</p>
+<p>Buscamos por la red. Dimos vueltas a google, encontramos las bolas de dragón y pedimos un deseo&hellip; Y nada. Que a la gente le molaba VNC.</p>
+<p>así que tiramos de la solución de la cual tiramos muchos cegatos cuando no podemos hacer algo: &ldquo;Persona con ojos más cercana, ¿haces aquí un par de clicks?&rdquo; y el problema se arregló.</p>
+<p>Pero me molestaba. Muchísimo. Si lo que se necesitaba era tener una partida se podía hacer a mano editando un archivo, seguro.</p>
+<p>Y se pudo, aprovechando que no podía dormir.</p>
+<h2 id="cosas-a-tener-en-cuenta-antes-de-entrar-en-materia">Cosas a tener en cuenta antes de entrar en materia</h2>
+<p>No es mucho, pero es conveniente saberlo.</p>
+<ul>
+<li>El script levanta un servidor con Docker y descarga el juego de una cuenta de Steam. Así que es necesario tener el juego comprado. Solo usa Steam únicamente para descargar los archivos.</li>
+<li>Intenté ejecutarlo en una Raspberry Pi y petó por todo lo alto. Supongo que alguien con tiempo podría cohnstruir una imagen.</li>
+<li>Se pueden añadir más mods añadiéndolos a la carpeta Mods. No todos funcionan, ojo cuidao.</li>
+<li>Si quieres  crear más cabañas porque no configuraste bien la partida, tendrás que liar la de Dios es Cristo, luego lo explico.</li>
+<li>Si alguien tiene mods de esos de hacer la vida más fácil, como el que sirve para pescar podrá usarlos. Esto garantiza que podemos jugar en cualquier servidor con nuestros mods de accesibilidad. También garantiza que si tienes un colega tramposillo puede hacer lo que le sale del pie, pues el servidor hace de servidor y la mayoría de cosas se gestionan desde los clientes.</li>
+</ul>
+<h2 id="al-lío">Al lío</h2>
+<p>El primer paso es instalar Docker. No lo explicaré aquí, lo siento.</p>
+<p>Una vez hecho esto y teniendo a nuestro usuario de turno con permisos para ejecutar docker sin sudo ejecutamos el script oficial de instalación rápida:</p>
+<pre tabindex="0"><code>curl -sSL https://raw.githubusercontent.com/truman-world/puppy-stardew-server/main/quick-start.sh | bash
+</code></pre><p>Nos saldrá un asistente maravilloso en inglés. Le damos a la Y y a enter para meter nuestros datos de Steam y esperamos que haga su magia. llegará un momento que nos preguntará si queremos ver los logs. Podemos decirle alegremente que no con la N y enter. Cuidado con la contraseña de VNC. Pon alguna que sea difícil, no quieres a nadie trasteando con tu granja.</p>
+<p>Si tenemos SteamGuard activado tenemos que meter el código. Así que como deberíamos estar en el prompt del sistema nos iremos al contenedor docker que nos ha creado:</p>
+<pre tabindex="0"><code>docker attach puppy-stardew
+</code></pre><p>No nos preguntará nada al pulsar enter ni veremos tampoco nada. Pegamos el código que nos habrá llegado por correo y le damos enter.</p>
+<p>Ahora toca un paso delicadísimo: Esperar. En serio, tarda lo suyo. Podemos aprovechar para ir por un café, una cerveza o lo que toque. Cuando termine pulsamos Ctrl + P y luego Ctrl + Q para ¿desacoplarnos? del contenedor. Deberíamos volver al prompt del sistema.</p>
+<p>ya falta poco. para continuar tenemos que apagar el servidor, pues se ha quedado esperando que alguien entre por VNC.</p>
+<pre tabindex="0"><code>docker compose down
+</code></pre><h2 id="crear-la-granja-sin-vnc">Crear la granja sin VNC</h2>
+<p>Aquí está el truco. Si lo piensas es sencillo, pero hay que dar con ello.</p>
+<ul>
+<li>Abre Stardew Valley en tu ordenador.</li>
+<li>Crea una granja cooperativa con las cabañas necesarias.</li>
+<li>Salta la historia.</li>
+<li>Duerme para que se guarde, siempre puedes retrasar el día perdido con debug world_setday 1.</li>
+<li>Cierra el juego.</li>
+<li>Copia la partida: encontrarás su directorio en %appdata%\StardewValley\Saves</li>
+<li>Copia el save al servidor. No puedo poner la ruta completa porque no sé tu usuario, pero no es difícil de encontrar: puppy-stardew-server/data/saves/Saves</li>
+<li>Edita con nano puppy-stardew-server/data/game/Mods/ServerAutoLoad/config.json: encontrarás algo como &ldquo;SaveFileName&rdquo;:&quot;&quot;, Coloca entre las comillas vacías el nombre del archivo. Quedará algo como &ldquo;SaveFileName&rdquo;: &ldquo;Granjaprueb_428913504&rdquo;,</li>
+</ul>
+<p>Debería bastar. Arranca el servidor con docker compose up -d y prueba a conectarte tras un par de minutos colocando la IP o el dominio del servidor en el Stardew Valley que tienes instalado en el ordenador.</p>
+<p>Si por alguna razón no funciona continúa con el siguiente paso.</p>
+<p>##¡No puedo conectar!</p>
+<p>Tranquilidad, se puede arreglar.</p>
+<ul>
+<li>
+<p>Para el contenedor:</p>
+<pre tabindex="0"><code>docker compose down
+</code></pre></li>
+<li>
+<p>Descarga este zip: <a href="https://jesuspavonabian.es/files/svConfig.zip">SVConfig.zip</a></p>
+</li>
+<li>
+<p>Descomprímelo y coloca los dos archivos que están dentro de la carpeta que se genera en puppy-stardew-server/data/saves reemplazando los que ya hay.</p>
+</li>
+</ul>
+<p>Ahora sí, debería funcionar. Prueba a levantarlo con docker compose up -d y conecta tras unos minutos.</p>
+<h2 id="quiero-crear-otra-cabaña-y-no-quiero-entrar-por-vnc">¡Quiero crear otra cabaña y no quiero entrar por VNC!</h2>
+<p>Venga, te doy el truco, aunque sospecho que a estas alturas ya sabes cuál es&hellip;</p>
+<ul>
+<li>Dile a quien juegue contigo que dormir es necesario. si no duerme antes de que hagas el invento este, perderá el día. Quien avisa no es traidor. ¡Dormid todos!</li>
+<li>Ejecuta docker compose down para apagar el servidor.</li>
+<li>Descarga el save a tu ordenador.</li>
+<li>Cópialo a tu juego local.</li>
+<li>Carga la partida.</li>
+<li>Ve con Robin y crea una cabaña o las que sean necesarias.</li>
+<li>Retrasa un día con el comando que coloqué antes.</li>
+<li>Duerme y sal.</li>
+<li>Sube el save al servidor.</li>
+</ul>
+<p>¡Listo!</p>
+<p>Dudas, comentarios, tirones de orejas por el formato, mejoras&hellip; Sabéis dónde encontrarme.</p>
+<p>¡Cultivad mucho!</p>
 
                                 
                                 <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
@@ -323,14 +381,10 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="flex left properties">
         <span class="properties">
             
-            <span class="dt-published hidden">2024-01-14 10:15:29 &#43;0100 CET</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/websencilla-indieweb-que-es-y-como-participar/">
+            <span class="dt-published hidden">2026-01-24 09:28:38 &#43;0100 CET</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/">
                 
-                
-                
-                
-                
-                hace 741 días
+                hoy mismo
                 
             </a>
             
