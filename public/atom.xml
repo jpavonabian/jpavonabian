@@ -2,13 +2,40 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-01-24T09:28:38+01:00</updated>
+  <updated>2026-02-22T00:00:00+01:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[V diploma del día de Andalucía, operando AN46HU]]></title>
+    <link href="https://jesuspavonabian.es/post/an46hu/"/>
+    <id>https://jesuspavonabian.es/post/an46hu/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-02-22T00:00:00+01:00</published>
+    <updated>2026-02-22T00:00:00+01:00</updated>
+    
+    <content type="html"><![CDATA[<p>Hace unos días <a href="https://www.qrz.com/db/EC7R">EC7R</a> comentó por el grupo de la sección de URE Huelva que se haría un <a href="https://diadeandalucia.ure.es/">Diploma por el Día de Andalucía</a>.</p>
+<p>Yo seguía sin antenas en el tejado así que ignoré el mensaje, no era para mí. Hasta que descubrí que uno de los modos del diploma era Voz Digital.</p>
+<p>Así que pregunté si podía ayudar a activar el indicativo especial que representa a Huelva en DMR y me dijeron que sí.</p>
+<p>Para empezar he de decir que al principio pensé que &ldquo;un diploma en DMR es bastante MEH. Hay internet por medio, no tiene gracia&rdquo;. Cuando se me acumularon las primeras tres estaciones de golpe, pisándose entre ellas, cambié de opinión bastante rápido.</p>
+<p>El DMR tiene&hellip; Particularidades. Es verdad que no hay QRM (ruido) que interfiera la señal, es verdad que o llegas o no llegas, no hay medias tintas, pero aún así&hellip;</p>
+<p>A veces, por alguna razón que todavía no he investigado, cuando pulsas PTT la primera vez, el chisme se come los inicios o los finales de la gente. Eso ocasiona que muchos indicativos lleguen cortados y tengas que soltar la frase &ldquo;estación con Mike en el indicativo, repita su indicativo completo, por favor&rdquo;.</p>
+<p>Otra particularidad es que solo se decodifica una señal a la vez. Si habla uno y coincide que otro pulsa PTT, solo te enteras del que primero lo haya pulsado. A veces, debido a esta casuística, hubo quien no se enteró que le había dado la confirmación y le había anotado en el Log.</p>
+<p>Mientras escribo esto he subido el último log de hoy. He sumado 17 contactos, no está mal para ser DMR, en un TG poco concurrido y sin anunciarme en ningún sitio.</p>
+<p>Confieso que al principio estaba más nervioso que Pinocho en un incendio. Salí por la mañana y un ratito por la tarde. Lo bueno que tiene el diploma es que solo es válido un contacto con una estación por banda y modo. Una persona que haya contactado el indicativo especial de Huelva (AN46HU) por DMR no lo volverá a hacer, pues no le sirve. Eso facilita mucho las cosas a alguien nuevo nuevísimo como yo.</p>
+<p>La primera media hora fue caótica. Muy caótica. No por el volumen de QSOs (comunicados), sino por el volumen de nervios. Me faltaban manos. Coge el walkie, llama, suéltalo, manos al teclado, escucha, coge el walkie, pide repetir, suelta el walkie, escribe el indicativo, coge el walkie, da el 59 y el anotado en el log, llama&hellip;</p>
+<p>Al final le fui cogiendo el truquillo, pero al principio lo pasé mal. Mi frase mental más repetida fue &ldquo;dónde me he metido yo&rdquo;. No quiero saber lo que puede ser activar en 20 o 40M. bueno sí, sí quiero, a quién voy a engañar. Pero con un pedal para el PTT y un micro de mesa. No he puesto antenas en el tejado y ya estoy pensando en que necesitaré un pedal y un micrófono, menos mal que es barato en la tienda china por excelencia.</p>
+<p>Creo que de este diploma me voy a llevar la soltura en velocidad a la hora de anotar contactos en el libro de guardia y algo de entretenimiento, que planto las antenas en la azotea el 11 de Marzo y se me está haciendo eterno.</p>
+<p>Por cierto&hellip; TG 2147 en BrandMeister.</p>
+<p>73 de EA7LEE</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Montar un servidor de Stardew Valley de forma accesible]]></title>
     <link href="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/"/>
