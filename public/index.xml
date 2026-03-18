@@ -8,7 +8,28 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Mon, 23 Feb 2026 09:43:20 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EA7LEE: Saliendo al aire</title>
+      <link>https://jesuspavonabian.es/post/ea7leesaliendoalaire/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0100</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/ea7leesaliendoalaire/</guid>
+      <description>Tengo las antenas en la azotea, por fin.
+Ha costado. coordinar gente, el clima que no colavoraba&amp;hellip; Pero ya está. Hace dos días subieron a la azotea, y a falta de cambiar una cuerda por una más resistente, cosa que haremos esta semana y que no impide operar, tengo la instalación fija montada. Y curiosamente autorizada por Telecomunicaciones para emitir, que pensaba que llevaría más tiempo.
+Todo funciona como se esperaba salvo por un pequeño problema con el USB, que recibe RF cuando le meto caña al equipo y se reinicia.</description>
+      <content:encoded>
+      &lt;p&gt;Tengo las antenas en la azotea, por fin.&lt;/p&gt;
+&lt;p&gt;Ha costado. coordinar gente, el clima que no colavoraba&amp;hellip; Pero ya está. Hace dos días subieron a la azotea, y a falta de cambiar una cuerda por una más resistente, cosa que haremos esta semana y que no impide operar, tengo la instalación fija montada. Y curiosamente autorizada por Telecomunicaciones para emitir, que pensaba que llevaría más tiempo.&lt;/p&gt;
+&lt;p&gt;Todo funciona como se esperaba salvo por un pequeño problema con el USB, que recibe RF cuando le meto caña al equipo y se reinicia. Llenar el cable de ferritas arregló el problema en casi todas las bandas (20M y alguna otra siguen dando guerra) pero un Choke comprado a &lt;a href=&#34;https://www.qrz.com/db/EB4HRA&#34;&gt;EB4HRA&lt;/a&gt; colocado a la entrada del cuarto de radio se encargará del problema.&lt;/p&gt;
+&lt;p&gt;De momento estoy haciendo QSOs en 40M a 20W o 30W, que ya es, sobre todo en FT8, que la portadora es constante. He hecho mis primeros DX, como podeis ver en esta tabla que se actualiza en tiempo real.&lt;/p&gt;
+&lt;iframe align=&#34;top&#34; frameborder=&#34;0&#34; height=&#34;500&#34; scrolling=&#34;yes&#34; src=&#34;https://logbook.qrz.com/lbstat/EA7LEE/&#34; width=&#34;640&#34;&gt;&lt;/iframe&gt; 
+&lt;p&gt;Hacer Brasil en fonía a 5W es un pequeño logro para el primer día en serio.&lt;/p&gt;
+&lt;p&gt;¿Primer objetivo? Además de disfrutar, claro, ir a por el DXCC, un diploma facilito. solo necesito confirmar 100 entidades distintas.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Diploma del Día de Andalucía</title>
       <link>https://jesuspavonabian.es/post/an46hu/</link>

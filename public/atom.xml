@@ -2,13 +2,33 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-02-23T09:43:20+01:00</updated>
+  <updated>2026-03-18T00:00:00+01:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[EA7LEE: Saliendo al aire]]></title>
+    <link href="https://jesuspavonabian.es/post/ea7leesaliendoalaire/"/>
+    <id>https://jesuspavonabian.es/post/ea7leesaliendoalaire/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-03-18T00:00:00+01:00</published>
+    <updated>2026-03-18T00:00:00+01:00</updated>
+    
+    <content type="html"><![CDATA[<p>Tengo las antenas en la azotea, por fin.</p>
+<p>Ha costado. coordinar gente, el clima que no colavoraba&hellip; Pero ya está. Hace dos días subieron a la azotea, y a falta de cambiar una cuerda por una más resistente, cosa que haremos esta semana y que no impide operar, tengo la instalación fija montada. Y curiosamente autorizada por Telecomunicaciones para emitir, que pensaba que llevaría más tiempo.</p>
+<p>Todo funciona como se esperaba salvo por un pequeño problema con el USB, que recibe RF cuando le meto caña al equipo y se reinicia. Llenar el cable de ferritas arregló el problema en casi todas las bandas (20M y alguna otra siguen dando guerra) pero un Choke comprado a <a href="https://www.qrz.com/db/EB4HRA">EB4HRA</a> colocado a la entrada del cuarto de radio se encargará del problema.</p>
+<p>De momento estoy haciendo QSOs en 40M a 20W o 30W, que ya es, sobre todo en FT8, que la portadora es constante. He hecho mis primeros DX, como podeis ver en esta tabla que se actualiza en tiempo real.</p>
+<iframe align="top" frameborder="0" height="500" scrolling="yes" src="https://logbook.qrz.com/lbstat/EA7LEE/" width="640"></iframe> 
+<p>Hacer Brasil en fonía a 5W es un pequeño logro para el primer día en serio.</p>
+<p>¿Primer objetivo? Además de disfrutar, claro, ir a por el DXCC, un diploma facilito. solo necesito confirmar 100 entidades distintas.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Diploma del Día de Andalucía]]></title>
     <link href="https://jesuspavonabian.es/post/an46hu/"/>
