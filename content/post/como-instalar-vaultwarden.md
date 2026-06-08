@@ -151,7 +151,7 @@ En cada dispositivo: cierra sesión → en la pantalla de login busca el selecto
 
 A partir de ahí, el cliente usa tu servidor. Ya está.
 
-## Cerrar el chiringuito después del setup
+## Cerrar el chiringuito después de instalar
 
 Una vez creadas todas las cuentas que necesites, edita el `.env`:
 
@@ -162,6 +162,7 @@ SIGNUPS_ALLOWED=false
 Y reinicia:
 
 ```bash
+docker compose down
 docker compose up -d
 ```
 
@@ -185,6 +186,7 @@ Y copia los backups fuera del servidor. Si el disco falla y los backups están e
 ```bash
 cd /opt/vaultwarden
 docker compose pull
+docker compose down
 docker compose up -d
 ```
 

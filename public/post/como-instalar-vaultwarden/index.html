@@ -389,11 +389,12 @@ document.addEventListener("DOMContentLoaded", function() {
 <h2 id="migrar-los-clientes">Migrar los clientes</h2>
 <p>En cada dispositivo: cierra sesión → en la pantalla de login busca el selector de región o el icono de engranaje → elige <em>Self-hosted</em> → introduce <code>https://vault.tudominio.es</code> → inicia sesión.</p>
 <p>A partir de ahí, el cliente usa tu servidor. Ya está.</p>
-<h2 id="cerrar-el-chiringuito-después-del-setup">Cerrar el chiringuito después del setup</h2>
+<h2 id="cerrar-el-chiringuito-después-de-instalar">Cerrar el chiringuito después de instalar</h2>
 <p>Una vez creadas todas las cuentas que necesites, edita el <code>.env</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SIGNUPS_ALLOWED</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">false</span>
 </span></span></code></pre></div><p>Y reinicia:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose down
+</span></span><span style="display:flex;"><span>docker compose up -d
 </span></span></code></pre></div><p>Si dejas los registros abiertos y el servidor es público, tarde o temprano alguien crea una cuenta en tu gestor de contraseñas. No es algo que quieras.</p>
 <h2 id="backups">Backups</h2>
 <p>Toda la información vive en <code>/opt/vaultwarden/vw-data/</code>. Un cron básico:</p>
@@ -405,6 +406,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <h2 id="actualizar">Actualizar</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /opt/vaultwarden
 </span></span><span style="display:flex;"><span>docker compose pull
+</span></span><span style="display:flex;"><span>docker compose down
 </span></span><span style="display:flex;"><span>docker compose up -d
 </span></span></code></pre></div><p>Las migraciones de base de datos las hace automáticamente al arrancar. Haz backup antes de actualizar, como con cualquier cosa que importe.</p>
 <hr>

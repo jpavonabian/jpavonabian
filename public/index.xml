@@ -111,11 +111,12 @@ Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
 &lt;h2 id=&#34;migrar-los-clientes&#34;&gt;Migrar los clientes&lt;/h2&gt;
 &lt;p&gt;En cada dispositivo: cierra sesión → en la pantalla de login busca el selector de región o el icono de engranaje → elige &lt;em&gt;Self-hosted&lt;/em&gt; → introduce &lt;code&gt;https://vault.tudominio.es&lt;/code&gt; → inicia sesión.&lt;/p&gt;
 &lt;p&gt;A partir de ahí, el cliente usa tu servidor. Ya está.&lt;/p&gt;
-&lt;h2 id=&#34;cerrar-el-chiringuito-después-del-setup&#34;&gt;Cerrar el chiringuito después del setup&lt;/h2&gt;
+&lt;h2 id=&#34;cerrar-el-chiringuito-después-de-instalar&#34;&gt;Cerrar el chiringuito después de instalar&lt;/h2&gt;
 &lt;p&gt;Una vez creadas todas las cuentas que necesites, edita el &lt;code&gt;.env&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;SIGNUPS_ALLOWED&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;false&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Y reinicia:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose down
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Si dejas los registros abiertos y el servidor es público, tarde o temprano alguien crea una cuenta en tu gestor de contraseñas. No es algo que quieras.&lt;/p&gt;
 &lt;h2 id=&#34;backups&#34;&gt;Backups&lt;/h2&gt;
 &lt;p&gt;Toda la información vive en &lt;code&gt;/opt/vaultwarden/vw-data/&lt;/code&gt;. Un cron básico:&lt;/p&gt;
@@ -127,6 +128,7 @@ Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
 &lt;h2 id=&#34;actualizar&#34;&gt;Actualizar&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; /opt/vaultwarden
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose pull
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose down
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Las migraciones de base de datos las hace automáticamente al arrancar. Haz backup antes de actualizar, como con cualquier cosa que importe.&lt;/p&gt;
 &lt;hr&gt;
