@@ -17,12 +17,12 @@
       <guid>https://jesuspavonabian.es/post/como-instalar-vaultwarden/</guid>
       <description>Van a subir el precio de Bitwarden.
 Así que como le tengo manía a los precios que suben me he montado mi propio servidor de Vaultwarden y resuelto el problema.
-Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
+Pensé que sería más engorrosillo, pero ha sido fácil.
 ¿Qué es Vaultwarden? Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio.</description>
       <content:encoded>
       &lt;p&gt;Van a subir el precio de Bitwarden.&lt;/p&gt;
 &lt;p&gt;Así que como le tengo manía a los precios que suben me he montado mi propio servidor de Vaultwarden y resuelto el problema.&lt;/p&gt;
-&lt;p&gt;Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.&lt;/p&gt;
+&lt;p&gt;Pensé que sería más engorrosillo, pero ha sido fácil.&lt;/p&gt;
 &lt;h2 id=&#34;qué-es-vaultwarden&#34;&gt;¿Qué es Vaultwarden?&lt;/h2&gt;
 &lt;p&gt;Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio. La diferencia es que corre en un solo contenedor Docker, consume unos 50 MB de RAM y no le debes nada a nadie.&lt;/p&gt;
 &lt;p&gt;El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que llenar de mierda el servidor.&lt;/p&gt;
@@ -35,7 +35,7 @@ Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; /opt/vaultwarden
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Todo vive aquí. El &lt;code&gt;docker-compose.yml&lt;/code&gt;, el &lt;code&gt;.env&lt;/code&gt; con la configuración y el directorio &lt;code&gt;vw-data&lt;/code&gt; donde Vaultwarden guarda la base de datos SQLite y los adjuntos. Si haces backup de esta carpeta, tienes todo.&lt;/p&gt;
 &lt;h2 id=&#34;el-admin_token-ya-no-es-texto-plano&#34;&gt;El ADMIN_TOKEN ya no es texto plano&lt;/h2&gt;
-&lt;p&gt;Este es el primer sitio donde las guías viejas te van a fallar. Desde la versión 1.28, el token del panel &lt;code&gt;/admin&lt;/code&gt; tiene que ser un hash argon2id. Si pones texto plano, no funciona y punto.&lt;/p&gt;
+&lt;p&gt;Desde la versión 1.28, el token del panel &lt;code&gt;/admin&lt;/code&gt; tiene que ser un hash argon2id. Si pones texto plano explota.&lt;/p&gt;
 &lt;p&gt;Para generar el hash usas un contenedor temporal del propio Vaultwarden:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker run --rm -it vaultwarden/server /vaultwarden &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;hash&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Te pide una contraseña, la introduces y te escupe un hash que empieza por &lt;code&gt;$argon2id$...&lt;/code&gt;. Ese hash es lo que va en el &lt;code&gt;.env&lt;/code&gt;. La contraseña que pusiste la necesitas para entrar al panel de admin, así que apúntala en algún sitio que no sea el propio Vaultwarden, por razones obvias.&lt;/p&gt;

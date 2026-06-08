@@ -12,7 +12,7 @@ Van a subir el precio de Bitwarden.
 
 Así que como le tengo manía a los precios que suben me he montado mi propio servidor de Vaultwarden y resuelto el problema.
 
-Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
+Pensé que sería más engorrosillo, pero ha sido fácil.
 
 ## ¿Qué es Vaultwarden?
 
@@ -39,7 +39,7 @@ Todo vive aquí. El `docker-compose.yml`, el `.env` con la configuración y el d
 
 ## El ADMIN_TOKEN ya no es texto plano
 
-Este es el primer sitio donde las guías viejas te van a fallar. Desde la versión 1.28, el token del panel `/admin` tiene que ser un hash argon2id. Si pones texto plano, no funciona y punto.
+Desde la versión 1.28, el token del panel `/admin` tiene que ser un hash argon2id. Si pones texto plano explota.
 
 Para generar el hash usas un contenedor temporal del propio Vaultwarden:
 

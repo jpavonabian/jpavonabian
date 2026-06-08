@@ -21,7 +21,7 @@
     
     <content type="html"><![CDATA[<p>Van a subir el precio de Bitwarden.</p>
 <p>Así que como le tengo manía a los precios que suben me he montado mi propio servidor de Vaultwarden y resuelto el problema.</p>
-<p>Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.</p>
+<p>Pensé que sería más engorrosillo, pero ha sido fácil.</p>
 <h2 id="qué-es-vaultwarden">¿Qué es Vaultwarden?</h2>
 <p>Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio. La diferencia es que corre en un solo contenedor Docker, consume unos 50 MB de RAM y no le debes nada a nadie.</p>
 <p>El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que llenar de mierda el servidor.</p>
@@ -34,7 +34,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /opt/vaultwarden
 </span></span></code></pre></div><p>Todo vive aquí. El <code>docker-compose.yml</code>, el <code>.env</code> con la configuración y el directorio <code>vw-data</code> donde Vaultwarden guarda la base de datos SQLite y los adjuntos. Si haces backup de esta carpeta, tienes todo.</p>
 <h2 id="el-admin_token-ya-no-es-texto-plano">El ADMIN_TOKEN ya no es texto plano</h2>
-<p>Este es el primer sitio donde las guías viejas te van a fallar. Desde la versión 1.28, el token del panel <code>/admin</code> tiene que ser un hash argon2id. Si pones texto plano, no funciona y punto.</p>
+<p>Desde la versión 1.28, el token del panel <code>/admin</code> tiene que ser un hash argon2id. Si pones texto plano explota.</p>
 <p>Para generar el hash usas un contenedor temporal del propio Vaultwarden:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it vaultwarden/server /vaultwarden <span style="color:#8be9fd;font-style:italic">hash</span>
 </span></span></code></pre></div><p>Te pide una contraseña, la introduces y te escupe un hash que empieza por <code>$argon2id$...</code>. Ese hash es lo que va en el <code>.env</code>. La contraseña que pusiste la necesitas para entrar al panel de admin, así que apúntala en algún sitio que no sea el propio Vaultwarden, por razones obvias.</p>
