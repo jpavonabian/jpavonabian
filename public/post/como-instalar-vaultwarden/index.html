@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es-es"><head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
+    <title>
+  
+    Vaultwarden, o cómo dejar de pagar por guardar mis contraseñas - El Blog de un informático que sueña con mejorar el mundo
+  
+</title>
+    
+    
+
+    
+    <link rel="shortcut icon" href="https://jesuspavonabian.es/favicon.ico">
+    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-16x16.png" sizes="16x16" />
+
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    <link rel="me" href="https://github.com/jpavonabian" />
+    <link rel="me" href="https://twitter.com/jpa_apj" />
+    <link rel="me" href="https://mst.universoalterno.es/@jpavonabian" />
+
+    
+    <link rel="stylesheet" href="https://jesuspavonabian.es/css/layout.css" crossorigin="anonymous" media="screen">
+    
+    <link rel="stylesheet" href="https://jesuspavonabian.es/css/style.css" crossorigin="anonymous" media="screen">
+    
+    
+    
+    <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention" />
+    <link rel="pingback" href="https://webmention.io/jesuspavonabian.es/xmlrpc" />
+    
+    
+    <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
+    <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
+    
+    
+    <meta property="og:url" content="https://jesuspavonabian.es/" />
+    <meta property="og:title" content="El Blog de un informático que sueña con mejorar el mundo" />
+    <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo" />
+    <meta property="og:type" content="website" />
+    
+    
+    
+    <meta name="twitter:title" content="El Blog de un informático que sueña con mejorar el mundo" />
+    
+    
+	
+	<script  defer>
+class OyeElAdblock {
+	constructor(userConfig) {
+		this.hasAdBlockActive = false
+		this.NAMESPACE = '🤠'
+		this.AD_TARGET_CLASSES = [
+			'aan_fake',
+			'aan_fake__video-units',
+			'ad',
+			'adde_modal_detector',
+			'adde_modal-overlay',
+			'adsbyrunactive',
+			'advboxemb',
+			'advertising',
+			'aff-content-col',
+			'aff-inner-col',
+			'aff-item-list',
+			'amp-ad-inner',
+			'aoa_overlay',
+			'ark-ad-message',
+			'ave-pl',
+			'bloc-pub',
+			'bloc-pub2',
+			'blocker-notice',
+			'blocker-overlay',
+			'bottom-hor-block',
+			'brs-block',
+			'd-none',
+			'dbanner',
+			'exo-horizontal',
+			'fints-block__row',
+			'ftf-dma-note',
+			'full-ave-pl',
+			'full-bns-block',
+			'gallery-bns-bl',
+			'glx-watermark-container',
+			'GoogleActiveViewElement',
+			'happy-inside-player',
+			'happy-under-player',
+			'header-menu-bottom-ads',
+			'hor_banner',
+			'imggif',
+			'in_stream_banner',
+			'inplayer_banners',
+			'inplayer-ad',
+			'mdp-deblocker-wrapper',
+			'message',
+			'native-ad',
+			'native-ad-1',
+			'ninja-recommend-block',
+			'overlay-advertising-new',
+			'player-bns-block',
+			'preroll-blocker',
+			'rkads',
+			'rps_player_ads',
+			'stream-item-widget',
+			'trafficjunky-float-right',
+			'vertbars',
+			'video-brs',
+			'wgAdBlockMessage',
+			'wps-player__happy-inside',
+			'ytd-j',
+			'yxd-j',
+			'yxd-jd',
+		]
+		this.config = {
+			title: 'Oye, el adBlock!',
+			text: [
+				'Pero bueno, que no se puede ir por la vida sin un bloqueador de publicidad!',
+			],
+			link: {
+				url: 'https://github.com/spacenomads/oye-el-adblock/blob/main/por-que-necesito-un-adblock.md',
+				label: 'Por qué necesito uno?',
+			},
+			close_btn: {
+				label: 'Cerrar ',
+				sr_label: ' aviso de que no se ha detectado adBlock'
+			},
+		}
+
+		if (typeof userConfig === 'object') {
+			this.config = {...this.config, ...userConfig}
+		}
+
+		this.init()
+	}
+
+
+	getCustomClass(em) {
+		if (!em) return this.config.custom_class_name ? `${this.config.custom_class_name}` : ''
+		return this.config.custom_class_name ? `${this.config.custom_class_name}__${em}` : ''
+	}
+
+
+	getContentTemplate(content) {
+		const {custom_class_name} = content
+		const newElement = document.createElement('aside')
+		newElement.className = `${this.NAMESPACE} js-${this.NAMESPACE} ${this.getCustomClass()} ${this.AD_TARGET_CLASSES.join(' ')}`
+		newElement.setAttribute('aria-hidden', 'false')
+		newElement.setAttribute('role', 'alert')
+
+		const wrapper = document.createElement('div')
+		wrapper.classList.add(`${this.NAMESPACE}__wrapper`)
+		const wrapperCustomClassList = this.getCustomClass('wrapper')
+		wrapperCustomClassList && wrapper.classList.add(wrapperCustomClassList)
+
+		const title = `<h2 class="${this.NAMESPACE}__title ${this.getCustomClass('title')}">${content.title}</h2>`
+		wrapper.innerHTML += title
+
+		for (const p of content.text) {
+			const template = `<p class="${this.NAMESPACE}__paragraph ${this.getCustomClass('paragraph')}">${p}</p>`
+			wrapper.innerHTML += template
+		}
+
+		if (content.link && content.link.url && content.link.label) {
+			const extraLinkTemplate = `<p class="${this.NAMESPACE}__paragraph ${this.NAMESPACE}__paragraph--extra-link ${this.getCustomClass('paragraph')} ${this.getCustomClass('paragraph--extra-link')}"><a href="${content.link.url}" class="${this.NAMESPACE}__link ${this.getCustomClass('link')}">${content.link.label}</a></p>`
+			wrapper.innerHTML += extraLinkTemplate
+		}
+
+		newElement.append(wrapper)
+
+		if (content.close_btn && (content.close_btn?.label || content.close_btn?.sr_label)) {
+
+			const closeButton = document.createElement('button')
+			closeButton.type = 'button'
+			closeButton.classList.add(`${this.NAMESPACE}__close`)
+			closeButton.classList.add(`js-${this.NAMESPACE}-close`)
+			const closeButtonCustomClass = this.getCustomClass('close')
+			closeButtonCustomClass && closeButton.classList.add(closeButtonCustomClass)
+
+			const buttonLabel = document.createTextNode(content.close_btn.label || '')
+			const buttonSrLabel = document.createElement('span')
+			buttonSrLabel.classList.add(`${this.NAMESPACE}__sr-only`)
+			const srOnlyCustomClass = this.getCustomClass('sr-only')
+			srOnlyCustomClass && buttonSrLabel.classList.add(srOnlyCustomClass)
+			buttonSrLabel.textContent = content.close_btn.sr_label || ''
+
+			
+			closeButton.append(buttonLabel, buttonSrLabel)
+			closeButton.addEventListener('click', (event) => this.closeAdBlockWarning(event.currentTarget))
+
+			newElement.append(closeButton)
+		}
+
+		return newElement
+	}
+
+
+	closeAdBlockWarning(btn) {
+		const adWarningElement = btn.closest(`.js-${this.NAMESPACE}`)
+		adWarningElement.setAttribute('aria-hidden', true)
+		adWarningElement.classList.add(`${this.NAMESPACE}--hidden`)
+	}
+
+
+	init() {
+		const oyeElAdBlockExists = !!document.querySelector(`.js-${this.NAMESPACE}`)
+		const newAdElement = this.getContentTemplate(this.config)
+
+		if (!oyeElAdBlockExists) {
+			document.body.append(newAdElement)
+
+
+		}
+		const oyeElAdBlockElement = document.querySelector(`.js-${this.NAMESPACE}`)
+		this.hasAdBlockActive = !Boolean(oyeElAdBlockElement.offsetHeight)
+		oyeElAdBlockElement.setAttribute('aria-hidden', this.hasAdBlockActive)
+	}
+}
+document.addEventListener("DOMContentLoaded", function() {
+        const adBlockWarning = new OyeElAdblock();
+    });
+</script>
+</head>
+<body>
+<header aria-label="Cabecera del sitio">
+    <section>
+        <div class="header flex row">
+            <a href="#contenidoPrincipal" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;" onfocus="this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.left='-9999px';this.style.top='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Saltar al Contenido Principal</a>
+            <div class="header__item flex row">
+                
+                <a id="site__name" href="https://jesuspavonabian.es/">
+                    El Blog de un informático que sueña con mejorar el mundo
+                </a>
+            </div>
+            <div class="flex row">
+                <nav aria-label="Menú principal" class="flex row">
+                    <ul role="menubar" class="flex row">
+                        <li role="none">
+                            <a aria-label="Ir al inicio" class="menu__item" href="https://jesuspavonabian.es/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                </svg>
+                            </a>
+                        </li>
+        <li role="none">
+            <a class="menu__item" href="https://jesuspavonabian.es//about/">
+                Sobre mí
+            </a>
+        </li>
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main id="contenidoPrincipal" aria-role="main">
+    <section>
+        <ul id="feed__ul">
+            <li class="feed__li h-entry">
+                <div class="feed__content">
+                    <time class="hidden dt-published">2026-05-19 00:00:00 &#43;0000 UTC</time>
+                    <div class="flex properties__row ">
+                        <div rel="author" class="flex left p-author h-card">
+                            <img class="u-photo"
+                                src="https://picsum.photos/120.webp"
+                                alt="Jesús Pavón Abián" id="author-img">
+                            <div>
+                                <p rel="me" class="p-name" id="author-name">
+                                    
+                                    Jesús Pavón Abián
+                                    
+                                </p>
+                                <p class="properties">
+                                    
+                                    May 19, 2026
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex right properties">
+                            
+                            <a aria-label="Vaultwarden, o cómo dejar de pagar por guardar mis contraseñas" class="icon u-url" href="https://jesuspavonabian.es/post/como-instalar-vaultwarden/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                            <article class="md p-summary e-content">
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/como-instalar-vaultwarden/">Vaultwarden, o cómo dejar de pagar por guardar mis contraseñas</a></h2>
+                                
+                                <p>Van a subir el precio de Bitwarden.</p>
+<p>No es que sea una barbaridad, pero es el principio de una historia que ya conozco. Hoy es un euro más al mes, mañana otro, pasado mañana te ofrecen un plan &ldquo;premium plus&rdquo; que incluye exactamente lo mismo de siempre pero con otro nombre. Ya lo viví con LastPass, con Dropbox y con medio internet. Así que antes de que empiece el festival, me he montado mi propio servidor.</p>
+<p>Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.</p>
+<h2 id="qué-es-vaultwarden">¿Qué es Vaultwarden?</h2>
+<p>Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio. La diferencia es que corre en un solo contenedor Docker, consume unos 50 MB de RAM y no le debes nada a nadie.</p>
+<p>El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que hipotecar el servidor.</p>
+<h2 id="antes-de-montar-nada-exporta-tus-contraseñas">Antes de montar nada: exporta tus contraseñas</h2>
+<p>Antes de tocar nada, entra en <a href="https://vault.bitwarden.com">vault.bitwarden.com</a>, ve a <em>Tools → Export Vault</em> y descarga el <code>.json</code> en formato cifrado. Cifrado, no en texto plano.</p>
+<p>Este archivo tiene todas tus contraseñas protegidas con tu clave maestra. Si lo exportas en texto plano y alguien te mira el escritorio en el momento equivocado, ese alguien tiene tus contraseñas. Con el formato cifrado, sin la clave maestra no es más que ruido.</p>
+<p>Guárdalo en un sitio seguro y no lo pierdas. Lo necesitarás en el paso 7.</p>
+<h2 id="la-estructura-de-directorios">La estructura de directorios</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /opt/vaultwarden/vw-data
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /opt/vaultwarden
+</span></span></code></pre></div><p>Todo vive aquí. El <code>docker-compose.yml</code>, el <code>.env</code> con la configuración y el directorio <code>vw-data</code> donde Vaultwarden guarda la base de datos SQLite y los adjuntos. Si haces backup de esta carpeta, tienes todo.</p>
+<h2 id="el-admin_token-ya-no-es-texto-plano">El ADMIN_TOKEN ya no es texto plano</h2>
+<p>Este es el primer sitio donde las guías viejas te van a fallar. Desde la versión 1.28, el token del panel <code>/admin</code> tiene que ser un hash argon2id. Si pones texto plano, no funciona y punto.</p>
+<p>Para generar el hash usas un contenedor temporal del propio Vaultwarden:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --rm -it vaultwarden/server /vaultwarden <span style="color:#8be9fd;font-style:italic">hash</span>
+</span></span></code></pre></div><p>Te pide una contraseña, la introduces y te escupe un hash que empieza por <code>$argon2id$...</code>. Ese hash es lo que va en el <code>.env</code>. La contraseña que pusiste la necesitas para entrar al panel de admin, así que apúntala en algún sitio que no sea el propio Vaultwarden, por razones obvias.</p>
+<h2 id="el-env">El .env</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># /opt/vaultwarden/.env</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">DOMAIN</span><span style="color:#ff79c6">=</span>https://vault.tudominio.es
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">ADMIN_TOKEN</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;$argon2id$v=19$m=65540,t=3,p=4$...&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SIGNUPS_ALLOWED</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">WEBSOCKET_ENABLED</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">TZ</span><span style="color:#ff79c6">=</span>Europe/Madrid
+</span></span></code></pre></div><p>El <code>DOMAIN</code> es crítico. Tiene que coincidir exactamente con la URL desde la que accedes, <code>https://</code> incluido. Si no coincide, el cliente de Bitwarden te dice que eso no es un servidor válido y tienes que ponerte a buscar qué has hecho mal. Pregunta por experiencia propia.</p>
+<h2 id="el-docker-composeyml">El docker-compose.yml</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">vaultwarden</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: vaultwarden/server:latest
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: vaultwarden
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: unless-stopped
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f1fa8c">&#34;127.0.0.1:8080:80&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./vw-data:/data
+</span></span><span style="display:flex;"><span>      - /etc/localtime:/etc/localtime:ro
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">env_file</span>:
+</span></span><span style="display:flex;"><span>      - .env
+</span></span></code></pre></div><p>El puerto va bindeado a <code>127.0.0.1</code> a propósito. Así el tráfico externo entra solo a través del proxy inverso y no le llega directamente al contenedor.</p>
+<h2 id="nginx">Nginx</h2>
+<p>Si ya tienes Nginx y Certbot montados, esto es añadir un virtual host más. Lo único que no es obvio es el bloque de WebSockets, que necesita unas cabeceras específicas para que la sincronización funcione en tiempo real en lugar de ir tirando de polling cada rato:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">vault.tudominio.es</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">301</span> <span style="color:#f1fa8c">https://</span><span style="color:#8be9fd;font-style:italic">$host$request_uri</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">443</span> <span style="color:#f1fa8c">ssl</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">vault.tudominio.es</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ssl_certificate</span>     <span style="color:#f1fa8c">/etc/letsencrypt/live/vault.tudominio.es/fullchain.pem</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ssl_certificate_key</span> <span style="color:#f1fa8c">/etc/letsencrypt/live/vault.tudominio.es/privkey.pem</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">client_max_body_size</span> <span style="color:#bd93f9">100m</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Host</span>              <span style="color:#8be9fd;font-style:italic">$host</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Real-IP</span>         <span style="color:#8be9fd;font-style:italic">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-Proto</span> <span style="color:#f1fa8c">https</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># WebSockets
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/notifications/hub</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Upgrade</span>    <span style="color:#8be9fd;font-style:italic">$http_upgrade</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Connection</span> <span style="color:#f1fa8c">&#34;upgrade&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:8080</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/notifications/hub/negotiate</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:8080</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:8080</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Luego:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>certbot --nginx -d vault.tudominio.es
+</span></span><span style="display:flex;"><span>nginx -t <span style="color:#ff79c6">&amp;&amp;</span> systemctl reload nginx
+</span></span></code></pre></div><h2 id="arranca-el-invento">Arranca el invento</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /opt/vaultwarden
+</span></span><span style="display:flex;"><span>docker compose up -d
+</span></span><span style="display:flex;"><span>docker compose logs -f
+</span></span></code></pre></div><p>Si los logs no dicen nada raro y puedes acceder a <code>https://vault.tudominio.es</code>, ya está levantado. Crea una cuenta con el mismo email que usas en Bitwarden cloud.</p>
+<h2 id="importar-las-contraseñas">Importar las contraseñas</h2>
+<p>Desde la interfaz web de tu instancia: <em>Tools → Import Data → Bitwarden (json)</em>. Subes el archivo que exportaste al principio. Si elegiste formato cifrado te pedirá la contraseña maestra para descifrarlo.</p>
+<p>Los vaults grandes tardan unos minutos. No refresques la página mientras importa, que luego hay que volver a empezar.</p>
+<h2 id="migrar-los-clientes">Migrar los clientes</h2>
+<p>En cada dispositivo: cierra sesión → en la pantalla de login busca el selector de región o el icono de engranaje → elige <em>Self-hosted</em> → introduce <code>https://vault.tudominio.es</code> → inicia sesión.</p>
+<p>A partir de ahí, el cliente usa tu servidor. Ya está.</p>
+<h2 id="cerrar-el-chiringuito-después-del-setup">Cerrar el chiringuito después del setup</h2>
+<p>Una vez creadas todas las cuentas que necesites, edita el <code>.env</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">SIGNUPS_ALLOWED</span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">false</span>
+</span></span></code></pre></div><p>Y reinicia:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose up -d
+</span></span></code></pre></div><p>Si dejas los registros abiertos y el servidor es público, tarde o temprano alguien crea una cuenta en tu gestor de contraseñas. No es algo que quieras.</p>
+<h2 id="backups">Backups</h2>
+<p>Toda la información vive en <code>/opt/vaultwarden/vw-data/</code>. Un cron básico:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#6272a4"># crontab -e</span>
+</span></span><span style="display:flex;"><span><span style="color:#bd93f9">0</span> <span style="color:#bd93f9">3</span> * * * tar -czf /backups/vaultwarden-<span style="color:#ff79c6">$(</span>date +<span style="color:#f1fa8c">\%</span>F<span style="color:#ff79c6">)</span>.tar.gz <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  /opt/vaultwarden/vw-data <span style="color:#ff79c6">&amp;&amp;</span> <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  find /backups -name <span style="color:#f1fa8c">&#39;vaultwarden-*.tar.gz&#39;</span> -mtime +30 -delete
+</span></span></code></pre></div><p>Y copia los backups fuera del servidor. Si el disco falla y los backups están en el mismo disco, los backups no sirven de nada. Esto aplica a todo, no solo a Vaultwarden.</p>
+<h2 id="actualizar">Actualizar</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /opt/vaultwarden
+</span></span><span style="display:flex;"><span>docker compose pull
+</span></span><span style="display:flex;"><span>docker compose up -d
+</span></span></code></pre></div><p>Las migraciones de base de datos las hace automáticamente al arrancar. Haz backup antes de actualizar, como con cualquier cosa que importe.</p>
+<hr>
+<p>Llevo ya un tiempo con esto funcionando y no he echado de menos nada de Bitwarden cloud. Las apps oficiales funcionan exactamente igual que antes. La sincronización va, los adjuntos suben, el 2FA funciona. Y mis contraseñas están en mi servidor, no en el de otra persona.</p>
+<p>Dudas, erratas, mejoras… sabéis dónde encontrarme.</p>
+
+                                
+                                <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
+                                <a class="hidden" href="https://brid.gy/publish/twitter"></a>
+                                <a class="hidden" href="https://fed.brid.gy/"></a>
+                                <data class="p-bridgy-omit-link" value="false"></data>
+                            </article>
+                            <div class="flex properties__row properties">
+    <div class="flex left properties">
+        <span class="properties">
+            
+            <span class="dt-published hidden">2026-05-19 00:00:00 &#43;0000 UTC</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/como-instalar-vaultwarden/">
+                
+                
+                
+                
+                
+                hace 20 días
+                
+            </a>
+            
+        </span>
+    </div>
+    <div class="flex right">
+        
+    </div>
+</div>
+
+                </div>
+                
+<a id="wm-link" href="https://webmention.io/jesuspavonabian.es/webmention" target="_blank">Haz una webmention&nbsp;
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-external-link">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+    </svg>
+</a>
+
+
+
+<script src="/js/wm.min.js" data-wordcount="10000" async></script>
+
+                
+                <div id="webmentions"></div>
+            </li>
+        </ul>
+    </section>
+</main>
+
+</body>
+</html>

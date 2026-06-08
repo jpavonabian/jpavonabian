@@ -8,7 +8,132 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0100</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vaultwarden, o cómo dejar de pagar por guardar mis contraseñas</title>
+      <link>https://jesuspavonabian.es/post/como-instalar-vaultwarden/</link>
+      <pubDate>Tue, 19 May 2026 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/como-instalar-vaultwarden/</guid>
+      <description>Van a subir el precio de Bitwarden.
+No es que sea una barbaridad, pero es el principio de una historia que ya conozco. Hoy es un euro más al mes, mañana otro, pasado mañana te ofrecen un plan &amp;ldquo;premium plus&amp;rdquo; que incluye exactamente lo mismo de siempre pero con otro nombre. Ya lo viví con LastPass, con Dropbox y con medio internet. Así que antes de que empiece el festival, me he montado mi propio servidor.</description>
+      <content:encoded>
+      &lt;p&gt;Van a subir el precio de Bitwarden.&lt;/p&gt;
+&lt;p&gt;No es que sea una barbaridad, pero es el principio de una historia que ya conozco. Hoy es un euro más al mes, mañana otro, pasado mañana te ofrecen un plan &amp;ldquo;premium plus&amp;rdquo; que incluye exactamente lo mismo de siempre pero con otro nombre. Ya lo viví con LastPass, con Dropbox y con medio internet. Así que antes de que empiece el festival, me he montado mi propio servidor.&lt;/p&gt;
+&lt;p&gt;Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.&lt;/p&gt;
+&lt;h2 id=&#34;qué-es-vaultwarden&#34;&gt;¿Qué es Vaultwarden?&lt;/h2&gt;
+&lt;p&gt;Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio. La diferencia es que corre en un solo contenedor Docker, consume unos 50 MB de RAM y no le debes nada a nadie.&lt;/p&gt;
+&lt;p&gt;El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que hipotecar el servidor.&lt;/p&gt;
+&lt;h2 id=&#34;antes-de-montar-nada-exporta-tus-contraseñas&#34;&gt;Antes de montar nada: exporta tus contraseñas&lt;/h2&gt;
+&lt;p&gt;Antes de tocar nada, entra en &lt;a href=&#34;https://vault.bitwarden.com&#34;&gt;vault.bitwarden.com&lt;/a&gt;, ve a &lt;em&gt;Tools → Export Vault&lt;/em&gt; y descarga el &lt;code&gt;.json&lt;/code&gt; en formato cifrado. Cifrado, no en texto plano.&lt;/p&gt;
+&lt;p&gt;Este archivo tiene todas tus contraseñas protegidas con tu clave maestra. Si lo exportas en texto plano y alguien te mira el escritorio en el momento equivocado, ese alguien tiene tus contraseñas. Con el formato cifrado, sin la clave maestra no es más que ruido.&lt;/p&gt;
+&lt;p&gt;Guárdalo en un sitio seguro y no lo pierdas. Lo necesitarás en el paso 7.&lt;/p&gt;
+&lt;h2 id=&#34;la-estructura-de-directorios&#34;&gt;La estructura de directorios&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p /opt/vaultwarden/vw-data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; /opt/vaultwarden
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Todo vive aquí. El &lt;code&gt;docker-compose.yml&lt;/code&gt;, el &lt;code&gt;.env&lt;/code&gt; con la configuración y el directorio &lt;code&gt;vw-data&lt;/code&gt; donde Vaultwarden guarda la base de datos SQLite y los adjuntos. Si haces backup de esta carpeta, tienes todo.&lt;/p&gt;
+&lt;h2 id=&#34;el-admin_token-ya-no-es-texto-plano&#34;&gt;El ADMIN_TOKEN ya no es texto plano&lt;/h2&gt;
+&lt;p&gt;Este es el primer sitio donde las guías viejas te van a fallar. Desde la versión 1.28, el token del panel &lt;code&gt;/admin&lt;/code&gt; tiene que ser un hash argon2id. Si pones texto plano, no funciona y punto.&lt;/p&gt;
+&lt;p&gt;Para generar el hash usas un contenedor temporal del propio Vaultwarden:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker run --rm -it vaultwarden/server /vaultwarden &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;hash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Te pide una contraseña, la introduces y te escupe un hash que empieza por &lt;code&gt;$argon2id$...&lt;/code&gt;. Ese hash es lo que va en el &lt;code&gt;.env&lt;/code&gt;. La contraseña que pusiste la necesitas para entrar al panel de admin, así que apúntala en algún sitio que no sea el propio Vaultwarden, por razones obvias.&lt;/p&gt;
+&lt;h2 id=&#34;el-env&#34;&gt;El .env&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# /opt/vaultwarden/.env&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;DOMAIN&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;https://vault.tudominio.es
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;ADMIN_TOKEN&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;$argon2id$v=19$m=65540,t=3,p=4$...&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;SIGNUPS_ALLOWED&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;WEBSOCKET_ENABLED&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;TZ&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;Europe/Madrid
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El &lt;code&gt;DOMAIN&lt;/code&gt; es crítico. Tiene que coincidir exactamente con la URL desde la que accedes, &lt;code&gt;https://&lt;/code&gt; incluido. Si no coincide, el cliente de Bitwarden te dice que eso no es un servidor válido y tienes que ponerte a buscar qué has hecho mal. Pregunta por experiencia propia.&lt;/p&gt;
+&lt;h2 id=&#34;el-docker-composeyml&#34;&gt;El docker-compose.yml&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;vaultwarden&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;image&lt;/span&gt;: vaultwarden/server:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;container_name&lt;/span&gt;: vaultwarden
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;restart&lt;/span&gt;: unless-stopped
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;ports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;127.0.0.1:8080:80&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;volumes&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - ./vw-data:/data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - /etc/localtime:/etc/localtime:ro
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;env_file&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - .env
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El puerto va bindeado a &lt;code&gt;127.0.0.1&lt;/code&gt; a propósito. Así el tráfico externo entra solo a través del proxy inverso y no le llega directamente al contenedor.&lt;/p&gt;
+&lt;h2 id=&#34;nginx&#34;&gt;Nginx&lt;/h2&gt;
+&lt;p&gt;Si ya tienes Nginx y Certbot montados, esto es añadir un virtual host más. Lo único que no es obvio es el bloque de WebSockets, que necesita unas cabeceras específicas para que la sincronización funcione en tiempo real en lugar de ir tirando de polling cada rato:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-nginx&#34; data-lang=&#34;nginx&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;server&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;listen&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;80&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;server_name&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;vault.tudominio.es&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;301&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;https://&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$host$request_uri&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;server&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;listen&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;443&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;ssl&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;server_name&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;vault.tudominio.es&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;ssl_certificate&lt;/span&gt;     &lt;span style=&#34;color:#f1fa8c&#34;&gt;/etc/letsencrypt/live/vault.tudominio.es/fullchain.pem&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;ssl_certificate_key&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;/etc/letsencrypt/live/vault.tudominio.es/privkey.pem&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;client_max_body_size&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;100m&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;Host&lt;/span&gt;              &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$host&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;X-Real-IP&lt;/span&gt;         &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$remote_addr&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;X-Forwarded-Proto&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;https&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#6272a4&#34;&gt;# WebSockets
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;location&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;/notifications/hub&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;Upgrade&lt;/span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$http_upgrade&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_set_header&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;Connection&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;upgrade&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_pass&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;http://127.0.0.1:8080&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;location&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;/notifications/hub/negotiate&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_pass&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;http://127.0.0.1:8080&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;location&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;/&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff79c6&#34;&gt;proxy_pass&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;http://127.0.0.1:8080&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Luego:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;certbot --nginx -d vault.tudominio.es
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nginx -t &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; systemctl reload nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;arranca-el-invento&#34;&gt;Arranca el invento&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; /opt/vaultwarden
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose logs -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Si los logs no dicen nada raro y puedes acceder a &lt;code&gt;https://vault.tudominio.es&lt;/code&gt;, ya está levantado. Crea una cuenta con el mismo email que usas en Bitwarden cloud.&lt;/p&gt;
+&lt;h2 id=&#34;importar-las-contraseñas&#34;&gt;Importar las contraseñas&lt;/h2&gt;
+&lt;p&gt;Desde la interfaz web de tu instancia: &lt;em&gt;Tools → Import Data → Bitwarden (json)&lt;/em&gt;. Subes el archivo que exportaste al principio. Si elegiste formato cifrado te pedirá la contraseña maestra para descifrarlo.&lt;/p&gt;
+&lt;p&gt;Los vaults grandes tardan unos minutos. No refresques la página mientras importa, que luego hay que volver a empezar.&lt;/p&gt;
+&lt;h2 id=&#34;migrar-los-clientes&#34;&gt;Migrar los clientes&lt;/h2&gt;
+&lt;p&gt;En cada dispositivo: cierra sesión → en la pantalla de login busca el selector de región o el icono de engranaje → elige &lt;em&gt;Self-hosted&lt;/em&gt; → introduce &lt;code&gt;https://vault.tudominio.es&lt;/code&gt; → inicia sesión.&lt;/p&gt;
+&lt;p&gt;A partir de ahí, el cliente usa tu servidor. Ya está.&lt;/p&gt;
+&lt;h2 id=&#34;cerrar-el-chiringuito-después-del-setup&#34;&gt;Cerrar el chiringuito después del setup&lt;/h2&gt;
+&lt;p&gt;Una vez creadas todas las cuentas que necesites, edita el &lt;code&gt;.env&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;SIGNUPS_ALLOWED&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Y reinicia:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Si dejas los registros abiertos y el servidor es público, tarde o temprano alguien crea una cuenta en tu gestor de contraseñas. No es algo que quieras.&lt;/p&gt;
+&lt;h2 id=&#34;backups&#34;&gt;Backups&lt;/h2&gt;
+&lt;p&gt;Toda la información vive en &lt;code&gt;/opt/vaultwarden/vw-data/&lt;/code&gt;. Un cron básico:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# crontab -e&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt; * * * tar -czf /backups/vaultwarden-&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;date +&lt;span style=&#34;color:#f1fa8c&#34;&gt;\%&lt;/span&gt;F&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;.tar.gz &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  /opt/vaultwarden/vw-data &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  find /backups -name &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;vaultwarden-*.tar.gz&amp;#39;&lt;/span&gt; -mtime +30 -delete
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Y copia los backups fuera del servidor. Si el disco falla y los backups están en el mismo disco, los backups no sirven de nada. Esto aplica a todo, no solo a Vaultwarden.&lt;/p&gt;
+&lt;h2 id=&#34;actualizar&#34;&gt;Actualizar&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; /opt/vaultwarden
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose pull
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Las migraciones de base de datos las hace automáticamente al arrancar. Haz backup antes de actualizar, como con cualquier cosa que importe.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Llevo ya un tiempo con esto funcionando y no he echado de menos nada de Bitwarden cloud. Las apps oficiales funcionan exactamente igual que antes. La sincronización va, los adjuntos suben, el 2FA funciona. Y mis contraseñas están en mi servidor, no en el de otra persona.&lt;/p&gt;
+&lt;p&gt;Dudas, erratas, mejoras… sabéis dónde encontrarme.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>EA7LEE: Saliendo al aire</title>
       <link>https://jesuspavonabian.es/post/ea7leesaliendoalaire/</link>
