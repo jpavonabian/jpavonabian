@@ -60,7 +60,7 @@ WEBSOCKET_ENABLED=true
 TZ=Europe/Madrid
 ```
 
-El `DOMAIN` es crítico. Tiene que coincidir exactamente con la URL desde la que accedes, `https://` incluido. Si no coincide, el cliente de Bitwarden te dice que eso no es un servidor válido y tienes que ponerte a buscar qué has hecho mal. Pregunta por experiencia propia.
+El `DOMAIN` es crítico. Tiene que coincidir exactamente con la URL desde la que accedes, `https://` incluido. Si no coincide, el cliente de Bitwarden te dice que eso no es un servidor válido y tienes que ponerte a buscar qué has hecho mal. Experiencia propia.
 
 ## El docker-compose.yml
 
