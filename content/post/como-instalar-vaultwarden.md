@@ -10,7 +10,7 @@ draft: false
 
 Van a subir el precio de Bitwarden.
 
-No es que sea una barbaridad, pero es el principio de una historia que ya conozco. Hoy es un euro más al mes, mañana otro, pasado mañana te ofrecen un plan "premium plus" que incluye exactamente lo mismo de siempre pero con otro nombre. Ya lo viví con LastPass, con Dropbox y con medio internet. Así que antes de que empiece el festival, me he montado mi propio servidor.
+Así que como le tengo manía a los precios que suben me he montado mi propio servidor de Vaultwarden y resuelto el problema.
 
 Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
 
@@ -18,7 +18,7 @@ Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.
 
 Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio. La diferencia es que corre en un solo contenedor Docker, consume unos 50 MB de RAM y no le debes nada a nadie.
 
-El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que hipotecar el servidor.
+El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que llenar de mierda el servidor.
 
 ## Antes de montar nada: exporta tus contraseñas
 

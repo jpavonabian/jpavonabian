@@ -20,11 +20,11 @@
     <updated>2026-05-19T00:00:00+00:00</updated>
     
     <content type="html"><![CDATA[<p>Van a subir el precio de Bitwarden.</p>
-<p>No es que sea una barbaridad, pero es el principio de una historia que ya conozco. Hoy es un euro más al mes, mañana otro, pasado mañana te ofrecen un plan &ldquo;premium plus&rdquo; que incluye exactamente lo mismo de siempre pero con otro nombre. Ya lo viví con LastPass, con Dropbox y con medio internet. Así que antes de que empiece el festival, me he montado mi propio servidor.</p>
+<p>Así que como le tengo manía a los precios que suben me he montado mi propio servidor de Vaultwarden y resuelto el problema.</p>
 <p>Y oye, no ha sido tan complicado. Lo cuento por si alguien está en las mismas.</p>
 <h2 id="qué-es-vaultwarden">¿Qué es Vaultwarden?</h2>
 <p>Es una reimplementación del servidor de Bitwarden escrita en Rust. Funciona con todas las apps oficiales, da igual que uses la del navegador, la del móvil o la de escritorio. La diferencia es que corre en un solo contenedor Docker, consume unos 50 MB de RAM y no le debes nada a nadie.</p>
-<p>El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que hipotecar el servidor.</p>
+<p>El servidor oficial de Bitwarden requiere SQL Server y varios contenedores. Vaultwarden es lo mismo para uso personal o familiar sin tener que llenar de mierda el servidor.</p>
 <h2 id="antes-de-montar-nada-exporta-tus-contraseñas">Antes de montar nada: exporta tus contraseñas</h2>
 <p>Antes de tocar nada, entra en <a href="https://vault.bitwarden.com">vault.bitwarden.com</a>, ve a <em>Tools → Export Vault</em> y descarga el <code>.json</code> en formato cifrado. Cifrado, no en texto plano.</p>
 <p>Este archivo tiene todas tus contraseñas protegidas con tu clave maestra. Si lo exportas en texto plano y alguien te mira el escritorio en el momento equivocado, ese alguien tiene tus contraseñas. Con el formato cifrado, sin la clave maestra no es más que ruido.</p>
