@@ -6,7 +6,7 @@
     <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
     <title>
   
-    domótica accesible - El Blog de un informático que sueña con mejorar el mundo
+    Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento) - El Blog de un informático que sueña con mejorar el mundo
   
 </title>
     
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <ul id="feed__ul">
             <li class="feed__li h-entry">
                 <div class="feed__content">
-                    <time class="hidden dt-published">2022-02-25 00:00:00 &#43;0000 UTC</time>
+                    <time class="hidden dt-published">2026-06-09 09:00:00 &#43;0200 CEST</time>
                     <div class="flex properties__row ">
                         <div rel="author" class="flex left p-author h-card">
                             <img class="u-photo"
@@ -279,13 +279,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </p>
                                 <p class="properties">
                                     
-                                    Feb 25, 2022
+                                    Jun 09, 2026
                                 </p>
                             </div>
                         </div>
                         <div class="flex right properties">
                             
-                            <a aria-label="domótica accesible" class="icon u-url" href="https://jesuspavonabian.es/post/domotica-accesible/">
+                            <a aria-label="Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)" class="icon u-url" href="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-bookmark">
@@ -296,16 +296,55 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     
                             <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/domotica-accesible/">domótica accesible</a></h2>
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/">Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)</a></h2>
                                 
-                                <p>Hoy quiero escribir sobre domótica. Ya saben ustedes, eso de las casas inteligentes. Cuando yo era pequeño, mi madre me decía&hellip; -Cuando tengas tu casa y vaya a visitarte, el portero te dirá&hellip; &ldquo;Ya está aquí la pesá de tu madre, ¿le abro?&rdquo; Al principio me hacía gracia. ¿Cómo iba a saber el telefonillo quién quería entrar? Os hablo de la época de los primeros teléfonos móviles y de las primeras conexiones a internet. ¿Soy muy viejo si recuerdo conectarme con un modem a 56KBPS y desconectarme porque alguien levantaba el teléfono? Años después, descubrí que mi madre tenía razón, actualmente es más o menos posible hacer algo así, aunque no tengo yo muy claro que sea legal guardarte una foto de alguien para identificarle o poner una cámara en la calle. El caso es que yo llevaba queriendo domotizar la casa desde hace tiempo. vivo de alquiler, así que quería cosas que pudiera llevarme a otra casa sin mucha complicación. Qué narices. Por querer, quiero interruptores inteligentes, bombillas inteligentes con un par de sensores de movimiento y un aire acondicionado inteligente que se active dependiendo de lo que arrojen un par de sensores de temperatura. Pero estando de alquiler es un poco complicado. Hace un par de semanas me avisaron de que me convocaban para el curso de perro guía. Y además de la ilusión y esas cosas, que me voy a ahorrar comentar porque hay mil entradas en mil Blogs describiendo la experiencia, se me encendió la bombilla. Ya tenía la excusa ideal para aprovechar para domotizar. Lo primero el robot de limpieza. Sabemos que un perro de estos suelta pelo para dar y regalar, y yo no se a ustedes, pero me gusta tener la casa limpia. Escogí uno de los robots que había en oferta. nada mejor para ello que tener a <a href="https://www.salvadomenech.es/">Salva</a> de amigo. el cabrón es como un traficante de drogas pero con los cacharros y la comida. Encuentra ofertas con una facilidad pasmosa. en concreto, este cacharrito.</p>
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B08TZVD711&amp;linkId=3b71eb07d98eb68381d478f4ae4c8a69"></iframe>
-<p>Pone que es compatible con Alexa, pero yo no conseguí que el Echo lo detectara. De accesibilidad no va nada mal, si quitamos el hecho de que no podemos programar la limpieza sin ayuda. Pero ese problema se soluciona con HomeBridge para hacerlo compatible con HomeKit, pues puedes programar una automatización desde la aplicación de casa de Apple y asunto solucionado. Haré una entrada explicando cómo configurar HomeBridge y cómo hacer el cacharro compatible, porque hecho uno es fácil hacer el resto si hace falta. Lo siguiente que he hecho inteligente ha sido la puerta de la nevera. Parecerá una estupidez, pero hay veces que se queda abierta o que se abre sola, y tener una notificación en el teléfono y el HomePod pegando berridos ayuda a solucionar ese detallito. Adiós, acumulación de hielo en la nevera. para ello he utilizado el sensor de puertas y ventanas de Aqara. Con su correspondiente Hub, por supuesto. En este caso es bueno, barato, compatible con HomeKit sin hacer tonterías y accesible sin morir en el intento. Prometo hacer la entrada de cómo configurarlos uno de estos días, que es fácil hacerlo mal y tirarte una hora dándole vueltas al sensor para poner las dos partes en su sitio.</p>
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B07D37VDM3&amp;linkId=e603e87c094ef6d2f425e2e5668bd883"></iframe>
-<p>encontrar el Hub ha sido una pesadilla. Tras pelearme con Amazon y un vendedor que pasaba olímpicamente de enviarlo, compré a una tienda española el <a href="https://eversoc.com/productos-inteligentes-hogar/59-hub-m2-aqara.html">Aqara M2 Hub</a>. Dos días tardó, un servicio impecable. Y lo mejor es que casi todo lo de Aqara es bastante accesible, así que en tema sensores, es difícil equivocarse por lo que me han contado. ¿Planes futuros? si me quedo en esta casa, comprar un dedo domótico que pulse el botón del aire acondicionado cuando la temperatura que arroje un sensor sea inferior a 20 grados. sí, existe.</p>
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;bc1=000000&amp;IS2=1&amp;bg1=FFFFFF&amp;fc1=000000&amp;lc1=0000FF&amp;t=jpa02-21&amp;language=es_ES&amp;o=30&amp;p=8&amp;l=as4&amp;m=amazon&amp;f=ifr&amp;ref=as_ss_li_til&amp;asins=B07B4D9KVX&amp;linkId=0702904449bfd6cb166313901c42a086"></iframe>
-<p>Por supuesto, iré ampliando esta entrada con toda cosa domótica que caiga en mis manos. ¡nos leemos pronto!
-Este artículo posee enlaces de amazon Afiliados. Recibo comisión por cada compra.</p>
+                                <p>Mi teclado hacía algo raro de narices. Había una tecla que enviaba <code>Win+D</code> cada vez que la pulsaba. En concreto, la tecla que debería ser <code>PAUSE</code>.</p>
+<p>Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</p>
+<p>El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla&hellip; si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.</p>
+<p>En principio solo tienes que compilar un firmware, flashearlo y listo. Fácil, sencillo y para toda la familia.</p>
+<h2 id="el-entorno">El entorno</h2>
+<p>El V6 usa un microcontrolador STM32, así que necesitas la toolchain de ARM para compilar. Yo lo hice desde WSL (Ubuntu 22.04 en Windows), que se conoce que en Windows el invento no funciona del todo fino.</p>
+<p>Primero instala QMK CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install qmk
+</span></span><span style="display:flex;"><span>qmk setup
+</span></span></code></pre></div><p>El setup clona el repositorio entero de QMK firmware. Tarda un rato. Cuando termine verás un montón de warnings sobre dependencias que faltan. En Ubuntu los paquetes tienen nombres distintos a los que espera QMK:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install gcc-arm-none-eabi gcc-avr avrdude dfu-programmer dfu-util
+</span></span></code></pre></div><p><code>gcc-avr</code> en lugar de <code>avr-gcc</code>. Detalle que no está en ningún sitio. Gracias, Claude.</p>
+<p>El <code>avr-gcc</code> del repositorio de Ubuntu es viejo y se quejará de ello. No importa: el V6 usa ARM, no AVR. Puedes ignorar ese warning y seguir.</p>
+<h2 id="el-keymap">El keymap</h2>
+<p>El V6 tiene varias variantes. La mía tiene perilla (encoder) y layout ISO español, así que es <code>keychron/v6/iso_encoder</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qmk new-keymap -kb keychron/v6/iso_encoder -km tunombre
+</span></span></code></pre></div><p>Esto crea una copia del keymap por defecto en:</p>
+<pre tabindex="0"><code>~/qmk_firmware/keyboards/keychron/v6/iso_encoder/keymaps/tunombre/keymap.c
+</code></pre><p>Ábrelo con tu editor. Busca la capa <code>WIN_BASE</code>, que es la que usa el teclado en modo Windows. La primera fila tiene esto:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_NO,  RM_NEXT, ...
+</span></span></code></pre></div><p>Ese <code>KC_NO</code> entre <code>KC_PSCR</code> (Imprimir Pantalla) y <code>RM_NEXT</code> es la tecla conflictiva. <code>KC_NO</code> significa literalmente &ldquo;no hacer nada&rdquo;, pero Windows la interpreta como <code>Win+D</code> por alguna razón que no me apetece investigar.</p>
+<p>Cámbialo por <code>KC_PAUSE</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_PAUSE,  RM_NEXT, ...
+</span></span></code></pre></div><p>Guarda y compila:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qmk compile -kb keychron/v6/iso_encoder -km tunombre
+</span></span></code></pre></div><h2 id="el-flasheo-o-cómo-casi-me-quedo-sin-teclado">El flasheo, o cómo casi me quedo sin teclado</h2>
+<p>Aquí está la parte interesante.</p>
+<p>WSL no tiene acceso directo a dispositivos USB. Para flashear desde WSL necesitas <code>usbipd</code>, que expone el dispositivo USB de Windows al subsistema Linux:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#6272a4"># En PowerShell como administrador</span>
+</span></span><span style="display:flex;"><span>winget install usbipd
+</span></span></code></pre></div><p>Ahora pon el teclado en modo bootloader. Hay dos formas:</p>
+<p><strong>Opción A:</strong> Desconecta, mantén pulsado <code>Escape</code>, vuelve a conectar.</p>
+<p><strong>Opción B (si al Flashear se te queda como un pisapapeles caro y da error el flasheo):</strong> Quita el keycap de la barra espaciadora. Debajo, a la izquierda del switch, hay un botón de reset en la PCB. Mantén ese botón pulsado mientras conectas el USB.</p>
+<p>Con el teclado en modo DFU, comprueba el BUSID en Powershell como administrador:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>usbipd list
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Busca: STM Device in DFU Mode</span>
+</span></span></code></pre></div><p>Comparte el dispositivo con WSL. Otra vez, como administrador, por favor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>usbipd bind --busid <span style="color:#8be9fd;font-style:italic">X-X</span>
+</span></span><span style="display:flex;"><span>usbipd attach --wsl --busid <span style="color:#8be9fd;font-style:italic">X-X</span>
+</span></span></code></pre></div><p>Y flashea desde WSL:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qmk flash -kb keychron/v6/iso_encoder -km tunombre
+</span></span></code></pre></div><h3 id="lo-que-puede-salir-mal">Lo que puede salir mal</h3>
+<p>Si el flash falla a mitad (error <code>ERASE_PAGE</code> al 74%, por ejemplo), el firmware queda corrupto. El teclado enciende pero no es reconocido por el PC como dispositivo USB. Pánico.</p>
+<p>La solución es forzar el modo bootloader por hardware usando el botón de la PCB. Quitando el keycap del espacio llegas a él sin abrir nada. Con el teclado en modo DFU puedes reflashear sin problema aunque el firmware esté corrupto, porque el bootloader del STM32 vive en una zona protegida del chip que un flash normal no puede tocar.</p>
+<p>Repite el proceso: botón de reset + USB, <code>usbipd attach</code>, <code>qmk flash</code>. A la segunda va. O a la tercera, ¿por qué no?</p>
+<h2 id="el-resultado">El resultado</h2>
+<p>Tecla remapeada. ¿A que ha sido sencillito?</p>
 
                                 
                                 <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
@@ -317,14 +356,10 @@ Este artículo posee enlaces de amazon Afiliados. Recibo comisión por cada comp
     <div class="flex left properties">
         <span class="properties">
             
-            <span class="dt-published hidden">2022-02-25 00:00:00 &#43;0000 UTC</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/domotica-accesible/">
+            <span class="dt-published hidden">2026-06-09 09:00:00 &#43;0200 CEST</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/">
                 
-                
-                
-                
-                
-                hace 1565 días
+                hoy mismo
                 
             </a>
             

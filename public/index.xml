@@ -8,7 +8,67 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Tue, 19 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jun 2026 09:00:00 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)</title>
+      <link>https://jesuspavonabian.es/post/keychron-v6-qmk-remap/</link>
+      <pubDate>Tue, 09 Jun 2026 09:00:00 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/keychron-v6-qmk-remap/</guid>
+      <description>Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win+D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
+Y diréis&amp;hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</description>
+      <content:encoded>
+      &lt;p&gt;Mi teclado hacía algo raro de narices. Había una tecla que enviaba &lt;code&gt;Win+D&lt;/code&gt; cada vez que la pulsaba. En concreto, la tecla que debería ser &lt;code&gt;PAUSE&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Y diréis&amp;hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.&lt;/p&gt;
+&lt;p&gt;El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla&amp;hellip; si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.&lt;/p&gt;
+&lt;p&gt;En principio solo tienes que compilar un firmware, flashearlo y listo. Fácil, sencillo y para toda la familia.&lt;/p&gt;
+&lt;h2 id=&#34;el-entorno&#34;&gt;El entorno&lt;/h2&gt;
+&lt;p&gt;El V6 usa un microcontrolador STM32, así que necesitas la toolchain de ARM para compilar. Yo lo hice desde WSL (Ubuntu 22.04 en Windows), que se conoce que en Windows el invento no funciona del todo fino.&lt;/p&gt;
+&lt;p&gt;Primero instala QMK CLI:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install qmk
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qmk setup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El setup clona el repositorio entero de QMK firmware. Tarda un rato. Cuando termine verás un montón de warnings sobre dependencias que faltan. En Ubuntu los paquetes tienen nombres distintos a los que espera QMK:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install gcc-arm-none-eabi gcc-avr avrdude dfu-programmer dfu-util
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;gcc-avr&lt;/code&gt; en lugar de &lt;code&gt;avr-gcc&lt;/code&gt;. Detalle que no está en ningún sitio. Gracias, Claude.&lt;/p&gt;
+&lt;p&gt;El &lt;code&gt;avr-gcc&lt;/code&gt; del repositorio de Ubuntu es viejo y se quejará de ello. No importa: el V6 usa ARM, no AVR. Puedes ignorar ese warning y seguir.&lt;/p&gt;
+&lt;h2 id=&#34;el-keymap&#34;&gt;El keymap&lt;/h2&gt;
+&lt;p&gt;El V6 tiene varias variantes. La mía tiene perilla (encoder) y layout ISO español, así que es &lt;code&gt;keychron/v6/iso_encoder&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qmk new-keymap -kb keychron/v6/iso_encoder -km tunombre
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Esto crea una copia del keymap por defecto en:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;~/qmk_firmware/keyboards/keychron/v6/iso_encoder/keymaps/tunombre/keymap.c
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Ábrelo con tu editor. Busca la capa &lt;code&gt;WIN_BASE&lt;/code&gt;, que es la que usa el teclado en modo Windows. La primera fila tiene esto:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_NO,  RM_NEXT, ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ese &lt;code&gt;KC_NO&lt;/code&gt; entre &lt;code&gt;KC_PSCR&lt;/code&gt; (Imprimir Pantalla) y &lt;code&gt;RM_NEXT&lt;/code&gt; es la tecla conflictiva. &lt;code&gt;KC_NO&lt;/code&gt; significa literalmente &amp;ldquo;no hacer nada&amp;rdquo;, pero Windows la interpreta como &lt;code&gt;Win+D&lt;/code&gt; por alguna razón que no me apetece investigar.&lt;/p&gt;
+&lt;p&gt;Cámbialo por &lt;code&gt;KC_PAUSE&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_PAUSE,  RM_NEXT, ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Guarda y compila:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qmk compile -kb keychron/v6/iso_encoder -km tunombre
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;el-flasheo-o-cómo-casi-me-quedo-sin-teclado&#34;&gt;El flasheo, o cómo casi me quedo sin teclado&lt;/h2&gt;
+&lt;p&gt;Aquí está la parte interesante.&lt;/p&gt;
+&lt;p&gt;WSL no tiene acceso directo a dispositivos USB. Para flashear desde WSL necesitas &lt;code&gt;usbipd&lt;/code&gt;, que expone el dispositivo USB de Windows al subsistema Linux:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# En PowerShell como administrador&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;winget install usbipd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ahora pon el teclado en modo bootloader. Hay dos formas:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Opción A:&lt;/strong&gt; Desconecta, mantén pulsado &lt;code&gt;Escape&lt;/code&gt;, vuelve a conectar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Opción B (si al Flashear se te queda como un pisapapeles caro y da error el flasheo):&lt;/strong&gt; Quita el keycap de la barra espaciadora. Debajo, a la izquierda del switch, hay un botón de reset en la PCB. Mantén ese botón pulsado mientras conectas el USB.&lt;/p&gt;
+&lt;p&gt;Con el teclado en modo DFU, comprueba el BUSID en Powershell como administrador:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd list
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;# Busca: STM Device in DFU Mode&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Comparte el dispositivo con WSL. Otra vez, como administrador, por favor:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd bind --busid &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;X-X&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;usbipd attach --wsl --busid &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;X-X&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Y flashea desde WSL:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;qmk flash -kb keychron/v6/iso_encoder -km tunombre
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;lo-que-puede-salir-mal&#34;&gt;Lo que puede salir mal&lt;/h3&gt;
+&lt;p&gt;Si el flash falla a mitad (error &lt;code&gt;ERASE_PAGE&lt;/code&gt; al 74%, por ejemplo), el firmware queda corrupto. El teclado enciende pero no es reconocido por el PC como dispositivo USB. Pánico.&lt;/p&gt;
+&lt;p&gt;La solución es forzar el modo bootloader por hardware usando el botón de la PCB. Quitando el keycap del espacio llegas a él sin abrir nada. Con el teclado en modo DFU puedes reflashear sin problema aunque el firmware esté corrupto, porque el bootloader del STM32 vive en una zona protegida del chip que un flash normal no puede tocar.&lt;/p&gt;
+&lt;p&gt;Repite el proceso: botón de reset + USB, &lt;code&gt;usbipd attach&lt;/code&gt;, &lt;code&gt;qmk flash&lt;/code&gt;. A la segunda va. O a la tercera, ¿por qué no?&lt;/p&gt;
+&lt;h2 id=&#34;el-resultado&#34;&gt;El resultado&lt;/h2&gt;
+&lt;p&gt;Tecla remapeada. ¿A que ha sido sencillito?&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Vaultwarden, o cómo dejar de pagar por guardar mis contraseñas</title>
       <link>https://jesuspavonabian.es/post/como-instalar-vaultwarden/</link>
