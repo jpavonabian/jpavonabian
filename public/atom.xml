@@ -20,7 +20,7 @@
     <updated>2026-06-09T09:00:00+02:00</updated>
     
     <content type="html"><![CDATA[<p>Mi teclado hacía algo raro de narices. Había una tecla que enviaba <code>Win+D</code> cada vez que la pulsaba. En concreto, la tecla que debería ser <code>PAUSE</code>.</p>
-<p>Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</p>
+<p>Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</p>
 <p>El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla&hellip; si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.</p>
 <p>En principio solo tienes que compilar un firmware, flashearlo y listo. Fácil, sencillo y para toda la familia.</p>
 <h2 id="el-entorno">El entorno</h2>

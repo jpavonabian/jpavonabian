@@ -16,10 +16,10 @@
       <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
       <guid>https://jesuspavonabian.es/post/keychron-v6-qmk-remap/</guid>
       <description>Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win+D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
-Y diréis&amp;hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</description>
+Y diréis&amp;hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</description>
       <content:encoded>
       &lt;p&gt;Mi teclado hacía algo raro de narices. Había una tecla que enviaba &lt;code&gt;Win+D&lt;/code&gt; cada vez que la pulsaba. En concreto, la tecla que debería ser &lt;code&gt;PAUSE&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Y diréis&amp;hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.&lt;/p&gt;
+&lt;p&gt;Y diréis&amp;hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.&lt;/p&gt;
 &lt;p&gt;El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla&amp;hellip; si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.&lt;/p&gt;
 &lt;p&gt;En principio solo tienes que compilar un firmware, flashearlo y listo. Fácil, sencillo y para toda la familia.&lt;/p&gt;
 &lt;h2 id=&#34;el-entorno&#34;&gt;El entorno&lt;/h2&gt;

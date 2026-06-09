@@ -10,7 +10,7 @@ draft: false
 
 Mi teclado hacía algo raro de narices. Había una tecla que enviaba `Win+D` cada vez que la pulsaba. En concreto, la tecla que debería ser `PAUSE`.
 
-Y diréis... ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.
+Y diréis... ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.
 
 El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla... si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.
 
