@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es-es"><head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
+    <title>
+  
+    Cómo saltar los bloqueos de la liga - El Blog de un informático que sueña con mejorar el mundo
+  
+</title>
+    
+    
+
+    
+    <link rel="shortcut icon" href="https://jesuspavonabian.es/favicon.ico">
+    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-16x16.png" sizes="16x16" />
+
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    <link rel="me" href="https://github.com/jpavonabian" />
+    <link rel="me" href="https://twitter.com/jpa_apj" />
+    <link rel="me" href="https://mst.universoalterno.es/@jpavonabian" />
+
+    
+    <link rel="stylesheet" href="https://jesuspavonabian.es/css/layout.css" crossorigin="anonymous" media="screen">
+    
+    <link rel="stylesheet" href="https://jesuspavonabian.es/css/style.css" crossorigin="anonymous" media="screen">
+    
+    
+    
+    <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention" />
+    <link rel="pingback" href="https://webmention.io/jesuspavonabian.es/xmlrpc" />
+    
+    
+    <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
+    <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
+    
+    
+    <meta property="og:url" content="https://jesuspavonabian.es/" />
+    <meta property="og:title" content="El Blog de un informático que sueña con mejorar el mundo" />
+    <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo" />
+    <meta property="og:type" content="website" />
+    
+    
+    
+    <meta name="twitter:title" content="El Blog de un informático que sueña con mejorar el mundo" />
+    
+    
+	
+	<script  defer>
+class OyeElAdblock {
+	constructor(userConfig) {
+		this.hasAdBlockActive = false
+		this.NAMESPACE = '🤠'
+		this.AD_TARGET_CLASSES = [
+			'aan_fake',
+			'aan_fake__video-units',
+			'ad',
+			'adde_modal_detector',
+			'adde_modal-overlay',
+			'adsbyrunactive',
+			'advboxemb',
+			'advertising',
+			'aff-content-col',
+			'aff-inner-col',
+			'aff-item-list',
+			'amp-ad-inner',
+			'aoa_overlay',
+			'ark-ad-message',
+			'ave-pl',
+			'bloc-pub',
+			'bloc-pub2',
+			'blocker-notice',
+			'blocker-overlay',
+			'bottom-hor-block',
+			'brs-block',
+			'd-none',
+			'dbanner',
+			'exo-horizontal',
+			'fints-block__row',
+			'ftf-dma-note',
+			'full-ave-pl',
+			'full-bns-block',
+			'gallery-bns-bl',
+			'glx-watermark-container',
+			'GoogleActiveViewElement',
+			'happy-inside-player',
+			'happy-under-player',
+			'header-menu-bottom-ads',
+			'hor_banner',
+			'imggif',
+			'in_stream_banner',
+			'inplayer_banners',
+			'inplayer-ad',
+			'mdp-deblocker-wrapper',
+			'message',
+			'native-ad',
+			'native-ad-1',
+			'ninja-recommend-block',
+			'overlay-advertising-new',
+			'player-bns-block',
+			'preroll-blocker',
+			'rkads',
+			'rps_player_ads',
+			'stream-item-widget',
+			'trafficjunky-float-right',
+			'vertbars',
+			'video-brs',
+			'wgAdBlockMessage',
+			'wps-player__happy-inside',
+			'ytd-j',
+			'yxd-j',
+			'yxd-jd',
+		]
+		this.config = {
+			title: 'Oye, el adBlock!',
+			text: [
+				'Pero bueno, que no se puede ir por la vida sin un bloqueador de publicidad!',
+			],
+			link: {
+				url: 'https://github.com/spacenomads/oye-el-adblock/blob/main/por-que-necesito-un-adblock.md',
+				label: 'Por qué necesito uno?',
+			},
+			close_btn: {
+				label: 'Cerrar ',
+				sr_label: ' aviso de que no se ha detectado adBlock'
+			},
+		}
+
+		if (typeof userConfig === 'object') {
+			this.config = {...this.config, ...userConfig}
+		}
+
+		this.init()
+	}
+
+
+	getCustomClass(em) {
+		if (!em) return this.config.custom_class_name ? `${this.config.custom_class_name}` : ''
+		return this.config.custom_class_name ? `${this.config.custom_class_name}__${em}` : ''
+	}
+
+
+	getContentTemplate(content) {
+		const {custom_class_name} = content
+		const newElement = document.createElement('aside')
+		newElement.className = `${this.NAMESPACE} js-${this.NAMESPACE} ${this.getCustomClass()} ${this.AD_TARGET_CLASSES.join(' ')}`
+		newElement.setAttribute('aria-hidden', 'false')
+		newElement.setAttribute('role', 'alert')
+
+		const wrapper = document.createElement('div')
+		wrapper.classList.add(`${this.NAMESPACE}__wrapper`)
+		const wrapperCustomClassList = this.getCustomClass('wrapper')
+		wrapperCustomClassList && wrapper.classList.add(wrapperCustomClassList)
+
+		const title = `<h2 class="${this.NAMESPACE}__title ${this.getCustomClass('title')}">${content.title}</h2>`
+		wrapper.innerHTML += title
+
+		for (const p of content.text) {
+			const template = `<p class="${this.NAMESPACE}__paragraph ${this.getCustomClass('paragraph')}">${p}</p>`
+			wrapper.innerHTML += template
+		}
+
+		if (content.link && content.link.url && content.link.label) {
+			const extraLinkTemplate = `<p class="${this.NAMESPACE}__paragraph ${this.NAMESPACE}__paragraph--extra-link ${this.getCustomClass('paragraph')} ${this.getCustomClass('paragraph--extra-link')}"><a href="${content.link.url}" class="${this.NAMESPACE}__link ${this.getCustomClass('link')}">${content.link.label}</a></p>`
+			wrapper.innerHTML += extraLinkTemplate
+		}
+
+		newElement.append(wrapper)
+
+		if (content.close_btn && (content.close_btn?.label || content.close_btn?.sr_label)) {
+
+			const closeButton = document.createElement('button')
+			closeButton.type = 'button'
+			closeButton.classList.add(`${this.NAMESPACE}__close`)
+			closeButton.classList.add(`js-${this.NAMESPACE}-close`)
+			const closeButtonCustomClass = this.getCustomClass('close')
+			closeButtonCustomClass && closeButton.classList.add(closeButtonCustomClass)
+
+			const buttonLabel = document.createTextNode(content.close_btn.label || '')
+			const buttonSrLabel = document.createElement('span')
+			buttonSrLabel.classList.add(`${this.NAMESPACE}__sr-only`)
+			const srOnlyCustomClass = this.getCustomClass('sr-only')
+			srOnlyCustomClass && buttonSrLabel.classList.add(srOnlyCustomClass)
+			buttonSrLabel.textContent = content.close_btn.sr_label || ''
+
+			
+			closeButton.append(buttonLabel, buttonSrLabel)
+			closeButton.addEventListener('click', (event) => this.closeAdBlockWarning(event.currentTarget))
+
+			newElement.append(closeButton)
+		}
+
+		return newElement
+	}
+
+
+	closeAdBlockWarning(btn) {
+		const adWarningElement = btn.closest(`.js-${this.NAMESPACE}`)
+		adWarningElement.setAttribute('aria-hidden', true)
+		adWarningElement.classList.add(`${this.NAMESPACE}--hidden`)
+	}
+
+
+	init() {
+		const oyeElAdBlockExists = !!document.querySelector(`.js-${this.NAMESPACE}`)
+		const newAdElement = this.getContentTemplate(this.config)
+
+		if (!oyeElAdBlockExists) {
+			document.body.append(newAdElement)
+
+
+		}
+		const oyeElAdBlockElement = document.querySelector(`.js-${this.NAMESPACE}`)
+		this.hasAdBlockActive = !Boolean(oyeElAdBlockElement.offsetHeight)
+		oyeElAdBlockElement.setAttribute('aria-hidden', this.hasAdBlockActive)
+	}
+}
+document.addEventListener("DOMContentLoaded", function() {
+        const adBlockWarning = new OyeElAdblock();
+    });
+</script>
+</head>
+<body>
+<header aria-label="Cabecera del sitio">
+    <section>
+        <div class="header flex row">
+            <a href="#contenidoPrincipal" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;" onfocus="this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.left='-9999px';this.style.top='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Saltar al Contenido Principal</a>
+            <div class="header__item flex row">
+                
+                <a id="site__name" href="https://jesuspavonabian.es/">
+                    El Blog de un informático que sueña con mejorar el mundo
+                </a>
+            </div>
+            <div class="flex row">
+                <nav aria-label="Menú principal" class="flex row">
+                    <ul role="menubar" class="flex row">
+                        <li role="none">
+                            <a aria-label="Ir al inicio" class="menu__item" href="https://jesuspavonabian.es/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                </svg>
+                            </a>
+                        </li>
+        <li role="none">
+            <a class="menu__item" href="https://jesuspavonabian.es//about/">
+                Sobre mí
+            </a>
+        </li>
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main id="contenidoPrincipal" aria-role="main">
+    <section>
+        <ul id="feed__ul">
+            <li class="feed__li h-entry">
+                <div class="feed__content">
+                    <time class="hidden dt-published">2026-08-23 17:38:07 &#43;0200 CEST</time>
+                    <div class="flex properties__row ">
+                        <div rel="author" class="flex left p-author h-card">
+                            <img class="u-photo"
+                                src="https://picsum.photos/120.webp"
+                                alt="Jesús Pavón Abián" id="author-img">
+                            <div>
+                                <p rel="me" class="p-name" id="author-name">
+                                    
+                                    Jesús Pavón Abián
+                                    
+                                </p>
+                                <p class="properties">
+                                    
+                                    Aug 23, 2026
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex right properties">
+                            
+                            <a aria-label="Cómo saltar los bloqueos de la liga" class="icon u-url" href="https://jesuspavonabian.es/post/saltar_bloqueos_liga/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                            <article class="md p-summary e-content">
+                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/saltar_bloqueos_liga/">Cómo saltar los bloqueos de la liga</a></h2>
+                                
+                                <p>Un post rápido y sencillito, de esos que me gustan a mi.</p>
+<p>A riesgo de ser poco patriota, he de decir que vivimos en un país de pandereta; cada vez que se juega a la pelotita de los cojones, servicios legítimos que no tienen nada que ver con dicha pelotita dejan de funcionar. Y todo porque un señor, que entiende de redess lo mismo que yo de chino mandarín, tiene el poder de matar moscas a cañonazos y obliga a las operadoras a bloquear indiscriminadamente direcciones IPs porque le sale de los cojones, porque otra explicación no le encuentro. Para nada, por cierto, porque la pelotita se sigue viendo pirata.</p>
+<p>Podría argumentar que ese señor está asesorado por gente, pero es que entonces tendría que pensar que los asesores que se ha buscado se han sacado el título de asesorar sobre informática en la universidad de los Pitufos Makineros, y ya sería muy retorcido. O no, quién sabe.</p>
+<p>El caso es que unos señores de <a href="https://BandaAncha.eu">BandaAncha.eu</a> han creado la maravilla conocida como <a href="https://xdp.es/">xdp.es DNS</a>, un servicio pensado para minimizar el impacto de los bloqueos del señor de la pelotita. Han puesto instrucciones y perfiles listos para usar en teléfonos móviles y todo, casi no hay excusas para configurarlo.</p>
+<p>Que ustedes desbloqueen bien.</p>
+
+                                
+                                <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
+                                <a class="hidden" href="https://brid.gy/publish/twitter"></a>
+                                <a class="hidden" href="https://fed.brid.gy/"></a>
+                                <data class="p-bridgy-omit-link" value="false"></data>
+                            </article>
+                            <div class="flex properties__row properties">
+    <div class="flex left properties">
+        <span class="properties">
+            
+            <span class="dt-published hidden">2026-08-23 17:38:07 &#43;0200 CEST</span>
+            <a class="icon u-url" href="https://jesuspavonabian.es/post/saltar_bloqueos_liga/">
+                
+                hoy mismo
+                
+            </a>
+            
+        </span>
+    </div>
+    <div class="flex right">
+        
+    </div>
+</div>
+
+                </div>
+                
+<a id="wm-link" href="https://webmention.io/jesuspavonabian.es/webmention" target="_blank">Haz una webmention&nbsp;
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-external-link">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <line x1="10" y1="14" x2="21" y2="3"></line>
+    </svg>
+</a>
+
+
+
+<script src="/js/wm.min.js" data-wordcount="10000" async></script>
+
+                
+                <div id="webmentions"></div>
+            </li>
+        </ul>
+    </section>
+</main>
+
+</body>
+</html>

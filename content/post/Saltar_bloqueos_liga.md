@@ -5,7 +5,7 @@ reply:
 uri: "https://jesuspavonabian.es/post/saltar_bloqueos_liga"
 categories: ["anything else"] # note, reply, anything else
 tags:
-draft: true
+draft: false
 ---
 
 Un post rápido y sencillito, de esos que me gustan a mi.

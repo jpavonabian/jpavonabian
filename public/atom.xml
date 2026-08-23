@@ -10,6 +10,24 @@
   </author>
   <generator>Hugo -- gohugo.io</generator>
   <entry>
+    <title type="html"><![CDATA[Cómo saltar los bloqueos de la liga]]></title>
+    <link href="https://jesuspavonabian.es/post/saltar_bloqueos_liga/"/>
+    <id>https://jesuspavonabian.es/post/saltar_bloqueos_liga/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-08-23T17:38:07+02:00</published>
+    <updated>2026-08-23T17:38:07+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Un post rápido y sencillito, de esos que me gustan a mi.</p>
+<p>A riesgo de ser poco patriota, he de decir que vivimos en un país de pandereta; cada vez que se juega a la pelotita de los cojones, servicios legítimos que no tienen nada que ver con dicha pelotita dejan de funcionar. Y todo porque un señor, que entiende de redess lo mismo que yo de chino mandarín, tiene el poder de matar moscas a cañonazos y obliga a las operadoras a bloquear indiscriminadamente direcciones IPs porque le sale de los cojones, porque otra explicación no le encuentro. Para nada, por cierto, porque la pelotita se sigue viendo pirata.</p>
+<p>Podría argumentar que ese señor está asesorado por gente, pero es que entonces tendría que pensar que los asesores que se ha buscado se han sacado el título de asesorar sobre informática en la universidad de los Pitufos Makineros, y ya sería muy retorcido. O no, quién sabe.</p>
+<p>El caso es que unos señores de <a href="https://BandaAncha.eu">BandaAncha.eu</a> han creado la maravilla conocida como <a href="https://xdp.es/">xdp.es DNS</a>, un servicio pensado para minimizar el impacto de los bloqueos del señor de la pelotita. Han puesto instrucciones y perfiles listos para usar en teléfonos móviles y todo, casi no hay excusas para configurarlo.</p>
+<p>Que ustedes desbloqueen bien.</p>
+]]></content>
+    
+  </entry>
+  <entry>
     <title type="html"><![CDATA[Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)]]></title>
     <link href="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/"/>
     <id>https://jesuspavonabian.es/post/keychron-v6-qmk-remap/</id> 
