@@ -10,7 +10,7 @@ draft: false
 
 Llevaba media vida con dos tareas pendientes. De esas que dices "Sí, ahora luego cuando saque un hueco lo hago", pero nunca lo hacía. Una, por pereza. La otra... Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
 
-Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de [Némesis](https://alareiradenemesis.es) y el ahora resucitado [O recuncho do lector](https://orecunchodolector.es) funcionan como deberían.
+Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre [Némesis](https://alareiradenemesis.es), que por fin puede volver a bloguear y el ahora resucitado [O recuncho do lector](https://orecunchodolector.es) funcionan como deberían.
 
 Ahora corren sobre [WriteFreely](https://writefreely.org), autoalojado en mi propio VPS, cada uno con su propio servicio systemd, su propia base de datos SQLite y su propio puerto al que Nginx dirige las llamadas https que recibe.
 

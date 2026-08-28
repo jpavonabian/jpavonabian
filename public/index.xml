@@ -16,10 +16,10 @@
       <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
       <guid>https://jesuspavonabian.es/post/blogs/</guid>
       <description>Llevaba media vida con dos tareas pendientes. De esas que dices &amp;ldquo;Sí, ahora luego cuando saque un hueco lo hago&amp;rdquo;, pero nunca lo hacía. Una, por pereza. La otra&amp;hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
-Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de Némesis y el ahora resucitado O recuncho do lector funcionan como deberían.</description>
+Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían.</description>
       <content:encoded>
       &lt;p&gt;Llevaba media vida con dos tareas pendientes. De esas que dices &amp;ldquo;Sí, ahora luego cuando saque un hueco lo hago&amp;rdquo;, pero nunca lo hacía. Una, por pereza. La otra&amp;hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.&lt;/p&gt;
-&lt;p&gt;Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de &lt;a href=&#34;https://alareiradenemesis.es&#34;&gt;Némesis&lt;/a&gt; y el ahora resucitado &lt;a href=&#34;https://orecunchodolector.es&#34;&gt;O recuncho do lector&lt;/a&gt; funcionan como deberían.&lt;/p&gt;
+&lt;p&gt;Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre &lt;a href=&#34;https://alareiradenemesis.es&#34;&gt;Némesis&lt;/a&gt;, que por fin puede volver a bloguear y el ahora resucitado &lt;a href=&#34;https://orecunchodolector.es&#34;&gt;O recuncho do lector&lt;/a&gt; funcionan como deberían.&lt;/p&gt;
 &lt;p&gt;Ahora corren sobre &lt;a href=&#34;https://writefreely.org&#34;&gt;WriteFreely&lt;/a&gt;, autoalojado en mi propio VPS, cada uno con su propio servicio systemd, su propia base de datos SQLite y su propio puerto al que Nginx dirige las llamadas https que recibe.&lt;/p&gt;
 &lt;p&gt;Os cuento ambas migraciones, que tienen su aquel.&lt;/p&gt;
 &lt;h2 id=&#34;la-base-un-writefreely-por-blog-sin-depender-de-una-sesión-de-screen&#34;&gt;La base: un WriteFreely por blog, sin depender de una sesión de &lt;code&gt;screen&lt;/code&gt;&lt;/h2&gt;
