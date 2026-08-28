@@ -2,13 +2,79 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-08-23T17:38:07+02:00</updated>
+  <updated>2026-08-28T16:29:28+02:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Blogs, Blogs, Blogs]]></title>
+    <link href="https://jesuspavonabian.es/post/blogs/"/>
+    <id>https://jesuspavonabian.es/post/blogs/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-08-28T16:29:28+02:00</published>
+    <updated>2026-08-28T16:29:28+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.</p>
+<p>Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de <a href="https://alareiradenemesis.es">Némesis</a> y el ahora resucitado <a href="https://orecunchodolector.es">O recuncho do lector</a> funcionan como deberían.</p>
+<p>Ahora corren sobre <a href="https://writefreely.org">WriteFreely</a>, autoalojado en mi propio VPS, cada uno con su propio servicio systemd, su propia base de datos SQLite y su propio puerto al que Nginx dirige las llamadas https que recibe.</p>
+<p>Os cuento ambas migraciones, que tienen su aquel.</p>
+<h2 id="la-base-un-writefreely-por-blog-sin-depender-de-una-sesión-de-screen">La base: un WriteFreely por blog, sin depender de una sesión de <code>screen</code></h2>
+<p>Lo primero fue <a href="https://writefreely.org/start">montar el tinglao, tutorial aquí</a>: Cada blog en su propia instancia de WriteFreely, con su propio <code>config.ini</code>, su propio puerto y su propio <code>writefreely.db</code> en SQLite.</p>
+<p>Para no depender de tener una sesión de <code>screen</code> abierta (así es como arrancaba las cosas al principio, <code>./writefreely</code> a lo bruto por SSH, burro que es uno), usé una plantilla systemd en vez de un <code>.service</code> por blog:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6272a4"># /etc/systemd/system/writefreely@.service</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">WriteFreely instance (%i)</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">After</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">network.target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">simple</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">User</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">patata</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Group</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">patata</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WorkingDirectory</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/home/patata/%i/writefreely</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">ExecStart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/home/patata/%i/writefreely/writefreely</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Restart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">on-failure</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">RestartSec</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WantedBy</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">multi-user.target</span>
+</span></span></code></pre></div><p>El <code>%i</code> se sustituye por lo que venga después de la <code>@</code>. Así, arrancar un blog nuevo es:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> writefreely@alareira
+</span></span><span style="display:flex;"><span>sudo systemctl start writefreely@alareira
+</span></span></code></pre></div><p>Y cada instancia solo necesita su propio directorio con WriteFreely. Reinicio automático si peta, arranque en el boot, logs con <code>journalctl -u writefreely@alareira -f</code>.</p>
+<h2 id="caso-1-a-lareira-de-némesis-la-migración-fácil">Caso 1: A Lareira de Némesis, la migración fácil</h2>
+<p>Este fue el caso fácil. Exportación WXR estándar (Herramientas → Exportar → Todo el contenido, desde el propio WordPress) para traerme el contenido del Blog y <a href="https://github.com/writeas/wp-import">wp-import</a>, de la propia gente de Write.as para importarlo a la instancia recién levantada.</p>
+<p>El repo de wp-import no publica releases. Tocó instalar Go desde cero:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://go.dev/dl/go1.26.7.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>sudo tar -C /usr/local -xzf go1.26.7.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin&#39;</span> &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><p>Después bastó con instalar, sin más.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/writeas/wp-import.git
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> wp-import
+</span></span><span style="display:flex;"><span>go install ./...
+</span></span></code></pre></div><p>Me cargué el WordPress, cambié dónde apuntaba Nginx y listo. El comando de wp-import funcionó a la primera.</p>
+<p>Un detalle que me tuvo fastidiado durante unas horas: El <code>--blog</code> de <code>wp-import</code> no es la ruta de la URL (con <code>single_user = true</code> el blog se sirve en la raíz igualmente), parece ser el alias interno de la colección en la base de datos, aún no lo tengo del todo claro. Se puede sacar de la base de datos con algo como esto:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sqlite3 /home/patata/alareira/writefreely/writefreely.db <span style="color:#f1fa8c">&#34;SELECT alias FROM collections;&#34;</span>
+</span></span></code></pre></div><h2 id="caso-2-o-recuncho-do-lector-y-el-fiaje-en-el-tiempo">Caso 2: O Recuncho do Lector y el fiaje en el tiempo</h2>
+<p>En 2021 el WordPress que movía O recuncho daba más por culo que un zapato apretao, aquello estaba roto por todos lados, no había forma de moverlo todo a un Blog limpio sin que se rompiera todo&hellip; Y al final, tras un cabreo que ya no recuerdo por qué fue&hellip; Decidí mandarlo todo a la mierda&hellip; sin acordarme de hacer un BackUP antes.</p>
+<p>Hablando con una de las autoras del blog llegamos a la conclusión de que estaría bien recuperarlo, pero que el Jesús del pasado fue un poco gilipollas. Si hubiese hecho una copia de seguridad el contenido no se hubiera perdido sin remedio. Por suerte, archive.org sí que hizo una, porque en su día se me ocurrió que era una buena idea que lo hiciera. Gracias, yo del pasado.</p>
+<p>La descarga del sitio archivado se hizo con la gema Ruby <code>wayback_machine_downloader_straw</code>. Un engorro. Lo tengo documentado, pero no merece la pena explicarlo aquí, no creo que sirva para otro Blog.</p>
+<p>Con el HTML crudo de cada página archivada (en este caso, 1577 ficheros entre HTML, CSS/JS del tema y las pocas imágenes que sí sobrevivieron) pude proceder.</p>
+<p>Un script de extracción en Python (<code>beautifulsoup4</code> + <code>lxml</code> + <code>markdownify</code>) hizo todo el trabajo: detectar posts y páginas por las clases del <code>&lt;body&gt;</code>, sacar título, fecha real (del meta <code>article:published_time</code>, no la fecha de la captura), autoría, categorías y tags; limpiar el cuerpo quitando botones de compartir, posts relacionados, índice automático y el widget de audio TTS que traía el tema&hellip;</p>
+<p>Resultado: 487 entradas detectadas, 482 posts convertidos a Markdown, 5 páginas estáticas&hellip; nada mal.</p>
+<p>Las imágenes dieron muchísima lata. Más que nada porque no se almacenaron. Tras tratar de darle una vuelta, consultarlo con la almohada, meditarlo y volverlo a meditar otra vez, no fuese que la primera meditación fallase, decidí que a veces hay que rendirse. si archive.org no las tiene, no las tiene.</p>
+<p>Las páginas también las descarté, quedándome únicamente con los posts. Alguna cosilla rara puede haber, aunque he limpiado concienzudamente los .md a mano.</p>
+<p>Teniendo todo recopilado, le pedí a Claude ayuda con el script para subir el contenido al Blog, ya que estuve un par de semanas dándole vueltas al tema y me atascaba. solo tardó 10 minutos en hacerlo. IA 1, humano 0. Qué remedio.</p>
+<h2 id="finalmente">Finalmente</h2>
+<p>Ambos blogs federan por ActivityPub, así que si usas Mastodon puedes seguirlos como a cualquier cuenta: <code>@nemesis@alareiradenemesis.es</code> y <code>@orecuncho@orecunchodolector.es</code>.</p>
+<p>Un detalle curioso de WriteFreely: puedes mencionar a alguien de Mastodon desde un post del blog y le llega la notificación de verdad. Pero al revés, si mencionas al blog desde Mastodon, no pasa nada. WriteFreely no tiene bandeja de entrada ni sistema de comentarios propio.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Cómo saltar los bloqueos de la liga]]></title>
     <link href="https://jesuspavonabian.es/post/saltar_bloqueos_liga/"/>
