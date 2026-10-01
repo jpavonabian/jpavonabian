@@ -26,7 +26,7 @@
 <p>Así que tocó ponerse a investigar.</p>
 <h2 id="a-preguntar">A preguntar</h2>
 <p>Escribí a Fairphone y a Murena con lo obvio: si se puede activar TalkBack desde el primer arranque, qué voces trae el sistema y si puedo instalar otras.</p>
-<p>Fairphone respondió rápido. Automáticamente. El correo empezaba con un &ldquo;Dear Correo&rdquo; y me invitaba amablemente a hablar con Tin, su asistente virtual. Que si el robot no podía responderla que les respondiera al correo y ya me respondería un humano si eso.</p>
+<p>Fairphone respondió rápido. Automáticamente. El correo empezaba con un &ldquo;Dear Correo&rdquo; y me invitaba amablemente a hablar con Tin, su asistente virtual. Que si el robot no podía responder que les respondiera al correo y ya me respondería un humano si eso.</p>
 <p>Resulta que el robot no pudo, así que les envié una respuesta y esperando la respuesta estoy.</p>
 <p>También pregunté lo mismo a Murena, por si acaso.</p>
 <p>Pero me aburro cosa mala estos días y tengo poca paciencia.</p>
@@ -44,7 +44,7 @@ grep -ri -E &#34;talkback|tts|speech|prebuilt|setupwizard|accessib&#34; default.
 <li><code>e/os/android_prebuilts_prebuiltapks_lfs</code>: las apps precompiladas que se meten en el sistema.</li>
 <li><code>e/os/android_vendor_lineage</code> y <code>e/os/android_vendor_eos</code>: la configuración del sistema, donde se decide qué va activado por defecto.</li>
 </ul>
-<h2 id="lo-que-encontré">Lo que encontré</h2>
+<h2 id="concretemos">Concretemos</h2>
 <p>Todo apunta a que /e/OS parece permitir que una persona ciega pueda configurarlo sola. Vamos por partes.</p>
 <h3 id="talkback-viene-de-serie">TalkBack viene de serie</h3>
 <p>El repositorio de apps precompiladas usa Git LFS. Para no bajarse gigas de APK, se clona solo con los punteros:</p>
@@ -52,7 +52,7 @@ grep -ri -E &#34;talkback|tts|speech|prebuilt|setupwizard|accessib&#34; default.
 git clone https://gitlab.e.foundation/e/os/android_prebuilts_prebuiltapks_lfs.git
 </code></pre><p>(En bash, <code>export</code> en lugar de <code>set</code>.)</p>
 <p>Dentro hay una carpeta <code>Talkback</code> con su <code>Android.bp</code>, que importa el APK <code>talkback-foss-phone-arm64-v8a-release-unsigned.apk</code>. Y en <code>config/common.mk</code>, línea 45, <code>Talkback</code> está en la lista de paquetes que entran en la imagen. Es TalkBack FOSS: la versión libre compilada desde el código que publica Google, sin sus servicios.</p>
-<h3 id="hay-voz-desde-el-primer-arranque">Hay voz desde el primer arranque</h3>
+<h3 id="el-arranque-habla">¡El arranque habla!</h3>
 <p>En <code>android_vendor_eos/config/common.mk</code>:</p>
 <pre tabindex="0"><code># PicoTTS
 include $(call inherit-product, external/svox/svox_tts.mk)
@@ -60,12 +60,12 @@ include $(call inherit-product, external/svox/svox_tts.mk)
 <h3 id="el-atajo-de-volumen-parece-que-apunta-a-talkback">El atajo de volumen parece que apunta a TalkBack</h3>
 <p>En el overlay del framework, <code>android_vendor_eos/overlay/common/frameworks/base/core/res/res/values/config.xml</code>:</p>
 <pre tabindex="0"><code>&lt;string name=&#34;config_defaultAccessibilityService&#34; translatable=&#34;false&#34;&gt;app.talkbackfoss/com.google.android.marvin.talkback.TalkBackService&lt;/string&gt;
-</code></pre><p>Eso define a TalkBack como el servicio de accesibilidad por defecto. Traducido: mantener pulsadas las dos teclas de volumen debería activar TalkBack desde la primera pantalla, sin tener que encontrar nada.</p>
+</code></pre><p>Traducido: mantener pulsadas las dos teclas de volumen debería activar TalkBack desde la primera pantalla, sin tener que encontrar nada.</p>
 <h3 id="talkback-no-tiene-que-pedir-permisos">TalkBack no tiene que pedir permisos</h3>
 <p>En <code>android_vendor_eos/config/permissions/eos-permissions.xml</code> hay una excepción para <code>app.talkbackfoss</code>: el sistema le concede los permisos sin preguntar.</p>
 <h3 id="el-asistente-de-configuración-también-está-pensado">El asistente de configuración también está pensado</h3>
 <p>En su <code>SetupWizard</code>, la pantalla de bienvenida (<code>welcome_activity.xml</code>) tiene un botón de &ldquo;Ajustes de accesibilidad&rdquo; (<code>launch_accessibility</code>) que abre <code>ACCESSIBILITY_SETTINGS_FOR_SUW</code>, los ajustes pensados para la configuración inicial.</p>
-<p>Y el detalle que más me gustó: el selector de idioma (<code>LocalePicker.java</code>) tiene una implementación de accesibilidad hecha a mano, con un <code>AccessibilityNodeProvider</code> y botones virtuales para subir, bajar y el campo de texto, cada uno con su foco. Esos selectores tipo ruleta suelen ser un infierno con lector de pantalla. Aquí alguien se lo curró.</p>
+<p>Y el detalle que más me gustó: el selector de idioma (<code>LocalePicker.java</code>) tiene una implementación de accesibilidad hecha a mano, con un <code>AccessibilityNodeProvider</code> y botones virtuales para subir, bajar y el campo de texto.</p>
 <p>Si quieres comprobarlo tú, estos son los repositorios y la búsqueda que me dio las respuestas:</p>
 <pre tabindex="0"><code>git clone https://gitlab.e.foundation/e/os/android_packages_apps_SetupWizard.git
 git clone https://gitlab.e.foundation/e/os/android_vendor_lineage.git

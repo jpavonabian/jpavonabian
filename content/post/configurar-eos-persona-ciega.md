@@ -22,7 +22,7 @@ Así que tocó ponerse a investigar.
 
 Escribí a Fairphone y a Murena con lo obvio: si se puede activar TalkBack desde el primer arranque, qué voces trae el sistema y si puedo instalar otras.
 
-Fairphone respondió rápido. Automáticamente. El correo empezaba con un "Dear Correo" y me invitaba amablemente a hablar con Tin, su asistente virtual. Que si el robot no podía responderla que les respondiera al correo y ya me respondería un humano si eso.
+Fairphone respondió rápido. Automáticamente. El correo empezaba con un "Dear Correo" y me invitaba amablemente a hablar con Tin, su asistente virtual. Que si el robot no podía responder que les respondiera al correo y ya me respondería un humano si eso.
 
 Resulta que el robot no pudo, así que les envié una respuesta y esperando la respuesta estoy.
 
@@ -51,7 +51,7 @@ grep -ri -E "talkback|tts|speech|prebuilt|setupwizard|accessib" default.xml snip
 - `e/os/android_prebuilts_prebuiltapks_lfs`: las apps precompiladas que se meten en el sistema.
 - `e/os/android_vendor_lineage` y `e/os/android_vendor_eos`: la configuración del sistema, donde se decide qué va activado por defecto.
 
-## Lo que encontré
+## Concretemos
 
 Todo apunta a que /e/OS parece permitir que una persona ciega pueda configurarlo sola. Vamos por partes.
 
@@ -68,7 +68,7 @@ git clone https://gitlab.e.foundation/e/os/android_prebuilts_prebuiltapks_lfs.gi
 
 Dentro hay una carpeta `Talkback` con su `Android.bp`, que importa el APK `talkback-foss-phone-arm64-v8a-release-unsigned.apk`. Y en `config/common.mk`, línea 45, `Talkback` está en la lista de paquetes que entran en la imagen. Es TalkBack FOSS: la versión libre compilada desde el código que publica Google, sin sus servicios.
 
-### Hay voz desde el primer arranque
+### ¡El arranque habla!
 
 En `android_vendor_eos/config/common.mk`:
 
@@ -87,7 +87,7 @@ En el overlay del framework, `android_vendor_eos/overlay/common/frameworks/base/
 <string name="config_defaultAccessibilityService" translatable="false">app.talkbackfoss/com.google.android.marvin.talkback.TalkBackService</string>
 ```
 
-Eso define a TalkBack como el servicio de accesibilidad por defecto. Traducido: mantener pulsadas las dos teclas de volumen debería activar TalkBack desde la primera pantalla, sin tener que encontrar nada.
+Traducido: mantener pulsadas las dos teclas de volumen debería activar TalkBack desde la primera pantalla, sin tener que encontrar nada.
 
 ### TalkBack no tiene que pedir permisos
 
@@ -97,7 +97,7 @@ En `android_vendor_eos/config/permissions/eos-permissions.xml` hay una excepció
 
 En su `SetupWizard`, la pantalla de bienvenida (`welcome_activity.xml`) tiene un botón de "Ajustes de accesibilidad" (`launch_accessibility`) que abre `ACCESSIBILITY_SETTINGS_FOR_SUW`, los ajustes pensados para la configuración inicial.
 
-Y el detalle que más me gustó: el selector de idioma (`LocalePicker.java`) tiene una implementación de accesibilidad hecha a mano, con un `AccessibilityNodeProvider` y botones virtuales para subir, bajar y el campo de texto, cada uno con su foco. Esos selectores tipo ruleta suelen ser un infierno con lector de pantalla. Aquí alguien se lo curró.
+Y el detalle que más me gustó: el selector de idioma (`LocalePicker.java`) tiene una implementación de accesibilidad hecha a mano, con un `AccessibilityNodeProvider` y botones virtuales para subir, bajar y el campo de texto.
 
 Si quieres comprobarlo tú, estos son los repositorios y la búsqueda que me dio las respuestas:
 
