@@ -28,7 +28,7 @@ Otra cosa que mola de ProtonMail es la gran cantidad de enlaces directos a las o
 Como dije más arriba, los correos están cifrados. Según [su web](https://proton.me/es-419/about), "Proton nació en Suiza en 2014, cuando un equipo de científicos que se conocieron en el CERN (la Organización Europea de Investigación Nuclear) decidió construir un mejor Internet con la privacidad como estandarte."
 
 Tienen una cuenta de pagho que permite usar dominio propio, así que creo que acabaré migrando el correo que tengo con Apple, así unifico de paso ambos correos y no tengo todo esperriado por la red y me quito la dependencia de otra BigTech.
-
+Edito: Lo he dejado de usar. Dependo mucho de Thunderbird como cliente de correo y mail en iPhone y no se lleva bien con iMap. Le sigo dando vueltas al correo.
 En un principio me planteé hacer SelfHost del correo, pero por muy tentador que es, hay cosas que prefiero que gestione gente que sabe más que yo, que me minimizan riesgos.
 
 ## SearxNG, el metabuscador
@@ -47,6 +47,7 @@ Es código libre, por lo que cualquiera puede echar una mano o plantear mejoras 
 Es bastante flexible y poderoso. ¿Quieres evitar los muros de pago? Configúralo en las preferencias.
 
 Si quieres, puedes probarlo [accediendo a la instancia que he montado](https://buscador.universoalterno.es/), que tras un par de meses de pruebas he decidido hacer pública.
+
 ## Todavía falta
 
 Lo siguiente que voy a fusilar va a ser Dropbox, Google Drive e iCloud Drive, en ese orden. Haré otra entrada explicando qué voy a montarme.

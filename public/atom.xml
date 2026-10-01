@@ -2,13 +2,79 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-08-28T16:29:28+02:00</updated>
+  <updated>2026-10-01T15:43:39+02:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[¿Se puede configurar desde el arranque /e/OS siendo una persona ciega?]]></title>
+    <link href="https://jesuspavonabian.es/post/configurar-eos-persona-ciega/"/>
+    <id>https://jesuspavonabian.es/post/configurar-eos-persona-ciega/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-01T15:43:39+02:00</published>
+    <updated>2026-10-01T15:43:39+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Llevo unos días dándole vueltas a pillarme un Android sin Google como dispositivo secundario: mi principal sigue siendo un iPhone, con su VoiceOver y sus regresiones, que eso da para otro post. Me han comentado que estaría bien una app de Tu Guiador para Android y aunque me he negado siempre de forma sistemática, he decidido que si la hago la publicaría en F-Droid porque me niego a pasar por Google, y de paso quiero ver si un sistema libre me convence para el día a día.</p>
+<p>¿El candidato? Un Fairphone con /e/OS. pero claro,, si me lo pillo, ¿podré configurarlo solo sin ayuda de nadie?</p>
+<p>Podría pedir ayuda para instalar TalkBack (el que se publica libre, sin mierdas de google) y un motor de voz, pero quiero ser lo más autónomo posible.</p>
+<p>Por lo que sé, en GrapheneOS, TalkBack viene incluido, pero sin motor de voz, que es como el tío que yo tenía en Granada, que ni era tío ni era nada.</p>
+<p>Así que tocó ponerse a investigar.</p>
+<h2 id="a-preguntar">A preguntar</h2>
+<p>Escribí a Fairphone y a Murena con lo obvio: si se puede activar TalkBack desde el primer arranque, qué voces trae el sistema y si puedo instalar otras.</p>
+<p>Fairphone respondió rápido. Automáticamente. El correo empezaba con un &ldquo;Dear Correo&rdquo; y me invitaba amablemente a hablar con Tin, su asistente virtual. Que si el robot no podía responderla que les respondiera al correo y ya me respondería un humano si eso.</p>
+<p>Resulta que el robot no pudo, así que les envié una respuesta y esperando la respuesta estoy.</p>
+<p>También pregunté lo mismo a Murena, por si acaso.</p>
+<p>Pero me aburro cosa mala estos días y tengo poca paciencia.</p>
+<p>/e/OS es software libre. Así que pensé&hellip; ¿Tendré la capacidad de sacar la respuesta del código?</p>
+<h2 id="investigación">Investigación</h2>
+<p>El código de /e/OS vive en gitlab.e.foundation. Pero Android no es un repositorio: son cientos. Se gestionan con la herramienta <code>repo</code> a partir de un manifiesto, unos XML que dicen qué repositorio va en qué ruta y en qué versión.</p>
+<p>Bajarse el código entero son más de cien gigas. Para cotillear, lo inteligente, según Claude, es clonar solo el manifiesto y usarlo de mapa:</p>
+<pre tabindex="0"><code>git clone https://gitlab.e.foundation/e/os/android.git
+cd android
+grep -ri -E &#34;talkback|tts|speech|prebuilt|setupwizard|accessib&#34; default.xml snippets
+</code></pre><p><code>default.xml</code> es el AOSP de toda la vida. Lo interesante está en <code>snippets/eos.xml</code>, donde /e/OS dice qué cambia respecto a LineageOS. Ahí salieron las pistas:</p>
+<ul>
+<li><code>e/os/picotts</code>: un motor de voz cutre, pero que existe, que ya es un pasito.</li>
+<li><code>e/os/android_packages_apps_SetupWizard</code>: su propio asistente de configuración, que sustituye al de LineageOS.</li>
+<li><code>e/os/android_prebuilts_prebuiltapks_lfs</code>: las apps precompiladas que se meten en el sistema.</li>
+<li><code>e/os/android_vendor_lineage</code> y <code>e/os/android_vendor_eos</code>: la configuración del sistema, donde se decide qué va activado por defecto.</li>
+</ul>
+<h2 id="lo-que-encontré">Lo que encontré</h2>
+<p>Todo apunta a que /e/OS parece permitir que una persona ciega pueda configurarlo sola. Vamos por partes.</p>
+<h3 id="talkback-viene-de-serie">TalkBack viene de serie</h3>
+<p>El repositorio de apps precompiladas usa Git LFS. Para no bajarse gigas de APK, se clona solo con los punteros:</p>
+<pre tabindex="0"><code>set GIT_LFS_SKIP_SMUDGE=1
+git clone https://gitlab.e.foundation/e/os/android_prebuilts_prebuiltapks_lfs.git
+</code></pre><p>(En bash, <code>export</code> en lugar de <code>set</code>.)</p>
+<p>Dentro hay una carpeta <code>Talkback</code> con su <code>Android.bp</code>, que importa el APK <code>talkback-foss-phone-arm64-v8a-release-unsigned.apk</code>. Y en <code>config/common.mk</code>, línea 45, <code>Talkback</code> está en la lista de paquetes que entran en la imagen. Es TalkBack FOSS: la versión libre compilada desde el código que publica Google, sin sus servicios.</p>
+<h3 id="hay-voz-desde-el-primer-arranque">Hay voz desde el primer arranque</h3>
+<p>En <code>android_vendor_eos/config/common.mk</code>:</p>
+<pre tabindex="0"><code># PicoTTS
+include $(call inherit-product, external/svox/svox_tts.mk)
+</code></pre><p>PicoTTS, el motor de voz de SVOX. suena a muerte auditiva, pero suena.</p>
+<h3 id="el-atajo-de-volumen-parece-que-apunta-a-talkback">El atajo de volumen parece que apunta a TalkBack</h3>
+<p>En el overlay del framework, <code>android_vendor_eos/overlay/common/frameworks/base/core/res/res/values/config.xml</code>:</p>
+<pre tabindex="0"><code>&lt;string name=&#34;config_defaultAccessibilityService&#34; translatable=&#34;false&#34;&gt;app.talkbackfoss/com.google.android.marvin.talkback.TalkBackService&lt;/string&gt;
+</code></pre><p>Eso define a TalkBack como el servicio de accesibilidad por defecto. Traducido: mantener pulsadas las dos teclas de volumen debería activar TalkBack desde la primera pantalla, sin tener que encontrar nada.</p>
+<h3 id="talkback-no-tiene-que-pedir-permisos">TalkBack no tiene que pedir permisos</h3>
+<p>En <code>android_vendor_eos/config/permissions/eos-permissions.xml</code> hay una excepción para <code>app.talkbackfoss</code>: el sistema le concede los permisos sin preguntar.</p>
+<h3 id="el-asistente-de-configuración-también-está-pensado">El asistente de configuración también está pensado</h3>
+<p>En su <code>SetupWizard</code>, la pantalla de bienvenida (<code>welcome_activity.xml</code>) tiene un botón de &ldquo;Ajustes de accesibilidad&rdquo; (<code>launch_accessibility</code>) que abre <code>ACCESSIBILITY_SETTINGS_FOR_SUW</code>, los ajustes pensados para la configuración inicial.</p>
+<p>Y el detalle que más me gustó: el selector de idioma (<code>LocalePicker.java</code>) tiene una implementación de accesibilidad hecha a mano, con un <code>AccessibilityNodeProvider</code> y botones virtuales para subir, bajar y el campo de texto, cada uno con su foco. Esos selectores tipo ruleta suelen ser un infierno con lector de pantalla. Aquí alguien se lo curró.</p>
+<p>Si quieres comprobarlo tú, estos son los repositorios y la búsqueda que me dio las respuestas:</p>
+<pre tabindex="0"><code>git clone https://gitlab.e.foundation/e/os/android_packages_apps_SetupWizard.git
+git clone https://gitlab.e.foundation/e/os/android_vendor_lineage.git
+git clone https://gitlab.e.foundation/e/os/android_vendor_eos.git
+grep -rn -i -E &#34;defaultAccessibilityService|talkback|pico|tts&#34; android_vendor_lineage android_vendor_eos --exclude-dir=.git
+</code></pre><p>Bien hecho, /e/OS. Una empresa pequeña, y parecen hacer las cosas bien, al menos por lo que se puede cotillear en el código. Lo único que les reprocharía es no documentarlo: una frase en algún sitio me habría ahorrado una tarde. Aunque, siendo sincero, me lo he pasado bien y he aprendido cositas, que siempre viene bien.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Blogs, Blogs, Blogs]]></title>
     <link href="https://jesuspavonabian.es/post/blogs/"/>
@@ -1079,8 +1145,9 @@ Luego ve a Steam y cambia el idioma del juego a inglés, esto provocará y desen
 <p>Ha sido lo más fácil, aunque suene extraño. Una de las características más útiles de <a href="https://proton.me/es-419">ProtonMail</a> para mi gusto es la opción de reenviar automáticamente los correos de la antigua cuenta de Gmail al nuevo correo. Avisar a la gente de que he cambiado de correo es un coñazo y lo estoy tomando con calma, pero gracias a esto puedo permitirme ese lujo.</p>
 <p>Otra cosa que mola de ProtonMail es la gran cantidad de enlaces directos a las opciones para cambiar el correo de distintos sitios. ¿Quieres cambiar tu correo de GitHub, por decir algún servicio? Pulsas el enlace adecuado y plaf, directo a la opción.</p>
 <p>Como dije más arriba, los correos están cifrados. Según <a href="https://proton.me/es-419/about">su web</a>, &ldquo;Proton nació en Suiza en 2014, cuando un equipo de científicos que se conocieron en el CERN (la Organización Europea de Investigación Nuclear) decidió construir un mejor Internet con la privacidad como estandarte.&rdquo;</p>
-<p>Tienen una cuenta de pagho que permite usar dominio propio, así que creo que acabaré migrando el correo que tengo con Apple, así unifico de paso ambos correos y no tengo todo esperriado por la red y me quito la dependencia de otra BigTech.</p>
-<p>En un principio me planteé hacer SelfHost del correo, pero por muy tentador que es, hay cosas que prefiero que gestione gente que sabe más que yo, que me minimizan riesgos.</p>
+<p>Tienen una cuenta de pagho que permite usar dominio propio, así que creo que acabaré migrando el correo que tengo con Apple, así unifico de paso ambos correos y no tengo todo esperriado por la red y me quito la dependencia de otra BigTech.
+Edito: Lo he dejado de usar. Dependo mucho de Thunderbird como cliente de correo y mail en iPhone y no se lleva bien con iMap. Le sigo dando vueltas al correo.
+En un principio me planteé hacer SelfHost del correo, pero por muy tentador que es, hay cosas que prefiero que gestione gente que sabe más que yo, que me minimizan riesgos.</p>
 <h2 id="searxng-el-metabuscador">SearxNG, el metabuscador</h2>
 <p>Está clarísimo. Si hablamos de buscar en internet, lo primero que se nos viene a la cabeza es Google. Es cierto que hay otros como Bing, pero la gran mayoría de mis conocidos es lo que usa.</p>
 <p>Le estuve dando vueltas a la cuestión durante mucho tiempo. Podría usar <a href="https://duckduckgo.com/">DuckDuckGo</a> o un navegador similar, pero por alguna razón, nunca dí el paso. Estaba también <a href="https://www.ecosia.org/?c=es">Ecosia, el buscador que planta árboles</a>, pero tampoco pude migrar a él.</p>
