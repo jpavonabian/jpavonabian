@@ -2,13 +2,47 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-10-01T15:43:39+02:00</updated>
+  <updated>2026-10-07T00:00:00+00:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Estoy cabreado]]></title>
+    <link href="https://jesuspavonabian.es/post/tecobroytecabreo/"/>
+    <id>https://jesuspavonabian.es/post/tecobroytecabreo/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-07T00:00:00+00:00</published>
+    <updated>2026-10-07T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Estoy hasta los cojones.</p>
+<p>En el <a href="https://jesuspavonabian.es/post/configurar-eos-persona-ciega/">post de /e/OS</a> os dije que lo de VoiceOver y sus regresiones daba para otro post. Pues aquí está. Vengo a quejarme otra vez, sí. Ya me conocéis.</p>
+<p>Tengo un iPhone 17. No es un móvil barato precisamente. Y lo uso para todo: el banco, el correo, Mastodon&hellip; Como casi cualquiera que tenga un móvil hoy en día, vaya.</p>
+<p>Y cada día VoiceOver me cabrea un poco más.</p>
+<h2 id="la-voz">La voz</h2>
+<p>Lo primero que noté al actualizar: la voz suena rarísima. No sé explicarlo mejor. Suena como si el móvil estuviera metido en una tinaja. Suena a lata.</p>
+<h2 id="el-teclado">El teclado</h2>
+<p>Escribo una letra en el teclado y VoiceOver la dice cuando le da la gana. Se arrastra como una babosa coja.</p>
+<p>Con los AirPods más de lo mismo. El audio de VoiceOver llega con retraso. Esto antes no pasaba.</p>
+<h2 id="el-botón-de-bloqueo-y-face-id">El botón de bloqueo y Face ID</h2>
+<p>Con VoiceOver activo, pulso el botón de bloqueo y a veces salta Face ID. Y a veces no. ¿De qué depende? Ni idea. Desbloquear el móvil se ha convertido en una lotería, y a mí la lotería nunca me ha tocado. Antes tenía la excusa de que si no juegas no te toca, pero es que ahora juego varias veces al día.</p>
+<h2 id="los-gestos-que-no-funcionan">Los gestos que no funcionan</h2>
+<p>Este es el que más me fastidia. El gesto para ir al inicio, para desplegar las notificaciones o el centro de control, deja de funcionar cuando a VoiceOver le da por ahí. Y entonces te quedas encerrado en la app en la que estés, sin poder salir, hasta que el invento decide volver a funcionar.</p>
+<p>Tampoco funciona ya tocar dos veces la barra de estado para subir al principio de la página. En iOS 26 iba. Ahora no.</p>
+<p>Las llamadas se cuelgan solas. Cojo la llamada con dos toques con dos deditos en la pantalla, me llevo el móvil a la oreja, suena click click click y se corta. se que es VoiceOver, pero no se qué coño hace o por qué.</p>
+<h2 id="el-foco-despega-de-nuevo-léase-con-el-tono-del-team-rocket">¡El foco despega de nuevo! Léase con el tono del Team Rocket)</h2>
+<p>Estás en una app, incluso en una de Apple, y de repente el foco se va a la conchinchina. Pierdes dónde estabas y vuelta a empezar.</p>
+<p>Lo gracioso es que esto no es nuevo. <a href="https://www.applevis.com/comment/151629">Apple reconoció en 2023</a> que el foco de VoiceOver a veces saltaba solo al principio de la página, y dijo que estaban buscando solución para iOS 17. Mejoró, eso es verdad. Pero tres años después aquí seguimos. me tiene un poco hasta los cojones.</p>
+<h2 id="y-lo-sabían">Y lo sabían</h2>
+<p>Lo que más rabia me da es que no es que esto haya salido de la nada. En AppleVis la gente que prueba las betas ya avisó en verano. Hay hilos <a href="https://applevis.com/forum/apple-beta-releases/bugs-voiceover-ios-27">con fallos de VoiceOver en iOS 27</a> y <a href="https://applevis.com/forum/apple-beta-releases/submitted-feedback-voiceover-audio-laglatency-issues-fb24413458">con los retrasos del audio y del teclado</a>, con su número de Feedback de los reportes a apple y todo. Y la versión final salió igual.</p>
+<p>Ya os dije hace un año que el Mac lo tenía en un rincón. Pues ahí sigue, y no tiene pinta de salir. Demasiado que lo uso para desarrollar.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[¿Se puede configurar desde el arranque /e/OS siendo una persona ciega?]]></title>
     <link href="https://jesuspavonabian.es/post/configurar-eos-persona-ciega/"/>

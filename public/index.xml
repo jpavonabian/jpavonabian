@@ -8,7 +8,43 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Thu, 01 Oct 2026 15:43:39 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estoy cabreado</title>
+      <link>https://jesuspavonabian.es/post/tecobroytecabreo/</link>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/tecobroytecabreo/</guid>
+      <description>Estoy hasta los cojones.
+En el post de /e/OS os dije que lo de VoiceOver y sus regresiones daba para otro post. Pues aquí está. Vengo a quejarme otra vez, sí. Ya me conocéis.
+Tengo un iPhone 17. No es un móvil barato precisamente. Y lo uso para todo: el banco, el correo, Mastodon&amp;hellip; Como casi cualquiera que tenga un móvil hoy en día, vaya.
+Y cada día VoiceOver me cabrea un poco más.</description>
+      <content:encoded>
+      &lt;p&gt;Estoy hasta los cojones.&lt;/p&gt;
+&lt;p&gt;En el &lt;a href=&#34;https://jesuspavonabian.es/post/configurar-eos-persona-ciega/&#34;&gt;post de /e/OS&lt;/a&gt; os dije que lo de VoiceOver y sus regresiones daba para otro post. Pues aquí está. Vengo a quejarme otra vez, sí. Ya me conocéis.&lt;/p&gt;
+&lt;p&gt;Tengo un iPhone 17. No es un móvil barato precisamente. Y lo uso para todo: el banco, el correo, Mastodon&amp;hellip; Como casi cualquiera que tenga un móvil hoy en día, vaya.&lt;/p&gt;
+&lt;p&gt;Y cada día VoiceOver me cabrea un poco más.&lt;/p&gt;
+&lt;h2 id=&#34;la-voz&#34;&gt;La voz&lt;/h2&gt;
+&lt;p&gt;Lo primero que noté al actualizar: la voz suena rarísima. No sé explicarlo mejor. Suena como si el móvil estuviera metido en una tinaja. Suena a lata.&lt;/p&gt;
+&lt;h2 id=&#34;el-teclado&#34;&gt;El teclado&lt;/h2&gt;
+&lt;p&gt;Escribo una letra en el teclado y VoiceOver la dice cuando le da la gana. Se arrastra como una babosa coja.&lt;/p&gt;
+&lt;p&gt;Con los AirPods más de lo mismo. El audio de VoiceOver llega con retraso. Esto antes no pasaba.&lt;/p&gt;
+&lt;h2 id=&#34;el-botón-de-bloqueo-y-face-id&#34;&gt;El botón de bloqueo y Face ID&lt;/h2&gt;
+&lt;p&gt;Con VoiceOver activo, pulso el botón de bloqueo y a veces salta Face ID. Y a veces no. ¿De qué depende? Ni idea. Desbloquear el móvil se ha convertido en una lotería, y a mí la lotería nunca me ha tocado. Antes tenía la excusa de que si no juegas no te toca, pero es que ahora juego varias veces al día.&lt;/p&gt;
+&lt;h2 id=&#34;los-gestos-que-no-funcionan&#34;&gt;Los gestos que no funcionan&lt;/h2&gt;
+&lt;p&gt;Este es el que más me fastidia. El gesto para ir al inicio, para desplegar las notificaciones o el centro de control, deja de funcionar cuando a VoiceOver le da por ahí. Y entonces te quedas encerrado en la app en la que estés, sin poder salir, hasta que el invento decide volver a funcionar.&lt;/p&gt;
+&lt;p&gt;Tampoco funciona ya tocar dos veces la barra de estado para subir al principio de la página. En iOS 26 iba. Ahora no.&lt;/p&gt;
+&lt;p&gt;Las llamadas se cuelgan solas. Cojo la llamada con dos toques con dos deditos en la pantalla, me llevo el móvil a la oreja, suena click click click y se corta. se que es VoiceOver, pero no se qué coño hace o por qué.&lt;/p&gt;
+&lt;h2 id=&#34;el-foco-despega-de-nuevo-léase-con-el-tono-del-team-rocket&#34;&gt;¡El foco despega de nuevo! Léase con el tono del Team Rocket)&lt;/h2&gt;
+&lt;p&gt;Estás en una app, incluso en una de Apple, y de repente el foco se va a la conchinchina. Pierdes dónde estabas y vuelta a empezar.&lt;/p&gt;
+&lt;p&gt;Lo gracioso es que esto no es nuevo. &lt;a href=&#34;https://www.applevis.com/comment/151629&#34;&gt;Apple reconoció en 2023&lt;/a&gt; que el foco de VoiceOver a veces saltaba solo al principio de la página, y dijo que estaban buscando solución para iOS 17. Mejoró, eso es verdad. Pero tres años después aquí seguimos. me tiene un poco hasta los cojones.&lt;/p&gt;
+&lt;h2 id=&#34;y-lo-sabían&#34;&gt;Y lo sabían&lt;/h2&gt;
+&lt;p&gt;Lo que más rabia me da es que no es que esto haya salido de la nada. En AppleVis la gente que prueba las betas ya avisó en verano. Hay hilos &lt;a href=&#34;https://applevis.com/forum/apple-beta-releases/bugs-voiceover-ios-27&#34;&gt;con fallos de VoiceOver en iOS 27&lt;/a&gt; y &lt;a href=&#34;https://applevis.com/forum/apple-beta-releases/submitted-feedback-voiceover-audio-laglatency-issues-fb24413458&#34;&gt;con los retrasos del audio y del teclado&lt;/a&gt;, con su número de Feedback de los reportes a apple y todo. Y la versión final salió igual.&lt;/p&gt;
+&lt;p&gt;Ya os dije hace un año que el Mac lo tenía en un rincón. Pues ahí sigue, y no tiene pinta de salir. Demasiado que lo uso para desarrollar.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>¿Se puede configurar desde el arranque /e/OS siendo una persona ciega?</title>
       <link>https://jesuspavonabian.es/post/configurar-eos-persona-ciega/</link>
