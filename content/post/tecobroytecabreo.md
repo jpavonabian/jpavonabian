@@ -1,5 +1,5 @@
 ---
-title: "Estoy cabreado"
+title: "Te cobro y te cabreo"
 date: 2026-10-07
 reply:
 uri: "https://jesuspavonabian.es/post/tecobroytecabreo"
