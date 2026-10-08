@@ -2,13 +2,55 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-10-07T00:00:00+00:00</updated>
+  <updated>2026-10-08T00:00:00+02:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Desgooglezando mi vida (II): el correo, por fin]]></title>
+    <link href="https://jesuspavonabian.es/post/desgooglezando-mi-vida-2-correo/"/>
+    <id>https://jesuspavonabian.es/post/desgooglezando-mi-vida-2-correo/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-08T00:00:00+02:00</published>
+    <updated>2026-10-08T00:00:00+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Hace casi tres años escribí <a href="https://jesuspavonabian.es/post/desgooglezando-mi-vida/">Desgooglezando mi vida</a>. En aquel post os contaba lo contentísimo que estaba con ProtonMail. Y hace nada tuve que volver a editarlo para poner que lo había dejado y que le seguía dando vueltas al correo.</p>
+<p>Pues se acabaron las vueltas. Ya tengo correo.</p>
+<h2 id="qué-buscaba">Qué buscaba</h2>
+<ul>
+<li>Usar mi propio gestor de correo. Thunderbird en el ordenador (ya os conté <a href="https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/">cómo lo tengo configurado con lector de pantalla</a>) y Mail en el iPhone. No quiero la web ni la app de nadie.</li>
+<li>Usar mi dominio, jesuspavonabian.es, que hasta ahora estaba alojado en iCloud.</li>
+<li>Que sea accesible. Esto parece obvio, pero ya veréis que no.</li>
+<li>Que nada crítico dependa de Google. Ni siquiera la recuperación de la cuenta.</li>
+</ul>
+<p>El objetivo no es solo dejar Gmail. Es dejar de depender de Google y de Apple para el correo, el calendario y los contactos.</p>
+<h2 id="y-autoalojarlo-qué">Y autoalojarlo, ¿qué?</h2>
+<p>Lo pensé, claro. Tengo un VPS, monto cosas en él, me gusta cacharrear. Pero ya lo dije en el primer post: hay cosas que prefiero que gestione gente que sabe más que yo. Y el correo es una de ellas. Que te metan en una lista negra y tus correos acaben en la carpeta de spam de todo el mundo no es una aventura que me apetezca.</p>
+<p>Así que tocaba buscar proveedor.</p>
+<h2 id="busquemos-busquemos">Busquemos, busquemos</h2>
+<ul>
+<li>Proton. no se puede usar en el móvil con gestor de correos y la app es bastante cansina.</li>
+<li>Tutanota. No permite usar tu propio gestor de correo. No he probado la app, me dio toda la pereza.</li>
+<li>Posteo. Verdes, privados, pero no admite dominio propio.</li>
+<li>StartMail, Disroot, Internxt Mail. Los miré, ninguno me terminó de convencer. Disroot pintaba bien, pero algo le encontré, tiquismiquis que es uno.</li>
+<li>Inbox.eu. Este me lo recomendó <a href="https://ericdq.com/">Éric Duarte</a> en Mastodon y pinta bien. Bueno, bonito y barato. Hasta que vi que necesitaba un correo porque está pensado para empresas.</li>
+<li>Mailbox.org. Lo miré al principio y lo descarté por precio. El plan Standard me parecía una salvajada para un correo y al final lo escogí.</li>
+</ul>
+<h2 id="por-qué-mailboxorg">Por qué Mailbox.org</h2>
+<p>Porque cumple todo lo que pedía. Gestor propio, dominio propio, y el teléfono como método de recuperación, sin que la cuenta dependa de ningún otro correo. Así que pagué, y ahí estoy.</p>
+<p>¿Es caro? Más de lo que me gustaría. ¿Compensa? Para mí sí. Al final el correo es la llave de todo lo demás: si alguien se hace con él, se hace con tus cuentas. Prefiero pagar algo más y dormir tranquilo.</p>
+<p>Ya tengo mi dominio funcionando ahí y me he traído todos los correos antiguos de iCloud. Una cosa menos en Apple.</p>
+<h2 id="y-gmail">¿Y Gmail?</h2>
+<p>No voy a borrar la cuenta de gmail, no puedo, alguna compra hice ahí en su día y tampoco me molesta, la vaciaré y punto. Pero pasa a ser la cuenta para el spam: registros en webs raras, sitios de los que no me fío, newsletters que sé que no voy a leer&hellip;</p>
+<p>Lo que sí tengo que hacer es migrar todo lo que tengo registrado con ella. Durante años usé el truco de añadir <code>+web</code> a la dirección de Gmail para registrarme en sitios, y ahora tengo Steam, Spotify, el Apple ID y no sé cuántas cosas más colgando de ahí. No lo voy a hacer todo de golpe. Iré migrando conforme vaya logueándome en sitios. GitHub ya está.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Te cobro y te cabreo]]></title>
     <link href="https://jesuspavonabian.es/post/tecobroytecabreo/"/>

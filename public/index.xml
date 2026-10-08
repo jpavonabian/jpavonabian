@@ -8,7 +8,50 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Wed, 07 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Oct 2026 00:00:00 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Desgooglezando mi vida (II): el correo, por fin</title>
+      <link>https://jesuspavonabian.es/post/desgooglezando-mi-vida-2-correo/</link>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/desgooglezando-mi-vida-2-correo/</guid>
+      <description>Hace casi tres años escribí Desgooglezando mi vida. En aquel post os contaba lo contentísimo que estaba con ProtonMail. Y hace nada tuve que volver a editarlo para poner que lo había dejado y que le seguía dando vueltas al correo.
+Pues se acabaron las vueltas. Ya tengo correo.
+Qué buscaba Usar mi propio gestor de correo. Thunderbird en el ordenador (ya os conté cómo lo tengo configurado con lector de pantalla) y Mail en el iPhone.</description>
+      <content:encoded>
+      &lt;p&gt;Hace casi tres años escribí &lt;a href=&#34;https://jesuspavonabian.es/post/desgooglezando-mi-vida/&#34;&gt;Desgooglezando mi vida&lt;/a&gt;. En aquel post os contaba lo contentísimo que estaba con ProtonMail. Y hace nada tuve que volver a editarlo para poner que lo había dejado y que le seguía dando vueltas al correo.&lt;/p&gt;
+&lt;p&gt;Pues se acabaron las vueltas. Ya tengo correo.&lt;/p&gt;
+&lt;h2 id=&#34;qué-buscaba&#34;&gt;Qué buscaba&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Usar mi propio gestor de correo. Thunderbird en el ordenador (ya os conté &lt;a href=&#34;https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla/&#34;&gt;cómo lo tengo configurado con lector de pantalla&lt;/a&gt;) y Mail en el iPhone. No quiero la web ni la app de nadie.&lt;/li&gt;
+&lt;li&gt;Usar mi dominio, jesuspavonabian.es, que hasta ahora estaba alojado en iCloud.&lt;/li&gt;
+&lt;li&gt;Que sea accesible. Esto parece obvio, pero ya veréis que no.&lt;/li&gt;
+&lt;li&gt;Que nada crítico dependa de Google. Ni siquiera la recuperación de la cuenta.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El objetivo no es solo dejar Gmail. Es dejar de depender de Google y de Apple para el correo, el calendario y los contactos.&lt;/p&gt;
+&lt;h2 id=&#34;y-autoalojarlo-qué&#34;&gt;Y autoalojarlo, ¿qué?&lt;/h2&gt;
+&lt;p&gt;Lo pensé, claro. Tengo un VPS, monto cosas en él, me gusta cacharrear. Pero ya lo dije en el primer post: hay cosas que prefiero que gestione gente que sabe más que yo. Y el correo es una de ellas. Que te metan en una lista negra y tus correos acaben en la carpeta de spam de todo el mundo no es una aventura que me apetezca.&lt;/p&gt;
+&lt;p&gt;Así que tocaba buscar proveedor.&lt;/p&gt;
+&lt;h2 id=&#34;busquemos-busquemos&#34;&gt;Busquemos, busquemos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Proton. no se puede usar en el móvil con gestor de correos y la app es bastante cansina.&lt;/li&gt;
+&lt;li&gt;Tutanota. No permite usar tu propio gestor de correo. No he probado la app, me dio toda la pereza.&lt;/li&gt;
+&lt;li&gt;Posteo. Verdes, privados, pero no admite dominio propio.&lt;/li&gt;
+&lt;li&gt;StartMail, Disroot, Internxt Mail. Los miré, ninguno me terminó de convencer. Disroot pintaba bien, pero algo le encontré, tiquismiquis que es uno.&lt;/li&gt;
+&lt;li&gt;Inbox.eu. Este me lo recomendó &lt;a href=&#34;https://ericdq.com/&#34;&gt;Éric Duarte&lt;/a&gt; en Mastodon y pinta bien. Bueno, bonito y barato. Hasta que vi que necesitaba un correo porque está pensado para empresas.&lt;/li&gt;
+&lt;li&gt;Mailbox.org. Lo miré al principio y lo descarté por precio. El plan Standard me parecía una salvajada para un correo y al final lo escogí.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;por-qué-mailboxorg&#34;&gt;Por qué Mailbox.org&lt;/h2&gt;
+&lt;p&gt;Porque cumple todo lo que pedía. Gestor propio, dominio propio, y el teléfono como método de recuperación, sin que la cuenta dependa de ningún otro correo. Así que pagué, y ahí estoy.&lt;/p&gt;
+&lt;p&gt;¿Es caro? Más de lo que me gustaría. ¿Compensa? Para mí sí. Al final el correo es la llave de todo lo demás: si alguien se hace con él, se hace con tus cuentas. Prefiero pagar algo más y dormir tranquilo.&lt;/p&gt;
+&lt;p&gt;Ya tengo mi dominio funcionando ahí y me he traído todos los correos antiguos de iCloud. Una cosa menos en Apple.&lt;/p&gt;
+&lt;h2 id=&#34;y-gmail&#34;&gt;¿Y Gmail?&lt;/h2&gt;
+&lt;p&gt;No voy a borrar la cuenta de gmail, no puedo, alguna compra hice ahí en su día y tampoco me molesta, la vaciaré y punto. Pero pasa a ser la cuenta para el spam: registros en webs raras, sitios de los que no me fío, newsletters que sé que no voy a leer&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Lo que sí tengo que hacer es migrar todo lo que tengo registrado con ella. Durante años usé el truco de añadir &lt;code&gt;+web&lt;/code&gt; a la dirección de Gmail para registrarme en sitios, y ahora tengo Steam, Spotify, el Apple ID y no sé cuántas cosas más colgando de ahí. No lo voy a hacer todo de golpe. Iré migrando conforme vaya logueándome en sitios. GitHub ya está.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Te cobro y te cabreo</title>
       <link>https://jesuspavonabian.es/post/tecobroytecabreo/</link>
