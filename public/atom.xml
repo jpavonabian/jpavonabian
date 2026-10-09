@@ -2,13 +2,437 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-10-08T00:00:00+02:00</updated>
+  <updated>2026-10-09T00:00:00+00:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Migrar contactos a Mailbox]]></title>
+    <link href="https://jesuspavonabian.es/post/migrarcontactosmailbox/"/>
+    <id>https://jesuspavonabian.es/post/migrarcontactosmailbox/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-09T00:00:00+00:00</published>
+    <updated>2026-10-09T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Hoy toca migrar los contactos a Mailbox.org.</p>
+<p>Como siempre he tenido lo que yo llamo &ldquo;mi orden caótico&rdquo;, un orden desordenado que solo yo entiendo, los contactos no podían ser menos y estaban esperriados. algunos en Google, otros en Apple&hellip; Y curiosamente, y eso que le he dado al botón de fusionar duplicados del iPhone, algunos todavía estaban duplicados.</p>
+<p>Así que he decidido dos cosas. Sacarlos de las BigTech y ordenarlos.</p>
+<h2 id="paso-1-exportar">Paso 1: exportar</h2>
+<ul>
+<li><strong>Gmail:</strong> en contacts.google.com, el botón Exportar permite elegir &ldquo;Contactos&rdquo; y el formato vCard. Ojo con no exportar &ldquo;Otros contactos&rdquo;: ahí Google guarda solo cualquier dirección a la que hayas escrito alguna vez, y normalmente es basura. La web de Google Contacts se maneja bien con NVDA.</li>
+<li><strong>iCloud:</strong> desde iOS 16, en la app Contactos puedes ir a Listas, abrir las acciones de &ldquo;Todos los contactos de iCloud&rdquo; y elegir Exportar. Te genera un <code>.vcf</code> que guardas en Archivos. También se puede hacer desde icloud.com, pero Apple no sabe hacer webs accesibles, algún día aprenderán, todavía les tengo un poquito de fe.</li>
+</ul>
+<h2 id="paso-2-fusionar-con-un-script">Paso 2: fusionar con un script</h2>
+<p>En vez de fiarme del buscador de duplicados de Apple, preparé un pequeño script en Python que cruza los contactos por teléfono y por correo, no solo por nombre:</p>
+<ul>
+<li>Si dos contactos comparten un teléfono o un correo, los fusiona en una sola tarjeta, con todos los teléfonos, correos, direcciones y notas, y sin repetir nada.</li>
+<li>Los teléfonos se comparan normalizados.</li>
+<li>Si dos contactos solo coinciden en el nombre, no los toca. Los apunta en un informe como dudosos para que decidas tú, porque dos &ldquo;María López&rdquo; pueden ser dos personas distintas.</li>
+<li>Genera un informe en texto plano (txt).</li>
+</ul>
+<p>Solo requiere Pyhthon y funciona sin internet. Fusiona todos los archivos que le pases como argumento.</p>
+<pre tabindex="0"><code>python fusionar_vcf.py google.vcf icloud.vcf -o contactos.vcf
+</code></pre><p>El resultado en mi caso: 324 contactos de entrada y 214 de salida, con 110 fusiones y ningún dudoso.</p>
+<p>Un consejo antes de importar: revisa el informe buscando grupos de tres o más tarjetas fusionadas, o con nombres que no tengan nada que ver. Un teléfono fijo compartido o un correo de familia pueden juntar a personas distintas. En mi caso estaba todo bien.</p>
+<details>
+<summary>Ver el script completo</summary>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Fusiona varios ficheros vCard (.vcf) en uno solo, quitando duplicados.
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Criterios:
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">  - Fusiona automáticamente los contactos que comparten un teléfono o un correo.
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">  - Los que solo coinciden en el nombre NO se fusionan por defecto: salen en el
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">    informe como dudosos. Con --fusionar-nombres también se fusionan.
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Al fusionar se juntan todos los teléfonos, correos, direcciones, notas, etc.,
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">sin repetir teléfonos (comparados por número normalizado) ni correos.
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Uso:
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">  python fusionar_vcf.py gmail.vcf icloud.vcf -o contactos.vcf
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">  python fusionar_vcf.py gmail.vcf icloud.vcf -o contactos.vcf --fusionar-nombres
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Genera también un informe de texto (contactos_informe.txt) junto al fichero de
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">salida. Solo usa Python 3.8+. No se conecta a nada.
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> unicodedata
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> uuid
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> collections <span style="color:#ff79c6">import</span> defaultdict
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> pathlib <span style="color:#ff79c6">import</span> Path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Propiedades que se regeneran o no se copian al fusionar</span>
+</span></span><span style="display:flex;"><span>OMITIR <span style="color:#ff79c6">=</span> {<span style="color:#f1fa8c">&#34;BEGIN&#34;</span>, <span style="color:#f1fa8c">&#34;END&#34;</span>, <span style="color:#f1fa8c">&#34;VERSION&#34;</span>, <span style="color:#f1fa8c">&#34;PRODID&#34;</span>, <span style="color:#f1fa8c">&#34;REV&#34;</span>, <span style="color:#f1fa8c">&#34;UID&#34;</span>, <span style="color:#f1fa8c">&#34;FN&#34;</span>, <span style="color:#f1fa8c">&#34;N&#34;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># ---------- Lectura y análisis ----------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">leer_texto</span>(ruta):
+</span></span><span style="display:flex;"><span>    datos <span style="color:#ff79c6">=</span> Path(ruta)<span style="color:#ff79c6">.</span>read_bytes()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> codificacion <span style="color:#ff79c6">in</span> (<span style="color:#f1fa8c">&#34;utf-8-sig&#34;</span>, <span style="color:#f1fa8c">&#34;cp1252&#34;</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> datos<span style="color:#ff79c6">.</span>decode(codificacion)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">except</span> UnicodeDecodeError:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">continue</span>
+</span></span><span style="display:flex;"><span>    sys<span style="color:#ff79c6">.</span>exit(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;No se pudo leer </span><span style="color:#f1fa8c">{</span>ruta<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">: codificación desconocida&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">desplegar</span>(texto):
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;&#34;&#34;Une las líneas plegadas (las que empiezan por espacio o tabulador).&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    lineas <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> linea <span style="color:#ff79c6">in</span> texto<span style="color:#ff79c6">.</span>splitlines():
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> linea[:<span style="color:#bd93f9">1</span>] <span style="color:#ff79c6">in</span> (<span style="color:#f1fa8c">&#34; &#34;</span>, <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\t</span><span style="color:#f1fa8c">&#34;</span>) <span style="color:#ff79c6">and</span> lineas:
+</span></span><span style="display:flex;"><span>            lineas[<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>] <span style="color:#ff79c6">+=</span> linea[<span style="color:#bd93f9">1</span>:]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">elif</span> linea<span style="color:#ff79c6">.</span>strip():
+</span></span><span style="display:flex;"><span>            lineas<span style="color:#ff79c6">.</span>append(linea)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> lineas
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">partir</span>(linea):
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;&#34;&#34;Separa &#39;cabecera:valor&#39; respetando los dos puntos dentro de comillas.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    en_comillas <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i, c <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">enumerate</span>(linea):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> c <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#39;&#34;&#39;</span>:
+</span></span><span style="display:flex;"><span>            en_comillas <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">not</span> en_comillas
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">elif</span> c <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;:&#34;</span> <span style="color:#ff79c6">and</span> <span style="color:#ff79c6">not</span> en_comillas:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> linea[:i], linea[i <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> linea, <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Propiedad</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> __init__(self, linea):
+</span></span><span style="display:flex;"><span>        cabecera, self<span style="color:#ff79c6">.</span>valor <span style="color:#ff79c6">=</span> partir(linea)
+</span></span><span style="display:flex;"><span>        nombre_completo, _, self<span style="color:#ff79c6">.</span>parametros <span style="color:#ff79c6">=</span> cabecera<span style="color:#ff79c6">.</span>partition(<span style="color:#f1fa8c">&#34;;&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> <span style="color:#f1fa8c">&#34;.&#34;</span> <span style="color:#ff79c6">in</span> nombre_completo:
+</span></span><span style="display:flex;"><span>            self<span style="color:#ff79c6">.</span>grupo, _, nombre <span style="color:#ff79c6">=</span> nombre_completo<span style="color:#ff79c6">.</span>partition(<span style="color:#f1fa8c">&#34;.&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">else</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#ff79c6">.</span>grupo, nombre <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">None</span>, nombre_completo
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">=</span> nombre<span style="color:#ff79c6">.</span>upper()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">linea</span>(self, grupo<span style="color:#ff79c6">=</span><span style="color:#ff79c6">None</span>):
+</span></span><span style="display:flex;"><span>        cabecera <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>grupo<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">.</span><span style="color:#f1fa8c">{</span>self<span style="color:#ff79c6">.</span>nombre<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">if</span> grupo <span style="color:#ff79c6">else</span> self<span style="color:#ff79c6">.</span>nombre
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> self<span style="color:#ff79c6">.</span>parametros:
+</span></span><span style="display:flex;"><span>            cabecera <span style="color:#ff79c6">+=</span> <span style="color:#f1fa8c">&#34;;&#34;</span> <span style="color:#ff79c6">+</span> self<span style="color:#ff79c6">.</span>parametros
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>cabecera<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">:</span><span style="color:#f1fa8c">{</span>self<span style="color:#ff79c6">.</span>valor<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Tarjeta</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> __init__(self, propiedades, origen):
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>props <span style="color:#ff79c6">=</span> propiedades
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>origen <span style="color:#ff79c6">=</span> origen
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">primera</span>(self, nombre):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> p <span style="color:#ff79c6">in</span> self<span style="color:#ff79c6">.</span>props:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">==</span> nombre:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> p
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">nombre_visible</span>(self):
+</span></span><span style="display:flex;"><span>        fn <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>primera(<span style="color:#f1fa8c">&#34;FN&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> fn <span style="color:#ff79c6">and</span> fn<span style="color:#ff79c6">.</span>valor<span style="color:#ff79c6">.</span>strip():
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> desescapar(fn<span style="color:#ff79c6">.</span>valor)<span style="color:#ff79c6">.</span>strip()
+</span></span><span style="display:flex;"><span>        n <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>primera(<span style="color:#f1fa8c">&#34;N&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> n:
+</span></span><span style="display:flex;"><span>            partes <span style="color:#ff79c6">=</span> [desescapar(x)<span style="color:#ff79c6">.</span>strip() <span style="color:#ff79c6">for</span> x <span style="color:#ff79c6">in</span> n<span style="color:#ff79c6">.</span>valor<span style="color:#ff79c6">.</span>split(<span style="color:#f1fa8c">&#34;;&#34;</span>)]
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4"># N = apellidos;nombre;segundos nombres;prefijo;sufijo</span>
+</span></span><span style="display:flex;"><span>            orden <span style="color:#ff79c6">=</span> [partes[i] <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> (<span style="color:#bd93f9">3</span>, <span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">4</span>) <span style="color:#ff79c6">if</span> i <span style="color:#ff79c6">&lt;</span> <span style="color:#8be9fd;font-style:italic">len</span>(partes)]
+</span></span><span style="display:flex;"><span>            texto <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34; &#34;</span><span style="color:#ff79c6">.</span>join(x <span style="color:#ff79c6">for</span> x <span style="color:#ff79c6">in</span> orden <span style="color:#ff79c6">if</span> x)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> texto:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> texto
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">telefonos</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> {t <span style="color:#ff79c6">for</span> p <span style="color:#ff79c6">in</span> self<span style="color:#ff79c6">.</span>props <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;TEL&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> [normalizar_telefono(p<span style="color:#ff79c6">.</span>valor)] <span style="color:#ff79c6">if</span> t}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">correos</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> {normalizar_correo(p<span style="color:#ff79c6">.</span>valor) <span style="color:#ff79c6">for</span> p <span style="color:#ff79c6">in</span> self<span style="color:#ff79c6">.</span>props
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;EMAIL&#34;</span> <span style="color:#ff79c6">and</span> p<span style="color:#ff79c6">.</span>valor<span style="color:#ff79c6">.</span>strip()}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">leer_tarjetas</span>(ruta):
+</span></span><span style="display:flex;"><span>    tarjetas, actual <span style="color:#ff79c6">=</span> [], <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> linea <span style="color:#ff79c6">in</span> desplegar(leer_texto(ruta)):
+</span></span><span style="display:flex;"><span>        mayus <span style="color:#ff79c6">=</span> linea<span style="color:#ff79c6">.</span>strip()<span style="color:#ff79c6">.</span>upper()
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> mayus <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;BEGIN:VCARD&#34;</span>:
+</span></span><span style="display:flex;"><span>            actual <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">elif</span> mayus <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;END:VCARD&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> actual <span style="color:#ff79c6">is</span> <span style="color:#ff79c6">not</span> <span style="color:#ff79c6">None</span>:
+</span></span><span style="display:flex;"><span>                tarjetas<span style="color:#ff79c6">.</span>append(Tarjeta(actual, Path(ruta)<span style="color:#ff79c6">.</span>name))
+</span></span><span style="display:flex;"><span>            actual <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">elif</span> actual <span style="color:#ff79c6">is</span> <span style="color:#ff79c6">not</span> <span style="color:#ff79c6">None</span>:
+</span></span><span style="display:flex;"><span>            actual<span style="color:#ff79c6">.</span>append(Propiedad(linea))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> tarjetas
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># ---------- Normalización ----------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">desescapar</span>(valor):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> (valor<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">n&#34;</span>, <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>)<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">N&#34;</span>, <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">,&#34;</span>, <span style="color:#f1fa8c">&#34;,&#34;</span>)<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">;&#34;</span>, <span style="color:#f1fa8c">&#34;;&#34;</span>)<span style="color:#ff79c6">.</span>replace(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\\\</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\\</span><span style="color:#f1fa8c">&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">normalizar_telefono</span>(valor):
+</span></span><span style="display:flex;"><span>    valor <span style="color:#ff79c6">=</span> valor<span style="color:#ff79c6">.</span>strip()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> valor<span style="color:#ff79c6">.</span>lower()<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;tel:&#34;</span>):
+</span></span><span style="display:flex;"><span>        valor <span style="color:#ff79c6">=</span> valor[<span style="color:#bd93f9">4</span>:]
+</span></span><span style="display:flex;"><span>    digitos <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">.</span>join(c <span style="color:#ff79c6">for</span> c <span style="color:#ff79c6">in</span> valor <span style="color:#ff79c6">if</span> c<span style="color:#ff79c6">.</span>isdigit())
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> digitos<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;00&#34;</span>):
+</span></span><span style="display:flex;"><span>        digitos <span style="color:#ff79c6">=</span> digitos[<span style="color:#bd93f9">2</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> digitos<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;34&#34;</span>) <span style="color:#ff79c6">and</span> <span style="color:#8be9fd;font-style:italic">len</span>(digitos) <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">11</span>:
+</span></span><span style="display:flex;"><span>        digitos <span style="color:#ff79c6">=</span> digitos[<span style="color:#bd93f9">2</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Los 9 últimos dígitos bastan para cruzar números españoles con o sin prefijo</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> digitos[<span style="color:#ff79c6">-</span><span style="color:#bd93f9">9</span>:] <span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">len</span>(digitos) <span style="color:#ff79c6">&gt;=</span> <span style="color:#bd93f9">9</span> <span style="color:#ff79c6">else</span> (digitos <span style="color:#ff79c6">or</span> <span style="color:#ff79c6">None</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">normalizar_correo</span>(valor):
+</span></span><span style="display:flex;"><span>    valor <span style="color:#ff79c6">=</span> valor<span style="color:#ff79c6">.</span>strip()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> valor<span style="color:#ff79c6">.</span>lower()<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;mailto:&#34;</span>):
+</span></span><span style="display:flex;"><span>        valor <span style="color:#ff79c6">=</span> valor[<span style="color:#bd93f9">7</span>:]
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> valor<span style="color:#ff79c6">.</span>lower()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">normalizar_nombre</span>(texto):
+</span></span><span style="display:flex;"><span>    sin_tildes <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;&#34;</span><span style="color:#ff79c6">.</span>join(c <span style="color:#ff79c6">for</span> c <span style="color:#ff79c6">in</span> unicodedata<span style="color:#ff79c6">.</span>normalize(<span style="color:#f1fa8c">&#34;NFKD&#34;</span>, texto)
+</span></span><span style="display:flex;"><span>                         <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">not</span> unicodedata<span style="color:#ff79c6">.</span>combining(c))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34; &#34;</span><span style="color:#ff79c6">.</span>join(sin_tildes<span style="color:#ff79c6">.</span>casefold()<span style="color:#ff79c6">.</span>split())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># ---------- Agrupación (union-find) ----------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Conjuntos</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> __init__(self, n):
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>padre <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(<span style="color:#8be9fd;font-style:italic">range</span>(n))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">raiz</span>(self, x):
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">while</span> self<span style="color:#ff79c6">.</span>padre[x] <span style="color:#ff79c6">!=</span> x:
+</span></span><span style="display:flex;"><span>            self<span style="color:#ff79c6">.</span>padre[x] <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>padre[self<span style="color:#ff79c6">.</span>padre[x]]
+</span></span><span style="display:flex;"><span>            x <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>padre[x]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">unir</span>(self, a, b):
+</span></span><span style="display:flex;"><span>        ra, rb <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>raiz(a), self<span style="color:#ff79c6">.</span>raiz(b)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> ra <span style="color:#ff79c6">!=</span> rb:
+</span></span><span style="display:flex;"><span>            self<span style="color:#ff79c6">.</span>padre[rb] <span style="color:#ff79c6">=</span> ra
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">agrupar</span>(tarjetas, fusionar_nombres):
+</span></span><span style="display:flex;"><span>    conj <span style="color:#ff79c6">=</span> Conjuntos(<span style="color:#8be9fd;font-style:italic">len</span>(tarjetas))
+</span></span><span style="display:flex;"><span>    vistos <span style="color:#ff79c6">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i, t <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">enumerate</span>(tarjetas):
+</span></span><span style="display:flex;"><span>        claves <span style="color:#ff79c6">=</span> [(<span style="color:#f1fa8c">&#34;tel&#34;</span>, x) <span style="color:#ff79c6">for</span> x <span style="color:#ff79c6">in</span> t<span style="color:#ff79c6">.</span>telefonos()] <span style="color:#ff79c6">+</span> \
+</span></span><span style="display:flex;"><span>                 [(<span style="color:#f1fa8c">&#34;correo&#34;</span>, x) <span style="color:#ff79c6">for</span> x <span style="color:#ff79c6">in</span> t<span style="color:#ff79c6">.</span>correos()]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> clave <span style="color:#ff79c6">in</span> claves:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> clave <span style="color:#ff79c6">in</span> vistos:
+</span></span><span style="display:flex;"><span>                conj<span style="color:#ff79c6">.</span>unir(vistos[clave], i)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">else</span>:
+</span></span><span style="display:flex;"><span>                vistos[clave] <span style="color:#ff79c6">=</span> i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># Coincidencias solo por nombre entre grupos distintos</span>
+</span></span><span style="display:flex;"><span>    por_nombre <span style="color:#ff79c6">=</span> defaultdict(<span style="color:#8be9fd;font-style:italic">set</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i, t <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">enumerate</span>(tarjetas):
+</span></span><span style="display:flex;"><span>        nombre <span style="color:#ff79c6">=</span> normalizar_nombre(t<span style="color:#ff79c6">.</span>nombre_visible())
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> nombre:
+</span></span><span style="display:flex;"><span>            por_nombre[nombre]<span style="color:#ff79c6">.</span>add(conj<span style="color:#ff79c6">.</span>raiz(i))
+</span></span><span style="display:flex;"><span>    dudosos <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> nombre, raices <span style="color:#ff79c6">in</span> por_nombre<span style="color:#ff79c6">.</span>items():
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">len</span>(raices) <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">1</span>:
+</span></span><span style="display:flex;"><span>            dudosos<span style="color:#ff79c6">.</span>append(<span style="color:#8be9fd;font-style:italic">sorted</span>(raices))
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> fusionar_nombres:
+</span></span><span style="display:flex;"><span>                raices <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">list</span>(raices)
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">for</span> r <span style="color:#ff79c6">in</span> raices[<span style="color:#bd93f9">1</span>:]:
+</span></span><span style="display:flex;"><span>                    conj<span style="color:#ff79c6">.</span>unir(raices[<span style="color:#bd93f9">0</span>], r)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    grupos <span style="color:#ff79c6">=</span> defaultdict(<span style="color:#8be9fd;font-style:italic">list</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#8be9fd;font-style:italic">len</span>(tarjetas)):
+</span></span><span style="display:flex;"><span>        grupos[conj<span style="color:#ff79c6">.</span>raiz(i)]<span style="color:#ff79c6">.</span>append(i)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">list</span>(grupos<span style="color:#ff79c6">.</span>values()), dudosos
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># ---------- Fusión ----------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">clave_dedup</span>(p):
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;TEL&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> (<span style="color:#f1fa8c">&#34;TEL&#34;</span>, normalizar_telefono(p<span style="color:#ff79c6">.</span>valor))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;EMAIL&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> (<span style="color:#f1fa8c">&#34;EMAIL&#34;</span>, normalizar_correo(p<span style="color:#ff79c6">.</span>valor))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> (p<span style="color:#ff79c6">.</span>nombre, p<span style="color:#ff79c6">.</span>valor<span style="color:#ff79c6">.</span>strip())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">fusionar</span>(grupo_tarjetas):
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4"># La tarjeta más completa manda en nombre y orden</span>
+</span></span><span style="display:flex;"><span>    ordenadas <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(grupo_tarjetas, key<span style="color:#ff79c6">=</span><span style="color:#ff79c6">lambda</span> t: <span style="color:#8be9fd;font-style:italic">len</span>(t<span style="color:#ff79c6">.</span>props), reverse<span style="color:#ff79c6">=</span><span style="color:#ff79c6">True</span>)
+</span></span><span style="display:flex;"><span>    principal <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">max</span>(ordenadas, key<span style="color:#ff79c6">=</span><span style="color:#ff79c6">lambda</span> t: <span style="color:#8be9fd;font-style:italic">len</span>(t<span style="color:#ff79c6">.</span>nombre_visible()))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    lineas <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;BEGIN:VCARD&#34;</span>, <span style="color:#f1fa8c">&#34;VERSION:3.0&#34;</span>, <span style="color:#f1fa8c">&#34;PRODID:-//fusionar_vcf//ES&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;UID:</span><span style="color:#f1fa8c">{</span>uuid<span style="color:#ff79c6">.</span>uuid4()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fn <span style="color:#ff79c6">=</span> principal<span style="color:#ff79c6">.</span>primera(<span style="color:#f1fa8c">&#34;FN&#34;</span>)
+</span></span><span style="display:flex;"><span>    nombre <span style="color:#ff79c6">=</span> principal<span style="color:#ff79c6">.</span>nombre_visible()
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">not</span> nombre:
+</span></span><span style="display:flex;"><span>        correos <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(<span style="color:#8be9fd;font-style:italic">set</span>()<span style="color:#ff79c6">.</span>union(<span style="color:#ff79c6">*</span>(t<span style="color:#ff79c6">.</span>correos() <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> ordenadas)))
+</span></span><span style="display:flex;"><span>        telefonos <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(<span style="color:#8be9fd;font-style:italic">set</span>()<span style="color:#ff79c6">.</span>union(<span style="color:#ff79c6">*</span>(t<span style="color:#ff79c6">.</span>telefonos() <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> ordenadas)))
+</span></span><span style="display:flex;"><span>        nombre <span style="color:#ff79c6">=</span> (correos <span style="color:#ff79c6">or</span> telefonos <span style="color:#ff79c6">or</span> [<span style="color:#f1fa8c">&#34;Sin nombre&#34;</span>])[<span style="color:#bd93f9">0</span>]
+</span></span><span style="display:flex;"><span>    lineas<span style="color:#ff79c6">.</span>append(fn<span style="color:#ff79c6">.</span>linea() <span style="color:#ff79c6">if</span> fn <span style="color:#ff79c6">and</span> fn<span style="color:#ff79c6">.</span>valor<span style="color:#ff79c6">.</span>strip() <span style="color:#ff79c6">else</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;FN:</span><span style="color:#f1fa8c">{</span>nombre<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    n <span style="color:#ff79c6">=</span> principal<span style="color:#ff79c6">.</span>primera(<span style="color:#f1fa8c">&#34;N&#34;</span>) <span style="color:#ff79c6">or</span> <span style="color:#8be9fd;font-style:italic">next</span>(
+</span></span><span style="display:flex;"><span>        (t<span style="color:#ff79c6">.</span>primera(<span style="color:#f1fa8c">&#34;N&#34;</span>) <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> ordenadas <span style="color:#ff79c6">if</span> t<span style="color:#ff79c6">.</span>primera(<span style="color:#f1fa8c">&#34;N&#34;</span>)), <span style="color:#ff79c6">None</span>)
+</span></span><span style="display:flex;"><span>    lineas<span style="color:#ff79c6">.</span>append(n<span style="color:#ff79c6">.</span>linea() <span style="color:#ff79c6">if</span> n <span style="color:#ff79c6">else</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;N:;</span><span style="color:#f1fa8c">{</span>nombre<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">;;;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vistas <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">set</span>()
+</span></span><span style="display:flex;"><span>    foto_puesta <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">False</span>
+</span></span><span style="display:flex;"><span>    contador_grupos <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> ordenadas:
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># 1.ª pasada: qué propiedades principales sobreviven y, con ellas, sus grupos</span>
+</span></span><span style="display:flex;"><span>        conservar <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        grupos_vivos <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">set</span>()
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> p <span style="color:#ff79c6">in</span> t<span style="color:#ff79c6">.</span>props:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">in</span> OMITIR <span style="color:#ff79c6">or</span> p<span style="color:#ff79c6">.</span>nombre<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;X-AB&#34;</span>):
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">continue</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>nombre <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;PHOTO&#34;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> foto_puesta:
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">continue</span>
+</span></span><span style="display:flex;"><span>                foto_puesta <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">True</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">else</span>:
+</span></span><span style="display:flex;"><span>                clave <span style="color:#ff79c6">=</span> clave_dedup(p)
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> clave <span style="color:#ff79c6">in</span> vistas:
+</span></span><span style="display:flex;"><span>                    <span style="color:#ff79c6">continue</span>
+</span></span><span style="display:flex;"><span>                vistas<span style="color:#ff79c6">.</span>add(clave)
+</span></span><span style="display:flex;"><span>            conservar<span style="color:#ff79c6">.</span>append(p)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> p<span style="color:#ff79c6">.</span>grupo:
+</span></span><span style="display:flex;"><span>                grupos_vivos<span style="color:#ff79c6">.</span>add(p<span style="color:#ff79c6">.</span>grupo)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4"># Renombrar grupos (item1, item2...) para que no choquen entre tarjetas</span>
+</span></span><span style="display:flex;"><span>        renombre <span style="color:#ff79c6">=</span> {}
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> g <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(grupos_vivos):
+</span></span><span style="display:flex;"><span>            contador_grupos <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+</span></span><span style="display:flex;"><span>            renombre[g] <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;item</span><span style="color:#f1fa8c">{</span>contador_grupos<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> p <span style="color:#ff79c6">in</span> t<span style="color:#ff79c6">.</span>props:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span> p <span style="color:#ff79c6">in</span> conservar:
+</span></span><span style="display:flex;"><span>                lineas<span style="color:#ff79c6">.</span>append(p<span style="color:#ff79c6">.</span>linea(renombre<span style="color:#ff79c6">.</span>get(p<span style="color:#ff79c6">.</span>grupo)))
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">elif</span> p<span style="color:#ff79c6">.</span>nombre<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;X-AB&#34;</span>) <span style="color:#ff79c6">and</span> p<span style="color:#ff79c6">.</span>grupo <span style="color:#ff79c6">in</span> renombre:
+</span></span><span style="display:flex;"><span>                <span style="color:#6272a4"># Etiquetas personalizadas (X-ABLabel) de grupos que siguen vivos</span>
+</span></span><span style="display:flex;"><span>                lineas<span style="color:#ff79c6">.</span>append(p<span style="color:#ff79c6">.</span>linea(renombre[p<span style="color:#ff79c6">.</span>grupo]))
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">elif</span> (p<span style="color:#ff79c6">.</span>nombre<span style="color:#ff79c6">.</span>startswith(<span style="color:#f1fa8c">&#34;X-AB&#34;</span>) <span style="color:#ff79c6">and</span> <span style="color:#ff79c6">not</span> p<span style="color:#ff79c6">.</span>grupo
+</span></span><span style="display:flex;"><span>                  <span style="color:#ff79c6">and</span> clave_dedup(p) <span style="color:#ff79c6">not</span> <span style="color:#ff79c6">in</span> vistas):
+</span></span><span style="display:flex;"><span>                vistas<span style="color:#ff79c6">.</span>add(clave_dedup(p))
+</span></span><span style="display:flex;"><span>                lineas<span style="color:#ff79c6">.</span>append(p<span style="color:#ff79c6">.</span>linea())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    lineas<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;END:VCARD&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> lineas, nombre
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">plegar</span>(linea, limite<span style="color:#ff79c6">=</span><span style="color:#bd93f9">75</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;&#34;&#34;Pliega a 75 octetos sin partir caracteres UTF-8.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">len</span>(linea<span style="color:#ff79c6">.</span>encode(<span style="color:#f1fa8c">&#34;utf-8&#34;</span>)) <span style="color:#ff79c6">&lt;=</span> limite:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> linea
+</span></span><span style="display:flex;"><span>    trozos, actual, tam <span style="color:#ff79c6">=</span> [], <span style="color:#f1fa8c">&#34;&#34;</span>, <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> c <span style="color:#ff79c6">in</span> linea:
+</span></span><span style="display:flex;"><span>        bytes_c <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">len</span>(c<span style="color:#ff79c6">.</span>encode(<span style="color:#f1fa8c">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> tam <span style="color:#ff79c6">+</span> bytes_c <span style="color:#ff79c6">&gt;</span> limite:
+</span></span><span style="display:flex;"><span>            trozos<span style="color:#ff79c6">.</span>append(actual)
+</span></span><span style="display:flex;"><span>            actual, tam <span style="color:#ff79c6">=</span> c, <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">+</span> bytes_c  <span style="color:#6272a4"># la continuación empieza con un espacio</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">else</span>:
+</span></span><span style="display:flex;"><span>            actual <span style="color:#ff79c6">+=</span> c
+</span></span><span style="display:flex;"><span>            tam <span style="color:#ff79c6">+=</span> bytes_c
+</span></span><span style="display:flex;"><span>    trozos<span style="color:#ff79c6">.</span>append(actual)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\r\n</span><span style="color:#f1fa8c"> &#34;</span><span style="color:#ff79c6">.</span>join(trozos)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># ---------- Programa principal ----------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    ap <span style="color:#ff79c6">=</span> argparse<span style="color:#ff79c6">.</span>ArgumentParser(description<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;Fusiona ficheros vCard sin duplicados.&#34;</span>)
+</span></span><span style="display:flex;"><span>    ap<span style="color:#ff79c6">.</span>add_argument(<span style="color:#f1fa8c">&#34;entradas&#34;</span>, nargs<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;+&#34;</span>, help<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;Ficheros .vcf de entrada&#34;</span>)
+</span></span><span style="display:flex;"><span>    ap<span style="color:#ff79c6">.</span>add_argument(<span style="color:#f1fa8c">&#34;-o&#34;</span>, <span style="color:#f1fa8c">&#34;--salida&#34;</span>, default<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;contactos_fusionados.vcf&#34;</span>,
+</span></span><span style="display:flex;"><span>                    help<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;Fichero .vcf de salida&#34;</span>)
+</span></span><span style="display:flex;"><span>    ap<span style="color:#ff79c6">.</span>add_argument(<span style="color:#f1fa8c">&#34;--fusionar-nombres&#34;</span>, action<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;store_true&#34;</span>,
+</span></span><span style="display:flex;"><span>                    help<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;Fusionar también los que solo coinciden en el nombre&#34;</span>)
+</span></span><span style="display:flex;"><span>    args <span style="color:#ff79c6">=</span> ap<span style="color:#ff79c6">.</span>parse_args()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tarjetas, recuento <span style="color:#ff79c6">=</span> [], []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> ruta <span style="color:#ff79c6">in</span> args<span style="color:#ff79c6">.</span>entradas:
+</span></span><span style="display:flex;"><span>        leidas <span style="color:#ff79c6">=</span> leer_tarjetas(ruta)
+</span></span><span style="display:flex;"><span>        recuento<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>Path(ruta)<span style="color:#ff79c6">.</span>name<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(leidas)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>        tarjetas<span style="color:#ff79c6">.</span>extend(leidas)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    grupos, dudosos <span style="color:#ff79c6">=</span> agrupar(tarjetas, args<span style="color:#ff79c6">.</span>fusionar_nombres)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    salida, informe_fusion, sin_nombre <span style="color:#ff79c6">=</span> [], [], []
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> indices <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(grupos, key<span style="color:#ff79c6">=</span><span style="color:#ff79c6">lambda</span> g: tarjetas[g[<span style="color:#bd93f9">0</span>]]<span style="color:#ff79c6">.</span>nombre_visible()<span style="color:#ff79c6">.</span>casefold()):
+</span></span><span style="display:flex;"><span>        grupo <span style="color:#ff79c6">=</span> [tarjetas[i] <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> indices]
+</span></span><span style="display:flex;"><span>        lineas, nombre <span style="color:#ff79c6">=</span> fusionar(grupo)
+</span></span><span style="display:flex;"><span>        salida<span style="color:#ff79c6">.</span>extend(plegar(l) <span style="color:#ff79c6">for</span> l <span style="color:#ff79c6">in</span> lineas)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">not</span> grupo[<span style="color:#bd93f9">0</span>]<span style="color:#ff79c6">.</span>nombre_visible() <span style="color:#ff79c6">and</span> <span style="color:#8be9fd;font-style:italic">all</span>(<span style="color:#ff79c6">not</span> t<span style="color:#ff79c6">.</span>nombre_visible() <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> grupo):
+</span></span><span style="display:flex;"><span>            sin_nombre<span style="color:#ff79c6">.</span>append(nombre)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">len</span>(grupo) <span style="color:#ff79c6">&gt;</span> <span style="color:#bd93f9">1</span>:
+</span></span><span style="display:flex;"><span>            nombres <span style="color:#ff79c6">=</span> [t<span style="color:#ff79c6">.</span>nombre_visible() <span style="color:#ff79c6">or</span> <span style="color:#f1fa8c">&#34;(sin nombre)&#34;</span> <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> grupo]
+</span></span><span style="display:flex;"><span>            origenes <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">sorted</span>({t<span style="color:#ff79c6">.</span>origen <span style="color:#ff79c6">for</span> t <span style="color:#ff79c6">in</span> grupo})
+</span></span><span style="display:flex;"><span>            informe_fusion<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;- </span><span style="color:#f1fa8c">{</span>nombre<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(grupo)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> tarjetas &#34;</span>
+</span></span><span style="display:flex;"><span>                                  <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;(</span><span style="color:#f1fa8c">{</span><span style="color:#f1fa8c">&#39; | &#39;</span><span style="color:#ff79c6">.</span>join(nombres)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">) de </span><span style="color:#f1fa8c">{</span><span style="color:#f1fa8c">&#39;, &#39;</span><span style="color:#ff79c6">.</span>join(origenes)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ruta_salida <span style="color:#ff79c6">=</span> Path(args<span style="color:#ff79c6">.</span>salida)
+</span></span><span style="display:flex;"><span>    ruta_salida<span style="color:#ff79c6">.</span>write_text(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\r\n</span><span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">.</span>join(salida) <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\r\n</span><span style="color:#f1fa8c">&#34;</span>, encoding<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    informe <span style="color:#ff79c6">=</span> [<span style="color:#f1fa8c">&#34;INFORME DE FUSIÓN DE CONTACTOS&#34;</span>, <span style="color:#f1fa8c">&#34;&#34;</span>]
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;Contactos leídos: &#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;; &#34;</span><span style="color:#ff79c6">.</span>join(recuento))
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Contactos resultantes: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(grupos)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Fusionados (</span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(informe_fusion)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> contactos):&#34;</span>)
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>extend(informe_fusion <span style="color:#ff79c6">or</span> [<span style="color:#f1fa8c">&#34;- Ninguno&#34;</span>])
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    estado <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;FUSIONADOS&#34;</span> <span style="color:#ff79c6">if</span> args<span style="color:#ff79c6">.</span>fusionar_nombres <span style="color:#ff79c6">else</span> <span style="color:#f1fa8c">&#34;NO fusionados, revísalos&#34;</span>
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Coincidencias solo por nombre, </span><span style="color:#f1fa8c">{</span>estado<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> (</span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(dudosos)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">):&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span> raices <span style="color:#ff79c6">in</span> dudosos:
+</span></span><span style="display:flex;"><span>        nombres <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> r <span style="color:#ff79c6">in</span> raices:
+</span></span><span style="display:flex;"><span>            t <span style="color:#ff79c6">=</span> tarjetas[r]
+</span></span><span style="display:flex;"><span>            datos <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(t<span style="color:#ff79c6">.</span>telefonos()) <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">sorted</span>(t<span style="color:#ff79c6">.</span>correos())
+</span></span><span style="display:flex;"><span>            nombres<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">{</span>t<span style="color:#ff79c6">.</span>nombre_visible()<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> [</span><span style="color:#f1fa8c">{</span><span style="color:#f1fa8c">&#39;, &#39;</span><span style="color:#ff79c6">.</span>join(datos) <span style="color:#ff79c6">or</span> <span style="color:#f1fa8c">&#39;sin datos&#39;</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">]&#34;</span>)
+</span></span><span style="display:flex;"><span>        informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;- &#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34; / &#34;</span><span style="color:#ff79c6">.</span>join(nombres))
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">not</span> dudosos:
+</span></span><span style="display:flex;"><span>        informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;- Ninguna&#34;</span>)
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Contactos sin nombre (</span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(sin_nombre)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">):&#34;</span>)
+</span></span><span style="display:flex;"><span>    informe<span style="color:#ff79c6">.</span>extend(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;- </span><span style="color:#f1fa8c">{</span>x<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">for</span> x <span style="color:#ff79c6">in</span> sin_nombre) <span style="color:#ff79c6">if</span> sin_nombre <span style="color:#ff79c6">else</span> informe<span style="color:#ff79c6">.</span>append(<span style="color:#f1fa8c">&#34;- Ninguno&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ruta_informe <span style="color:#ff79c6">=</span> ruta_salida<span style="color:#ff79c6">.</span>with_name(ruta_salida<span style="color:#ff79c6">.</span>stem <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;_informe.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>    ruta_informe<span style="color:#ff79c6">.</span>write_text(<span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">.</span>join(informe) <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, encoding<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Leídos </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(tarjetas)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c"> contactos, resultan </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(grupos)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Fusionados: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(informe_fusion)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">. Dudosos por nombre: </span><span style="color:#f1fa8c">{</span><span style="color:#8be9fd;font-style:italic">len</span>(dudosos)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">.&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Salida: </span><span style="color:#f1fa8c">{</span>ruta_salida<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">print</span>(<span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Informe: </span><span style="color:#f1fa8c">{</span>ruta_informe<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div></details>
+<h2 id="paso-3-importar-en-mailboxorg">Paso 3: importar en Mailbox.org</h2>
+<p>En la web de Mailbox.org, en Contactos, tras crear una libreta puedes importarlos. No es difícil, solo es cuestión de subir el ficherito.</p>
+<h2 id="paso-4-conectar-el-iphone-por-carddav">Paso 4: conectar el iPhone por CardDAV</h2>
+<p>Primero desactiva los contactos de iCloud y de Gmail en el iPhone, eligiendo eliminarlos del móvil para no tener duplicados, si no vas a liar la de Dios es Cristo.</p>
+<p>Luego ve a Ajustes, Contactos, Cuentas, Añadir cuenta, Otra, &ldquo;Añadir cuenta CardDAV&rdquo;:</p>
+<ul>
+<li>Servidor: <code>dav.mailbox.org</code></li>
+<li>Usuario: tu dirección de correo</li>
+<li>Contraseña: la de Mailbox.org, o una contraseña de aplicación si tienes activada la verificación en dos pasos</li>
+</ul>
+<h2 id="paso-5-limpiar">Paso 5: limpiar</h2>
+<p>Dentro de unos días, cuando esté seguro de que todo funciona, borraré los contactos de Google, incluida la papelera, y los de icloud.com. Mientras tanto guardo el <code>.vcf</code> como copia de seguridad.</p>
+<p>Y ya estaría.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Desgooglezando mi vida (II): el correo, por fin]]></title>
     <link href="https://jesuspavonabian.es/post/desgooglezando-mi-vida-2-correo/"/>
