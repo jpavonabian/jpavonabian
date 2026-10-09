@@ -23,7 +23,7 @@ Así que he decidido dos cosas. Sacarlos de las BigTech y ordenarlos.
 
 En vez de fiarme del buscador de duplicados de Apple, preparé un pequeño script en Python que cruza los contactos por teléfono y por correo, no solo por nombre:
 
-- Si dos contactos comparten un teléfono o un correo, los fusiona en una sola tarjeta, con todos los teléfonos, correos, direcciones y notas, y sin repetir nada.
+- Si dos contactos comparten un teléfono o un correo, los fusiona en una sola tarjeta, con todos los teléfonos, correos, direcciones y notas...
 - Los teléfonos se comparan normalizados.
 - Si dos contactos solo coinciden en el nombre, no los toca. Los apunta en un informe como dudosos para que decidas tú, porque dos "María López" pueden ser dos personas distintas.
 - Genera un informe en texto plano (txt).

@@ -30,7 +30,7 @@ Así que he decidido dos cosas. Sacarlos de las BigTech y ordenarlos.</descripti
 &lt;h2 id=&#34;paso-2-fusionar-con-un-script&#34;&gt;Paso 2: fusionar con un script&lt;/h2&gt;
 &lt;p&gt;En vez de fiarme del buscador de duplicados de Apple, preparé un pequeño script en Python que cruza los contactos por teléfono y por correo, no solo por nombre:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Si dos contactos comparten un teléfono o un correo, los fusiona en una sola tarjeta, con todos los teléfonos, correos, direcciones y notas, y sin repetir nada.&lt;/li&gt;
+&lt;li&gt;Si dos contactos comparten un teléfono o un correo, los fusiona en una sola tarjeta, con todos los teléfonos, correos, direcciones y notas&amp;hellip;&lt;/li&gt;
 &lt;li&gt;Los teléfonos se comparan normalizados.&lt;/li&gt;
 &lt;li&gt;Si dos contactos solo coinciden en el nombre, no los toca. Los apunta en un informe como dudosos para que decidas tú, porque dos &amp;ldquo;María López&amp;rdquo; pueden ser dos personas distintas.&lt;/li&gt;
 &lt;li&gt;Genera un informe en texto plano (txt).&lt;/li&gt;
