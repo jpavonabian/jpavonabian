@@ -10,6 +10,52 @@
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
     <lastBuildDate>Sat, 10 Oct 2026 18:30:00 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Por fin habla eSpeak NG en Android</title>
+      <link>https://jesuspavonabian.es/post/espeak-ng-android-por-fin-habla/</link>
+      <pubDate>Sat, 10 Oct 2026 18:30:00 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/espeak-ng-android-por-fin-habla/</guid>
+      <description>En el post anterior terminé pidiendo que, si alguien conseguía que eSpeak NG funcionara en Android, me avisara. Nadie me avisó, así que me tocó a mí. Esta tarde he hecho que hable, he descubierto que se callaba a los dos minutos y he arreglado eso también. Hay una pull request abierta con el arreglo.
+Utilicé claude Code, si no no hubiera dado con el fallo tan rápido.
+Por qué decía &amp;ldquo;0 voces&amp;rdquo; Con la 1.</description>
+      <content:encoded>
+      &lt;p&gt;En el &lt;a href=&#34;https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb&#34;&gt;post anterior&lt;/a&gt; terminé pidiendo que, si alguien conseguía que eSpeak NG funcionara en Android, me avisara. Nadie me avisó, así que me tocó a mí. Esta tarde he hecho que hable, he descubierto que se callaba a los dos minutos y he arreglado eso también. Hay una &lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/pull/2587&#34;&gt;pull request&lt;/a&gt; abierta con el arreglo.&lt;/p&gt;
+&lt;p&gt;Utilicé claude Code, si no no hubiera dado con el fallo tan rápido.&lt;/p&gt;
+&lt;h2 id=&#34;por-qué-decía-0-voces&#34;&gt;Por qué decía &amp;ldquo;0 voces&amp;rdquo;&lt;/h2&gt;
+&lt;p&gt;Con la 1.52.0 de GitHub, lo que me salía al abrir los ajustes era &amp;ldquo;Lo sentimos, espeak no ha podido inicializarse&amp;rdquo;. La &lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/issues/1078&#34;&gt;issue 1078&lt;/a&gt; lleva años abierta con el mismo síntoma, y en los comentarios hay varias teorías.&lt;/p&gt;
+&lt;p&gt;Saqué el log del móvil con &lt;code&gt;adb logcat&lt;/code&gt; mientras cambiaba a eSpeak, y ahí estaba. Cuando el servicio arranca y no encuentra las voces, intenta abrir una pantalla para extraerlas. Pero Android 10 y posteriores no dejan que una app abra pantallas por su cuenta desde segundo plano, y un servicio de voz está siempre en segundo plano. El sistema bloquea la pantalla (&lt;code&gt;Background activity launch blocked&lt;/code&gt;), las voces nunca se extraen y el motor se queda sin nada que decir.&lt;/p&gt;
+&lt;p&gt;Esto ya lo habían arreglado. Desde marzo, &lt;code&gt;master&lt;/code&gt; extrae las voces dentro del propio servicio, sin pantallas de por medio (&lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/commit/1e632364&#34;&gt;el commit&lt;/a&gt;). Lo que pasa es que la 1.52.0 es de diciembre de 2024 y no se ha publicado ninguna versión desde entonces. Quien instala la última release se encuentra con el bug resuelto en un sitio al que no puede llegar.&lt;/p&gt;
+&lt;h2 id=&#34;compilarlo-en-windows&#34;&gt;Compilarlo en Windows&lt;/h2&gt;
+&lt;p&gt;Si no hay release, se compila. En mi ordenador eso fue más aventura de lo que esperaba:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java por defecto era la 8. Me valió el que trae Android Studio.&lt;/li&gt;
+&lt;li&gt;Gradle se bajó solo el NDK y CMake, que no tenía.&lt;/li&gt;
+&lt;li&gt;El paso que genera los datos de voz necesita un compilador de Windows (MSVC o gcc), y no tengo ninguno. Generé las voces en WSL, que sí tiene gcc, y le pasé la carpeta a Gradle con un apaño temporal en un fichero de CMake que luego revertí.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El APK salió bien. Desinstalé la 1.52.0 (la firma es distinta y no se puede instalar encima) e instalé el mío. Y no veía la app. Es normal: en móviles no tiene icono de lanzador, solo se llega a sus ajustes desde el engranaje que sale junto a eSpeak en Ajustes, Salida de texto a voz. Una vez ahí, eSpeak habló.&lt;/p&gt;
+&lt;h2 id=&#34;y-a-los-dos-minutos-se-callaba&#34;&gt;Y a los dos minutos se callaba&lt;/h2&gt;
+&lt;p&gt;Lo celebré demasiado pronto. Con TalkBack moviéndome por los ajustes del propio eSpeak, la voz se iba apagando. Unas frases salían, otras no, y al rato nada.&lt;/p&gt;
+&lt;p&gt;Esta vez no había nada en el log que dijera &amp;ldquo;error&amp;rdquo;. Las peticiones llegaban, el motor respondía que todo había ido bien y el audio salía casi vacío. Así que hice un APK de diagnóstico que apuntaba, por cada frase, el texto, cuánto audio producía y por qué terminaba.&lt;/p&gt;
+&lt;p&gt;Y salió algo que no esperaba. Una frase normal producía unos 26.000 fragmentos de audio. Justo después de abrir una pantalla de ajustes, frases igual de normales producían 110. Entre una cosa y otra había una segunda llamada a &lt;code&gt;espeak_Initialize&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;La explicación es que eSpeak guarda su estado en variables globales del proceso, y cada pantalla de ajustes crea su propio objeto de voz para listar los idiomas, que vuelve a inicializar el motor. Si el servicio estaba hablando en ese momento, le reseteaban el motor por debajo. En el log, además, el proceso de eSpeak desaparecía y aparecía otro justo después, aunque eso no lo he llegado a confirmar.&lt;/p&gt;
+&lt;p&gt;El arreglo es pequeño: inicializar una sola vez por proceso y devolver el mismo resultado a quien lo pida después. Lo probé en el móvil y dejó de callarse.&lt;/p&gt;
+&lt;h2 id=&#34;el-test-que-no-probaba-nada&#34;&gt;El test que no probaba nada&lt;/h2&gt;
+&lt;p&gt;Para la PR quería un test, y aquí hay una lección para mí. Mi primera versión fallaba sin el arreglo, pero también con él: la diferencia entre la primera y la segunda frase era de 28 bytes y no tenía nada que ver con el bug. La segunda versión pasaba siempre, con y sin arreglo. Un test que nunca falla no protege nada.&lt;/p&gt;
+&lt;p&gt;El problema estaba en el idioma. Cuando eSpeak se reinicializa vuelve al inglés, y mi test hablaba en inglés, justo el único caso en el que el fallo no se nota. En español sí: sin el arreglo, 115 KB de audio se quedan en 220 bytes (los 110 fragmentos del log). Con el arreglo, pasa. Lo ejecuté en el Pixel y lo dejé escrito en la descripción de la PR.&lt;/p&gt;
+&lt;h2 id=&#34;el-susto-del-final&#34;&gt;El susto del final&lt;/h2&gt;
+&lt;p&gt;Ejecutar tests instrumentados desde Gradle en el móvil tiene una pega que yo no esperaba: al terminar, desinstala la app que ha probado. Me quedé con eSpeak puesto como motor, sin que eSpeak estuviera instalado. TalkBack, por supuesto, se calló. Si has leído el post anterior, ya sabes cómo me sentó. Reinstalé el APK, lo volví a seleccionar y vuelve a hablar, pero la lección es la de siempre: antes de tocar el motor de voz, ten a mano el comando para volver atrás.&lt;/p&gt;
+&lt;h2 id=&#34;dónde-queda-esto&#34;&gt;Dónde queda esto&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;La PR &lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/pull/2587&#34;&gt;#2587&lt;/a&gt; espera revisión. No sé cuánto tardarán, ni si les parecerá bien.&lt;/li&gt;
+&lt;li&gt;Para que le sirva a alguien más hace falta una release que incluya el arreglo de marzo y el mío. Dejé un comentario en la &lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/issues/1078&#34;&gt;issue 1078&lt;/a&gt; pidiéndola.&lt;/li&gt;
+&lt;li&gt;Mientras tanto, yo voy con un APK de depuración propio. No se actualiza solo y, cuando salga la versión oficial, tendré que desinstalarlo antes de instalarla.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si te topas con el &amp;ldquo;0 voces&amp;rdquo; en la 1.52.0, ya sabes que no eres tú. Y si consigues compilarlo por tu cuenta, &lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/pull/2587&#34;&gt;la PR&lt;/a&gt; tiene el arreglo para que no se te calle a los dos minutos.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
+    <item>
       <title>Cambiar el motor de voz en GrapheneOS por ADB</title>
       <link>https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb/</link>
       <pubDate>Sat, 10 Oct 2026 17:10:00 +0200</pubDate>

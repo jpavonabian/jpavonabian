@@ -10,6 +10,51 @@
   </author>
   <generator>Hugo -- gohugo.io</generator>
   <entry>
+    <title type="html"><![CDATA[Por fin habla eSpeak NG en Android]]></title>
+    <link href="https://jesuspavonabian.es/post/espeak-ng-android-por-fin-habla/"/>
+    <id>https://jesuspavonabian.es/post/espeak-ng-android-por-fin-habla/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-10T18:30:00+02:00</published>
+    <updated>2026-10-10T18:30:00+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>En el <a href="https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb">post anterior</a> terminé pidiendo que, si alguien conseguía que eSpeak NG funcionara en Android, me avisara. Nadie me avisó, así que me tocó a mí. Esta tarde he hecho que hable, he descubierto que se callaba a los dos minutos y he arreglado eso también. Hay una <a href="https://github.com/espeak-ng/espeak-ng/pull/2587">pull request</a> abierta con el arreglo.</p>
+<p>Utilicé claude Code, si no no hubiera dado con el fallo tan rápido.</p>
+<h2 id="por-qué-decía-0-voces">Por qué decía &ldquo;0 voces&rdquo;</h2>
+<p>Con la 1.52.0 de GitHub, lo que me salía al abrir los ajustes era &ldquo;Lo sentimos, espeak no ha podido inicializarse&rdquo;. La <a href="https://github.com/espeak-ng/espeak-ng/issues/1078">issue 1078</a> lleva años abierta con el mismo síntoma, y en los comentarios hay varias teorías.</p>
+<p>Saqué el log del móvil con <code>adb logcat</code> mientras cambiaba a eSpeak, y ahí estaba. Cuando el servicio arranca y no encuentra las voces, intenta abrir una pantalla para extraerlas. Pero Android 10 y posteriores no dejan que una app abra pantallas por su cuenta desde segundo plano, y un servicio de voz está siempre en segundo plano. El sistema bloquea la pantalla (<code>Background activity launch blocked</code>), las voces nunca se extraen y el motor se queda sin nada que decir.</p>
+<p>Esto ya lo habían arreglado. Desde marzo, <code>master</code> extrae las voces dentro del propio servicio, sin pantallas de por medio (<a href="https://github.com/espeak-ng/espeak-ng/commit/1e632364">el commit</a>). Lo que pasa es que la 1.52.0 es de diciembre de 2024 y no se ha publicado ninguna versión desde entonces. Quien instala la última release se encuentra con el bug resuelto en un sitio al que no puede llegar.</p>
+<h2 id="compilarlo-en-windows">Compilarlo en Windows</h2>
+<p>Si no hay release, se compila. En mi ordenador eso fue más aventura de lo que esperaba:</p>
+<ul>
+<li>Java por defecto era la 8. Me valió el que trae Android Studio.</li>
+<li>Gradle se bajó solo el NDK y CMake, que no tenía.</li>
+<li>El paso que genera los datos de voz necesita un compilador de Windows (MSVC o gcc), y no tengo ninguno. Generé las voces en WSL, que sí tiene gcc, y le pasé la carpeta a Gradle con un apaño temporal en un fichero de CMake que luego revertí.</li>
+</ul>
+<p>El APK salió bien. Desinstalé la 1.52.0 (la firma es distinta y no se puede instalar encima) e instalé el mío. Y no veía la app. Es normal: en móviles no tiene icono de lanzador, solo se llega a sus ajustes desde el engranaje que sale junto a eSpeak en Ajustes, Salida de texto a voz. Una vez ahí, eSpeak habló.</p>
+<h2 id="y-a-los-dos-minutos-se-callaba">Y a los dos minutos se callaba</h2>
+<p>Lo celebré demasiado pronto. Con TalkBack moviéndome por los ajustes del propio eSpeak, la voz se iba apagando. Unas frases salían, otras no, y al rato nada.</p>
+<p>Esta vez no había nada en el log que dijera &ldquo;error&rdquo;. Las peticiones llegaban, el motor respondía que todo había ido bien y el audio salía casi vacío. Así que hice un APK de diagnóstico que apuntaba, por cada frase, el texto, cuánto audio producía y por qué terminaba.</p>
+<p>Y salió algo que no esperaba. Una frase normal producía unos 26.000 fragmentos de audio. Justo después de abrir una pantalla de ajustes, frases igual de normales producían 110. Entre una cosa y otra había una segunda llamada a <code>espeak_Initialize</code>.</p>
+<p>La explicación es que eSpeak guarda su estado en variables globales del proceso, y cada pantalla de ajustes crea su propio objeto de voz para listar los idiomas, que vuelve a inicializar el motor. Si el servicio estaba hablando en ese momento, le reseteaban el motor por debajo. En el log, además, el proceso de eSpeak desaparecía y aparecía otro justo después, aunque eso no lo he llegado a confirmar.</p>
+<p>El arreglo es pequeño: inicializar una sola vez por proceso y devolver el mismo resultado a quien lo pida después. Lo probé en el móvil y dejó de callarse.</p>
+<h2 id="el-test-que-no-probaba-nada">El test que no probaba nada</h2>
+<p>Para la PR quería un test, y aquí hay una lección para mí. Mi primera versión fallaba sin el arreglo, pero también con él: la diferencia entre la primera y la segunda frase era de 28 bytes y no tenía nada que ver con el bug. La segunda versión pasaba siempre, con y sin arreglo. Un test que nunca falla no protege nada.</p>
+<p>El problema estaba en el idioma. Cuando eSpeak se reinicializa vuelve al inglés, y mi test hablaba en inglés, justo el único caso en el que el fallo no se nota. En español sí: sin el arreglo, 115 KB de audio se quedan en 220 bytes (los 110 fragmentos del log). Con el arreglo, pasa. Lo ejecuté en el Pixel y lo dejé escrito en la descripción de la PR.</p>
+<h2 id="el-susto-del-final">El susto del final</h2>
+<p>Ejecutar tests instrumentados desde Gradle en el móvil tiene una pega que yo no esperaba: al terminar, desinstala la app que ha probado. Me quedé con eSpeak puesto como motor, sin que eSpeak estuviera instalado. TalkBack, por supuesto, se calló. Si has leído el post anterior, ya sabes cómo me sentó. Reinstalé el APK, lo volví a seleccionar y vuelve a hablar, pero la lección es la de siempre: antes de tocar el motor de voz, ten a mano el comando para volver atrás.</p>
+<h2 id="dónde-queda-esto">Dónde queda esto</h2>
+<ul>
+<li>La PR <a href="https://github.com/espeak-ng/espeak-ng/pull/2587">#2587</a> espera revisión. No sé cuánto tardarán, ni si les parecerá bien.</li>
+<li>Para que le sirva a alguien más hace falta una release que incluya el arreglo de marzo y el mío. Dejé un comentario en la <a href="https://github.com/espeak-ng/espeak-ng/issues/1078">issue 1078</a> pidiéndola.</li>
+<li>Mientras tanto, yo voy con un APK de depuración propio. No se actualiza solo y, cuando salga la versión oficial, tendré que desinstalarlo antes de instalarla.</li>
+</ul>
+<p>Si te topas con el &ldquo;0 voces&rdquo; en la 1.52.0, ya sabes que no eres tú. Y si consigues compilarlo por tu cuenta, <a href="https://github.com/espeak-ng/espeak-ng/pull/2587">la PR</a> tiene el arreglo para que no se te calle a los dos minutos.</p>
+]]></content>
+    
+  </entry>
+  <entry>
     <title type="html"><![CDATA[Cambiar el motor de voz en GrapheneOS por ADB]]></title>
     <link href="https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb/"/>
     <id>https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb/</id> 

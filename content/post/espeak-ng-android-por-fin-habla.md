@@ -10,7 +10,7 @@ draft: false
 
 En el [post anterior](https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb) terminé pidiendo que, si alguien conseguía que eSpeak NG funcionara en Android, me avisara. Nadie me avisó, así que me tocó a mí. Esta tarde he hecho que hable, he descubierto que se callaba a los dos minutos y he arreglado eso también. Hay una [pull request](https://github.com/espeak-ng/espeak-ng/pull/2587) abierta con el arreglo.
 
-Lo hice con Claude Code al lado, para que quede claro desde el principio. Yo ponía el móvil y los oídos, y él leía los logs y tocaba el código.
+Utilicé claude Code, si no no hubiera dado con el fallo tan rápido.
 
 ## Por qué decía "0 voces"
 
