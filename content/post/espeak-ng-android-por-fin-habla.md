@@ -32,7 +32,7 @@ El APK salió bien. Desinstalé la 1.52.0 (la firma es distinta y no se puede in
 
 ## Y a los dos minutos se callaba
 
-Lo celebré demasiado pronto. Con TalkBack moviéndome por los ajustes del propio eSpeak, la voz se iba apagando. Unas frases salían, otras no, y al rato nada.
+Lo celebré demasiado pronto. Al abrir los ajustes de Espeak... Silencio mortal.
 
 Esta vez no había nada en el log que dijera "error". Las peticiones llegaban, el motor respondía que todo había ido bien y el audio salía casi vacío. Así que hice un APK de diagnóstico que apuntaba, por cada frase, el texto, cuánto audio producía y por qué terminaba.
 
