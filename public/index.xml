@@ -8,7 +8,87 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Fri, 09 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Oct 2026 17:10:00 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cambiar el motor de voz en GrapheneOS por ADB</title>
+      <link>https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb/</link>
+      <pubDate>Sat, 10 Oct 2026 17:10:00 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/cambiar-tts-grapheneos-adb/</guid>
+      <description>Ya tengo el Pixel con GrapheneOS. TalkBack viene incluido, pero el motor de voz que trae es el que es, y yo quería algo que me dejara usar el móvil en castellano y a buena velocidad. El plan era sencillo: instalar eSpeak NG por adb, ponerlo como motor por defecto y a correr.
+El plan, como casi todos los planes sencillos, no sobrevivió al contacto con la realidad. Esta es la guía que me habría gustado tener esta mañana, con los sustos incluidos para que tú no te los lleves.</description>
+      <content:encoded>
+      &lt;p&gt;Ya tengo el Pixel con GrapheneOS. TalkBack viene incluido, pero el motor de voz que trae es el que es, y yo quería algo que me dejara usar el móvil en castellano y a buena velocidad. El plan era sencillo: instalar eSpeak NG por adb, ponerlo como motor por defecto y a correr.&lt;/p&gt;
+&lt;p&gt;El plan, como casi todos los planes sencillos, no sobrevivió al contacto con la realidad. Esta es la guía que me habría gustado tener esta mañana, con los sustos incluidos para que tú no te los lleves.&lt;/p&gt;
+&lt;h2 id=&#34;antes-de-empezar&#34;&gt;Antes de empezar&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Depuración USB activada en el móvil: Ajustes → Acerca del teléfono → pulsar 7 veces en el número de compilación → Opciones de desarrollador → Depuración USB.&lt;/li&gt;
+&lt;li&gt;Las platform-tools de Android en el PC, que es donde viene &lt;code&gt;adb&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Los APKs que vayas a instalar en una carpeta del PC.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Comprueba que el móvil se ve:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb devices
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;La primera vez, el móvil pide autorizar el ordenador. Acepta y marca &amp;ldquo;permitir siempre desde este ordenador&amp;rdquo;. El dispositivo tiene que aparecer como &lt;code&gt;device&lt;/code&gt;, no como &lt;code&gt;unauthorized&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Y antes de tocar nada, apunta el motor de voz que tienes ahora:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings get secure tts_default_synth
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Ahora mismo puede parecer una tontería. Dentro de un rato no lo será.&lt;/p&gt;
+&lt;h2 id=&#34;intento-1-espeak-ng-cero-voces&#34;&gt;Intento 1: eSpeak NG, cero voces&lt;/h2&gt;
+&lt;p&gt;Descargué el APK de eSpeak NG de las releases de GitHub (la 1.52.0), lo instalé con &lt;code&gt;adb install&lt;/code&gt; y lo abrí. Me recibió con un precioso &amp;ldquo;0 voces instaladas&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Probé de todo: borrar los datos de la app, forzar la extracción de datos de voz por adb, mirar el &lt;code&gt;logcat&lt;/code&gt;&amp;hellip; La extracción se ejecutaba sin un solo error y aun así seguía en cero. Probé también versiones antiguas, pero esas solo traen librerías de 32 bits y los Pixel modernos son solo de 64, así que ni se instalan (&lt;code&gt;INSTALL_FAILED_NO_MATCHING_ABIS&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Resulta que no era cosa mía: &lt;a href=&#34;https://github.com/espeak-ng/espeak-ng/issues/1078&#34;&gt;la app de eSpeak NG para Android lleva rota años&lt;/a&gt;. En la issue se apuntan dos causas: un problema al empaquetar los datos de voz en el APK y un fallo del motor, que no se reinicializa después de extraerlos. Hay más gente con GrapheneOS en la misma situación.&lt;/p&gt;
+&lt;p&gt;Para desinstalarlo:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb uninstall com.reecedunn.espeak
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;intento-2-sherpa-onnx-o-el-primer-susto&#34;&gt;Intento 2: sherpa-onnx, o el primer susto&lt;/h2&gt;
+&lt;p&gt;La alternativa libre que encontré fue &lt;a href=&#34;https://k2-fsa.github.io/sherpa/onnx/tts/apk-engine.html&#34;&gt;sherpa-onnx&lt;/a&gt;, que publica motores de voz para Android con voces neuronales. Cada APK lleva una sola voz; para un Pixel hay que coger los que ponen &lt;code&gt;arm64-v8a&lt;/code&gt; y para castellano los &lt;code&gt;spa&lt;/code&gt;. Yo cogí el más ligero, &lt;code&gt;es_ES-carlfm-x_low&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Lo instalé, abrí la app y habló. Así que lo puse como motor por defecto:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings put secure tts_default_synth com.k2fsa.sherpa.onnx.tts.engine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Y TalkBack se calló. Del todo.&lt;/p&gt;
+&lt;p&gt;Por suerte tenía el PC conectado. Este comando devuelve el motor por defecto al que elija el sistema:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings delete secure tts_default_synth
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;¿Por qué se calló? Porque el sistema estaba en inglés. TalkBack le pide la voz al motor en el idioma del sistema, sherpa solo tenía castellano, y en lugar de buscarse la vida con otro motor, TalkBack se queda en silencio.&lt;/p&gt;
+&lt;h2 id=&#34;el-segundo-susto-cambiar-el-idioma-del-sistema&#34;&gt;El segundo susto: cambiar el idioma del sistema&lt;/h2&gt;
+&lt;p&gt;Sabiendo eso, cambié el sistema a castellano. Con la voz por defecto, que no habla castellano. Y me quedé sin TTS otra vez. Oh, maravilla.&lt;/p&gt;
+&lt;p&gt;El &lt;code&gt;delete&lt;/code&gt; de antes no servía ahora, porque volvía a poner precisamente la voz que no habla castellano. Lo que hacía falta era lo contrario: poner el motor que sí lo habla.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings put secure tts_default_synth com.k2fsa.sherpa.onnx.tts.engine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Reiniciar TalkBack (mantener pulsadas las dos teclas de volumen unos segundos para apagarlo y otra vez para encenderlo) y a hablar. Susto que me dio el hijoputa.&lt;/p&gt;
+&lt;p&gt;La lección: &lt;strong&gt;el idioma del sistema y el idioma de la voz tienen que coincidir&lt;/strong&gt;. Si cambias uno, ten preparado el comando para cambiar el otro justo después.&lt;/p&gt;
+&lt;h2 id=&#34;intento-3-rhvoice-el-que-se-queda&#34;&gt;Intento 3: RHVoice, el que se queda&lt;/h2&gt;
+&lt;p&gt;sherpa hablaba, sí, pero con voces neuronales cada fragmento tarda un poco en generarse, y al escribir eso se nota en cada tecla. Para un lector de pantalla no sirve. Y eso si tienes suerte, porque la letra H la pronunciaba como &amp;ldquo;shiasshahahahaaeee&amp;rdquo;. ¿Has visto cuando harry Potter habla Parsel en la cámara secreta? Pues igual. Total, que habla, pero no puedes escribir.&lt;/p&gt;
+&lt;p&gt;Así que acabé en &lt;a href=&#34;https://f-droid.org/packages/com.github.olga_yakovleva.rhvoice.android/&#34;&gt;RHVoice&lt;/a&gt;, que está pensado para lectores de pantalla (tiene hasta complemento para NVDA), es ligero y tiene español. La pega es que no publican APK en GitHub: solo F-Droid y Play. Descargué el APK desde la web de F-Droid, sin instalar su cliente, y comprobé la firma antes de instalarlo:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apksigner verify --print-certs com.github.olga_yakovleva.rhvoice.android_118040.apk
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;apksigner&lt;/code&gt; no viene con adb, está en las build-tools del SDK de Android. En mi caso lo firma F-Droid, no el proyecto. No es lo que yo quería, pero decidí tirar para adelante.&lt;/p&gt;
+&lt;p&gt;Los pasos, esta vez con cabeza y con miedito, mucho miedito:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Instalarlo: &lt;code&gt;adb install com.github.olga_yakovleva.rhvoice.android_118040.apk&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Abrir RHVoice, entrar en Español e instalar una voz. Las voces se descargan desde la app, así que necesita el permiso de Red de GrapheneOS.&lt;/li&gt;
+&lt;li&gt;Probarlo &lt;strong&gt;sin ponerlo por defecto&lt;/strong&gt;: Ajustes → Salida de texto a voz → engranaje de RHVoice → &amp;ldquo;Escuchar un ejemplo&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Solo si el ejemplo suena en español, ponerlo por defecto:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings put secure tts_default_synth com.github.olga_yakovleva.rhvoice.android
+&lt;/code&gt;&lt;/pre&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Reiniciar TalkBack.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cuando ya funcionaba, quité sherpa.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb uninstall com.k2fsa.sherpa.onnx.tts.engine
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;el-botón-del-pánico&#34;&gt;El botón del pánico&lt;/h2&gt;
+&lt;p&gt;Lo más útil que saqué de la tarde es un &lt;code&gt;.bat&lt;/code&gt; en el escritorio del PC para cuando todo se tuerza. Devuelve el motor al predeterminado y el sistema a inglés, que es el estado en el que la voz de serie sí habla:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings delete secure tts_default_synth
+adb shell settings put system system_locales en-US
+adb reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;resumen-para-no-repetir-mis-errores&#34;&gt;Resumen para no repetir mis errores&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Apunta el motor de voz que tienes antes de cambiarlo.&lt;/li&gt;
+&lt;li&gt;No cambies de motor sin el PC conectado y el comando de vuelta atrás preparado.&lt;/li&gt;
+&lt;li&gt;Prueba la voz con &amp;ldquo;Escuchar un ejemplo&amp;rdquo; antes de ponerla por defecto.&lt;/li&gt;
+&lt;li&gt;El idioma del sistema y el de la voz tienen que coincidir, o TalkBack se calla.&lt;/li&gt;
+&lt;li&gt;No desinstales un motor que esté puesto por defecto.&lt;/li&gt;
+&lt;li&gt;Si eres usuario de lector de pantalla, huye de las voces neuronales para el día a día: suenan muy bien, pero el retardo al escribir no compensa.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Y si alguien consigue que eSpeak NG funcione en Android, que me avise, por favor.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Migrar contactos a Mailbox</title>
       <link>https://jesuspavonabian.es/post/migrarcontactosmailbox/</link>
