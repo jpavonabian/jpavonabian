@@ -10,6 +10,144 @@
   </author>
   <generator>Hugo -- gohugo.io</generator>
   <entry>
+    <title type="html"><![CDATA[Primeros pasos con GrapheneOS]]></title>
+    <link href="https://jesuspavonabian.es/post/primeros-pasos-grapheneos/"/>
+    <id>https://jesuspavonabian.es/post/primeros-pasos-grapheneos/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-10T19:00:00+02:00</published>
+    <updated>2026-10-10T19:00:00+02:00</updated>
+    
+    <content type="html"><![CDATA[<p>Esta es la guía que me habría gustado tener cuando compré el Pixel 10: instalar GrapheneOS usando solo NVDA y el navegador, dejar TalkBack hablando en castellano y no quedarte sin voz por el camino. Incluye los sustos que me llevé yo, que no fueron pocos, y todo lo que conté antes sobre el motor de voz.</p>
+<h2 id="antes-de-empezar">Antes de empezar</h2>
+<p>La instalación se hace desde el ordenador. En el móvil solo hay que pulsar botones físicos en dos momentos. Calcula una hora con calma.</p>
+<p>Necesitas:</p>
+<ul>
+<li>Un ordenador con Windows 10 u 11 actualizado, con al menos 2 GB de RAM y 32 GB de disco libres. Nada de máquinas virtuales: el USB falla a menudo.</li>
+<li>Chrome o Edge actualizados, y sin modo incógnito, porque no deja espacio para descomprimir el sistema. Brave solo con los Shields desactivados.</li>
+<li>El cable USB-C que viene en la caja del Pixel, conectado directo a un puerto del portátil o a uno trasero del PC. Sin hubs ni puertos frontales, que son la causa más habitual de errores.</li>
+<li>Una wifi a mano para el primer arranque del Android de fábrica.</li>
+</ul>
+<p>Dos avisos de accesibilidad. Hay dos pantallas sin voz: la del modo bootloader (Fastboot) y la de confirmación de desbloqueo y bloqueo. Te digo exactamente qué botones pulsar, pero si quieres ir sobre seguro, ten a alguien que vea cerca en esos dos momentos. Además, el instalador web es una página con cuatro botones en orden (desbloquear, descargar, flashear y bloquear), y debajo de cada uno aparece un texto de estado. NVDA puede no anunciarlo solo, así que revísalo con el cursor después de cada paso.</p>
+<p>Si te atascas, el canal oficial de chat de GrapheneOS (Matrix o Discord) suele tener gente dispuesta a ayudar.</p>
+<h2 id="paso-1-preparar-el-android-de-fábrica">Paso 1: preparar el Android de fábrica</h2>
+<p>Solo hay un objetivo: activar el desbloqueo OEM. Todo lo que configures aquí se borra después, así que haz lo mínimo y sin cuenta de Google.</p>
+<ol>
+<li>Enciende el móvil y, en la pantalla de bienvenida, mantén pulsados los dos botones de volumen a la vez unos segundos. Se activa TalkBack.</li>
+<li>Conéctate a la wifi. Hace falta, porque el desbloqueo OEM solo se activa si el móvil puede comprobar por internet que no lo ha bloqueado una operadora.</li>
+<li>Salta todo lo demás: cuenta de Google (busca &ldquo;Omitir&rdquo;), copia de datos, huella, PIN y asistente. No pongas PIN, te ahorra pasos.</li>
+<li>Si te ofrece una actualización del sistema puedes instalarla, pero no es imprescindible: GrapheneOS actualiza el firmware igualmente.</li>
+<li>Activa las opciones de desarrollador: Ajustes → Información del teléfono → Número de compilación, y púlsalo unas siete veces seguidas hasta que avise de que ya eres desarrollador.</li>
+<li>Activa el desbloqueo OEM en Ajustes → Sistema → Opciones para desarrolladores → Desbloqueo de OEM. Confirma el aviso.</li>
+</ol>
+<p>Si el interruptor aparece desactivado o no te deja tocarlo, no sigas. Espera unos minutos con wifi y reinicia.</p>
+<p>Al terminar, apaga el móvil.</p>
+<h2 id="paso-2-instalar-grapheneos">Paso 2: instalar GrapheneOS</h2>
+<p>Abre en el ordenador <a href="https://grapheneos.org/install/web">el instalador web de GrapheneOS</a> y sigue este orden.</p>
+<ol>
+<li>Arranca el móvil en modo bootloader. Con el móvil apagado, mantén pulsado bajar volumen y, sin soltarlo, enciéndelo con el botón de encendido. Suelta cuando vibre y pasen un par de segundos. No hay voz: en pantalla sale un triángulo rojo y &ldquo;Fastboot Mode&rdquo;. No pulses el botón de encendido después, porque arrancaría el sistema.</li>
+<li>Conecta el cable al ordenador. Windows 10 y 11 actuales ya traen el controlador. Si no reconoce el móvil, busca en Windows Update → Actualizaciones opcionales un controlador llamado &ldquo;LeMobile Android Device&rdquo;.</li>
+<li>Pulsa &ldquo;Unlock bootloader&rdquo; en la página. El navegador te pedirá elegir el dispositivo USB: selecciona el Pixel y acepta.</li>
+<li>Confirma en el móvil, en la pantalla sin voz. La opción por defecto es no desbloquear. Pulsa una vez un botón de volumen para pasar a &ldquo;Unlock the bootloader&rdquo; y después el botón de encendido para confirmar. Esto borra el móvil, como esperábamos. Mira el texto de estado de la página para comprobar que dice desbloqueado.</li>
+<li>Pulsa &ldquo;Download release&rdquo;. Tarda unos minutos, así que espera a que el estado diga que ha terminado.</li>
+<li>Pulsa &ldquo;Flash release&rdquo;. Instala firmware y sistema y reinicia el móvil al bootloader varias veces por sí solo. No lo toques hasta que la página diga que ha terminado. Si tras un reinicio el navegador vuelve a pedirte el dispositivo, selecciónalo otra vez.</li>
+</ol>
+<p>Si algo falla aquí, casi siempre es el cable o el puerto. Prueba otro y repite desde el paso que falló.</p>
+<h2 id="paso-3-bloquear-el-bootloader">Paso 3: bloquear el bootloader</h2>
+<p>Este paso no es opcional. Sin bloquear no hay arranque verificado, que es la base de la seguridad de GrapheneOS. Hazlo antes de configurar nada, porque bloquear borra el móvil otra vez.</p>
+<ol>
+<li>Con el móvil todavía en modo bootloader y conectado, pulsa &ldquo;Lock bootloader&rdquo; en la página.</li>
+<li>Confirma en el móvil, en la pantalla sin voz, igual que al desbloquear: una pulsación de volumen para pasar a la opción de bloquear y después el botón de encendido.</li>
+<li>Comprueba en la página que el estado dice bloqueado.</li>
+<li>Desconecta el cable y pulsa el botón de encendido. La opción por defecto en esa pantalla es &ldquo;Start&rdquo; y arranca GrapheneOS.</li>
+</ol>
+<p>Al arrancar verás, sin voz, un aviso amarillo de unos segundos que dice que el móvil lleva otro sistema operativo. Es normal y saldrá en cada encendido. Muestra un código que, si alguien te lo lee, puedes comparar con el oficial del Pixel 10: empieza por <code>3f7415ea</code> y termina en <code>c7ea02c7</code>. No es imprescindible comprobarlo.</p>
+<p>El desbloqueo OEM se desactiva en la última pantalla de la configuración inicial, que es el siguiente paso.</p>
+<h2 id="paso-4-primer-arranque-y-talkback">Paso 4: primer arranque y TalkBack</h2>
+<p>Desde la versión de mayo de 2026, GrapheneOS trae su propia versión de TalkBack y su motor de voz (GrapheneOS Speech Services), así que debería hablar sin instalar nada. Eso sí, en mi caso la voz que trae es la que es, y yo quería algo que me dejara usar el móvil en castellano y a buena velocidad. De ahí salió el resto de la guía.</p>
+<ol>
+<li>Activa TalkBack en la primera pantalla manteniendo pulsados los dos botones de volumen, como en el Android de fábrica.</li>
+<li>Si suena la activación pero no habla, o habla en un idioma que no entiendes, el motor no tiene la voz adecuada. Pide ayuda para terminar la configuración y luego instala RHVoice (paso 5).</li>
+<li>Elige español y sigue el asistente. Conéctate a la wifi para que busque actualizaciones.</li>
+<li>Pon un PIN o una contraseña. Yo recomiendo una contraseña larga y la huella para el día a día. Si quieres, activa después la opción de huella más PIN corto como segundo factor.</li>
+<li>La última pantalla del asistente trae marcada por defecto una casilla para desactivar el desbloqueo OEM. Déjala marcada.</li>
+</ol>
+<p>Como comprobación final, entra en Ajustes → Sistema → Actualización del sistema y pulsa &ldquo;Buscar actualizaciones&rdquo;. Si descarga algo, reinicia cuando avise.</p>
+<p>Verificar la instalación con la app Auditor requiere un segundo móvil Android, así que puedes saltarlo: el arranque verificado ya protege el sistema en cada encendido.</p>
+<h2 id="paso-5-el-motor-de-voz">Paso 5: el motor de voz</h2>
+<p>Esta es la parte donde más tiempo perdí, y donde más fácil es quedarse sin TalkBack. Antes de tocar nada, mira cuál es el motor que tienes ahora y apúntalo:</p>
+<pre tabindex="0"><code>adb shell settings get secure tts_default_synth
+</code></pre><p>Para usar adb necesitas la depuración USB activada (Ajustes → Opciones para desarrolladores), las platform-tools de Android en el PC y los APKs que vayas a instalar en una carpeta. Comprueba que el móvil se ve con <code>adb devices</code>. La primera vez te pide autorizar el ordenador: acepta y marca &ldquo;permitir siempre&rdquo;. Tiene que aparecer como <code>device</code>, no como <code>unauthorized</code>.</p>
+<h3 id="el-botón-del-pánico">El botón del pánico</h3>
+<p>Antes de probar motores, deja preparado un <code>.bat</code> en el escritorio del PC. Devuelve el motor al predeterminado y el sistema a inglés, que es el estado en el que la voz de serie sí habla:</p>
+<pre tabindex="0"><code>adb shell settings delete secure tts_default_synth
+adb shell settings put system system_locales en-US
+adb reboot
+</code></pre><p>Lo hice a la tercera vez que me quedé sin voz, y te recomiendo no esperar a la tercera.</p>
+<h3 id="la-regla-que-no-te-saltes">La regla que no te saltes</h3>
+<p>El idioma del sistema y el idioma de la voz tienen que coincidir. TalkBack le pide la voz al motor en el idioma del sistema, y si el motor no lo tiene, en lugar de buscarse la vida con otro se queda en silencio. Me pasó dos veces.</p>
+<p>Si cambias uno, ten el comando para cambiar el otro justo después. Y la forma de poner un motor por defecto es esta:</p>
+<pre tabindex="0"><code>adb shell settings put secure tts_default_synth com.github.olga_yakovleva.rhvoice.android
+</code></pre><p>Después, reinicia TalkBack: mantén pulsadas las dos teclas de volumen unos segundos para apagarlo y otra vez para encenderlo.</p>
+<h3 id="rhvoice-el-que-me-quedaría-si-no-hubiera-arreglado-espeak">RHVoice, el que me quedaría si no hubiera arreglado eSpeak</h3>
+<p><a href="https://f-droid.org/packages/com.github.olga_yakovleva.rhvoice.android/">RHVoice</a> está pensado para lectores de pantalla (tiene hasta complemento para NVDA), es ligero y tiene español. La pega es que no publican APK en GitHub, solo en F-Droid y Play. Yo descargué el APK desde la web de F-Droid, sin instalar su cliente, y comprobé la firma antes de instalarlo:</p>
+<pre tabindex="0"><code>apksigner verify --print-certs com.github.olga_yakovleva.rhvoice.android_118040.apk
+</code></pre><p><code>apksigner</code> no viene con adb, está en las build-tools del SDK de Android. En mi caso lo firma F-Droid y no el proyecto. No es lo que yo quería, pero decidí tirar para adelante.</p>
+<p>Los pasos, con cabeza y con miedito:</p>
+<ol>
+<li>Instálalo con <code>adb install com.github.olga_yakovleva.rhvoice.android_118040.apk</code>.</li>
+<li>Abre RHVoice, entra en Español e instala una voz. Se descargan desde la app, así que necesita el permiso de Red de GrapheneOS.</li>
+<li>Pruébalo sin ponerlo por defecto: Ajustes → Salida de texto a voz → engranaje de RHVoice → &ldquo;Escuchar un ejemplo&rdquo;.</li>
+<li>Solo si el ejemplo suena en español, ponlo por defecto con el comando de arriba y reinicia TalkBack.</li>
+</ol>
+<p>Instalarlo no basta, hay que elegirlo en Ajustes → Accesibilidad → Salida de texto a voz.</p>
+<h3 id="espeak-ng">eSpeak NG</h3>
+<p>La 1.52.0 es la voz clásica de los lectores de pantalla y la que yo quería. La release de GitHub me recibió con un &ldquo;0 voces instaladas&rdquo; y, al abrir los ajustes, con un &ldquo;Lo sentimos, espeak no ha podido inicializarse&rdquo;. La <a href="https://github.com/espeak-ng/espeak-ng/issues/1078">issue 1078</a> lleva años abierta con el mismo síntoma, y esa versión no la arreglas tocando nada en el móvil. La explicación está en el log (<code>adb logcat</code>): cuando el servicio arranca y no encuentra las voces, intenta abrir una pantalla para extraerlas, y Android 10 y posteriores no dejan que una app abra pantallas desde segundo plano, que es donde vive siempre un servicio de voz. El sistema la bloquea (<code>Background activity launch blocked</code>) y el motor se queda sin nada que decir.</p>
+<p>Eso ya está arreglado en <code>master</code> desde marzo, que extrae las voces dentro del propio servicio (<a href="https://github.com/espeak-ng/espeak-ng/commit/1e632364">el commit</a>). El problema es que la 1.52.0 es de diciembre de 2024 y no ha salido ninguna versión desde entonces.</p>
+<p>Así que compilé yo <code>master</code> en Windows, y fue más aventura de lo que esperaba. Java por defecto era la 8, y me valió el que trae Android Studio. Gradle se bajó solo el NDK y CMake. El paso que genera los datos de voz necesita un compilador de Windows (MSVC o gcc) y yo no tengo ninguno, así que generé las voces en WSL y le pasé la carpeta a Gradle con un apaño temporal en un fichero de CMake que luego revertí. Desinstalé la 1.52.0 (la firma es distinta y no se puede instalar encima) e instalé el mío. Y no veía la app, pero es normal: en móviles no tiene icono, solo se llega a sus ajustes desde el engranaje junto a eSpeak en Ajustes → Salida de texto a voz. Una vez ahí, hablaba.</p>
+<p>Lo celebré demasiado pronto, porque a los dos minutos se callaba. Esta vez no había ningún error en el log: las peticiones llegaban, el motor decía que todo iba bien y el audio salía casi vacío. Hice un APK de diagnóstico que apuntaba por cada frase el texto, el audio producido y por qué terminaba. Una frase normal producía unos 26.000 fragmentos de audio, y justo después de abrir una pantalla de ajustes, frases igual de normales producían 110. Entre una cosa y otra había una segunda llamada a <code>espeak_Initialize</code>.</p>
+<p>eSpeak guarda su estado en variables globales del proceso, y cada pantalla de ajustes crea su propio objeto de voz para listar los idiomas, que vuelve a inicializar el motor. Si el servicio estaba hablando en ese momento, le reseteaban el motor por debajo. El arreglo es pequeño: inicializar una sola vez por proceso y devolver el mismo resultado a quien lo pida después. Lo probé en el móvil y dejó de callarse. Utilicé Claude Code para esto, y sin él no habría dado con el fallo tan rápido.</p>
+<p>Abrí una <a href="https://github.com/espeak-ng/espeak-ng/pull/2587">pull request</a> con el arreglo. Para ella quería un test, y me costó. El primero fallaba con y sin arreglo, y el segundo pasaba con y sin él, porque hablaba en inglés: justo el idioma al que vuelve eSpeak al reinicializarse y el único caso en el que el fallo no se nota. En español sí: sin el arreglo, 115 KB de audio se quedan en 220 bytes. Con el arreglo, pasa.</p>
+<p>Un último susto: ejecutar tests instrumentados desde Gradle en el móvil desinstala la app al terminar. Me quedé con eSpeak como motor sin que eSpeak estuviera instalado, y TalkBack, por supuesto, se calló. Por eso el botón del pánico.</p>
+<p>La PR espera revisión y no sé cuánto tardarán. Para que le sirva a alguien más hace falta una release que incluya el arreglo de marzo y el mío, y dejé un comentario en la issue pidiéndola. Mientras tanto, el APK que compiles tú no se actualiza solo, y tendrás que desinstalarlo antes de instalar la versión oficial. Para el día a día te recomiendo RHVoice, a menos que estés tan loco como yo.</p>
+<h2 id="paso-6-primeros-ajustes">Paso 6: primeros ajustes</h2>
+<p>Empieza con todo en el perfil principal y sin Google. Ya habrá tiempo de crear perfiles.</p>
+<ol>
+<li>Instala Accrescent desde la tienda de GrapheneOS. Después, Obtainium para apps publicadas en GitHub o GitLab, y F-Droid solo para lo que no encuentres en otro sitio.</li>
+<li>Bitwarden con Vaultwarden: instálalo desde GitHub con Obtainium, inicia sesión con la URL de tu servidor, activa la huella y ponlo como servicio de autorrelleno.</li>
+<li>GrapheneOS oculta por defecto las contraseñas al escribir. Si las prefieres visibles como en Android normal: Ajustes → Seguridad y privacidad → Privacidad → Mostrar contraseñas.</li>
+<li>Las actualizaciones ya son automáticas. En Ajustes → Sistema → Actualización del sistema puedes limitarlas a wifi o activar el reinicio automático cuando el móvil esté inactivo.</li>
+<li>El puerto USB solo carga mientras el móvil está bloqueado. Para pasar archivos al ordenador, desbloquéalo antes de conectar.</li>
+</ol>
+<p>Más adelante, si necesitas apps que dependen de Google (el banco, WhatsApp con notificaciones fiables), crea un perfil aparte e instala ahí Google Play desde la tienda de GrapheneOS. Recuerda activar TalkBack en ese perfil nuevo con el atajo de los dos botones de volumen.</p>
+<h2 id="si-algo-sale-mal">Si algo sale mal</h2>
+<p>El móvil es muy difícil de estropear: mientras puedas entrar en modo bootloader, siempre puedes reinstalar.</p>
+<ul>
+<li>Si el navegador no ve el móvil, prueba otro puerto USB, el cable original, Chrome o Edge actualizados y sin incógnito. Revisa el controlador en Windows Update.</li>
+<li>Si falla a mitad del flasheo, vuelve a modo bootloader (bajar volumen más encendido) y repite &ldquo;Flash release&rdquo;.</li>
+<li>Si TalkBack no habla tras instalar, termina la configuración con ayuda e instala RHVoice. Y si ya cambiaste de motor y se calló, el <code>.bat</code> del paso 5.</li>
+<li>Para volver al Android de fábrica (garantía o venta), con el bootloader desbloqueado usa primero el botón &ldquo;Remove non-stock key&rdquo; del final de la página del instalador de GrapheneOS, y después la <a href="https://flash.android.com/back-to-public">herramienta oficial de Google</a> para instalar el sistema original y bloquear el bootloader.</li>
+</ul>
+<h2 id="resumen-para-no-repetir-mis-errores">Resumen para no repetir mis errores</h2>
+<ul>
+<li>Apunta el motor de voz que tienes antes de cambiarlo.</li>
+<li>No cambies de motor sin el PC conectado y el comando de vuelta atrás preparado.</li>
+<li>Prueba la voz con &ldquo;Escuchar un ejemplo&rdquo; antes de ponerla por defecto.</li>
+<li>El idioma del sistema y el de la voz tienen que coincidir, o TalkBack se calla.</li>
+<li>No desinstales un motor que esté puesto por defecto.</li>
+</ul>
+<h2 id="fuentes">Fuentes</h2>
+<ul>
+<li><a href="https://grapheneos.org/install/web">GrapheneOS: instalador web</a></li>
+<li><a href="https://grapheneos.org/usage">GrapheneOS: guía de uso (accesibilidad, actualizaciones, Google Play en sandbox)</a></li>
+<li><a href="https://discuss.grapheneos.org/d/35816-grapheneos-version-2026052400-released">Foro de GrapheneOS: versión 2026052400 con motor de voz propio</a></li>
+<li><a href="https://github.com/espeak-ng/espeak-ng/issues/1078">Issue 1078 de eSpeak NG</a> y <a href="https://github.com/espeak-ng/espeak-ng/pull/2587">PR 2587</a></li>
+</ul>
+]]></content>
+    
+  </entry>
+  <entry>
     <title type="html"><![CDATA[Migrar contactos a Mailbox]]></title>
     <link href="https://jesuspavonabian.es/post/migrarcontactosmailbox/"/>
     <id>https://jesuspavonabian.es/post/migrarcontactosmailbox/</id> 

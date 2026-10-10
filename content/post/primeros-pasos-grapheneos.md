@@ -5,7 +5,7 @@ reply:
 uri: "https://jesuspavonabian.es/post/primeros-pasos-grapheneos"
 categories: ["anything else"] # note, reply, anything else
 tags:
-draft: true
+draft: false
 ---
 
 Esta es la guía que me habría gustado tener cuando compré el Pixel 10: instalar GrapheneOS usando solo NVDA y el navegador, dejar TalkBack hablando en castellano y no quedarte sin voz por el camino. Incluye los sustos que me llevé yo, que no fueron pocos, y todo lo que conté antes sobre el motor de voz.
