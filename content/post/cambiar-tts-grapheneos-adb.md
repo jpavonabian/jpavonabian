@@ -8,9 +8,11 @@ tags:
 draft: false
 ---
 
+Actualización, esa misma tarde: las causas que apunto más abajo para las 0 voces de eSpeak NG no eran las buenas, y ya lo tengo hablando en el móvil. Lo cuento en [Por fin habla eSpeak NG en Android](https://jesuspavonabian.es/post/espeak-ng-android-por-fin-habla).
+
 Ya tengo el Pixel con GrapheneOS. TalkBack viene incluido, pero el motor de voz que trae es el que es, y yo quería algo que me dejara usar el móvil en castellano y a buena velocidad. El plan era sencillo: instalar eSpeak NG por adb, ponerlo como motor por defecto y a correr.
 
-El plan, como casi todos los planes sencillos, no sobrevivió al contacto con la realidad. Esta es la guía que me habría gustado tener esta mañana, con los sustos incluidos para que tú no te los lleves.
+No salió como esperaba. Esta es la guía que me habría gustado tener esta mañana, sustos incluidos.
 
 ## Antes de empezar
 
@@ -32,7 +34,7 @@ Y antes de tocar nada, apunta el motor de voz que tienes ahora:
 adb shell settings get secure tts_default_synth
 ```
 
-Ahora mismo puede parecer una tontería. Dentro de un rato no lo será.
+Parece una tontería, pero luego lo vas a necesitar.
 
 ## Intento 1: eSpeak NG, cero voces
 
@@ -80,11 +82,11 @@ adb shell settings put secure tts_default_synth com.k2fsa.sherpa.onnx.tts.engine
 
 Reiniciar TalkBack (mantener pulsadas las dos teclas de volumen unos segundos para apagarlo y otra vez para encenderlo) y a hablar. Susto que me dio el hijoputa.
 
-La lección: **el idioma del sistema y el idioma de la voz tienen que coincidir**. Si cambias uno, ten preparado el comando para cambiar el otro justo después.
+La lección: el idioma del sistema y el idioma de la voz tienen que coincidir. Si cambias uno, ten preparado el comando para cambiar el otro justo después.
 
 ## Intento 3: RHVoice, el que se queda
 
-sherpa hablaba, sí, pero con voces neuronales cada fragmento tarda un poco en generarse, y al escribir eso se nota en cada tecla. Para un lector de pantalla no sirve. Y eso si tienes suerte, porque la letra H la pronunciaba como "shiasshahahahaaeee". ¿Has visto cuando harry Potter habla Parsel en la cámara secreta? Pues igual. Total, que habla, pero no puedes escribir.
+sherpa hablaba, sí, pero con voces neuronales cada fragmento tarda un poco en generarse, y al escribir eso se nota en cada tecla. Para un lector de pantalla no sirve. Y eso si tienes suerte, porque la letra H la pronunciaba como "shiasshahahahaaeee". ¿Has visto cuando Harry Potter habla Parsel en la Cámara Secreta? Pues igual. Total, que habla, pero no puedes escribir.
 
 Así que acabé en [RHVoice](https://f-droid.org/packages/com.github.olga_yakovleva.rhvoice.android/), que está pensado para lectores de pantalla (tiene hasta complemento para NVDA), es ligero y tiene español. La pega es que no publican APK en GitHub: solo F-Droid y Play. Descargué el APK desde la web de F-Droid, sin instalar su cliente, y comprobé la firma antes de instalarlo:
 
@@ -98,7 +100,7 @@ Los pasos, esta vez con cabeza y con miedito, mucho miedito:
 
 1. Instalarlo: `adb install com.github.olga_yakovleva.rhvoice.android_118040.apk`
 2. Abrir RHVoice, entrar en Español e instalar una voz. Las voces se descargan desde la app, así que necesita el permiso de Red de GrapheneOS.
-3. Probarlo **sin ponerlo por defecto**: Ajustes → Salida de texto a voz → engranaje de RHVoice → "Escuchar un ejemplo".
+3. Probarlo sin ponerlo por defecto: Ajustes → Salida de texto a voz → engranaje de RHVoice → "Escuchar un ejemplo".
 4. Solo si el ejemplo suena en español, ponerlo por defecto:
 
 ```
