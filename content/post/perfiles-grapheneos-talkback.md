@@ -1,5 +1,5 @@
 ---
-title: "Perfiles en GrapheneOS: Google Play aparte y TalkBack con voz"
+title: "Perfiles en GrapheneOS: Bigtechs aparte y las movidas del motor de voz"
 date: 2026-10-11T08:36:00+02:00
 reply:
 uri: "https://jesuspavonabian.es/post/perfiles-grapheneos-talkback"
