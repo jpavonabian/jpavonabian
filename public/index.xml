@@ -8,7 +8,98 @@
     <language>es-es</language>
     <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
     <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
-    <lastBuildDate>Sat, 10 Oct 2026 19:00:00 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Oct 2026 09:36:54 +0200</lastBuildDate><atom:link href="https://jesuspavonabian.es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sincronizar los contactos de Mailbox.org en GrapheneOS con DAVx⁵</title>
+      <link>https://jesuspavonabian.es/post/contactos-mailbox-grapheneos/</link>
+      <pubDate>Sun, 11 Oct 2026 09:36:54 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/contactos-mailbox-grapheneos/</guid>
+      <description>Si seguiste la guía de primeros pasos con GrapheneOS, ahora mismo tienes un móvil sin contactos. Y en el perfil con Google Play también. Aquí cuento cómo traerlos desde Mailbox.org con DAVx⁵, en el perfil principal y en el de bigtech. Si aún no tienes el segundo perfil, aquí explico cómo crearlo. Cada perfil tiene su propia agenda, así que hay que configurarlo en los dos: primero el principal y luego se repite en el otro.</description>
+      <content:encoded>
+      &lt;p&gt;Si seguiste &lt;a href=&#34;https://jesuspavonabian.es/post/primeros-pasos-grapheneos/&#34;&gt;la guía de primeros pasos con GrapheneOS&lt;/a&gt;, ahora mismo tienes un móvil sin contactos. Y en el perfil con Google Play también. Aquí cuento cómo traerlos desde Mailbox.org con DAVx⁵, en el perfil principal y en el de bigtech. Si aún no tienes el segundo perfil, &lt;a href=&#34;https://jesuspavonabian.es/post/perfiles-grapheneos-talkback/&#34;&gt;aquí explico cómo crearlo&lt;/a&gt;. Cada perfil tiene su propia agenda, así que hay que configurarlo en los dos: primero el principal y luego se repite en el otro.&lt;/p&gt;
+&lt;h2 id=&#34;antes-de-empezar-en-el-ordenador&#34;&gt;Antes de empezar (en el ordenador)&lt;/h2&gt;
+&lt;p&gt;Si tienes la verificación en dos pasos activada en Mailbox.org, crea una contraseña de aplicación en los ajustes de seguridad de tu cuenta. Si no, te vale tu contraseña normal, aunque una de aplicación es más limpia: la revocas cuando quieras sin tocar nada más.&lt;/p&gt;
+&lt;h2 id=&#34;perfil-principal&#34;&gt;Perfil principal&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Abre Obtainium, pulsa &amp;ldquo;Añadir app&amp;rdquo;, pega &lt;code&gt;https://github.com/bitfireAT/davx5-ose&lt;/code&gt; y confirma. Después pulsa &amp;ldquo;Instalar&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Abre DAVx⁵ y acepta todo lo que te pida: contactos, notificaciones y, sobre todo, la exención de optimización de batería. Si no se la das, Android acaba matando la sincronización y un día descubres que lleva semanas parada.&lt;/li&gt;
+&lt;li&gt;Pulsa el botón de añadir cuenta y elige &amp;ldquo;Iniciar sesión con URL y nombre de usuario&amp;rdquo;. Los datos son estos:
+&lt;ul&gt;
+&lt;li&gt;URL: &lt;code&gt;https://dav.mailbox.org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Usuario: tu dirección de correo de Mailbox.org&lt;/li&gt;
+&lt;li&gt;Contraseña: la de aplicación o la normal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cuando te pregunte el nombre de la cuenta, deja tu dirección de correo. El método de grupos déjalo como venga.&lt;/li&gt;
+&lt;li&gt;Entra en la cuenta que acabas de crear, ve a la pestaña CardDAV y activa el interruptor de tu libreta de direcciones. Vienen todas desactivadas, y si te lo saltas no se sincroniza nada y tampoco sale ningún error. CalDAV déjalo apagado, salvo que también quieras el calendario, yo lo tengo.&lt;/li&gt;
+&lt;li&gt;Pulsa &amp;ldquo;Sincronizar ahora&amp;rdquo; y comprueba en la app de Contactos que aparecen.&lt;/li&gt;
+&lt;li&gt;En Contactos, entra en ajustes y pon la cuenta de DAVx⁵ como predeterminada para los contactos nuevos. Si no lo haces, se guardan en el teléfono y nunca llegan a Mailbox.org.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;perfil-bigtech&#34;&gt;Perfil bigtech&lt;/h2&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Para instalar DAVx⁵ ahí tienes dos caminos. El cómodo es hacerlo desde el perfil principal: Ajustes → Sistema → Varios usuarios → bigtech → &amp;ldquo;Instalar aplicaciones disponibles&amp;rdquo;, y marcas DAVx⁵. Las actualizaciones que hagas desde el principal le llegan también. El otro es cambiar al perfil bigtech e instalar Obtainium allí otra vez, que es más trabajo para nada.&lt;/li&gt;
+&lt;li&gt;Cambia al perfil bigtech y repite los pasos del 2 al 7 tal cual.&lt;/li&gt;
+&lt;li&gt;Abre WhatsApp o la app chunga que necesite contactos y comprueba que ya ve los nombres. Si no los ve, revisa en sus permisos que tenga acceso a contactos (o a los contactos que tu quieras, que no tienes por qué darle el permiso entero si no quieres).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Y si aún tienes los contactos repartidos entre Google y Apple, cómo llevarlos a Mailbox.org lo conté &lt;a href=&#34;https://post/migrarcontactosmailbox/&#34;&gt;en este otro post&lt;/a&gt;.&lt;/p&gt;
+
+      </content:encoded>
+    </item>
+    
+    <item>
+      <title>Perfiles en GrapheneOS: Google Play aparte y TalkBack con voz</title>
+      <link>https://jesuspavonabian.es/post/perfiles-grapheneos-talkback/</link>
+      <pubDate>Sun, 11 Oct 2026 08:36:00 +0200</pubDate>
+      <author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/perfiles-grapheneos-talkback/</guid>
+      <description>En la guía de primeros pasos con GrapheneOS dejé el perfil principal limpio y sin Google. Pero hay apps de las que todavía no puedo escapar, WhatsApp la primera, y para esas he creado un perfil aparte al que he llamado Bigtech. Aquí cuento cómo se monta, el susto de TalkBack que te llevas nada más crearlo y cómo hacer que las notificaciones te lleguen igual.
+Por qué un perfil aparte En GrapheneOS, Google Play es una app más, dentro de un sandbox, con los permisos limitadísimos.</description>
+      <content:encoded>
+      &lt;p&gt;En &lt;a href=&#34;https://jesuspavonabian.es/post/primeros-pasos-grapheneos/&#34;&gt;la guía de primeros pasos con GrapheneOS&lt;/a&gt; dejé el perfil principal limpio y sin Google. Pero hay apps de las que todavía no puedo escapar, WhatsApp la primera, y para esas he creado un perfil aparte al que he llamado Bigtech. Aquí cuento cómo se monta, el susto de TalkBack que te llevas nada más crearlo y cómo hacer que las notificaciones te lleguen igual.&lt;/p&gt;
+&lt;h2 id=&#34;por-qué-un-perfil-aparte&#34;&gt;Por qué un perfil aparte&lt;/h2&gt;
+&lt;p&gt;En GrapheneOS, Google Play es una app más, dentro de un sandbox, con los permisos limitadísimos. De hecho, el propio sistema engaña a la aplicación para que piense que tiene más permisos de los que realmente tiene. Técnicamente podría instalarse en el perfil principal y funcionaría de forma aislada sin tocar las narices ni recopilar datos.  Pero claro, este enfoque tiene un problema. El día que te equivoques y otorgues un permiso que no querías sin querer Google mete las pezuñas en el teléfono, aunque sea durante segundos.&lt;/p&gt;
+&lt;p&gt;Si lo instalas en otro perfil, solo existe en ese. Y como ese perfil solo tiene lo que tú quieres que tenga y como tú quieres que lo tenga puedes limitarlo. Cuando no uses  apps que dependan de Google play o que solo están en Play Store cambias al perfil principal y Google deja de recopilar los pocos datos que le has decidido entregar (si es que le entregas alguno de valor).&lt;/p&gt;
+&lt;p&gt;Así que me he hecho un perfil secundario llamado &amp;ldquo;Bigtech&amp;rdquo; para meter ahí toda la mierda de la cual todavía no puedo escapar por falta de alternativas.&lt;/p&gt;
+&lt;h2 id=&#34;crear-el-perfil&#34;&gt;Crear el perfil&lt;/h2&gt;
+&lt;p&gt;Se hace en Ajustes → Sistema → Varios usuarios. Añades un usuario, le pones nombre y cambias a él. ¡Sigue leyendo, no cambies todavía si usas TalkBack!&lt;/p&gt;
+&lt;h2 id=&#34;talkback-no-habla-de-primeras&#34;&gt;TalkBack no habla de primeras&lt;/h2&gt;
+&lt;p&gt;Un perfil nuevo arranca con el motor de voz por defecto de GrapheneOS, que habla en inglés de Estados Unidos. Si usas otro idioma, como yo, TalkBack se queda sin voz. Los perfiles se crean limpios y limpio implica que no tienes el sintetizador que usas en el principal, claro.&lt;/p&gt;
+&lt;p&gt;Antes de nada, necesitas tener &lt;code&gt;adb&lt;/code&gt; en el ordenador y la depuración USB activada en el móvil, como en la guía anterior.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Desde el perfil principal, entra en Ajustes → Sistema → Varios usuarios, abre el perfil nuevo y pulsa &amp;ldquo;Instalar apps disponibles&amp;rdquo;. Marca eSpeak NG o el motor de voz que uses tú.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lista los perfiles con este comando y apunta el ID del tuyo. En mi caso fue el 10.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell pm list users
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Instala el motor en ese perfil. El paquete que pongo es el de eSpeak NG, tú usa el de tu motor:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell pm install-existing --user 10 com.reecedunn.espeak
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ponlo como motor por defecto de ese perfil, con el mismo paquete:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell settings --user 10 put secure tts_default_synth com.reecedunn.espeak
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Si no sabes cuál es el paquete de tu motor, adapta el siguiente comando con el nombre del sintetizador que quieras:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;adb shell pm list packages | grep -i -e espeak
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Después cambia al perfil nuevo y activa TalkBack con el atajo de los dos botones de volumen. Debería hablar. Si no habla, reinícialo apagándolo y encendiéndolo con ese mismo atajo.&lt;/p&gt;
+&lt;h2 id=&#34;las-notificaciones&#34;&gt;Las notificaciones&lt;/h2&gt;
+&lt;p&gt;GrapheneOS puede reenviar al perfil activo las notificaciones de los perfiles que siguen funcionando en segundo plano. Viene desactivado, y se activa en cada perfil desde el que quieras reenviar. Yo lo tengo puesto en Bigtech, así que desde el principal me llegan los avisos de WhatsApp y de lo demás sin cambiar de perfil. Aparecen en su propio canal de notificaciones.&lt;/p&gt;
+&lt;p&gt;Hay una condición: el perfil tiene que seguir en marcha. Si lo cierras del todo, no llega nada. Así que no lo cierres ni lo detengas, y cambia de perfil sin más.&lt;/p&gt;
+&lt;h2 id=&#34;y-ahora-los-contactos&#34;&gt;Y ahora, los contactos&lt;/h2&gt;
+&lt;p&gt;Un perfil nuevo también viene sin contactos, así que WhatsApp no te reconoce a nadie. En &lt;a href=&#34;https://jesuspavonabian.es/post/contactos-mailbox-grapheneos/&#34;&gt;el siguiente post&lt;/a&gt; explico cómo los sincronizo con Mailbox.org y DAVx⁵ en los dos perfiles.&lt;/p&gt;
+&lt;h2 id=&#34;fuentes&#34;&gt;Fuentes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://grapheneos.org/usage&#34;&gt;GrapheneOS: guía de uso&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://grapheneos.org/features&#34;&gt;GrapheneOS: funciones&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </content:encoded>
+    </item>
+    
     <item>
       <title>Primeros pasos con GrapheneOS</title>
       <link>https://jesuspavonabian.es/post/primeros-pasos-grapheneos/</link>
@@ -119,7 +210,7 @@ adb reboot
 &lt;li&gt;Las actualizaciones ya son automáticas. En Ajustes → Sistema → Actualización del sistema puedes limitarlas a wifi o activar el reinicio automático cuando el móvil esté inactivo.&lt;/li&gt;
 &lt;li&gt;El puerto USB solo carga mientras el móvil está bloqueado. Para pasar archivos al ordenador, desbloquéalo antes de conectar.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Más adelante, si necesitas apps que dependen de Google (el banco, WhatsApp con notificaciones fiables), crea un perfil aparte e instala ahí Google Play desde la tienda de GrapheneOS. Recuerda activar TalkBack en ese perfil nuevo con el atajo de los dos botones de volumen.&lt;/p&gt;
+&lt;p&gt;Más adelante, si necesitas apps que dependen de Google (el banco, WhatsApp con notificaciones fiables), crea un perfil aparte e instala ahí Google Play desde la tienda de GrapheneOS (en &lt;a href=&#34;https://jesuspavonabian.es/post/perfiles-grapheneos-talkback/&#34;&gt;este post&lt;/a&gt; cuento cómo montarlo, incluido el susto de TalkBack sin voz en el perfil nuevo). Recuerda activar TalkBack en ese perfil nuevo con el atajo de los dos botones de volumen. Y si quieres que WhatsApp vea tus contactos, cuento cómo sincronizarlos con Mailbox.org y DAVx⁵ &lt;a href=&#34;https://jesuspavonabian.es/post/contactos-mailbox-grapheneos/&#34;&gt;en el siguiente post&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;si-algo-sale-mal&#34;&gt;Si algo sale mal&lt;/h2&gt;
 &lt;p&gt;El móvil es muy difícil de estropear: mientras puedas entrar en modo bootloader, siempre puedes reinstalar.&lt;/p&gt;
 &lt;ul&gt;

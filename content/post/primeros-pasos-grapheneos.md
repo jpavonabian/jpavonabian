@@ -161,7 +161,7 @@ Empieza con todo en el perfil principal y sin Google. Ya habrá tiempo de crear 
 4. Las actualizaciones ya son automáticas. En Ajustes → Sistema → Actualización del sistema puedes limitarlas a wifi o activar el reinicio automático cuando el móvil esté inactivo.
 5. El puerto USB solo carga mientras el móvil está bloqueado. Para pasar archivos al ordenador, desbloquéalo antes de conectar.
 
-Más adelante, si necesitas apps que dependen de Google (el banco, WhatsApp con notificaciones fiables), crea un perfil aparte e instala ahí Google Play desde la tienda de GrapheneOS. Recuerda activar TalkBack en ese perfil nuevo con el atajo de los dos botones de volumen.
+Más adelante, si necesitas apps que dependen de Google (el banco, WhatsApp con notificaciones fiables), crea un perfil aparte e instala ahí Google Play desde la tienda de GrapheneOS (en [este post](/post/perfiles-grapheneos-talkback/) cuento cómo montarlo, incluido el susto de TalkBack sin voz en el perfil nuevo). Recuerda activar TalkBack en ese perfil nuevo con el atajo de los dos botones de volumen. Y si quieres que WhatsApp vea tus contactos, cuento cómo sincronizarlos con Mailbox.org y DAVx⁵ [en el siguiente post](/post/contactos-mailbox-grapheneos/).
 
 ## Si algo sale mal
 
