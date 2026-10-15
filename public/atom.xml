@@ -2,13 +2,101 @@
   <title>El Blog de un informático que sueña con mejorar el mundo</title>
   <link href="https://jesuspavonabian.es/feed.xml" rel="self"/>
   <link href="https://jesuspavonabian.es/"/>
-  <updated>2026-10-11T09:36:54+02:00</updated>
+  <updated>2026-10-15T00:00:00+00:00</updated>
   <id>https://jesuspavonabian.es/</id>
   <author>
     <name>Jesús Pavón Abián</name>
     <email>correo@jesuspavonabian.es</email>
   </author>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Pi-hole con Unbound: un DNS sin depender de nadie]]></title>
+    <link href="https://jesuspavonabian.es/post/pihole-unbound/"/>
+    <id>https://jesuspavonabian.es/post/pihole-unbound/</id> 
+    <author>
+      <name>Jesús Pavón Abián</name>
+    </author>
+    <published>2026-10-15T00:00:00+00:00</published>
+    <updated>2026-10-15T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Otra vez sin DNS.</p>
+<p>Hace un tiempo os hablé de <a href="https://jesuspavonabian.es/post/dnsseguroeuropeo/">dns0, el DNS público europeo</a>. Cerró. Así que puse el Pi-hole a tirar de xdp.es. Y hoy, xdp.es se ha caído.</p>
+<p>Podría haber puesto los de Cloudflare y a correr, pero supongo que volvería a tener movidas con la pelotita. Llevo meses <a href="https://jesuspavonabian.es/post/desgooglezando-mi-vida">desgooglezando mi vida</a> por lo que el famoso 8.8.8.8 de google también lo descarto. Así que me he montado el chiringuito en la raspberry y andando.</p>
+<h2 id="qué-es-unbound-y-por-qué">¿Qué es Unbound y por qué?</h2>
+<p>Cuando escribes una dirección en el navegador, alguien tiene que traducir ese nombre a una IP. Normalmente ese alguien es tu operadora, Google, Cloudflare o quien hayas puesto en el Pi-hole. Y ese alguien ve todo lo que consultas.</p>
+<p>Unbound es un resolvedor recursivo. En vez de preguntarle a un intermediario, va directamente a la fuente y pregunta a los servidores raíz.</p>
+<p>Lo bueno:</p>
+<ul>
+<li>No dependes de ningún proveedor.</li>
+<li>Nadie tiene un registro centralizado de todo lo que consultas.</li>
+<li>Valida DNSSEC, así que es más difícil que te cuelen respuestas falsas.</li>
+</ul>
+<p>Lo no tan bueno:</p>
+<ul>
+<li>Las consultas a los servidores autoritativos no van cifradas, así que tu operadora puede verlas si quiere.</li>
+<li>La primera vez que visitas un dominio tarda un poco más. Luego se guarda en caché y tarda menos.</li>
+</ul>
+<h2 id="lo-que-necesitas">Lo que necesitas</h2>
+<ul>
+<li>Pi-hole ya funcionando sobre Debian, Raspberry Pi OS o similar. Si no lo tienes, lo conté en <a href="https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar/">el post de la VPN con WireGuard y Pi-hole</a>.</li>
+<li>Acceso por SSH y <code>sudo</code>.</li>
+<li>Diez minutos.</li>
+<li>Un café (opcional).</li>
+</ul>
+<h2 id="al-lío">¡Al lío!</h2>
+<h3 id="1-instalar-unbound">1. Instalar Unbound</h3>
+<pre tabindex="0"><code>sudo apt install unbound
+</code></pre><h3 id="2-configurarlo">2. Configurarlo</h3>
+<pre tabindex="0"><code>sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf
+</code></pre><pre tabindex="0"><code>server:
+    verbosity: 0
+    interface: 127.0.0.1
+    port: 5335
+    do-ip4: yes
+    do-udp: yes
+    do-tcp: yes
+    do-ip6: yes
+    prefer-ip6: no
+    harden-glue: yes
+    harden-dnssec-stripped: yes
+    use-caps-for-id: no
+    edns-buffer-size: 1232
+    prefetch: yes
+    num-threads: 1
+    so-rcvbuf: 1m
+    private-address: 192.168.0.0/16
+    private-address: 169.254.0.0/16
+    private-address: 172.16.0.0/12
+    private-address: 10.0.0.0/8
+    private-address: fd00::/8
+    private-address: fe80::/10
+</code></pre><p>Unbound escucha solo en <code>127.0.0.1</code>, puerto <code>5335</code>. Es decir, solo le habla al Pi-hole, nadie más de la red lo ve. Si no tienes IPv6 funcionando en casa, cambia <code>do-ip6</code> a <code>no</code>.</p>
+<h3 id="3-quitar-el-resolvconf-de-unbound">3. Quitar el resolvconf de Unbound</h3>
+<p>En Debian 11 y posteriores, Unbound trae un servicio que puede hacer que acabe reenviando las consultas a otro DNS en vez de resolverlas él, así que lo quitamos del medio.</p>
+<pre tabindex="0"><code>sudo systemctl disable --now unbound-resolvconf.service
+sudo sed -Ei &#39;s/^unbound_conf=/#unbound_conf=/&#39; /etc/resolvconf.conf
+sudo rm -f /etc/unbound/unbound.conf.d/resolvconf_resolvers.conf
+sudo systemctl restart unbound
+</code></pre><p>Si el <code>sed</code> te dice que no encuentra <code>/etc/resolvconf.conf</code>, como me pasó a mí, no pasa nada. Significa que no tienes el paquete <code>resolvconf</code> instalado, así que no hay nada que tocar ahí. Lo que importa es que se desactive el servicio, y eso lo hace la primera línea.</p>
+<h3 id="4-comprobar-que-funciona">4. Comprobar que funciona</h3>
+<pre tabindex="0"><code>dig pi-hole.net @127.0.0.1 -p 5335
+</code></pre><p>Tiene que salir <code>status: NOERROR</code>.</p>
+<p>Ahora comprobamos DNSSEC:</p>
+<pre tabindex="0"><code>dig fail01.dnssec.works @127.0.0.1 -p 5335
+dig dnssec.works @127.0.0.1 -p 5335
+</code></pre><p>El primero es un dominio con la firma rota a propósito y tiene que dar <code>SERVFAIL</code>. El segundo está bien firmado y tiene que dar <code>NOERROR</code>. Si es así, Unbound está rechazando respuestas falsas como debe.</p>
+<h3 id="5-decirle-al-pi-hole-que-use-unbound">5. Decirle al Pi-hole que use Unbound</h3>
+<p>Puedes hacerlo desde la web, pero ya que estamos en la consola&hellip;</p>
+<pre tabindex="0"><code>sudo pihole-FTL --config dns.upstreams &#39;[&#34;127.0.0.1#5335&#34;]&#39;
+</code></pre><p>Esto sustituye la lista de servidores entera, así que el que tuvieras antes desaparece, comprueba en la web que todo es correcto.</p>
+<h3 id="6-prueba-final">6. Prueba final</h3>
+<p>Desde otro ordenador de la red:</p>
+<pre tabindex="0"><code>dig pi-hole.net @IP_DE_TU_PIHOLE
+</code></pre><p>Si responde y en el registro de consultas del Pi-hole aparece reenviada a <code>127.0.0.1#5335</code>, ya está.</p>
+<p>Y ya estaría.</p>
+]]></content>
+    
+  </entry>
   <entry>
     <title type="html"><![CDATA[Sincronizar los contactos de Mailbox.org en GrapheneOS con DAVx⁵]]></title>
     <link href="https://jesuspavonabian.es/post/contactos-mailbox-grapheneos/"/>
@@ -44,7 +132,7 @@
 <li>Cambia al perfil bigtech y repite los pasos del 2 al 7 tal cual.</li>
 <li>Abre WhatsApp o la app chunga que necesite contactos y comprueba que ya ve los nombres. Si no los ve, revisa en sus permisos que tenga acceso a contactos (o a los contactos que tu quieras, que no tienes por qué darle el permiso entero si no quieres).</li>
 </ol>
-<p>Y si aún tienes los contactos repartidos entre Google y Apple, cómo llevarlos a Mailbox.org lo conté <a href="https://post/migrarcontactosmailbox/">en este otro post</a>.</p>
+<p>Y si aún tienes los contactos repartidos entre Google y Apple, cómo llevarlos a Mailbox.org lo conté <a href="https://jesuspavonabian.es/post/migrarcontactosmailbox/">en este otro post</a>.</p>
 ]]></content>
     
   </entry>

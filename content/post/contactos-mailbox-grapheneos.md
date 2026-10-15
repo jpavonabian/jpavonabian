@@ -33,4 +33,4 @@ Si tienes la verificación en dos pasos activada en Mailbox.org, crea una contra
 9. Cambia al perfil bigtech y repite los pasos del 2 al 7 tal cual.
 10. Abre WhatsApp o la app chunga que necesite contactos y comprueba que ya ve los nombres. Si no los ve, revisa en sus permisos que tenga acceso a contactos (o a los contactos que tu quieras, que no tienes por qué darle el permiso entero si no quieres).
 
-Y si aún tienes los contactos repartidos entre Google y Apple, cómo llevarlos a Mailbox.org lo conté [en este otro post](https://post/migrarcontactosmailbox/).
+Y si aún tienes los contactos repartidos entre Google y Apple, cómo llevarlos a Mailbox.org lo conté [en este otro post](https://jesuspavonabian.es/post/migrarcontactosmailbox/).
