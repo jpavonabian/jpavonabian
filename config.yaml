@@ -35,7 +35,7 @@ taxonomies:
   tag: tags
   category: categories
 
-# Static del tema que no es del blog (zip del tema, capturas, favicons de ejemplo)
+# Static del tema que no es del blog (zip del tema, capturas)
 module:
   imports:
     - path: indiepaper
@@ -53,7 +53,6 @@ module:
         - source: static
           target: static
           excludeFiles:
-            - favicon/**
             - indiepaper-theme.zip
             - lighthouse.jpg
             - screenshot.jpg
