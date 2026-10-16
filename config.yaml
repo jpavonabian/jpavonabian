@@ -25,6 +25,8 @@ params:
   social:
     - name: Mastodon
       url: https://mst.universoalterno.es/@jpavonabian
+    - name: Bluesky
+      url: https://bsky.app/profile/jesuspavonabian.es
     - name: GitHub
       url: https://github.com/jpavonabian
     - name: Twitter
