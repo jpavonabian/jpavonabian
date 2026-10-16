@@ -1,6 +1,12 @@
 ---
 title: "Tu guiador"
-date: "2023-04-11"
+date: "2022-02-26"
+aliases: ["/tu-guiador/"]
+reply:
+uri: https://jesuspavonabian.es/post/tu-guiador
+categories: ["anything else"] # note, reply, anything else
+tags:
+draft: false
 ---
 
 Gestiona y comparte recorridos de forma sencilla. Con Tu guiador, puedes añadir recorridos y compartirlos con tus contactos con el objetivo de anotar indicaciones específicas para llegar a un lugar de forma sencilla y cómoda.
