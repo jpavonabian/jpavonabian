@@ -1,39 +1,299 @@
-<!doctype html><html lang=es-es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta http-equiv=Content-Security-Policy content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;"><title>Blogs, Blogs, Blogs | El Blog de un informático que sueña con mejorar el mundo</title>
-<meta name=description content="Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&mldr; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
-Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían."><meta property="og:title" content="Blogs, Blogs, Blogs"><meta property="og:description" content="Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&mldr; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
-Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían."><meta property="og:type" content="article"><meta property="og:url" content="https://jesuspavonabian.es/post/blogs/"><meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo"><meta name=twitter:card content="summary"><meta name=twitter:title content="Blogs, Blogs, Blogs"><meta name=twitter:description content="Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&mldr; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
-Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían."><meta name=twitter:creator content="@jpa_apj"><meta property="article:published_time" content="2026-08-28T16:29:28+02:00"><meta property="article:author" content="Jesús Pavón Abián"><meta name=author content="Jesús Pavón Abián"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow"><link rel=token_endpoint href=https://tokens.indieauth.com/token><link rel=authorization_endpoint href=https://indieauth.com/auth><link rel=micropub href=https://jesuspavonabian.es/netlify/functions/micropub><link rel=microsub href=https://aperture.p3k.io/microsub/969><link rel=webmention href=https://webmention.io/jesuspavonabian.es/webmention><link href=/style.css rel=stylesheet><link rel=icon href=/favicon/favicon.ico sizes=any><link rel=apple-touch-icon href=/favicon/apple-touch-icon.png><link rel=icon href=/favicon/favicon-16x16.png sizes=16x16><link rel=icon href=/favicon/favicon-32x32.png sizes=32x32><link rel=me href=https://mst.universoalterno.es/@jpavonabian><meta name=fediverse:creator content="@jpavonabian@mst.universoalterno.es"><link rel=canonical href=https://jesuspavonabian.es/post/blogs/></head><body><a href=#main class=skip-link>Saltar al contenido principal</a><header class=h-card role=banner><div class=container><a href=/ class="u-url p-name"><h1>El Blog de un informático que sueña con mejorar el mundo</h1></a><p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p><div class="p-author h-card h-card-hidden"><span class=p-name>Jesús Pavón Abián</span>
-<a class=u-email href=mailto:correo@jesuspavonabian.es>correo@jesuspavonabian.es</a>
-<img class=u-photo src=https://jesuspavonabian.es/foto.jpg alt="Jesús Pavón Abián">
-<a class=u-url rel=me href=https://jesuspavonabian.es>https://jesuspavonabian.es</a></div></div></header><nav role=navigation aria-label="Navegación principal"><div class=container><ul><li><a href=/>Inicio</a></li><li><a href=https://jesuspavonabian.es/about/>Acerca de</a></li><li><a href=https://jesuspavonabian.es/tags/>Etiquetas</a></li></ul></div></nav><main id=main role=main><div class=container><article class=h-entry><header><h1 class=p-name>Blogs, Blogs, Blogs</h1><div class=post-meta><time datetime=2026-08-28T16:29:28+02:00 class=dt-published>28 de agosto de 2026</time>
-<span class=meta-separator></span><data value=910>910 palabras</data></div></header><div class=e-content><p>Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&mldr; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.</p><p>Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre <a href=https://alareiradenemesis.es>Némesis</a>, que por fin puede volver a bloguear y el ahora resucitado <a href=https://orecunchodolector.es>O recuncho do lector</a> funcionan como deberían.</p><p>Ahora corren sobre <a href=https://writefreely.org>WriteFreely</a>, autoalojado en mi propio VPS, cada uno con su propio servicio systemd, su propia base de datos SQLite y su propio puerto al que Nginx dirige las llamadas https que recibe.</p><p>Os cuento ambas migraciones, que tienen su aquel.</p><h2 id=la-base-un-writefreely-por-blog-sin-depender-de-una-sesión-de-screen>La base: un WriteFreely por blog, sin depender de una sesión de <code>screen</code></h2><p>Lo primero fue <a href=https://writefreely.org/start>montar el tinglao, tutorial aquí</a>: Cada blog en su propia instancia de WriteFreely, con su propio <code>config.ini</code>, su propio puerto y su propio <code>writefreely.db</code> en SQLite.</p><p>Para no depender de tener una sesión de <code>screen</code> abierta (así es como arrancaba las cosas al principio, <code>./writefreely</code> a lo bruto por SSH, burro que es uno), usé una plantilla systemd en vez de un <code>.service</code> por blog:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ini data-lang=ini><span style=display:flex><span><span style=color:#6272a4># /etc/systemd/system/writefreely@.service</span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>[Unit]</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>Description</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>WriteFreely instance (%i)</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>After</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>network.target</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>[Service]</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>Type</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>simple</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>User</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>patata</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>Group</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>patata</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>WorkingDirectory</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>/home/patata/%i/writefreely</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>ExecStart</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>/home/patata/%i/writefreely/writefreely</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>Restart</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>on-failure</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>RestartSec</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>5</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>[Install]</span>
-</span></span><span style=display:flex><span><span style=color:#50fa7b>WantedBy</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>multi-user.target</span>
-</span></span></code></pre></div><p>El <code>%i</code> se sustituye por lo que venga después de la <code>@</code>. Así, arrancar un blog nuevo es:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo systemctl <span style=color:#8be9fd;font-style:italic>enable</span> writefreely@alareira
-</span></span><span style=display:flex><span>sudo systemctl start writefreely@alareira
-</span></span></code></pre></div><p>Y cada instancia solo necesita su propio directorio con WriteFreely. Reinicio automático si peta, arranque en el boot, logs con <code>journalctl -u writefreely@alareira -f</code>.</p><h2 id=caso-1-a-lareira-de-némesis-la-migración-fácil>Caso 1: A Lareira de Némesis, la migración fácil</h2><p>Este fue el caso fácil. Exportación WXR estándar (Herramientas → Exportar → Todo el contenido, desde el propio WordPress) para traerme el contenido del Blog y <a href=https://github.com/writeas/wp-import>wp-import</a>, de la propia gente de Write.as para importarlo a la instancia recién levantada.</p><p>El repo de wp-import no publica releases. Tocó instalar Go desde cero:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>wget https://go.dev/dl/go1.26.7.linux-amd64.tar.gz
-</span></span><span style=display:flex><span>sudo tar -C /usr/local -xzf go1.26.7.linux-amd64.tar.gz
-</span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>echo</span> <span style=color:#f1fa8c>&#39;export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin&#39;</span> &gt;&gt; ~/.bashrc
-</span></span></code></pre></div><p>Después bastó con instalar, sin más.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>git clone https://github.com/writeas/wp-import.git
-</span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>cd</span> wp-import
-</span></span><span style=display:flex><span>go install ./...
-</span></span></code></pre></div><p>Me cargué el WordPress, cambié dónde apuntaba Nginx y listo. El comando de wp-import funcionó a la primera.</p><p>Un detalle que me tuvo fastidiado durante unas horas: El <code>--blog</code> de <code>wp-import</code> no es la ruta de la URL (con <code>single_user = true</code> el blog se sirve en la raíz igualmente), parece ser el alias interno de la colección en la base de datos, aún no lo tengo del todo claro. Se puede sacar de la base de datos con algo como esto:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sqlite3 /home/patata/alareira/writefreely/writefreely.db <span style=color:#f1fa8c>&#34;SELECT alias FROM collections;&#34;</span>
-</span></span></code></pre></div><h2 id=caso-2-o-recuncho-do-lector-y-el-fiaje-en-el-tiempo>Caso 2: O Recuncho do Lector y el fiaje en el tiempo</h2><p>En 2021 el WordPress que movía O recuncho daba más por culo que un zapato apretao, aquello estaba roto por todos lados, no había forma de moverlo todo a un Blog limpio sin que se rompiera todo&mldr; Y al final, tras un cabreo que ya no recuerdo por qué fue&mldr; Decidí mandarlo todo a la mierda&mldr; sin acordarme de hacer un BackUP antes.</p><p>Hablando con una de las autoras del blog llegamos a la conclusión de que estaría bien recuperarlo, pero que el Jesús del pasado fue un poco gilipollas. Si hubiese hecho una copia de seguridad el contenido no se hubiera perdido sin remedio. Por suerte, archive.org sí que hizo una, porque en su día se me ocurrió que era una buena idea que lo hiciera. Gracias, yo del pasado.</p><p>La descarga del sitio archivado se hizo con la gema Ruby <code>wayback_machine_downloader_straw</code>. Un engorro. Lo tengo documentado, pero no merece la pena explicarlo aquí, no creo que sirva para otro Blog.</p><p>Con el HTML crudo de cada página archivada (en este caso, 1577 ficheros entre HTML, CSS/JS del tema y las pocas imágenes que sí sobrevivieron) pude proceder.</p><p>Un script de extracción en Python (<code>beautifulsoup4</code> + <code>lxml</code> + <code>markdownify</code>) hizo todo el trabajo: detectar posts y páginas por las clases del <code>&lt;body></code>, sacar título, fecha real (del meta <code>article:published_time</code>, no la fecha de la captura), autoría, categorías y tags; limpiar el cuerpo quitando botones de compartir, posts relacionados, índice automático y el widget de audio TTS que traía el tema&mldr;</p><p>Resultado: 487 entradas detectadas, 482 posts convertidos a Markdown, 5 páginas estáticas&mldr; nada mal.</p><p>Las imágenes dieron muchísima lata. Más que nada porque no se almacenaron. Tras tratar de darle una vuelta, consultarlo con la almohada, meditarlo y volverlo a meditar otra vez, no fuese que la primera meditación fallase, decidí que a veces hay que rendirse. si archive.org no las tiene, no las tiene.</p><p>Las páginas también las descarté, quedándome únicamente con los posts. Alguna cosilla rara puede haber, aunque he limpiado concienzudamente los .md a mano.</p><p>Teniendo todo recopilado, le pedí a Claude ayuda con el script para subir el contenido al Blog, ya que estuve un par de semanas dándole vueltas al tema y me atascaba. solo tardó 10 minutos en hacerlo. IA 1, humano 0. Qué remedio.</p><h2 id=finalmente>Finalmente</h2><p>Ambos blogs federan por ActivityPub, así que si usas Mastodon puedes seguirlos como a cualquier cuenta: <code>@nemesis@alareiradenemesis.es</code> y <code>@orecuncho@orecunchodolector.es</code>.</p><p>Un detalle curioso de WriteFreely: puedes mencionar a alguien de Mastodon desde un post del blog y le llega la notificación de verdad. Pero al revés, si mencionas al blog desde Mastodon, no pasa nada. WriteFreely no tiene bandeja de entrada ni sistema de comentarios propio.</p></div><footer class=post-meta><div class=post-author><span class=meta>Por <a href=https://jesuspavonabian.es class="p-author h-card">Jesús Pavón Abián</a></span></div><div class=post-permalink><span class=meta>Enlace permanente: <a href=https://jesuspavonabian.es/post/blogs/ class=u-url>https://jesuspavonabian.es/post/blogs/</a></span></div></footer></article><section class=webmentions><h2>Webmentions</h2><p>Aún no hay webmentions. <a href=https://webmention.io/jesuspavonabian.es/webmention>Envía una</a>.</p></section></div></main><footer role=contentinfo><div class=container><div class=footer-content><p class=copyright>&copy; 2026 Jesús Pavón Abián.
-Contenido bajo <a href=https://creativecommons.org/licenses/by/4.0/deed.es rel=license>CC BY 4.0</a>.
-Tema <a href=https://github.com/brennanbrown/indiepaper>indiepaper</a> de <a href=https://berryhouse.ca>Berry House</a>.</p><p class=contact-support><a href=mailto:correo@jesuspavonabian.es class=u-email rel=me>&lt;correo@jesuspavonabian.es></a></p><p class=badge><a href=https://512kb.club><img src=https://512kb.club/assets/images/green-team.svg alt="Web miembro del equipo verde del 512KB club"></a></p><p class=links><a href=https://mst.universoalterno.es/@jpavonabian rel=me>Mastodon</a>
-· <a href=https://github.com/jpavonabian rel=me>GitHub</a>
-· <a href=https://twitter.com/jpa_apj rel=me>Twitter</a>
-· <a href=/feed.xml>RSS</a></p></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;">
+  
+  
+  <title>Blogs, Blogs, Blogs | El Blog de un informático que sueña con mejorar el mundo</title>
+  <meta name="description" content="Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
+Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían.">
+  
+  
+  <meta property="og:title" content="Blogs, Blogs, Blogs">
+  <meta property="og:description" content="Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
+Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jesuspavonabian.es/post/blogs/">
+  <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo">
+  
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blogs, Blogs, Blogs">
+  <meta name="twitter:description" content="Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.
+Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre Némesis, que por fin puede volver a bloguear y el ahora resucitado O recuncho do lector funcionan como deberían.">
+  
+  <meta name="twitter:creator" content="@jpa_apj">
+  
+  
+  
+  
+  
+  <meta property="article:published_time" content="2026-08-28T16:29:28&#43;02:00">
+  
+  
+  
+  <meta property="article:author" content="Jesús Pavón Abián">
+  
+  
+  
+  
+  <meta name="author" content="Jesús Pavón Abián">
+  
+  
+  
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  
+  
+  
+  
+  
+  
+  <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+  
+  
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  
+  
+  <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
+  
+  
+  <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
+  
+  
+  <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention">
+  
+  
+  
+  
+  
+  
+  
+  <link href="/style.css" rel="stylesheet">
+  
+  
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" href="/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" href="/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="me" href="https://mst.universoalterno.es/@jpavonabian">
+  <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es">
+  
+  
+  <link rel="canonical" href="https://jesuspavonabian.es/post/blogs/">
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+  
+  <header class="h-card" role="banner">
+    <div class="container">
+  <a href="/" class="u-url p-name">
+    <h1>El Blog de un informático que sueña con mejorar el mundo</h1>
+  </a>
+  
+  <p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p>
+  
+  
+  
+  <div class="p-author h-card h-card-hidden">
+    <span class="p-name">Jesús Pavón Abián</span>
+    
+    <a class="u-email" href="mailto:correo@jesuspavonabian.es">correo@jesuspavonabian.es</a>
+    
+    
+    <img class="u-photo" src="https://jesuspavonabian.es/foto.jpg" alt="Jesús Pavón Abián">
+    
+    
+    <a class="u-url" rel="me" href="https://jesuspavonabian.es">https://jesuspavonabian.es</a>
+    
+  </div>
+  
+</div>
+
+  </header>
+  
+  <nav role="navigation" aria-label="Navegación principal">
+    <div class="container">
+  <ul>
+    <li><a href="/" >Inicio</a></li>
+    
+    <li><a href="https://jesuspavonabian.es/about/" >Acerca de</a></li>
+    
+    
+    <li><a href="https://jesuspavonabian.es/tags/" >Etiquetas</a></li>
+    
+    
+    
+  </ul>
+</div>
+
+  </nav>
+  
+  <main id="main" role="main">
+    
+<div class="container">
+  <article class="h-entry">
+    <header>
+      <h1 class="p-name">Blogs, Blogs, Blogs</h1>
+      
+      
+      <div class="post-meta">
+        <time datetime="2026-08-28T16:29:28&#43;02:00" class="dt-published">28 de agosto de 2026</time>
+        
+        <span class="meta-separator"> </span>
+        <data value="910">910 palabras</data>
+        
+      </div>
+      
+      
+      
+    </header>
+    
+    <div class="e-content">
+      <p>Llevaba media vida con dos tareas pendientes. De esas que dices &ldquo;Sí, ahora luego cuando saque un hueco lo hago&rdquo;, pero nunca lo hacía. Una, por pereza. La otra&hellip; Porque requería meditar, pensar, darle una vuelta y programar algo. Y me daba una pereza asombrosa.</p>
+<p>Solo he tardado un año y pico en terminar ambas cosas. Pero ya está: el Blog de la pobre <a href="https://alareiradenemesis.es">Némesis</a>, que por fin puede volver a bloguear y el ahora resucitado <a href="https://orecunchodolector.es">O recuncho do lector</a> funcionan como deberían.</p>
+<p>Ahora corren sobre <a href="https://writefreely.org">WriteFreely</a>, autoalojado en mi propio VPS, cada uno con su propio servicio systemd, su propia base de datos SQLite y su propio puerto al que Nginx dirige las llamadas https que recibe.</p>
+<p>Os cuento ambas migraciones, que tienen su aquel.</p>
+<h2 id="la-base-un-writefreely-por-blog-sin-depender-de-una-sesión-de-screen">La base: un WriteFreely por blog, sin depender de una sesión de <code>screen</code></h2>
+<p>Lo primero fue <a href="https://writefreely.org/start">montar el tinglao, tutorial aquí</a>: Cada blog en su propia instancia de WriteFreely, con su propio <code>config.ini</code>, su propio puerto y su propio <code>writefreely.db</code> en SQLite.</p>
+<p>Para no depender de tener una sesión de <code>screen</code> abierta (así es como arrancaba las cosas al principio, <code>./writefreely</code> a lo bruto por SSH, burro que es uno), usé una plantilla systemd en vez de un <code>.service</code> por blog:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#6272a4"># /etc/systemd/system/writefreely@.service</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Unit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">WriteFreely instance (%i)</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">After</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">network.target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Service]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">simple</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">User</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">patata</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Group</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">patata</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WorkingDirectory</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/home/patata/%i/writefreely</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">ExecStart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">/home/patata/%i/writefreely/writefreely</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">Restart</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">on-failure</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">RestartSec</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[Install]</span>
+</span></span><span style="display:flex;"><span><span style="color:#50fa7b">WantedBy</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">multi-user.target</span>
+</span></span></code></pre></div><p>El <code>%i</code> se sustituye por lo que venga después de la <code>@</code>. Así, arrancar un blog nuevo es:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> writefreely@alareira
+</span></span><span style="display:flex;"><span>sudo systemctl start writefreely@alareira
+</span></span></code></pre></div><p>Y cada instancia solo necesita su propio directorio con WriteFreely. Reinicio automático si peta, arranque en el boot, logs con <code>journalctl -u writefreely@alareira -f</code>.</p>
+<h2 id="caso-1-a-lareira-de-némesis-la-migración-fácil">Caso 1: A Lareira de Némesis, la migración fácil</h2>
+<p>Este fue el caso fácil. Exportación WXR estándar (Herramientas → Exportar → Todo el contenido, desde el propio WordPress) para traerme el contenido del Blog y <a href="https://github.com/writeas/wp-import">wp-import</a>, de la propia gente de Write.as para importarlo a la instancia recién levantada.</p>
+<p>El repo de wp-import no publica releases. Tocó instalar Go desde cero:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://go.dev/dl/go1.26.7.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>sudo tar -C /usr/local -xzf go1.26.7.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin&#39;</span> &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><p>Después bastó con instalar, sin más.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/writeas/wp-import.git
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> wp-import
+</span></span><span style="display:flex;"><span>go install ./...
+</span></span></code></pre></div><p>Me cargué el WordPress, cambié dónde apuntaba Nginx y listo. El comando de wp-import funcionó a la primera.</p>
+<p>Un detalle que me tuvo fastidiado durante unas horas: El <code>--blog</code> de <code>wp-import</code> no es la ruta de la URL (con <code>single_user = true</code> el blog se sirve en la raíz igualmente), parece ser el alias interno de la colección en la base de datos, aún no lo tengo del todo claro. Se puede sacar de la base de datos con algo como esto:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sqlite3 /home/patata/alareira/writefreely/writefreely.db <span style="color:#f1fa8c">&#34;SELECT alias FROM collections;&#34;</span>
+</span></span></code></pre></div><h2 id="caso-2-o-recuncho-do-lector-y-el-fiaje-en-el-tiempo">Caso 2: O Recuncho do Lector y el fiaje en el tiempo</h2>
+<p>En 2021 el WordPress que movía O recuncho daba más por culo que un zapato apretao, aquello estaba roto por todos lados, no había forma de moverlo todo a un Blog limpio sin que se rompiera todo&hellip; Y al final, tras un cabreo que ya no recuerdo por qué fue&hellip; Decidí mandarlo todo a la mierda&hellip; sin acordarme de hacer un BackUP antes.</p>
+<p>Hablando con una de las autoras del blog llegamos a la conclusión de que estaría bien recuperarlo, pero que el Jesús del pasado fue un poco gilipollas. Si hubiese hecho una copia de seguridad el contenido no se hubiera perdido sin remedio. Por suerte, archive.org sí que hizo una, porque en su día se me ocurrió que era una buena idea que lo hiciera. Gracias, yo del pasado.</p>
+<p>La descarga del sitio archivado se hizo con la gema Ruby <code>wayback_machine_downloader_straw</code>. Un engorro. Lo tengo documentado, pero no merece la pena explicarlo aquí, no creo que sirva para otro Blog.</p>
+<p>Con el HTML crudo de cada página archivada (en este caso, 1577 ficheros entre HTML, CSS/JS del tema y las pocas imágenes que sí sobrevivieron) pude proceder.</p>
+<p>Un script de extracción en Python (<code>beautifulsoup4</code> + <code>lxml</code> + <code>markdownify</code>) hizo todo el trabajo: detectar posts y páginas por las clases del <code>&lt;body&gt;</code>, sacar título, fecha real (del meta <code>article:published_time</code>, no la fecha de la captura), autoría, categorías y tags; limpiar el cuerpo quitando botones de compartir, posts relacionados, índice automático y el widget de audio TTS que traía el tema&hellip;</p>
+<p>Resultado: 487 entradas detectadas, 482 posts convertidos a Markdown, 5 páginas estáticas&hellip; nada mal.</p>
+<p>Las imágenes dieron muchísima lata. Más que nada porque no se almacenaron. Tras tratar de darle una vuelta, consultarlo con la almohada, meditarlo y volverlo a meditar otra vez, no fuese que la primera meditación fallase, decidí que a veces hay que rendirse. si archive.org no las tiene, no las tiene.</p>
+<p>Las páginas también las descarté, quedándome únicamente con los posts. Alguna cosilla rara puede haber, aunque he limpiado concienzudamente los .md a mano.</p>
+<p>Teniendo todo recopilado, le pedí a Claude ayuda con el script para subir el contenido al Blog, ya que estuve un par de semanas dándole vueltas al tema y me atascaba. solo tardó 10 minutos en hacerlo. IA 1, humano 0. Qué remedio.</p>
+<h2 id="finalmente">Finalmente</h2>
+<p>Ambos blogs federan por ActivityPub, así que si usas Mastodon puedes seguirlos como a cualquier cuenta: <code>@nemesis@alareiradenemesis.es</code> y <code>@orecuncho@orecunchodolector.es</code>.</p>
+<p>Un detalle curioso de WriteFreely: puedes mencionar a alguien de Mastodon desde un post del blog y le llega la notificación de verdad. Pero al revés, si mencionas al blog desde Mastodon, no pasa nada. WriteFreely no tiene bandeja de entrada ni sistema de comentarios propio.</p>
+
+    </div>
+    
+    
+    
+    <footer class="post-meta">
+      
+      <div class="post-author">
+        <span class="meta">Por <a href="https://jesuspavonabian.es" class="p-author h-card">Jesús Pavón Abián</a></span>
+      </div>
+      
+      
+      <div class="post-permalink">
+        <span class="meta">Enlace permanente: <a href="https://jesuspavonabian.es/post/blogs/" class="u-url">https://jesuspavonabian.es/post/blogs/</a></span>
+      </div>
+      
+      
+      
+      
+    </footer>
+  </article>
+  
+  
+  
+  
+  
+
+
+<section class="webmentions">
+  <h2>Webmentions</h2>
+  
+  
+    
+    
+    
+      
+      
+        <p>Aún no hay webmentions. <a href="https://webmention.io/jesuspavonabian.es/webmention">Envía una</a>.</p>
+      
+    
+  
+</section>
+
+
+  
+</div>
+
+  </main>
+  
+  <footer role="contentinfo">
+    <div class="container">
+  <div class="footer-content">
+    
+    
+    <p class="copyright">
+      &copy; 2026 Jesús Pavón Abián.
+      Contenido bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">CC BY 4.0</a>.
+      Tema <a href="https://github.com/brennanbrown/indiepaper">indiepaper</a> de <a href="https://berryhouse.ca">Berry House</a>.
+    </p>
+    
+    <p class="contact-support">
+      
+      <a href="mailto:correo@jesuspavonabian.es" class="u-email" rel="me">&lt;correo@jesuspavonabian.es&gt;</a>
+      
+      
+    </p>
+    
+    <p class="badge">
+      <a href="https://512kb.club"><img src="https://512kb.club/assets/images/green-team.svg" alt="Web miembro del equipo verde del 512KB club" /></a>
+    </p>
+    
+    <p class="links">
+      
+      
+      <a href="https://mst.universoalterno.es/@jpavonabian" rel="me">Mastodon</a>
+      
+       · <a href="https://github.com/jpavonabian" rel="me">GitHub</a>
+      
+       · <a href="https://twitter.com/jpa_apj" rel="me">Twitter</a>
+      
+      
+      · <a href="/feed.xml">RSS</a>
+      
+    </p>
+  </div>
+</div>
+
+  </footer>
+</body>
+</html>

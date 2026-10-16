@@ -1,27 +1,477 @@
-<!doctype html><html lang=es-es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta http-equiv=Content-Security-Policy content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;"><title>Montar un servidor de Stardew Valley de forma accesible | El Blog de un informático que sueña con mejorar el mundo</title>
-<meta name=description content="Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
-El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&mldr; Un engorro, vaya. Así que nos pusimos a investigar&mldr;
-Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server."><meta property="og:title" content="Montar un servidor de Stardew Valley de forma accesible"><meta property="og:description" content="Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
-El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&mldr; Un engorro, vaya. Así que nos pusimos a investigar&mldr;
-Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server."><meta property="og:type" content="article"><meta property="og:url" content="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/"><meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo"><meta name=twitter:card content="summary"><meta name=twitter:title content="Montar un servidor de Stardew Valley de forma accesible"><meta name=twitter:description content="Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
-El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&mldr; Un engorro, vaya. Así que nos pusimos a investigar&mldr;
-Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server."><meta name=twitter:creator content="@jpa_apj"><meta property="article:published_time" content="2026-01-24T09:28:38+01:00"><meta property="article:author" content="Jesús Pavón Abián"><meta name=author content="Jesús Pavón Abián"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow"><link rel=token_endpoint href=https://tokens.indieauth.com/token><link rel=authorization_endpoint href=https://indieauth.com/auth><link rel=micropub href=https://jesuspavonabian.es/netlify/functions/micropub><link rel=microsub href=https://aperture.p3k.io/microsub/969><link rel=webmention href=https://webmention.io/jesuspavonabian.es/webmention><link href=/style.css rel=stylesheet><link rel=icon href=/favicon/favicon.ico sizes=any><link rel=apple-touch-icon href=/favicon/apple-touch-icon.png><link rel=icon href=/favicon/favicon-16x16.png sizes=16x16><link rel=icon href=/favicon/favicon-32x32.png sizes=32x32><link rel=me href=https://mst.universoalterno.es/@jpavonabian><meta name=fediverse:creator content="@jpavonabian@mst.universoalterno.es"><link rel=canonical href=https://jesuspavonabian.es/post/montar_servidor_stardew_valley/></head><body><a href=#main class=skip-link>Saltar al contenido principal</a><header class=h-card role=banner><div class=container><a href=/ class="u-url p-name"><h1>El Blog de un informático que sueña con mejorar el mundo</h1></a><p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p><div class="p-author h-card h-card-hidden"><span class=p-name>Jesús Pavón Abián</span>
-<a class=u-email href=mailto:correo@jesuspavonabian.es>correo@jesuspavonabian.es</a>
-<img class=u-photo src=https://jesuspavonabian.es/foto.jpg alt="Jesús Pavón Abián">
-<a class=u-url rel=me href=https://jesuspavonabian.es>https://jesuspavonabian.es</a></div></div></header><nav role=navigation aria-label="Navegación principal"><div class=container><ul><li><a href=/>Inicio</a></li><li><a href=https://jesuspavonabian.es/about/>Acerca de</a></li><li><a href=https://jesuspavonabian.es/tags/>Etiquetas</a></li></ul></div></nav><main id=main role=main><div class=container><article class=h-entry><header><h1 class=p-name>Montar un servidor de Stardew Valley de forma accesible</h1><div class=post-meta><time datetime=2026-01-24T09:28:38+01:00 class=dt-published>24 de enero de 2026</time>
-<span class=meta-separator></span><data value=930>930 palabras</data></div></header><div class=e-content><p>Llevo un tiempo jugando <a href="https://store.steampowered.com/app/413150/Stardew_Valley/?l=spanish">Stardew Valley</a>. Tanto en cooperativo como en local.</p><p>El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&mldr; Un engorro, vaya. Así que nos pusimos a investigar&mldr;</p><p>Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado <a href=https://github.com/truman-world/puppy-stardew-server/>Puppy Stardew Server</a>. ¿el problema? Lo conseguíamos levantar, pero requería conectarse mediante VNC para cargar la primera partida. Y claro, ahí no había accesibilidad ninguna.</p><p>Buscamos por la red. Dimos vueltas a google, encontramos las bolas de dragón y pedimos un deseo&mldr; Y nada. Que a la gente le molaba VNC.</p><p>así que tiramos de la solución de la cual tiramos muchos cegatos cuando no podemos hacer algo: &ldquo;Persona con ojos más cercana, ¿haces aquí un par de clicks?&rdquo; y el problema se arregló.</p><p>Pero me molestaba. Muchísimo. Si lo que se necesitaba era tener una partida se podía hacer a mano editando un archivo, seguro.</p><p>Y se pudo, aprovechando que no podía dormir.</p><h2 id=cosas-a-tener-en-cuenta-antes-de-entrar-en-materia>Cosas a tener en cuenta antes de entrar en materia</h2><p>No es mucho, pero es conveniente saberlo.</p><ul><li>El script levanta un servidor con Docker y descarga el juego de una cuenta de Steam. Así que es necesario tener el juego comprado. Solo usa Steam únicamente para descargar los archivos.</li><li>Intenté ejecutarlo en una Raspberry Pi y petó por todo lo alto. Supongo que alguien con tiempo podría cohnstruir una imagen.</li><li>Se pueden añadir más mods añadiéndolos a la carpeta Mods. No todos funcionan, ojo cuidao.</li><li>Si quieres crear más cabañas porque no configuraste bien la partida, tendrás que liar la de Dios es Cristo, luego lo explico.</li><li>Si alguien tiene mods de esos de hacer la vida más fácil, como el que sirve para pescar podrá usarlos. Esto garantiza que podemos jugar en cualquier servidor con nuestros mods de accesibilidad. También garantiza que si tienes un colega tramposillo puede hacer lo que le sale del pie, pues el servidor hace de servidor y la mayoría de cosas se gestionan desde los clientes.</li></ul><h2 id=al-lío>Al lío</h2><p>El primer paso es instalar Docker. No lo explicaré aquí, lo siento.</p><p>Una vez hecho esto y teniendo a nuestro usuario de turno con permisos para ejecutar docker sin sudo ejecutamos el script oficial de instalación rápida:</p><pre tabindex=0><code>curl -sSL https://raw.githubusercontent.com/truman-world/puppy-stardew-server/main/quick-start.sh | bash
-</code></pre><p>Nos saldrá un asistente maravilloso en inglés. Le damos a la Y y a enter para meter nuestros datos de Steam y esperamos que haga su magia. llegará un momento que nos preguntará si queremos ver los logs. Podemos decirle alegremente que no con la N y enter. Cuidado con la contraseña de VNC. Pon alguna que sea difícil, no quieres a nadie trasteando con tu granja.</p><p>Si tenemos SteamGuard activado tenemos que meter el código. Así que como deberíamos estar en el prompt del sistema nos iremos al contenedor docker que nos ha creado:</p><pre tabindex=0><code>docker attach puppy-stardew
-</code></pre><p>No nos preguntará nada al pulsar enter ni veremos tampoco nada. Pegamos el código que nos habrá llegado por correo y le damos enter.</p><p>Ahora toca un paso delicadísimo: Esperar. En serio, tarda lo suyo. Podemos aprovechar para ir por un café, una cerveza o lo que toque. Cuando termine pulsamos Ctrl + P y luego Ctrl + Q para ¿desacoplarnos? del contenedor. Deberíamos volver al prompt del sistema.</p><p>ya falta poco. para continuar tenemos que apagar el servidor, pues se ha quedado esperando que alguien entre por VNC.</p><pre tabindex=0><code>docker compose down
-</code></pre><h2 id=crear-la-granja-sin-vnc>Crear la granja sin VNC</h2><p>Aquí está el truco. Si lo piensas es sencillo, pero hay que dar con ello.</p><ul><li>Abre Stardew Valley en tu ordenador.</li><li>Crea una granja cooperativa con las cabañas necesarias.</li><li>Salta la historia.</li><li>Duerme para que se guarde, siempre puedes retrasar el día perdido con debug world_setday 1.</li><li>Cierra el juego.</li><li>Copia la partida: encontrarás su directorio en %appdata%\StardewValley\Saves</li><li>Copia el save al servidor. No puedo poner la ruta completa porque no sé tu usuario, pero no es difícil de encontrar: puppy-stardew-server/data/saves/Saves</li><li>Edita con nano puppy-stardew-server/data/game/Mods/ServerAutoLoad/config.json: encontrarás algo como &ldquo;SaveFileName&rdquo;:"", Coloca entre las comillas vacías el nombre del archivo. Quedará algo como &ldquo;SaveFileName&rdquo;: &ldquo;Granjaprueb_428913504&rdquo;,</li></ul><p>Debería bastar. Arranca el servidor con docker compose up -d y prueba a conectarte tras un par de minutos colocando la IP o el dominio del servidor en el Stardew Valley que tienes instalado en el ordenador.</p><p>Si por alguna razón no funciona continúa con el siguiente paso.</p><h2 id=no-puedo-conectar>¡No puedo conectar!</h2><p>Tranquilidad, se puede arreglar.</p><ul><li><p>Para el contenedor:</p><pre tabindex=0><code>docker compose down
-</code></pre></li><li><p>Descarga este zip: <a href=https://jesuspavonabian.es/files/svConfig.zip>SVConfig.zip</a></p></li><li><p>Descomprímelo y coloca los dos archivos que están dentro de la carpeta que se genera en puppy-stardew-server/data/saves reemplazando los que ya hay.</p></li></ul><p>Ahora sí, debería funcionar. Prueba a levantarlo con docker compose up -d y conecta tras unos minutos.</p><h2 id=quiero-crear-otra-cabaña-y-no-quiero-entrar-por-vnc>¡Quiero crear otra cabaña y no quiero entrar por VNC!</h2><p>Venga, te doy el truco, aunque sospecho que a estas alturas ya sabes cuál es&mldr;</p><ul><li>Dile a quien juegue contigo que dormir es necesario. si no duerme antes de que hagas el invento este, perderá el día. Quien avisa no es traidor. ¡Dormid todos!</li><li>Ejecuta docker compose down para apagar el servidor.</li><li>Descarga el save a tu ordenador.</li><li>Cópialo a tu juego local.</li><li>Carga la partida.</li><li>Ve con Robin y crea una cabaña o las que sean necesarias.</li><li>Retrasa un día con el comando que coloqué antes.</li><li>Duerme y sal.</li><li>Sube el save al servidor.</li></ul><p>¡Listo!</p><p>Dudas, comentarios, tirones de orejas por el formato, mejoras&mldr; Sabéis dónde encontrarme.</p><p>¡Cultivad mucho!</p></div><footer class=post-meta><div class=post-author><span class=meta>Por <a href=https://jesuspavonabian.es class="p-author h-card">Jesús Pavón Abián</a></span></div><div class=post-permalink><span class=meta>Enlace permanente: <a href=https://jesuspavonabian.es/post/montar_servidor_stardew_valley/ class=u-url>https://jesuspavonabian.es/post/montar_servidor_stardew_valley/</a></span></div></footer></article><section class=webmentions><h2>Webmentions</h2><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://tkz.one/@snoowing class="u-url p-name">Snow :stardew1:</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/115949379877053505#reblogged-by-111203014862401184 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://tkz.one/@snoowing class="u-url p-name">Snow :stardew1:</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-111203014862401184 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://tkz.one/@palasateneanike class="u-url p-name">La Palitas :heart_rainbow:</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-113143284242434289 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mst.universoalterno.es/@sukiletxe class="u-url p-name">Sukil Etxenike</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/115949379877053505#reblogged-by-109343901331591865 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://neopaquita.es/@precariousmind class="u-url p-name">Biorreactivo</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-114169323316129445 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://comunidad.nvda.es/@developelx class="u-url p-name">Antonio Cascales</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-110816150034220049 class=u-url></a></header><div class="webmention-content p-content"></div></article></section></div></main><footer role=contentinfo><div class=container><div class=footer-content><p class=copyright>&copy; 2026 Jesús Pavón Abián.
-Contenido bajo <a href=https://creativecommons.org/licenses/by/4.0/deed.es rel=license>CC BY 4.0</a>.
-Tema <a href=https://github.com/brennanbrown/indiepaper>indiepaper</a> de <a href=https://berryhouse.ca>Berry House</a>.</p><p class=contact-support><a href=mailto:correo@jesuspavonabian.es class=u-email rel=me>&lt;correo@jesuspavonabian.es></a></p><p class=badge><a href=https://512kb.club><img src=https://512kb.club/assets/images/green-team.svg alt="Web miembro del equipo verde del 512KB club"></a></p><p class=links><a href=https://mst.universoalterno.es/@jpavonabian rel=me>Mastodon</a>
-· <a href=https://github.com/jpavonabian rel=me>GitHub</a>
-· <a href=https://twitter.com/jpa_apj rel=me>Twitter</a>
-· <a href=/feed.xml>RSS</a></p></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;">
+  
+  
+  <title>Montar un servidor de Stardew Valley de forma accesible | El Blog de un informático que sueña con mejorar el mundo</title>
+  <meta name="description" content="Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
+El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&hellip; Un engorro, vaya. Así que nos pusimos a investigar&hellip;
+Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server.">
+  
+  
+  <meta property="og:title" content="Montar un servidor de Stardew Valley de forma accesible">
+  <meta property="og:description" content="Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
+El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&hellip; Un engorro, vaya. Así que nos pusimos a investigar&hellip;
+Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/">
+  <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo">
+  
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Montar un servidor de Stardew Valley de forma accesible">
+  <meta name="twitter:description" content="Llevo un tiempo jugando Stardew Valley. Tanto en cooperativo como en local.
+El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&hellip; Un engorro, vaya. Así que nos pusimos a investigar&hellip;
+Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado Puppy Stardew Server.">
+  
+  <meta name="twitter:creator" content="@jpa_apj">
+  
+  
+  
+  
+  
+  <meta property="article:published_time" content="2026-01-24T09:28:38&#43;01:00">
+  
+  
+  
+  <meta property="article:author" content="Jesús Pavón Abián">
+  
+  
+  
+  
+  <meta name="author" content="Jesús Pavón Abián">
+  
+  
+  
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  
+  
+  
+  
+  
+  
+  <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+  
+  
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  
+  
+  <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
+  
+  
+  <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
+  
+  
+  <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention">
+  
+  
+  
+  
+  
+  
+  
+  <link href="/style.css" rel="stylesheet">
+  
+  
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" href="/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" href="/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="me" href="https://mst.universoalterno.es/@jpavonabian">
+  <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es">
+  
+  
+  <link rel="canonical" href="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/">
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+  
+  <header class="h-card" role="banner">
+    <div class="container">
+  <a href="/" class="u-url p-name">
+    <h1>El Blog de un informático que sueña con mejorar el mundo</h1>
+  </a>
+  
+  <p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p>
+  
+  
+  
+  <div class="p-author h-card h-card-hidden">
+    <span class="p-name">Jesús Pavón Abián</span>
+    
+    <a class="u-email" href="mailto:correo@jesuspavonabian.es">correo@jesuspavonabian.es</a>
+    
+    
+    <img class="u-photo" src="https://jesuspavonabian.es/foto.jpg" alt="Jesús Pavón Abián">
+    
+    
+    <a class="u-url" rel="me" href="https://jesuspavonabian.es">https://jesuspavonabian.es</a>
+    
+  </div>
+  
+</div>
+
+  </header>
+  
+  <nav role="navigation" aria-label="Navegación principal">
+    <div class="container">
+  <ul>
+    <li><a href="/" >Inicio</a></li>
+    
+    <li><a href="https://jesuspavonabian.es/about/" >Acerca de</a></li>
+    
+    
+    <li><a href="https://jesuspavonabian.es/tags/" >Etiquetas</a></li>
+    
+    
+    
+  </ul>
+</div>
+
+  </nav>
+  
+  <main id="main" role="main">
+    
+<div class="container">
+  <article class="h-entry">
+    <header>
+      <h1 class="p-name">Montar un servidor de Stardew Valley de forma accesible</h1>
+      
+      
+      <div class="post-meta">
+        <time datetime="2026-01-24T09:28:38&#43;01:00" class="dt-published">24 de enero de 2026</time>
+        
+        <span class="meta-separator"> </span>
+        <data value="930">930 palabras</data>
+        
+      </div>
+      
+      
+      
+    </header>
+    
+    <div class="e-content">
+      <p>Llevo un tiempo jugando <a href="https://store.steampowered.com/app/413150/Stardew_Valley/?l=spanish">Stardew Valley</a>. Tanto en cooperativo como en local.</p>
+<p>El caso es que a unos amigos y a mi nos daba mucho la lata el tener que esperar al anfitrión de la partida. Si no quería jugar, no jugaba nadie, si se le iba la luz a tomar por saco el progreso&hellip; Un engorro, vaya. Así que nos pusimos a investigar&hellip;</p>
+<p>Y dimos con un repositorio que levanta un servidor del juego mediante Docker llamado <a href="https://github.com/truman-world/puppy-stardew-server/">Puppy Stardew Server</a>. ¿el problema? Lo conseguíamos levantar, pero requería conectarse mediante VNC para cargar la primera partida. Y claro, ahí no había accesibilidad ninguna.</p>
+<p>Buscamos por la red. Dimos vueltas a google, encontramos las bolas de dragón y pedimos un deseo&hellip; Y nada. Que a la gente le molaba VNC.</p>
+<p>así que tiramos de la solución de la cual tiramos muchos cegatos cuando no podemos hacer algo: &ldquo;Persona con ojos más cercana, ¿haces aquí un par de clicks?&rdquo; y el problema se arregló.</p>
+<p>Pero me molestaba. Muchísimo. Si lo que se necesitaba era tener una partida se podía hacer a mano editando un archivo, seguro.</p>
+<p>Y se pudo, aprovechando que no podía dormir.</p>
+<h2 id="cosas-a-tener-en-cuenta-antes-de-entrar-en-materia">Cosas a tener en cuenta antes de entrar en materia</h2>
+<p>No es mucho, pero es conveniente saberlo.</p>
+<ul>
+<li>El script levanta un servidor con Docker y descarga el juego de una cuenta de Steam. Así que es necesario tener el juego comprado. Solo usa Steam únicamente para descargar los archivos.</li>
+<li>Intenté ejecutarlo en una Raspberry Pi y petó por todo lo alto. Supongo que alguien con tiempo podría cohnstruir una imagen.</li>
+<li>Se pueden añadir más mods añadiéndolos a la carpeta Mods. No todos funcionan, ojo cuidao.</li>
+<li>Si quieres  crear más cabañas porque no configuraste bien la partida, tendrás que liar la de Dios es Cristo, luego lo explico.</li>
+<li>Si alguien tiene mods de esos de hacer la vida más fácil, como el que sirve para pescar podrá usarlos. Esto garantiza que podemos jugar en cualquier servidor con nuestros mods de accesibilidad. También garantiza que si tienes un colega tramposillo puede hacer lo que le sale del pie, pues el servidor hace de servidor y la mayoría de cosas se gestionan desde los clientes.</li>
+</ul>
+<h2 id="al-lío">Al lío</h2>
+<p>El primer paso es instalar Docker. No lo explicaré aquí, lo siento.</p>
+<p>Una vez hecho esto y teniendo a nuestro usuario de turno con permisos para ejecutar docker sin sudo ejecutamos el script oficial de instalación rápida:</p>
+<pre tabindex="0"><code>curl -sSL https://raw.githubusercontent.com/truman-world/puppy-stardew-server/main/quick-start.sh | bash
+</code></pre><p>Nos saldrá un asistente maravilloso en inglés. Le damos a la Y y a enter para meter nuestros datos de Steam y esperamos que haga su magia. llegará un momento que nos preguntará si queremos ver los logs. Podemos decirle alegremente que no con la N y enter. Cuidado con la contraseña de VNC. Pon alguna que sea difícil, no quieres a nadie trasteando con tu granja.</p>
+<p>Si tenemos SteamGuard activado tenemos que meter el código. Así que como deberíamos estar en el prompt del sistema nos iremos al contenedor docker que nos ha creado:</p>
+<pre tabindex="0"><code>docker attach puppy-stardew
+</code></pre><p>No nos preguntará nada al pulsar enter ni veremos tampoco nada. Pegamos el código que nos habrá llegado por correo y le damos enter.</p>
+<p>Ahora toca un paso delicadísimo: Esperar. En serio, tarda lo suyo. Podemos aprovechar para ir por un café, una cerveza o lo que toque. Cuando termine pulsamos Ctrl + P y luego Ctrl + Q para ¿desacoplarnos? del contenedor. Deberíamos volver al prompt del sistema.</p>
+<p>ya falta poco. para continuar tenemos que apagar el servidor, pues se ha quedado esperando que alguien entre por VNC.</p>
+<pre tabindex="0"><code>docker compose down
+</code></pre><h2 id="crear-la-granja-sin-vnc">Crear la granja sin VNC</h2>
+<p>Aquí está el truco. Si lo piensas es sencillo, pero hay que dar con ello.</p>
+<ul>
+<li>Abre Stardew Valley en tu ordenador.</li>
+<li>Crea una granja cooperativa con las cabañas necesarias.</li>
+<li>Salta la historia.</li>
+<li>Duerme para que se guarde, siempre puedes retrasar el día perdido con debug world_setday 1.</li>
+<li>Cierra el juego.</li>
+<li>Copia la partida: encontrarás su directorio en %appdata%\StardewValley\Saves</li>
+<li>Copia el save al servidor. No puedo poner la ruta completa porque no sé tu usuario, pero no es difícil de encontrar: puppy-stardew-server/data/saves/Saves</li>
+<li>Edita con nano puppy-stardew-server/data/game/Mods/ServerAutoLoad/config.json: encontrarás algo como &ldquo;SaveFileName&rdquo;:&quot;&quot;, Coloca entre las comillas vacías el nombre del archivo. Quedará algo como &ldquo;SaveFileName&rdquo;: &ldquo;Granjaprueb_428913504&rdquo;,</li>
+</ul>
+<p>Debería bastar. Arranca el servidor con docker compose up -d y prueba a conectarte tras un par de minutos colocando la IP o el dominio del servidor en el Stardew Valley que tienes instalado en el ordenador.</p>
+<p>Si por alguna razón no funciona continúa con el siguiente paso.</p>
+<h2 id="no-puedo-conectar">¡No puedo conectar!</h2>
+<p>Tranquilidad, se puede arreglar.</p>
+<ul>
+<li>
+<p>Para el contenedor:</p>
+<pre tabindex="0"><code>docker compose down
+</code></pre></li>
+<li>
+<p>Descarga este zip: <a href="https://jesuspavonabian.es/files/svConfig.zip">SVConfig.zip</a></p>
+</li>
+<li>
+<p>Descomprímelo y coloca los dos archivos que están dentro de la carpeta que se genera en puppy-stardew-server/data/saves reemplazando los que ya hay.</p>
+</li>
+</ul>
+<p>Ahora sí, debería funcionar. Prueba a levantarlo con docker compose up -d y conecta tras unos minutos.</p>
+<h2 id="quiero-crear-otra-cabaña-y-no-quiero-entrar-por-vnc">¡Quiero crear otra cabaña y no quiero entrar por VNC!</h2>
+<p>Venga, te doy el truco, aunque sospecho que a estas alturas ya sabes cuál es&hellip;</p>
+<ul>
+<li>Dile a quien juegue contigo que dormir es necesario. si no duerme antes de que hagas el invento este, perderá el día. Quien avisa no es traidor. ¡Dormid todos!</li>
+<li>Ejecuta docker compose down para apagar el servidor.</li>
+<li>Descarga el save a tu ordenador.</li>
+<li>Cópialo a tu juego local.</li>
+<li>Carga la partida.</li>
+<li>Ve con Robin y crea una cabaña o las que sean necesarias.</li>
+<li>Retrasa un día con el comando que coloqué antes.</li>
+<li>Duerme y sal.</li>
+<li>Sube el save al servidor.</li>
+</ul>
+<p>¡Listo!</p>
+<p>Dudas, comentarios, tirones de orejas por el formato, mejoras&hellip; Sabéis dónde encontrarme.</p>
+<p>¡Cultivad mucho!</p>
+
+    </div>
+    
+    
+    
+    <footer class="post-meta">
+      
+      <div class="post-author">
+        <span class="meta">Por <a href="https://jesuspavonabian.es" class="p-author h-card">Jesús Pavón Abián</a></span>
+      </div>
+      
+      
+      <div class="post-permalink">
+        <span class="meta">Enlace permanente: <a href="https://jesuspavonabian.es/post/montar_servidor_stardew_valley/" class="u-url">https://jesuspavonabian.es/post/montar_servidor_stardew_valley/</a></span>
+      </div>
+      
+      
+      
+      
+    </footer>
+  </article>
+  
+  
+  
+  
+  
+
+
+<section class="webmentions">
+  <h2>Webmentions</h2>
+  
+  
+    
+    
+    
+      
+      
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://tkz.one/@snoowing" class="u-url p-name">Snow :stardew1:</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/115949379877053505#reblogged-by-111203014862401184" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://tkz.one/@snoowing" class="u-url p-name">Snow :stardew1:</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-111203014862401184" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://tkz.one/@palasateneanike" class="u-url p-name">La Palitas :heart_rainbow:</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-113143284242434289" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://mst.universoalterno.es/@sukiletxe" class="u-url p-name">Sukil Etxenike</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/115949379877053505#reblogged-by-109343901331591865" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://neopaquita.es/@precariousmind" class="u-url p-name">Biorreactivo</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-114169323316129445" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://comunidad.nvda.es/@developelx" class="u-url p-name">Antonio Cascales</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/115949379877053505#favorited-by-110816150034220049" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+      
+    
+  
+</section>
+
+
+  
+</div>
+
+  </main>
+  
+  <footer role="contentinfo">
+    <div class="container">
+  <div class="footer-content">
+    
+    
+    <p class="copyright">
+      &copy; 2026 Jesús Pavón Abián.
+      Contenido bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">CC BY 4.0</a>.
+      Tema <a href="https://github.com/brennanbrown/indiepaper">indiepaper</a> de <a href="https://berryhouse.ca">Berry House</a>.
+    </p>
+    
+    <p class="contact-support">
+      
+      <a href="mailto:correo@jesuspavonabian.es" class="u-email" rel="me">&lt;correo@jesuspavonabian.es&gt;</a>
+      
+      
+    </p>
+    
+    <p class="badge">
+      <a href="https://512kb.club"><img src="https://512kb.club/assets/images/green-team.svg" alt="Web miembro del equipo verde del 512KB club" /></a>
+    </p>
+    
+    <p class="links">
+      
+      
+      <a href="https://mst.universoalterno.es/@jpavonabian" rel="me">Mastodon</a>
+      
+       · <a href="https://github.com/jpavonabian" rel="me">GitHub</a>
+      
+       · <a href="https://twitter.com/jpa_apj" rel="me">Twitter</a>
+      
+      
+      · <a href="/feed.xml">RSS</a>
+      
+    </p>
+  </div>
+</div>
+
+  </footer>
+</body>
+</html>

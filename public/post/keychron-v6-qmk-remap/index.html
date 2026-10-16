@@ -1,34 +1,423 @@
-<!doctype html><html lang=es-es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta http-equiv=Content-Security-Policy content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;"><title>Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento) | El Blog de un informático que sueña con mejorar el mundo</title>
-<meta name=description content="Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win+D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
-Y diréis&mldr; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia."><meta property="og:title" content="Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)"><meta property="og:description" content="Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win+D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
-Y diréis&mldr; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia."><meta property="og:type" content="article"><meta property="og:url" content="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/"><meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo"><meta name=twitter:card content="summary"><meta name=twitter:title content="Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)"><meta name=twitter:description content="Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win+D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
-Y diréis&mldr; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia."><meta name=twitter:creator content="@jpa_apj"><meta property="article:published_time" content="2026-06-09T09:00:00+02:00"><meta property="article:author" content="Jesús Pavón Abián"><meta name=author content="Jesús Pavón Abián"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow"><link rel=token_endpoint href=https://tokens.indieauth.com/token><link rel=authorization_endpoint href=https://indieauth.com/auth><link rel=micropub href=https://jesuspavonabian.es/netlify/functions/micropub><link rel=microsub href=https://aperture.p3k.io/microsub/969><link rel=webmention href=https://webmention.io/jesuspavonabian.es/webmention><link href=/style.css rel=stylesheet><link rel=icon href=/favicon/favicon.ico sizes=any><link rel=apple-touch-icon href=/favicon/apple-touch-icon.png><link rel=icon href=/favicon/favicon-16x16.png sizes=16x16><link rel=icon href=/favicon/favicon-32x32.png sizes=32x32><link rel=me href=https://mst.universoalterno.es/@jpavonabian><meta name=fediverse:creator content="@jpavonabian@mst.universoalterno.es"><link rel=canonical href=https://jesuspavonabian.es/post/keychron-v6-qmk-remap/></head><body><a href=#main class=skip-link>Saltar al contenido principal</a><header class=h-card role=banner><div class=container><a href=/ class="u-url p-name"><h1>El Blog de un informático que sueña con mejorar el mundo</h1></a><p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p><div class="p-author h-card h-card-hidden"><span class=p-name>Jesús Pavón Abián</span>
-<a class=u-email href=mailto:correo@jesuspavonabian.es>correo@jesuspavonabian.es</a>
-<img class=u-photo src=https://jesuspavonabian.es/foto.jpg alt="Jesús Pavón Abián">
-<a class=u-url rel=me href=https://jesuspavonabian.es>https://jesuspavonabian.es</a></div></div></header><nav role=navigation aria-label="Navegación principal"><div class=container><ul><li><a href=/>Inicio</a></li><li><a href=https://jesuspavonabian.es/about/>Acerca de</a></li><li><a href=https://jesuspavonabian.es/tags/>Etiquetas</a></li></ul></div></nav><main id=main role=main><div class=container><article class=h-entry><header><h1 class=p-name>Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)</h1><div class=post-meta><time datetime=2026-06-09T09:00:00+02:00 class=dt-published>9 de junio de 2026</time>
-<span class=meta-separator></span><data value=673>673 palabras</data></div></header><div class=e-content><p>Mi teclado hacía algo raro de narices. Había una tecla que enviaba <code>Win+D</code> cada vez que la pulsaba. En concreto, la tecla que debería ser <code>PAUSE</code>.</p><p>Y diréis&mldr; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</p><p>El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla&mldr; si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.</p><p>En principio solo tienes que compilar un firmware, flashearlo y listo. Fácil, sencillo y para toda la familia.</p><h2 id=el-entorno>El entorno</h2><p>El V6 usa un microcontrolador STM32, así que necesitas la toolchain de ARM para compilar. Yo lo hice desde WSL (Ubuntu 22.04 en Windows), que se conoce que en Windows el invento no funciona del todo fino.</p><p>Primero instala QMK CLI:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pip install qmk
-</span></span><span style=display:flex><span>qmk setup
-</span></span></code></pre></div><p>El setup clona el repositorio entero de QMK firmware. Tarda un rato. Cuando termine verás un montón de warnings sobre dependencias que faltan. En Ubuntu los paquetes tienen nombres distintos a los que espera QMK:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt install gcc-arm-none-eabi gcc-avr avrdude dfu-programmer dfu-util
-</span></span></code></pre></div><p><code>gcc-avr</code> en lugar de <code>avr-gcc</code>. Detalle que no está en ningún sitio. Gracias, Claude.</p><p>El <code>avr-gcc</code> del repositorio de Ubuntu es viejo y se quejará de ello. No importa: el V6 usa ARM, no AVR. Puedes ignorar ese warning y seguir.</p><h2 id=el-keymap>El keymap</h2><p>El V6 tiene varias variantes. La mía tiene perilla (encoder) y layout ISO español, así que es <code>keychron/v6/iso_encoder</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>qmk new-keymap -kb keychron/v6/iso_encoder -km tunombre
-</span></span></code></pre></div><p>Esto crea una copia del keymap por defecto en:</p><pre tabindex=0><code>~/qmk_firmware/keyboards/keychron/v6/iso_encoder/keymaps/tunombre/keymap.c
-</code></pre><p>Ábrelo con tu editor. Busca la capa <code>WIN_BASE</code>, que es la que usa el teclado en modo Windows. La primera fila tiene esto:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span>KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_NO,  RM_NEXT, ...
-</span></span></code></pre></div><p>Ese <code>KC_NO</code> entre <code>KC_PSCR</code> (Imprimir Pantalla) y <code>RM_NEXT</code> es la tecla conflictiva. <code>KC_NO</code> significa literalmente &ldquo;no hacer nada&rdquo;, pero Windows la interpreta como <code>Win+D</code> por alguna razón que no me apetece investigar.</p><p>Cámbialo por <code>KC_PAUSE</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=display:flex><span>KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_PAUSE,  RM_NEXT, ...
-</span></span></code></pre></div><p>Guarda y compila:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>qmk compile -kb keychron/v6/iso_encoder -km tunombre
-</span></span></code></pre></div><h2 id=el-flasheo-o-cómo-casi-me-quedo-sin-teclado>El flasheo, o cómo casi me quedo sin teclado</h2><p>Aquí está la parte interesante.</p><p>WSL no tiene acceso directo a dispositivos USB. Para flashear desde WSL necesitas <code>usbipd</code>, que expone el dispositivo USB de Windows al subsistema Linux:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell><span style=display:flex><span><span style=color:#6272a4># En PowerShell como administrador</span>
-</span></span><span style=display:flex><span>winget install usbipd
-</span></span></code></pre></div><p>Ahora pon el teclado en modo bootloader. Hay dos formas:</p><p><strong>Opción A:</strong> Desconecta, mantén pulsado <code>Escape</code>, vuelve a conectar.</p><p><strong>Opción B (si al Flashear se te queda como un pisapapeles caro y da error el flasheo):</strong> Quita el keycap de la barra espaciadora. Debajo, a la izquierda del switch, hay un botón de reset en la PCB. Mantén ese botón pulsado mientras conectas el USB.</p><p>Con el teclado en modo DFU, comprueba el BUSID en Powershell como administrador:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell><span style=display:flex><span>usbipd list
-</span></span><span style=display:flex><span><span style=color:#6272a4># Busca: STM Device in DFU Mode</span>
-</span></span></code></pre></div><p>Comparte el dispositivo con WSL. Otra vez, como administrador, por favor:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-powershell data-lang=powershell><span style=display:flex><span>usbipd bind --busid <span style=color:#8be9fd;font-style:italic>X-X</span>
-</span></span><span style=display:flex><span>usbipd attach --wsl --busid <span style=color:#8be9fd;font-style:italic>X-X</span>
-</span></span></code></pre></div><p>Y flashea desde WSL:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>qmk flash -kb keychron/v6/iso_encoder -km tunombre
-</span></span></code></pre></div><h3 id=lo-que-puede-salir-mal>Lo que puede salir mal</h3><p>Si el flash falla a mitad (error <code>ERASE_PAGE</code> al 74%, por ejemplo), el firmware queda corrupto. El teclado enciende pero no es reconocido por el PC como dispositivo USB. Pánico.</p><p>La solución es forzar el modo bootloader por hardware usando el botón de la PCB. Quitando el keycap del espacio llegas a él sin abrir nada. Con el teclado en modo DFU puedes reflashear sin problema aunque el firmware esté corrupto, porque el bootloader del STM32 vive en una zona protegida del chip que un flash normal no puede tocar.</p><p>Repite el proceso: botón de reset + USB, <code>usbipd attach</code>, <code>qmk flash</code>. A la segunda va. O a la tercera, ¿por qué no?</p><h2 id=el-resultado>El resultado</h2><p>Tecla remapeada. ¿A que ha sido sencillito?</p></div><footer class=post-meta><div class=post-author><span class=meta>Por <a href=https://jesuspavonabian.es class="p-author h-card">Jesús Pavón Abián</a></span></div><div class=post-permalink><span class=meta>Enlace permanente: <a href=https://jesuspavonabian.es/post/keychron-v6-qmk-remap/ class=u-url>https://jesuspavonabian.es/post/keychron-v6-qmk-remap/</a></span></div></footer></article><section class=webmentions><h2>Webmentions</h2><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://alex.femto.pub/@yo/ class="u-url p-name">Alex</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/116719874214923356#reblogged-by-112192629693919760 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mastodon.social/@quetzatl class="u-url p-name">Juan CBS</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-109295361653547525 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://social.anartist.org/@choan class="u-url p-name">choan ????</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-112621511130704347 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://owo.cafe/@logard class="u-url p-name">Logard</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-111938253933179570 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://masto.es/@andrewblasco class="u-url p-name">Riquiñez :fedora:</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-110316722080200152 class=u-url></a></header><div class="webmention-content p-content"></div></article></section></div></main><footer role=contentinfo><div class=container><div class=footer-content><p class=copyright>&copy; 2026 Jesús Pavón Abián.
-Contenido bajo <a href=https://creativecommons.org/licenses/by/4.0/deed.es rel=license>CC BY 4.0</a>.
-Tema <a href=https://github.com/brennanbrown/indiepaper>indiepaper</a> de <a href=https://berryhouse.ca>Berry House</a>.</p><p class=contact-support><a href=mailto:correo@jesuspavonabian.es class=u-email rel=me>&lt;correo@jesuspavonabian.es></a></p><p class=badge><a href=https://512kb.club><img src=https://512kb.club/assets/images/green-team.svg alt="Web miembro del equipo verde del 512KB club"></a></p><p class=links><a href=https://mst.universoalterno.es/@jpavonabian rel=me>Mastodon</a>
-· <a href=https://github.com/jpavonabian rel=me>GitHub</a>
-· <a href=https://twitter.com/jpa_apj rel=me>Twitter</a>
-· <a href=/feed.xml>RSS</a></p></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;">
+  
+  
+  <title>Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento) | El Blog de un informático que sueña con mejorar el mundo</title>
+  <meta name="description" content="Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win&#43;D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
+Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.">
+  
+  
+  <meta property="og:title" content="Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)">
+  <meta property="og:description" content="Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win&#43;D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
+Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/">
+  <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo">
+  
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)">
+  <meta name="twitter:description" content="Mi teclado hacía algo raro de narices. Había una tecla que enviaba Win&#43;D cada vez que la pulsaba. En concreto, la tecla que debería ser PAUSE.
+Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.">
+  
+  <meta name="twitter:creator" content="@jpa_apj">
+  
+  
+  
+  
+  
+  <meta property="article:published_time" content="2026-06-09T09:00:00&#43;02:00">
+  
+  
+  
+  <meta property="article:author" content="Jesús Pavón Abián">
+  
+  
+  
+  
+  <meta name="author" content="Jesús Pavón Abián">
+  
+  
+  
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  
+  
+  
+  
+  
+  
+  <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+  
+  
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  
+  
+  <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
+  
+  
+  <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
+  
+  
+  <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention">
+  
+  
+  
+  
+  
+  
+  
+  <link href="/style.css" rel="stylesheet">
+  
+  
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" href="/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" href="/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="me" href="https://mst.universoalterno.es/@jpavonabian">
+  <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es">
+  
+  
+  <link rel="canonical" href="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/">
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+  
+  <header class="h-card" role="banner">
+    <div class="container">
+  <a href="/" class="u-url p-name">
+    <h1>El Blog de un informático que sueña con mejorar el mundo</h1>
+  </a>
+  
+  <p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p>
+  
+  
+  
+  <div class="p-author h-card h-card-hidden">
+    <span class="p-name">Jesús Pavón Abián</span>
+    
+    <a class="u-email" href="mailto:correo@jesuspavonabian.es">correo@jesuspavonabian.es</a>
+    
+    
+    <img class="u-photo" src="https://jesuspavonabian.es/foto.jpg" alt="Jesús Pavón Abián">
+    
+    
+    <a class="u-url" rel="me" href="https://jesuspavonabian.es">https://jesuspavonabian.es</a>
+    
+  </div>
+  
+</div>
+
+  </header>
+  
+  <nav role="navigation" aria-label="Navegación principal">
+    <div class="container">
+  <ul>
+    <li><a href="/" >Inicio</a></li>
+    
+    <li><a href="https://jesuspavonabian.es/about/" >Acerca de</a></li>
+    
+    
+    <li><a href="https://jesuspavonabian.es/tags/" >Etiquetas</a></li>
+    
+    
+    
+  </ul>
+</div>
+
+  </nav>
+  
+  <main id="main" role="main">
+    
+<div class="container">
+  <article class="h-entry">
+    <header>
+      <h1 class="p-name">Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)</h1>
+      
+      
+      <div class="post-meta">
+        <time datetime="2026-06-09T09:00:00&#43;02:00" class="dt-published">9 de junio de 2026</time>
+        
+        <span class="meta-separator"> </span>
+        <data value="673">673 palabras</data>
+        
+      </div>
+      
+      
+      
+    </header>
+    
+    <div class="e-content">
+      <p>Mi teclado hacía algo raro de narices. Había una tecla que enviaba <code>Win+D</code> cada vez que la pulsaba. En concreto, la tecla que debería ser <code>PAUSE</code>.</p>
+<p>Y diréis&hellip; ¿Para qué sirve esa tecla? Pues para cambiar el control del teclado en las apps de máquinas virtuales en Windows, por ejemplo. Pero claro, al pulsarla se me iba al escritorio, una maravilla que le deseo probar a todo el mundo, que el teclado haga cosas raras no tiene precio y ejercita la paciencia.</p>
+<p>El Keychron V6 viene con QMK. Eso significa que puedes remapear cualquier tecla&hellip; si no tienes problemas de visión, claro. Si eso pasa, puedes, pero en modo sufrimiento nivel profesional.</p>
+<p>En principio solo tienes que compilar un firmware, flashearlo y listo. Fácil, sencillo y para toda la familia.</p>
+<h2 id="el-entorno">El entorno</h2>
+<p>El V6 usa un microcontrolador STM32, así que necesitas la toolchain de ARM para compilar. Yo lo hice desde WSL (Ubuntu 22.04 en Windows), que se conoce que en Windows el invento no funciona del todo fino.</p>
+<p>Primero instala QMK CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install qmk
+</span></span><span style="display:flex;"><span>qmk setup
+</span></span></code></pre></div><p>El setup clona el repositorio entero de QMK firmware. Tarda un rato. Cuando termine verás un montón de warnings sobre dependencias que faltan. En Ubuntu los paquetes tienen nombres distintos a los que espera QMK:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install gcc-arm-none-eabi gcc-avr avrdude dfu-programmer dfu-util
+</span></span></code></pre></div><p><code>gcc-avr</code> en lugar de <code>avr-gcc</code>. Detalle que no está en ningún sitio. Gracias, Claude.</p>
+<p>El <code>avr-gcc</code> del repositorio de Ubuntu es viejo y se quejará de ello. No importa: el V6 usa ARM, no AVR. Puedes ignorar ese warning y seguir.</p>
+<h2 id="el-keymap">El keymap</h2>
+<p>El V6 tiene varias variantes. La mía tiene perilla (encoder) y layout ISO español, así que es <code>keychron/v6/iso_encoder</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qmk new-keymap -kb keychron/v6/iso_encoder -km tunombre
+</span></span></code></pre></div><p>Esto crea una copia del keymap por defecto en:</p>
+<pre tabindex="0"><code>~/qmk_firmware/keyboards/keychron/v6/iso_encoder/keymaps/tunombre/keymap.c
+</code></pre><p>Ábrelo con tu editor. Busca la capa <code>WIN_BASE</code>, que es la que usa el teclado en modo Windows. La primera fila tiene esto:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_NO,  RM_NEXT, ...
+</span></span></code></pre></div><p>Ese <code>KC_NO</code> entre <code>KC_PSCR</code> (Imprimir Pantalla) y <code>RM_NEXT</code> es la tecla conflictiva. <code>KC_NO</code> significa literalmente &ldquo;no hacer nada&rdquo;, pero Windows la interpreta como <code>Win+D</code> por alguna razón que no me apetece investigar.</p>
+<p>Cámbialo por <code>KC_PAUSE</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>KC_ESC,   KC_F1, ... KC_F12,  KC_MUTE,  KC_PSCR,  KC_PAUSE,  RM_NEXT, ...
+</span></span></code></pre></div><p>Guarda y compila:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qmk compile -kb keychron/v6/iso_encoder -km tunombre
+</span></span></code></pre></div><h2 id="el-flasheo-o-cómo-casi-me-quedo-sin-teclado">El flasheo, o cómo casi me quedo sin teclado</h2>
+<p>Aquí está la parte interesante.</p>
+<p>WSL no tiene acceso directo a dispositivos USB. Para flashear desde WSL necesitas <code>usbipd</code>, que expone el dispositivo USB de Windows al subsistema Linux:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#6272a4"># En PowerShell como administrador</span>
+</span></span><span style="display:flex;"><span>winget install usbipd
+</span></span></code></pre></div><p>Ahora pon el teclado en modo bootloader. Hay dos formas:</p>
+<p><strong>Opción A:</strong> Desconecta, mantén pulsado <code>Escape</code>, vuelve a conectar.</p>
+<p><strong>Opción B (si al Flashear se te queda como un pisapapeles caro y da error el flasheo):</strong> Quita el keycap de la barra espaciadora. Debajo, a la izquierda del switch, hay un botón de reset en la PCB. Mantén ese botón pulsado mientras conectas el USB.</p>
+<p>Con el teclado en modo DFU, comprueba el BUSID en Powershell como administrador:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>usbipd list
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Busca: STM Device in DFU Mode</span>
+</span></span></code></pre></div><p>Comparte el dispositivo con WSL. Otra vez, como administrador, por favor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>usbipd bind --busid <span style="color:#8be9fd;font-style:italic">X-X</span>
+</span></span><span style="display:flex;"><span>usbipd attach --wsl --busid <span style="color:#8be9fd;font-style:italic">X-X</span>
+</span></span></code></pre></div><p>Y flashea desde WSL:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qmk flash -kb keychron/v6/iso_encoder -km tunombre
+</span></span></code></pre></div><h3 id="lo-que-puede-salir-mal">Lo que puede salir mal</h3>
+<p>Si el flash falla a mitad (error <code>ERASE_PAGE</code> al 74%, por ejemplo), el firmware queda corrupto. El teclado enciende pero no es reconocido por el PC como dispositivo USB. Pánico.</p>
+<p>La solución es forzar el modo bootloader por hardware usando el botón de la PCB. Quitando el keycap del espacio llegas a él sin abrir nada. Con el teclado en modo DFU puedes reflashear sin problema aunque el firmware esté corrupto, porque el bootloader del STM32 vive en una zona protegida del chip que un flash normal no puede tocar.</p>
+<p>Repite el proceso: botón de reset + USB, <code>usbipd attach</code>, <code>qmk flash</code>. A la segunda va. O a la tercera, ¿por qué no?</p>
+<h2 id="el-resultado">El resultado</h2>
+<p>Tecla remapeada. ¿A que ha sido sencillito?</p>
+
+    </div>
+    
+    
+    
+    <footer class="post-meta">
+      
+      <div class="post-author">
+        <span class="meta">Por <a href="https://jesuspavonabian.es" class="p-author h-card">Jesús Pavón Abián</a></span>
+      </div>
+      
+      
+      <div class="post-permalink">
+        <span class="meta">Enlace permanente: <a href="https://jesuspavonabian.es/post/keychron-v6-qmk-remap/" class="u-url">https://jesuspavonabian.es/post/keychron-v6-qmk-remap/</a></span>
+      </div>
+      
+      
+      
+      
+    </footer>
+  </article>
+  
+  
+  
+  
+  
+
+
+<section class="webmentions">
+  <h2>Webmentions</h2>
+  
+  
+    
+    
+    
+      
+      
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://alex.femto.pub/@yo/" class="u-url p-name">Alex</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/116719874214923356#reblogged-by-112192629693919760" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://mastodon.social/@quetzatl" class="u-url p-name">Juan CBS</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-109295361653547525" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://social.anartist.org/@choan" class="u-url p-name">choan ????</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-112621511130704347" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://owo.cafe/@logard" class="u-url p-name">Logard</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-111938253933179570" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://masto.es/@andrewblasco" class="u-url p-name">Riquiñez :fedora:</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/116719874214923356#favorited-by-110316722080200152" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+      
+    
+  
+</section>
+
+
+  
+</div>
+
+  </main>
+  
+  <footer role="contentinfo">
+    <div class="container">
+  <div class="footer-content">
+    
+    
+    <p class="copyright">
+      &copy; 2026 Jesús Pavón Abián.
+      Contenido bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">CC BY 4.0</a>.
+      Tema <a href="https://github.com/brennanbrown/indiepaper">indiepaper</a> de <a href="https://berryhouse.ca">Berry House</a>.
+    </p>
+    
+    <p class="contact-support">
+      
+      <a href="mailto:correo@jesuspavonabian.es" class="u-email" rel="me">&lt;correo@jesuspavonabian.es&gt;</a>
+      
+      
+    </p>
+    
+    <p class="badge">
+      <a href="https://512kb.club"><img src="https://512kb.club/assets/images/green-team.svg" alt="Web miembro del equipo verde del 512KB club" /></a>
+    </p>
+    
+    <p class="links">
+      
+      
+      <a href="https://mst.universoalterno.es/@jpavonabian" rel="me">Mastodon</a>
+      
+       · <a href="https://github.com/jpavonabian" rel="me">GitHub</a>
+      
+       · <a href="https://twitter.com/jpa_apj" rel="me">Twitter</a>
+      
+      
+      · <a href="/feed.xml">RSS</a>
+      
+    </p>
+  </div>
+</div>
+
+  </footer>
+</body>
+</html>

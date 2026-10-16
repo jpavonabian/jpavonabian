@@ -1,24 +1,408 @@
-<!doctype html><html lang=es-es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta http-equiv=Content-Security-Policy content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;"><title>Programación de radios Baofeng a ciegas | El Blog de un informático que sueña con mejorar el mundo</title>
-<meta name=description content="Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado CHIRP son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.
-Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia."><meta property="og:title" content="Programación de radios Baofeng a ciegas"><meta property="og:description" content="Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado CHIRP son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.
-Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia."><meta property="og:type" content="article"><meta property="og:url" content="https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/"><meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo"><meta name=twitter:card content="summary"><meta name=twitter:title content="Programación de radios Baofeng a ciegas"><meta name=twitter:description content="Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado CHIRP son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.
-Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia."><meta name=twitter:creator content="@jpa_apj"><meta property="article:published_time" content="2024-10-06T16:47:59+02:00"><meta property="article:author" content="Jesús Pavón Abián"><meta name=author content="Jesús Pavón Abián"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow"><link rel=token_endpoint href=https://tokens.indieauth.com/token><link rel=authorization_endpoint href=https://indieauth.com/auth><link rel=micropub href=https://jesuspavonabian.es/netlify/functions/micropub><link rel=microsub href=https://aperture.p3k.io/microsub/969><link rel=webmention href=https://webmention.io/jesuspavonabian.es/webmention><link href=/style.css rel=stylesheet><link rel=icon href=/favicon/favicon.ico sizes=any><link rel=apple-touch-icon href=/favicon/apple-touch-icon.png><link rel=icon href=/favicon/favicon-16x16.png sizes=16x16><link rel=icon href=/favicon/favicon-32x32.png sizes=32x32><link rel=me href=https://mst.universoalterno.es/@jpavonabian><meta name=fediverse:creator content="@jpavonabian@mst.universoalterno.es"><link rel=canonical href=https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/></head><body><a href=#main class=skip-link>Saltar al contenido principal</a><header class=h-card role=banner><div class=container><a href=/ class="u-url p-name"><h1>El Blog de un informático que sueña con mejorar el mundo</h1></a><p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p><div class="p-author h-card h-card-hidden"><span class=p-name>Jesús Pavón Abián</span>
-<a class=u-email href=mailto:correo@jesuspavonabian.es>correo@jesuspavonabian.es</a>
-<img class=u-photo src=https://jesuspavonabian.es/foto.jpg alt="Jesús Pavón Abián">
-<a class=u-url rel=me href=https://jesuspavonabian.es>https://jesuspavonabian.es</a></div></div></header><nav role=navigation aria-label="Navegación principal"><div class=container><ul><li><a href=/>Inicio</a></li><li><a href=https://jesuspavonabian.es/about/>Acerca de</a></li><li><a href=https://jesuspavonabian.es/tags/>Etiquetas</a></li></ul></div></nav><main id=main role=main><div class=container><article class=h-entry><header><h1 class=p-name>Programación de radios Baofeng a ciegas</h1><div class=post-meta><time datetime=2024-10-06T16:47:59+02:00 class=dt-published>6 de octubre de 2024</time>
-<span class=meta-separator></span><data value=1024>1024 palabras</data></div></header><div class=e-content><p>Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado <a href=https://chirpmyradio.com/projects/chirp/wiki/Home>CHIRP</a> son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.</p><p>Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia.</p><h2 id=consiguiendo-lo-necesario>Consiguiendo lo necesario</h2><ul><li>en primer lugar, descarga la última versión de <a href=https://chirpmyradio.com/projects/chirp/wiki/Home>CHIRP</a> para Windows.</li><li>Después descarga la <a href=https://www.baofengradio.com/pages/download>versión del software adecuada para programar tu Baofeng</a>. Los elementos que despliegan las descargas no reciben foco, así que tendrás que usar un poco de magia negra: Ponte encima del elemento con el nombre de tu equipo de radio y pulsa enter. si hay suerte, se desplegarán los enlaces de descarga. si no, tendrás que mover el ratón encima del elemento y dar click de ratón.</li></ul><p>¿Tenemos todo? Podemos continuar.</p><h2 id=preparando-el-csv>Preparando el CSV</h2><p>Un CSV es un archivo que almacena elementos separados por comas en forma de tabla. Lo verás más claro con un ejemplo:</p><pre tabindex=0><code>Nombre,Apellido
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;">
+  
+  
+  <title>Programación de radios Baofeng a ciegas | El Blog de un informático que sueña con mejorar el mundo</title>
+  <meta name="description" content="Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado CHIRP son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.
+Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia.">
+  
+  
+  <meta property="og:title" content="Programación de radios Baofeng a ciegas">
+  <meta property="og:description" content="Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado CHIRP son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.
+Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/">
+  <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo">
+  
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Programación de radios Baofeng a ciegas">
+  <meta name="twitter:description" content="Lo primero que diré: Programar una radio baofeng utilizando un lector de pantallas es un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado CHIRP son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.
+Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia.">
+  
+  <meta name="twitter:creator" content="@jpa_apj">
+  
+  
+  
+  
+  
+  <meta property="article:published_time" content="2024-10-06T16:47:59&#43;02:00">
+  
+  
+  
+  <meta property="article:author" content="Jesús Pavón Abián">
+  
+  
+  
+  
+  <meta name="author" content="Jesús Pavón Abián">
+  
+  
+  
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  
+  
+  
+  
+  
+  
+  <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+  
+  
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+  
+  
+  <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
+  
+  
+  <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
+  
+  
+  <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention">
+  
+  
+  
+  
+  
+  
+  
+  <link href="/style.css" rel="stylesheet">
+  
+  
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" href="/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" href="/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="me" href="https://mst.universoalterno.es/@jpavonabian">
+  <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es">
+  
+  
+  <link rel="canonical" href="https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/">
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+  
+  <header class="h-card" role="banner">
+    <div class="container">
+  <a href="/" class="u-url p-name">
+    <h1>El Blog de un informático que sueña con mejorar el mundo</h1>
+  </a>
+  
+  <p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p>
+  
+  
+  
+  <div class="p-author h-card h-card-hidden">
+    <span class="p-name">Jesús Pavón Abián</span>
+    
+    <a class="u-email" href="mailto:correo@jesuspavonabian.es">correo@jesuspavonabian.es</a>
+    
+    
+    <img class="u-photo" src="https://jesuspavonabian.es/foto.jpg" alt="Jesús Pavón Abián">
+    
+    
+    <a class="u-url" rel="me" href="https://jesuspavonabian.es">https://jesuspavonabian.es</a>
+    
+  </div>
+  
+</div>
+
+  </header>
+  
+  <nav role="navigation" aria-label="Navegación principal">
+    <div class="container">
+  <ul>
+    <li><a href="/" >Inicio</a></li>
+    
+    <li><a href="https://jesuspavonabian.es/about/" >Acerca de</a></li>
+    
+    
+    <li><a href="https://jesuspavonabian.es/tags/" >Etiquetas</a></li>
+    
+    
+    
+  </ul>
+</div>
+
+  </nav>
+  
+  <main id="main" role="main">
+    
+<div class="container">
+  <article class="h-entry">
+    <header>
+      <h1 class="p-name">Programación de radios Baofeng a ciegas</h1>
+      
+      
+      <div class="post-meta">
+        <time datetime="2024-10-06T16:47:59&#43;02:00" class="dt-published">6 de octubre de 2024</time>
+        
+        <span class="meta-separator"> </span>
+        <data value="1024">1024 palabras</data>
+        
+      </div>
+      
+      
+      
+    </header>
+    
+    <div class="e-content">
+      <p>Lo primero que diré:  Programar una radio baofeng utilizando un lector de pantallas es   un engorro. Ni el software de programación de estos equipos ni el programa libre que hay llamado <a href="https://chirpmyradio.com/projects/chirp/wiki/Home">CHIRP</a> son accesibles al menos que uses alguna distro de Linux, en cuyo caso algo se puede hacer con el anteriormente mencionado.</p>
+<p>Por suerte podemos hacer un par de truquitos de esos que hacemos los usuarios de lector de pantallas para resolver las barreras de accesibilidad, apunta, que el proceso es sencillo: Solo tienes que aprender qué es un CSV, tirar de navegador de objetos de NVDA (asumo que el cursor de JAWS también podría servir) y echarle paciencia.</p>
+<h2 id="consiguiendo-lo-necesario">Consiguiendo lo necesario</h2>
+<ul>
+<li>en primer lugar, descarga la última versión de <a href="https://chirpmyradio.com/projects/chirp/wiki/Home">CHIRP</a> para Windows.</li>
+<li>Después descarga la <a href="https://www.baofengradio.com/pages/download">versión del software adecuada para programar tu Baofeng</a>. Los elementos que despliegan las descargas no reciben foco, así que tendrás que usar un poco de magia negra: Ponte encima del elemento con el nombre de tu equipo de radio y pulsa enter. si hay suerte, se desplegarán los enlaces de descarga. si no, tendrás que mover el ratón encima del elemento y dar click de ratón.</li>
+</ul>
+<p>¿Tenemos todo? Podemos continuar.</p>
+<h2 id="preparando-el-csv">Preparando el CSV</h2>
+<p>Un CSV es un archivo que almacena elementos separados por comas en forma de tabla. Lo verás más claro con un ejemplo:</p>
+<pre tabindex="0"><code>Nombre,Apellido
 José,Pérez
 Antonio,Flóres
-</code></pre><p>Como ves, en la primera línea ponemos lo que sería la cabecera de la tabla y en las siguientes colocamos los distintos valores. Eso se guarda como archivo con extensión csv y se puede usar para alimentar bases de datos, para leerlo más tarde, para exportar contenido a un formato legible por distintas aplicaciones al ser texto plano&mldr;</p><p>Pues un CSV es lo que necesitamos para configurar nuestro cacharro, ya que meter los datos a mano es inaccesible, aunque sería mucho más cómodo y menos propenso a errores.
-Los campos que requiere nuestro CSV son los siguientes:</p><pre tabindex=0><code>Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,Mode,TStep,Comment
-</code></pre><p>Colocando eso como primera línea en nuestro archivo .csv solo tendríamos que rellenar las siguientes filas con la información de los canales que queremos añadir, dejando vacíos los campos que no nos interesen. Por ejemplo:</p><pre tabindex=0><code>6,ISS,437.800000,-,-0.145000,CTCSS,67.0,67.0,023,NN,FM,5,&#34;ISS Repeater&#34;
-</code></pre><p>´Significa lo siguiente:</p><ol><li><p><strong>Location</strong>:</p><ul><li>Valor: <code>6</code></li><li>Explicación: Es el canal o ubicación en una lista de repetidores. En este caso, el número 6 está asociado a este repetidor.</li></ul></li><li><p><strong>Name</strong>:</p><ul><li>Valor: <code>ISS</code></li><li>Explicación: Nombre del repetidor. En este caso, es el repetidor de la Estación Espacial Internacional (International Space Station, ISS).</li></ul></li><li><p><strong>Frequency</strong>:</p><ul><li>Valor: <code>437.800000 MHz</code></li><li>Explicación: Frecuencia de operación del repetidor. En este caso, transmite en 437.8 MHz.</li></ul></li><li><p><strong>Duplex</strong>:</p><ul><li>Valor: <code>-</code></li><li>Explicación: El valor &ldquo;-&rdquo; indica que la frecuencia es de bajada (downlink), es decir, la frecuencia a la que el repetidor transmite hacia los usuarios. Si estuviera vacío, indicaría que no hay una diferencia entre la frecuencia de transmisión y recepción.</li></ul></li><li><p><strong>Offset</strong>:</p><ul><li>Valor: <code>-0.145000 MHz</code></li><li>Explicación: Diferencia entre la frecuencia de recepción (transmisión del usuario) y la frecuencia de transmisión del repetidor. Aquí se especifica un desplazamiento negativo de 145 kHz.</li></ul></li><li><p><strong>Tone</strong>:</p><ul><li>Valor: <code>CTCSS</code></li><li>Explicación: Tipo de tono usado para acceder al repetidor.</li></ul></li><li><p><strong>rToneFreq</strong>:</p><ul><li>Valor: <code>67.0 Hz</code></li><li>Explicación: La frecuencia del tono CTCSS (tono de silenciamiento) para transmisión (TX). Aquí, el tono requerido es 67.0 Hz.</li></ul></li><li><p><strong>cToneFreq</strong>:</p><ul><li>Valor: <code>67.0 Hz</code></li><li>Explicación: La frecuencia del tono CTCSS para recepción (RX). En este caso, es también 67.0 Hz, coincidiendo con el tono de transmisión.</li></ul></li><li><p><strong>DtcsCode</strong>:</p><ul><li>Valor: <code>023</code></li><li>Explicación: Código DCS (Digital Coded Squelch) que puede ser usado en lugar del CTCSS. Aquí se especifica el código 023.</li></ul></li><li><p><strong>DtcsPolarity</strong>:</p><ul><li>Valor: <code>NN</code></li><li>Explicación: Polaridad DCS, que indica la dirección de la codificación digital (normal o invertido). Aquí <code>NN</code> significa normal en transmisión y normal en recepción.</li></ul></li><li><p><strong>Mode</strong>:</p><ul><li>Valor: <code>FM</code></li><li>Explicación: El modo de transmisión que utiliza el repetidor. En este caso, es FM (Frecuencia Modulada).</li></ul></li><li><p><strong>TStep</strong>:</p><ul><li>Valor: <code>5</code></li><li>Explicación: Este es el paso de frecuencia o el &ldquo;step&rdquo; que se utiliza al ajustar manualmente la frecuencia. Aquí, es un paso de 5 kHz.</li></ul></li><li><p><strong>Comment</strong>:</p><ul><li>Valor: <code>"ISS Repeater"</code></li><li>Explicación: Comentario adicional o información descriptiva sobre el repetidor. En este caso, se menciona que es el repetidor de la ISS.</li></ul></li></ol><p>Otro ejemplo de repetidor es el siguiente:</p><pre tabindex=0><code>2,&#34;ED7YAX Huelva&#34;,438.625000,-,7.6,Tone,88.5,88.5,023,NN,FM,5,&#34;Huelva&#34;,
-</code></pre><p>Resuelto el tema de los CSV (<a href=https://www.repeaterbook.com/>Repeater Book</a> es tu amigo si no quieres hacerlos a mano o modificarlos lo mínimo posible) toca subirlos a la radio.</p><h2 id=subir-el-csv-a-la-radio>Subir el CSV a la radio</h2><p>No es difícil, aún así lo dejo documentado.</p><ul><li>Encendemos la radio con el volumen al máximo.</li><li>Le colocamos el cable de programación y lo enchufamos a un USB libre.
-&ndash; Abrimos CHIRP.</li><li>Pulsamos alt para ir a la barra de menús y buscamos el menú radio con las flechas.</li><li>Pulsamos en la opción de descargar desde radio.</li><li>Seleccionamos el controlador y el puerto.</li><li>Pulsamos aceptar y esperamos que la barra de porcentaje llegue al 100.</li><li>Guardamos con CTRL + S la imagen de la radio por si algo sale mal poder restaurarla.</li><li>Pulsamos CTRL+Tab hasta llegar a la lista de pestañas y seleccionamos la de memoria.</li><li>Con la pestaña seleccionada, sin hacer nada más que seleccionarla, pulsamos alt para ir a la barra de menú y seleccionamos importar.</li><li>Localizamos nuestro archivo CSV y volvemos a darle a importar.</li><li>cuando esté todo listo, volvemos a la barra de menú y le damos a cargar a la radio desde el menú radio, seguimos las instrucciones y si todo va bien y no tenemos ningún error tendremos los canales colocados en nuestra Baofeng y podemos desconectarla.</li></ul><h2 id=y-entonces-para-qué-me-has-hecho-descargar-el-software-de-programación-original>¿Y entonces para qué me has hecho descargar el software de programación original?</h2><p>Con CHIRP no podemos acceder a programar todos los parámetros. Con el Software de programación original y la ayuda del navegador de objetos y mucha paciencia podemos toquetear el resto de parámetros. Es bastante intuitivo, y si hemos hecho todo bien, tendremos un .img con la configuración de fábrica que podremos restaurar desde CHIRP desde la opción adecuada de la barra de menú, abriéndolo antes de enchufar la radio y cargándolo sin bajar los datos antes.</p><p>Espero que este post sirva al menos para poder empezar a trastear con estos equipos.
-Por cierto, el Martes pasado me dieron el indicativo, soy <strong>EA7LEE</strong>.</p></div><footer class=post-meta><div class=post-author><span class=meta>Por <a href=https://jesuspavonabian.es class="p-author h-card">Jesús Pavón Abián</a></span></div><div class=post-permalink><span class=meta>Enlace permanente: <a href=https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/ class=u-url>https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/</a></span></div></footer></article><section class=webmentions><h2>Webmentions</h2><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://masto.es/@ericdq class="u-url p-name">Éric Duarte</a>
-</span><a href=https://mst.universoalterno.es/@jpavonabian/113261211467892522#favorited-by-109740197569066093 class=u-url></a></header><div class="webmention-content p-content"></div></article></section></div></main><footer role=contentinfo><div class=container><div class=footer-content><p class=copyright>&copy; 2026 Jesús Pavón Abián.
-Contenido bajo <a href=https://creativecommons.org/licenses/by/4.0/deed.es rel=license>CC BY 4.0</a>.
-Tema <a href=https://github.com/brennanbrown/indiepaper>indiepaper</a> de <a href=https://berryhouse.ca>Berry House</a>.</p><p class=contact-support><a href=mailto:correo@jesuspavonabian.es class=u-email rel=me>&lt;correo@jesuspavonabian.es></a></p><p class=badge><a href=https://512kb.club><img src=https://512kb.club/assets/images/green-team.svg alt="Web miembro del equipo verde del 512KB club"></a></p><p class=links><a href=https://mst.universoalterno.es/@jpavonabian rel=me>Mastodon</a>
-· <a href=https://github.com/jpavonabian rel=me>GitHub</a>
-· <a href=https://twitter.com/jpa_apj rel=me>Twitter</a>
-· <a href=/feed.xml>RSS</a></p></div></div></footer></body></html>
+</code></pre><p>Como ves, en la primera línea ponemos lo que sería la cabecera de la tabla y en las siguientes colocamos los distintos valores. Eso se guarda como archivo con extensión csv y se puede usar para alimentar bases de datos, para leerlo más tarde, para exportar contenido a un formato legible por distintas aplicaciones al ser texto plano&hellip;</p>
+<p>Pues un CSV es lo que necesitamos para configurar nuestro cacharro, ya que meter los datos a mano es inaccesible, aunque sería mucho más cómodo y menos propenso a errores.
+Los campos que requiere nuestro CSV son los siguientes:</p>
+<pre tabindex="0"><code>Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,Mode,TStep,Comment
+</code></pre><p>Colocando eso como primera línea en nuestro archivo .csv solo tendríamos que rellenar las siguientes filas con la información de los canales que queremos añadir, dejando vacíos los campos que no nos interesen. Por ejemplo:</p>
+<pre tabindex="0"><code>6,ISS,437.800000,-,-0.145000,CTCSS,67.0,67.0,023,NN,FM,5,&#34;ISS Repeater&#34;
+</code></pre><p>´Significa lo siguiente:</p>
+<ol>
+<li>
+<p><strong>Location</strong>:</p>
+<ul>
+<li>Valor: <code>6</code></li>
+<li>Explicación: Es el canal o ubicación en una lista de repetidores. En este caso, el número 6 está asociado a este repetidor.</li>
+</ul>
+</li>
+<li>
+<p><strong>Name</strong>:</p>
+<ul>
+<li>Valor: <code>ISS</code></li>
+<li>Explicación: Nombre del repetidor. En este caso, es el repetidor de la Estación Espacial Internacional (International Space Station, ISS).</li>
+</ul>
+</li>
+<li>
+<p><strong>Frequency</strong>:</p>
+<ul>
+<li>Valor: <code>437.800000 MHz</code></li>
+<li>Explicación: Frecuencia de operación del repetidor. En este caso, transmite en 437.8 MHz.</li>
+</ul>
+</li>
+<li>
+<p><strong>Duplex</strong>:</p>
+<ul>
+<li>Valor: <code>-</code></li>
+<li>Explicación: El valor &ldquo;-&rdquo; indica que la frecuencia es de bajada (downlink), es decir, la frecuencia a la que el repetidor transmite hacia los usuarios. Si estuviera vacío, indicaría que no hay una diferencia entre la frecuencia de transmisión y recepción.</li>
+</ul>
+</li>
+<li>
+<p><strong>Offset</strong>:</p>
+<ul>
+<li>Valor: <code>-0.145000 MHz</code></li>
+<li>Explicación: Diferencia entre la frecuencia de recepción (transmisión del usuario) y la frecuencia de transmisión del repetidor. Aquí se especifica un desplazamiento negativo de 145 kHz.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tone</strong>:</p>
+<ul>
+<li>Valor: <code>CTCSS</code></li>
+<li>Explicación: Tipo de tono usado para acceder al repetidor.</li>
+</ul>
+</li>
+<li>
+<p><strong>rToneFreq</strong>:</p>
+<ul>
+<li>Valor: <code>67.0 Hz</code></li>
+<li>Explicación: La frecuencia del tono CTCSS (tono de silenciamiento) para transmisión (TX). Aquí, el tono requerido es 67.0 Hz.</li>
+</ul>
+</li>
+<li>
+<p><strong>cToneFreq</strong>:</p>
+<ul>
+<li>Valor: <code>67.0 Hz</code></li>
+<li>Explicación: La frecuencia del tono CTCSS para recepción (RX). En este caso, es también 67.0 Hz, coincidiendo con el tono de transmisión.</li>
+</ul>
+</li>
+<li>
+<p><strong>DtcsCode</strong>:</p>
+<ul>
+<li>Valor: <code>023</code></li>
+<li>Explicación: Código DCS (Digital Coded Squelch) que puede ser usado en lugar del CTCSS. Aquí se especifica el código 023.</li>
+</ul>
+</li>
+<li>
+<p><strong>DtcsPolarity</strong>:</p>
+<ul>
+<li>Valor: <code>NN</code></li>
+<li>Explicación: Polaridad DCS, que indica la dirección de la codificación digital (normal o invertido). Aquí <code>NN</code> significa normal en transmisión y normal en recepción.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mode</strong>:</p>
+<ul>
+<li>Valor: <code>FM</code></li>
+<li>Explicación: El modo de transmisión que utiliza el repetidor. En este caso, es FM (Frecuencia Modulada).</li>
+</ul>
+</li>
+<li>
+<p><strong>TStep</strong>:</p>
+<ul>
+<li>Valor: <code>5</code></li>
+<li>Explicación: Este es el paso de frecuencia o el &ldquo;step&rdquo; que se utiliza al ajustar manualmente la frecuencia. Aquí, es un paso de 5 kHz.</li>
+</ul>
+</li>
+<li>
+<p><strong>Comment</strong>:</p>
+<ul>
+<li>Valor: <code>&quot;ISS Repeater&quot;</code></li>
+<li>Explicación: Comentario adicional o información descriptiva sobre el repetidor. En este caso, se menciona que es el repetidor de la ISS.</li>
+</ul>
+</li>
+</ol>
+<p>Otro ejemplo de repetidor es el siguiente:</p>
+<pre tabindex="0"><code>2,&#34;ED7YAX Huelva&#34;,438.625000,-,7.6,Tone,88.5,88.5,023,NN,FM,5,&#34;Huelva&#34;,
+</code></pre><p>Resuelto el tema de los CSV (<a href="https://www.repeaterbook.com/">Repeater Book</a> es tu amigo si no quieres hacerlos a mano o modificarlos lo mínimo posible) toca subirlos a la radio.</p>
+<h2 id="subir-el-csv-a-la-radio">Subir el CSV a la radio</h2>
+<p>No es difícil, aún así lo dejo documentado.</p>
+<ul>
+<li>Encendemos la radio con el volumen al máximo.</li>
+<li>Le colocamos el cable de programación y lo enchufamos a un USB libre.
+&ndash; Abrimos CHIRP.</li>
+<li>Pulsamos alt para ir a la barra de menús y buscamos el menú radio con las flechas.</li>
+<li>Pulsamos en la opción de descargar desde radio.</li>
+<li>Seleccionamos el controlador y el puerto.</li>
+<li>Pulsamos aceptar y esperamos que la barra de porcentaje llegue al 100.</li>
+<li>Guardamos con CTRL + S la imagen de la radio por si algo sale mal poder restaurarla.</li>
+<li>Pulsamos CTRL+Tab hasta llegar a la lista de pestañas y seleccionamos la de memoria.</li>
+<li>Con la pestaña seleccionada, sin hacer nada más que seleccionarla, pulsamos alt para ir a la barra de menú y seleccionamos importar.</li>
+<li>Localizamos nuestro archivo CSV y volvemos a darle a importar.</li>
+<li>cuando esté todo listo, volvemos a la barra de menú y le damos a cargar a la radio desde el menú radio, seguimos las instrucciones y si todo va bien y no tenemos ningún error tendremos los canales colocados en nuestra Baofeng y podemos desconectarla.</li>
+</ul>
+<h2 id="y-entonces-para-qué-me-has-hecho-descargar-el-software-de-programación-original">¿Y entonces para qué me has hecho descargar el software de programación original?</h2>
+<p>Con CHIRP no podemos acceder a programar todos los parámetros. Con el Software de programación original y la ayuda del navegador de objetos y mucha paciencia podemos toquetear el resto de parámetros. Es bastante intuitivo, y si hemos hecho todo bien, tendremos un .img con la configuración de fábrica que podremos restaurar desde CHIRP desde la opción adecuada de la barra de menú, abriéndolo antes de enchufar la radio y cargándolo sin bajar los datos antes.</p>
+<p>Espero que este post sirva al menos para poder empezar a trastear con estos equipos.
+Por cierto, el Martes pasado me dieron el indicativo, soy <strong>EA7LEE</strong>.</p>
+
+    </div>
+    
+    
+    
+    <footer class="post-meta">
+      
+      <div class="post-author">
+        <span class="meta">Por <a href="https://jesuspavonabian.es" class="p-author h-card">Jesús Pavón Abián</a></span>
+      </div>
+      
+      
+      <div class="post-permalink">
+        <span class="meta">Enlace permanente: <a href="https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/" class="u-url">https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas/</a></span>
+      </div>
+      
+      
+      
+      
+    </footer>
+  </article>
+  
+  
+  
+  
+  
+
+
+<section class="webmentions">
+  <h2>Webmentions</h2>
+  
+  
+    
+    
+    
+      
+      
+        
+        <article class="webmention h-cite">
+          <header>
+            
+              <span class="webmention-author p-author h-card">
+                
+                  
+                    <a href="https://masto.es/@ericdq" class="u-url p-name">Éric Duarte</a>
+                  
+                
+              </span>
+            
+            
+            
+            <a href="https://mst.universoalterno.es/@jpavonabian/113261211467892522#favorited-by-109740197569066093" class="u-url">
+              
+            </a>
+            
+          </header>
+          
+          <div class="webmention-content p-content">
+            
+          </div>
+          
+          
+        </article>
+        
+      
+    
+  
+</section>
+
+
+  
+</div>
+
+  </main>
+  
+  <footer role="contentinfo">
+    <div class="container">
+  <div class="footer-content">
+    
+    
+    <p class="copyright">
+      &copy; 2026 Jesús Pavón Abián.
+      Contenido bajo <a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="license">CC BY 4.0</a>.
+      Tema <a href="https://github.com/brennanbrown/indiepaper">indiepaper</a> de <a href="https://berryhouse.ca">Berry House</a>.
+    </p>
+    
+    <p class="contact-support">
+      
+      <a href="mailto:correo@jesuspavonabian.es" class="u-email" rel="me">&lt;correo@jesuspavonabian.es&gt;</a>
+      
+      
+    </p>
+    
+    <p class="badge">
+      <a href="https://512kb.club"><img src="https://512kb.club/assets/images/green-team.svg" alt="Web miembro del equipo verde del 512KB club" /></a>
+    </p>
+    
+    <p class="links">
+      
+      
+      <a href="https://mst.universoalterno.es/@jpavonabian" rel="me">Mastodon</a>
+      
+       · <a href="https://github.com/jpavonabian" rel="me">GitHub</a>
+      
+       · <a href="https://twitter.com/jpa_apj" rel="me">Twitter</a>
+      
+      
+      · <a href="/feed.xml">RSS</a>
+      
+    </p>
+  </div>
+</div>
+
+  </footer>
+</body>
+</html>
