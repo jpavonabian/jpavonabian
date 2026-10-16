@@ -1,9 +1,6 @@
 ---
 title: "Limpiar instancia de Mastodon"
 date: 2024-09-15T13:15:29+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/limpiar_instancia_de_mastodon"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

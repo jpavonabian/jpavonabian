@@ -1,9 +1,6 @@
 ---
 title: "Accesibilidad sin garantía"
 date: 2025-10-26T12:09:01+01:00
-reply:
-uri: "https://jesuspavonabian.es/post/accesibilidad-sin-garantia"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

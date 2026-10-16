@@ -1,9 +1,6 @@
 ---
 title: "Instalar un cliente Torrent en una raspberry Pi"
 date: 2024-07-02
-reply:
-uri: "https://jesuspavonabian.es/post/instalar-cliente-torrent-raspberry-pi"
-categories: ["anything else"]
 tags:
 draft: false
 ---

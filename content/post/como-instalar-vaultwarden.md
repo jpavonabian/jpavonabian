@@ -1,9 +1,6 @@
 ---
 title: "Vaultwarden, o cómo dejar de pagar por guardar mis contraseñas"
 date: 2026-05-19
-reply:
-uri: "https://jesuspavonabian.es/post/como-instalar-vaultwarden"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

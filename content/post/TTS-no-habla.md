@@ -1,9 +1,6 @@
 ---
 title: "TTS No Habla"
 date: 2024-06-28
-reply:
-uri: "https://jesuspavonabian.es/post/tts-no-habla"
-categories: ["anything else"]
 tags:
 draft: false
 ---

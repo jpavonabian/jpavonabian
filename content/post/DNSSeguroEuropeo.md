@@ -1,9 +1,6 @@
 ---
 title: "El DNS público europeo que hace tu Internet más seguro"
 date: 2023-12-12T15:15:42+01:00
-reply:
-uri: https://jesuspavonabian.es/post/dnsseguroeuropeo/
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

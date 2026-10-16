@@ -1,9 +1,6 @@
 ---
 title: "Sincronizar los contactos de Mailbox.org en GrapheneOS con DAVx⁵"
 date: 2026-10-11T09:36:54+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/contactos-mailbox-grapheneos"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

@@ -1,9 +1,6 @@
 ---
 title: "Desgooglezando mi vida (II): el correo, por fin"
 date: 2026-10-08T00:00:00+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/desgooglezando-mi-vida-2-correo"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

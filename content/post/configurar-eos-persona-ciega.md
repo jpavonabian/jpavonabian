@@ -1,9 +1,6 @@
 ---
 title: "¿Se puede configurar desde el arranque /e/OS siendo una persona ciega?"
 date: 2026-10-01T15:43:39+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/configurar-eos-persona-ciega"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

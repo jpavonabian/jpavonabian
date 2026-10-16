@@ -1,9 +1,6 @@
 ---
 title: "domótica accesible"
 date: "2022-02-25"
-reply:
-uri: https://jesuspavonabian.es/post/domotica-accesible
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

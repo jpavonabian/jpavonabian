@@ -1,9 +1,6 @@
 ---
 title: "Perfiles en GrapheneOS: Bigtechs aparte y las movidas del motor de voz"
 date: 2026-10-11T08:36:00+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/perfiles-grapheneos-talkback"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

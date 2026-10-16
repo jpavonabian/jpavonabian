@@ -29,7 +29,7 @@
             <a href="{{ .url }}" class="u-url">
               {{ if .published }}
               <time datetime="{{ .published }}" class="dt-published webmention-time">
-                {{ printf "%s a las %s" (.published | time.Format ":date_long") (.published | time.Format "15:04") }}
+                {{ dateFormat "2/1/2006 15:04" .published }}
               </time>
               {{ end }}
             </a>
@@ -52,7 +52,7 @@
         </article>
         {{ end }}
       {{ else }}
-        <p>Aún no hay webmentions. <a href="{{ $endpoint }}">Envía una</a>.</p>
+        <p>Aún no hay webmentions. <a href="{{ $endpoint }}">¡Envía una!</a></p>
       {{ end }}
     {{ else }}
       <p><a href="{{ $endpoint }}">Envía una webmention</a>.</p>

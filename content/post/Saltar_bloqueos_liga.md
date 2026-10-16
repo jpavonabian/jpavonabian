@@ -1,9 +1,6 @@
 ---
 title: "Cómo saltar los bloqueos de la liga"
 date: 2026-08-23T17:38:07+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/saltar_bloqueos_liga"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

@@ -2,9 +2,6 @@
 title: "Tu guiador"
 date: "2022-02-26"
 aliases: ["/tu-guiador/"]
-reply:
-uri: https://jesuspavonabian.es/post/tu-guiador
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

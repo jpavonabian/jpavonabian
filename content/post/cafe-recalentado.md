@@ -1,9 +1,6 @@
 ---
 title: "Café Recalentado, o un recordatorio para mi mismo"
 date: 2025-11-07T16:52:24+01:00
-reply:
-uri: "https://jesuspavonabian.es/post/cafe-recalentado"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

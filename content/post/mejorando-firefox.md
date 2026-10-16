@@ -1,9 +1,6 @@
 ---
 title: "Mejorando Firefox"
 date: 2025-05-23
-reply:
-uri: "https://jesuspavonabian.es/post/mejorando-firefox"
-categories: ["anything else"]
 tags:
 draft: false
 ---

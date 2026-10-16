@@ -1,9 +1,6 @@
 ---
 title: "Primeros pasos con GrapheneOS"
 date: 2026-10-10T19:00:00+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/primeros-pasos-grapheneos"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

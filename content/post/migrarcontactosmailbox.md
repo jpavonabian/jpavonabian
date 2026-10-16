@@ -1,9 +1,6 @@
 ---
 title: "Migrar contactos a Mailbox"
 date: 2026-10-09
-reply:
-uri: "https://jesuspavonabian.es/post/migrarcontactosmailbox"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

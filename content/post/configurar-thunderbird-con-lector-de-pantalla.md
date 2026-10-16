@@ -1,9 +1,6 @@
 ---
 title: "Configurar Thunderbird con Lector de pantalla"
 date: 2024-10-26
-reply:
-uri: "https://jesuspavonabian.es/post/configurar-thunderbird-con-lector-de-pantalla"
-categories: ["anything else"]
 tags:
 draft: false
 ---

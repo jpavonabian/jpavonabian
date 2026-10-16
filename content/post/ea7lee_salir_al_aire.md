@@ -1,9 +1,6 @@
 ---
 title: "EA7LEE: Salir al aire"
 date: 2024-12-19T00:00:00
-reply:
-uri: "https://jesuspavonabian.es/post/ea7lee_salir_al_aire"
-categories: ["anything else"]
 tags:
 draft: false
 ---

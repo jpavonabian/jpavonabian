@@ -1,9 +1,6 @@
 ---
 title: "Blogs, Blogs, Blogs"
 date: 2026-08-28T16:29:28+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/blogs"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

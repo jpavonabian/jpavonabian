@@ -1,9 +1,6 @@
 ---
 title: "Programación de radios Baofeng a ciegas"
 date: 2024-10-06T16:47:59+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/programacion-radios-baofeng-a-ciegas"
-categories: ["anything else"]
 tags:
 draft: false
 ---

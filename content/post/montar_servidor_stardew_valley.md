@@ -1,9 +1,6 @@
 ---
 title: "Montar un servidor de Stardew Valley de forma accesible"
 date: 2026-01-24T09:28:38+01:00
-reply:
-uri: "https://jesuspavonabian.es/post/montar_servidor_stardew_valley"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

@@ -1,9 +1,6 @@
 ---
 title: "Diploma del Día de Andalucía"
 date: 2026-02-23T09:43:20+01:00
-reply:
-uri: "https://jesuspavonabian.es/post/an46hu"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

@@ -1,9 +1,6 @@
 ---
 title: "EA7LEE: Saliendo al aire"
 date: 2026-03-18T00:00:00+01:00
-reply:
-uri: "https://jesuspavonabian.es/post/ea7leesaliendoalaire"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

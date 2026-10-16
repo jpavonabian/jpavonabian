@@ -1,9 +1,6 @@
 ---
 title: "Crear una VPN con Wireguard más PiHole para olvidarnos de los anuncios y acceder a nuestras cosas desde cualquier lugar"
 date: "2023-06-23"
-reply:
-uri: https://jesuspavonabian.es/post/crear-una-vpn-con-wireguard-mas-pihole-para-olvidarnos-de-los-anuncios-y-acceder-a-nuestras-cosas-desde-cualquier-lugar
-categories: ["anything else"] # note, reply, anything else
 tags: ["VPN", "PiHole", "VPS"]
 draft: false
 ---

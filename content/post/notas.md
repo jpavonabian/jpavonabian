@@ -1,9 +1,7 @@
 ---
 title: "Notas"
 date: 2025-11-12T18:25:22+01:00
-Reply: "https://ericdq.com/2025/06/20/joplin-apunta-notas-y-tareas-sincronizalas-donde-quieras/"
-uri: "https://jesuspavonabian.es/post/notas"
-categories: ["reply"] # note, reply, anything else
+inReplyTo: "https://ericdq.com/2025/06/20/joplin-apunta-notas-y-tareas-sincronizalas-donde-quieras/"
 tags:
 draft: false
 ---

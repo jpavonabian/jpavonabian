@@ -1,9 +1,6 @@
 ---
 title: "Pi-hole con Unbound: un DNS sin depender de nadie"
 date: 2026-10-15
-reply:
-uri: "https://jesuspavonabian.es/post/pihole-unbound"
-categories: ["anything else"] # note, reply, anything else
 tags: ["PiHole", "DNS", "Unbound", "Privacidad"]
 draft: false
 ---

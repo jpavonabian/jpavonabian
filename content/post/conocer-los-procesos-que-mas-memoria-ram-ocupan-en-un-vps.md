@@ -1,9 +1,6 @@
 ---
 title: "Conocer los procesos que más memoria RAM ocupan en un VPS"
 date: "2021-07-19"
-reply:
-uri: https://jesuspavonabian.es/post/conocer-los-procesos-que-mas-memoria-ram-ocupan-en-un-vps
-categories: ["anything else"] # note, reply, anything else
 tags: ["Procesos", "Linux", "VPS"]
 draft: false
 ---

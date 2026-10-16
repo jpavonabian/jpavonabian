@@ -1,9 +1,6 @@
 ---
 title: "Cómo remapear una tecla en el Keychron V6 con QMK (y casi cargarte el teclado en el intento)"
 date: 2026-06-09T09:00:00+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/keychron-v6-qmk-remap"
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---

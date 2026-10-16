@@ -1,9 +1,6 @@
 ---
 title: "EA7LEE: Salir al Aire II"
 date: 2025-08-04T18:24:48+02:00
-reply:
-uri: "https://jesuspavonabian.es/post/ea7lee-salir-aire"
-categories: ["anything else"]
 tags:
 draft: false
 ---

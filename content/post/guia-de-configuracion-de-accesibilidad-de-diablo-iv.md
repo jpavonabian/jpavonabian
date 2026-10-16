@@ -1,9 +1,6 @@
 ---
 title: "Guía de configuración de la accesibilidad de Diablo IV"
 date: 2024-06-24
-reply:
-uri: "https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv"
-categories: ["anything else"]
 tags:
 draft: false
 ---

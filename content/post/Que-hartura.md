@@ -1,9 +1,6 @@
 ---
 title: "¡Qué Hartura!"
 date: 2024-01-13T22:36:31+01:00
-reply:
-uri: https://jesuspavonabian.es/post/que-hartura
-categories: ["anything else"] # note, reply, anything else
 tags:
 draft: false
 ---
