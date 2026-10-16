@@ -1,5 +1,6 @@
 baseURL: https://jesuspavonabian.es
 languageCode: es-es
+defaultContentLanguage: es
 title: El Blog de un informático que sueña con mejorar el mundo
 theme: indiepaper
 enableRobotsTXT: true

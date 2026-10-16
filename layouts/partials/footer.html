@@ -6,9 +6,7 @@
     
     <p class="copyright">
       &copy; {{ now.Year }} {{ .Site.Params.author.name | default .Site.Title }}.
-      <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a> &amp;
-      <a href="https://opensource.org/licenses/AGPL-3.0" rel="license">AGPL-3.0</a>.
-      · <a href="https://github.com/brennanbrown/indiepaper">Theme</a> by <a href="https://berryhouse.ca">Berry House</a>
+      Tema <a href="https://github.com/brennanbrown/indiepaper">indiepaper</a> de <a href="https://berryhouse.ca">Berry House</a>.
     </p>
     
     <p class="contact-support">
@@ -31,7 +29,7 @@
       {{ end }}
       {{ end }}
       · <a href="/feed.xml">RSS</a>
-      {{ with $.OutputFormats.Get "json" }} · <a href="{{ .RelPermalink }}">JSON Feed</a>{{ end }}
+      {{ with $.OutputFormats.Get "json" }} · <a href="{{ .RelPermalink }}">Feed JSON</a>{{ end }}
     </p>
   </div>
 </div>

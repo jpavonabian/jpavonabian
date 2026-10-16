@@ -1,0 +1,22 @@
+{{ $pag := .Paginator }}
+{{ if gt $pag.TotalPages 1 }}
+<ul class="pagination pagination-default">
+  <li class="page-item{{ if not $pag.HasPrev }} disabled{{ end }}">
+    <a {{ if $pag.HasPrev }}href="{{ $pag.First.URL }}"{{ end }} aria-label="Primera página" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+  </li>
+  <li class="page-item{{ if not $pag.HasPrev }} disabled{{ end }}">
+    <a {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}"{{ end }} aria-label="Página anterior" class="page-link" role="button"><span aria-hidden="true">&lsaquo;</span></a>
+  </li>
+  {{ range $pag.Pagers }}
+  <li class="page-item{{ if eq . $pag }} active{{ end }}">
+    <a href="{{ .URL }}" aria-label="Página {{ .PageNumber }}" class="page-link" role="button"{{ if eq . $pag }} aria-current="page"{{ end }}>{{ .PageNumber }}</a>
+  </li>
+  {{ end }}
+  <li class="page-item{{ if not $pag.HasNext }} disabled{{ end }}">
+    <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}"{{ end }} aria-label="Página siguiente" class="page-link" role="button"><span aria-hidden="true">&rsaquo;</span></a>
+  </li>
+  <li class="page-item{{ if not $pag.HasNext }} disabled{{ end }}">
+    <a {{ if $pag.HasNext }}href="{{ $pag.Last.URL }}"{{ end }} aria-label="Última página" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+  </li>
+</ul>
+{{ end }}

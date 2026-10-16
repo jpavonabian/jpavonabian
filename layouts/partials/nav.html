@@ -1,0 +1,17 @@
+<div class="container">
+  <ul>
+    <li><a href="/" {{ if .IsHome }}aria-current="page"{{ end }}>Inicio</a></li>
+    {{ with .Site.GetPage "/about" }}
+    <li><a href="{{ .Permalink }}" {{ if eq $.Permalink .Permalink }}aria-current="page"{{ end }}>Acerca de</a></li>
+    {{ end }}
+    {{ with .Site.GetPage "/tags" }}
+    <li><a href="{{ .Permalink }}" {{ if eq $.Permalink .Permalink }}aria-current="page"{{ end }}>Etiquetas</a></li>
+    {{ end }}
+    {{ with .Site.GetPage "/archive" }}
+    <li><a href="{{ .Permalink }}" {{ if eq $.Permalink .Permalink }}aria-current="page"{{ end }}>Archivo</a></li>
+    {{ end }}
+    {{ with .Site.GetPage "/notes" }}
+    <li><a href="{{ .Permalink }}" {{ if eq $.Permalink .Permalink }}aria-current="page"{{ end }}>Notas</a></li>
+    {{ end }}
+  </ul>
+</div>
