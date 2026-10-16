@@ -15,6 +15,7 @@ params:
     name: Jesús Pavón Abián
     email: correo@jesuspavonabian.es
     url: https://jesuspavonabian.es
+    photo: /foto.jpg
     bio: La tecnología debe estar al servicio de las personas.
     twitter: jpa_apj
   indieweb:
