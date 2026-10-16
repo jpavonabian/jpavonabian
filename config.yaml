@@ -21,7 +21,6 @@ params:
   indieweb:
     webmention_endpoint: https://webmention.io/jesuspavonabian.es/webmention
     webmention_api: https://webmention.io/api/mentions.jf2
-    authorization_endpoint: https://indielogin.com/auth
     microsub_endpoint: https://aperture.p3k.io/microsub/969
   social:
     - name: Mastodon
