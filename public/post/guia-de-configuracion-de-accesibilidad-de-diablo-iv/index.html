@@ -1,213 +1,39 @@
-<!DOCTYPE html>
-<html lang="es-es"><head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="fediverse:creator" content="@jpavonabian@mst.universoalterno.es" />
-    <title>
-  
-    Guía de configuración de la accesibilidad de Diablo IV - El Blog de un informático que sueña con mejorar el mundo
-  
-</title>
-    
-    
-
-    
-    <link rel="shortcut icon" href="https://jesuspavonabian.es/favicon.ico">
-    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="https://jesuspavonabian.es/favicon-16x16.png" sizes="16x16" />
-
-    
-    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
-    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
-    <link rel="me" href="https://github.com/jpavonabian" />
-    <link rel="me" href="https://twitter.com/jpa_apj" />
-    <link rel="me" href="https://mst.universoalterno.es/@jpavonabian" />
-
-    
-    <link rel="stylesheet" href="https://jesuspavonabian.es/css/layout.css" crossorigin="anonymous" media="screen">
-    
-    <link rel="stylesheet" href="https://jesuspavonabian.es/css/style.css" crossorigin="anonymous" media="screen">
-    
-    
-    
-    <link rel="webmention" href="https://webmention.io/jesuspavonabian.es/webmention" />
-    <link rel="pingback" href="https://webmention.io/jesuspavonabian.es/xmlrpc" />
-    
-    
-    <link rel="micropub" href="https://jesuspavonabian.es/netlify/functions/micropub">
-    <link rel="microsub" href="https://aperture.p3k.io/microsub/969">
-    
-    
-    <meta property="og:url" content="https://jesuspavonabian.es/" />
-    <meta property="og:title" content="El Blog de un informático que sueña con mejorar el mundo" />
-    <meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo" />
-    <meta property="og:type" content="website" />
-    
-    
-    
-    <meta name="twitter:title" content="El Blog de un informático que sueña con mejorar el mundo" />
-    
-    
-</head>
-<body>
-<header aria-label="Cabecera del sitio">
-    <section>
-        <div class="header flex row">
-            <a href="#contenidoPrincipal" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;" onfocus="this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.left='-9999px';this.style.top='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Saltar al Contenido Principal</a>
-            <div class="header__item flex row">
-                
-                <a id="site__name" href="https://jesuspavonabian.es/">
-                    El Blog de un informático que sueña con mejorar el mundo
-                </a>
-            </div>
-            <div class="flex row">
-                <nav aria-label="Menú principal" class="flex row">
-                    <ul role="menubar" class="flex row">
-                        <li role="none">
-                            <a aria-label="Ir al inicio" class="menu__item" href="https://jesuspavonabian.es/">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                                </svg>
-                            </a>
-                        </li>
-        <li role="none">
-            <a class="menu__item" href="https://jesuspavonabian.es//about/">
-                Sobre mí
-            </a>
-        </li>
-                        </ul>
-                </nav>
-            </div>
-        </div>
-    </section>
-</header>
-
-<main id="contenidoPrincipal" aria-role="main">
-    <section>
-        <ul id="feed__ul">
-            <li class="feed__li h-entry">
-                <div class="feed__content">
-                    <time class="hidden dt-published">2024-06-24 00:00:00 &#43;0000 UTC</time>
-                    <div class="flex properties__row ">
-                        <div rel="author" class="flex left p-author h-card">
-                            <img class="u-photo"
-                                src="https://picsum.photos/120.webp"
-                                alt="Jesús Pavón Abián" id="author-img">
-                            <div>
-                                <p rel="me" class="p-name" id="author-name">
-                                    
-                                    Jesús Pavón Abián
-                                    
-                                </p>
-                                <p class="properties">
-                                    
-                                    Jun 24, 2024
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex right properties">
-                            
-                            <a aria-label="Guía de configuración de la accesibilidad de Diablo IV" class="icon u-url" href="https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-bookmark">
-                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                            <article class="md p-summary e-content">
-                                <h2 class="p-name"><a href="https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/">Guía de configuración de la accesibilidad de Diablo IV</a></h2>
-                                
-                                <p>Actualizada el 9 de Octubre de 2024.</p>
-<p>Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español.
-Así pués, basándome en <a href="https://forum.audiogames.net/topic/53635/diablo-iv-getting-started-totally-blind-players/">esta guía del foro de audiogames</a> he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.</p>
-<p>Gracias, UltraLeetJ.</p>
-<p>Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas. Hay algunos hilos en en el foro de Audiogames sobre la discusión general del juego, pero el más completo es <a href="https://forum.audiogames.net/topic/48574/diablo-questions/">este (preguntas sobre diablo en inglés)</a>. También hay una <a href="https://web.archive.org/web/20230620085008/https://diablo-iv-blind-accessibility-resource.fandom.com/wiki/Diablo_IV_Blind_Accessibility_Resource_Wiki">versión recuperada del año pasado para la ¿wiki ciega?</a> y un <a href="https://discord.gg/mrFkV6SVYw">servidor de discord para hablar sobre el juego en inglés también</a>.</p>
-<p>Diablo IV es un juego de rol de acción en línea, de rastreo de mazmorras, desarrollado y publicado por Blizzard Entertainment en 2023. Usas tus habilidades para completar misiones a través del combate. También puedes tener un clan y hacer combates jugador contra jugador. Lee todo sobre ello en <a href="https://en.wikipedia.org/wiki/Diablo_IV">su entrada en wikipedia</a>. Para obtener el juego puedes hacerlo desde <a href="https://diablo4.blizzard.com/">el sitio de Diablo IV de Blizzard</a>, el juego está <a href="https://store.steampowered.com/app/2344520/Diablo_IV/">también disponible en Steam</a>. Para jugar, puedes usar un ratón y teclado o un controlador, o ambos, aunque para la mejor experiencia un controlador es esencial, ya que puedes navegar y configurar las opciones del juego de esta manera. El juego también tiene descuentos de vez en cuando, así que estate atento.</p>
-<h3 id="configuración-y-cosas-útiles-para-descargar">configuración y cosas útiles para descargar</h3>
-<p>Yo utilizo la versión de Battle.net. Es probable que el lector de pantallas no lea nada cuando abras el juego por primera vez, pero abordaremos eso más adelante. ¡sigue leyendo!
-Nota para usuarios de Steam o Xbox: para hacer las cosas mucho más fáciles, deberías conectar o <a href="https://account.blizzard.com/connections">enlazar tus cuentas de Steam o Xbox y Battle.net desde esta página</a> antes de comenzar el juego. Te conectarás automáticamente tan pronto como el juego se ejecute y el lector de pantalla te notificará todo, también automáticamente.</p>
-<p>La primera pantalla en la que aterrizas si ya estás conectado es el lector de pantalla para el juego. Al presionar confirmar aquí (el botón A en los controladores de Xbox, el botón X en los controladores de PlayStation) dejarás que el juego sepa que deseas habilitar el lector de pantalla y luego serás llevado a una pantalla de brillo. Puedes presionar el mismo botón de confirmación y luego serás llevado a la pantalla de selección de resaltado. Desde aquí, deberías haber recibido algún discurso ya sea a través de cualquier voz de OneCore, o cualquiera de las disponibles en el panel de control de Windows 10/11. Si este no es el caso, consulta la sección de solución de problemas del lector de pantalla a continuación.</p>
-<p>Si llegas a la pantalla de configuración, usa los botones R1 o R2 para moverte entre las distintas categorías. Luego, confirma tus cambios cuando estés en la última categoría a la derecha y estarás casi listo. También puedes habilitar lectores de pantalla de terceros como NVDA (asegurándote de obtener los archivos del cliente de controlador de NVDA dentro de la carpeta ejecutable de Diablo) y JAWS (funciona sin necesidad de utilizar ninguna configuración).</p>
-<p>A lo largo de todo este tiempo la comunidad ha estado creando cosas increíbles para el juego. Puedes instalar el <a href="https://cloud.tiflo-games.ru/s/XqtenYdado83CWy">complemento de normalizador de codificación</a> y <a href="https://forum.audiogames.net/topic/52685/fix-broken-encoding-in-diablo-iv-for-nonenglish-players">ver su hilo en el foro de audiogames en inglés aquí</a>. También puedes obtener los archivos del cliente de NVDA para colocar dentro del directorio en el que Diablo está instalado, en Steam es: <code>C:\Program Files (x86)\Steam\steamapps\common\Diablo IV</code> y por defecto desde Battle.net es: <code>C:\Program Files\Diablo\</code>. Usa <a href="https://www.nvaccess.org/files/nvda/releases/stable/">este enlace, luego busca el último enlace para el zip del cliente de controlador</a>.</p>
-<h3 id="navegación-y-uso-del-juego">navegación y uso del juego</h3>
-<p>Una de las preguntas más comunes que la gente tiene es cómo navegar por el juego.</p>
-<p>Uno de los botones que usarás mucho es el botón para la pantalla del mapa. En Xbox es el botón de vista o menú (el izquierdo opuesto a pausa/inicio), en el teclado es m, y en PlayStation es el panel táctil.</p>
-<p>Necesitas recordar dos cosas. primero, puedes teletransportarte a los puntos de referencia en el mapa una vez que los hayas encontrado. segundo, necesitas explorar usando el mapa y haciendo zoom para encontrar cosas.</p>
-<p>Por ejemplo, abre la pantalla del mapa. Para hacer zoom usas el stick derecho (escucharás un sonido de vibración cuando cambie el nivel de zoom), usa el stick derecho hacia abajo para alejar, el stick derecho hacia arriba para acercar. aleja todo el camino, luego acércate un nivel. usa el stick izquierdo, muévelo ligeramente hacia la derecha, luego presiónalo para centrar la cámara en ti mismo. muévelo hacia arriba y hacia la derecha, centra. luego hacia arriba, luego centra. luego hacia arriba y hacia la izquierda, luego presiónalo para centrar de nuevo.</p>
-<p>Así es como encuentras cosas. también puedes ir arriba arriba centro, abajo abajo centro, si algo está más lejos.</p>
-<p>También puedes presionar el stick derecho en la pantalla del mapa para filtrar qué lugares se te anuncian a medida que te mueves por el mapa. Cuando desbloqueas un punto de referencia, en el mapa, cada vez que lo encuentras puedes presionar el botón X en él para teletransportarte.</p>
-<p>Una vez has seleccionado un objetivo en el mapa y has salido de él se activará el sistema de navegación de audio si lo tienes activado en las opciones del juego.</p>
-<p>Es un sistema confuso al principio, pero potente. Consta de tres sonidos:</p>
-<ul>
-<li>Uno de ellos es una especie de tambor tocando 3 veces. Significa que vas mal encaminado.</li>
-<li>Otro es el mismo tambor, pero con un ligero click. Eso significa que estás yendo a una dirección aproximada de tu objetivo.</li>
-<li>Si se oye más el click que el tambor, estás bien encaminado.</li>
-</ul>
-<p>Cuando estés en la primera parte del prólogo, Anochecer en la Montaña, te encontrarás con algunos enemigos a los que tendrás que atacar. El juego tiene audio posicional para que puedas apuntar y atacar con éxito. También puedes configurar desde las opciones si el bloqueo de enemigos se realiza automáticamente y también puedes usar el stick derecho para seleccionar y presionarlo para bloquear un objetivo.</p>
-<p>También es una buena idea tener el complemento de Speech history de NVDA, ya que algunos controles, como en la pantalla del mapa, no se anuncian ya que el discurso se trunca de alguna manera incluso con el lector de pantalla incluido, y anuncia los dos últimos, pero si revisas el texto anunciado aquí se revelará todo.</p>
-<h3 id="solución-de-problemas-del-lector-de-pantalla">solución de problemas del lector de pantalla</h3>
-<p>Entonces, comenzaste el juego y cero discurso, incluso después de saltarte el mensaje del lector de pantalla&hellip; ¿qué hacer ahora? primero que todo, usa OCR para confirmar que las pantallas están cambiando. Los sonidos cuando mueves el cursor y confirmas opciones se reproducen incluso si no se lee nada.
+<!doctype html><html lang=es-es><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta http-equiv=Content-Security-Policy content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src https://logbook.qrz.com; font-src 'self'; connect-src 'self' webmention.io;"><title>Guía de configuración de la accesibilidad de Diablo IV | El Blog de un informático que sueña con mejorar el mundo</title>
+<meta name=description content="Actualizada el 9 de Octubre de 2024.
+Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español. Así pués, basándome en esta guía del foro de audiogames he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.
+Gracias, UltraLeetJ.
+Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas."><meta property="og:title" content="Guía de configuración de la accesibilidad de Diablo IV"><meta property="og:description" content="Actualizada el 9 de Octubre de 2024.
+Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español. Así pués, basándome en esta guía del foro de audiogames he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.
+Gracias, UltraLeetJ.
+Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas."><meta property="og:type" content="article"><meta property="og:url" content="https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/"><meta property="og:site_name" content="El Blog de un informático que sueña con mejorar el mundo"><meta name=twitter:card content="summary"><meta name=twitter:title content="Guía de configuración de la accesibilidad de Diablo IV"><meta name=twitter:description content="Actualizada el 9 de Octubre de 2024.
+Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español. Así pués, basándome en esta guía del foro de audiogames he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.
+Gracias, UltraLeetJ.
+Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas."><meta name=twitter:creator content="@jpa_apj"><meta property="article:published_time" content="2024-06-24T00:00:00+00:00"><meta property="article:author" content="Jesús Pavón Abián"><meta name=author content="Jesús Pavón Abián"><meta name=robots content="index, follow"><meta name=googlebot content="index, follow"><link rel=token_endpoint href=https://tokens.indieauth.com/token><link rel=authorization_endpoint href=https://indieauth.com/auth><link rel=micropub href=https://jesuspavonabian.es/netlify/functions/micropub><link rel=microsub href=https://aperture.p3k.io/microsub/969><link rel=webmention href=https://webmention.io/jesuspavonabian.es/webmention><link href=/style.css rel=stylesheet><link rel=icon href=/favicon.ico sizes=any><link rel=icon href=/favicon-16x16.png sizes=16x16><link rel=icon href=/favicon-32x32.png sizes=32x32><link rel=me href=https://mst.universoalterno.es/@jpavonabian><meta name=fediverse:creator content="@jpavonabian@mst.universoalterno.es"><link rel=canonical href=https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/></head><body><a href=#main class=skip-link>Skip to main content</a><header class=h-card role=banner><div class=container><a href=/ class="u-url p-name"><h1>El Blog de un informático que sueña con mejorar el mundo</h1></a><p class="p-summary site-description">La tecnología debe estar al servicio de las personas.</p><div class="p-author h-card h-card-hidden"><span class=p-name>Jesús Pavón Abián</span>
+<a class=u-email href=mailto:correo@jesuspavonabian.es>correo@jesuspavonabian.es</a>
+<a class=u-url rel=me href=https://jesuspavonabian.es>https://jesuspavonabian.es</a></div></div></header><nav role=navigation aria-label="Main navigation"><div class=container><ul><li><a href=/>Home</a></li><li><a href=https://jesuspavonabian.es/about/>About</a></li><li><a href=https://jesuspavonabian.es/tags/>Tags</a></li></ul></div></nav><main id=main role=main><div class=container><article class=h-entry><header><h1 class=p-name>Guía de configuración de la accesibilidad de Diablo IV</h1><div class=post-meta><time datetime=2024-06-24T00:00:00+00:00 class=dt-published>June 24, 2024</time>
+<span class=meta-separator></span><data value=1538>1538 words</data></div></header><div class=e-content><p>Actualizada el 9 de Octubre de 2024.</p><p>Recientemente he comenzado a jugar Diablo IV y me he dado cuenta de que no hay nada de información sobre su accesibilidad en español.
+Así pués, basándome en <a href=https://forum.audiogames.net/topic/53635/diablo-iv-getting-started-totally-blind-players/>esta guía del foro de audiogames</a> he decidido documentar lo que vaya encontrando. La iré actualizando por mi cuenta, pero si sabes inglés, recomiendo echarle un vistazo.</p><p>Gracias, UltraLeetJ.</p><p>Esta guía está en progreso y la actualizaré a medida que encuentre nuevas cosas. Hay algunos hilos en en el foro de Audiogames sobre la discusión general del juego, pero el más completo es <a href=https://forum.audiogames.net/topic/48574/diablo-questions/>este (preguntas sobre diablo en inglés)</a>. También hay una <a href=https://web.archive.org/web/20230620085008/https://diablo-iv-blind-accessibility-resource.fandom.com/wiki/Diablo_IV_Blind_Accessibility_Resource_Wiki>versión recuperada del año pasado para la ¿wiki ciega?</a> y un <a href=https://discord.gg/mrFkV6SVYw>servidor de discord para hablar sobre el juego en inglés también</a>.</p><p>Diablo IV es un juego de rol de acción en línea, de rastreo de mazmorras, desarrollado y publicado por Blizzard Entertainment en 2023. Usas tus habilidades para completar misiones a través del combate. También puedes tener un clan y hacer combates jugador contra jugador. Lee todo sobre ello en <a href=https://en.wikipedia.org/wiki/Diablo_IV>su entrada en wikipedia</a>. Para obtener el juego puedes hacerlo desde <a href=https://diablo4.blizzard.com/>el sitio de Diablo IV de Blizzard</a>, el juego está <a href=https://store.steampowered.com/app/2344520/Diablo_IV/>también disponible en Steam</a>. Para jugar, puedes usar un ratón y teclado o un controlador, o ambos, aunque para la mejor experiencia un controlador es esencial, ya que puedes navegar y configurar las opciones del juego de esta manera. El juego también tiene descuentos de vez en cuando, así que estate atento.</p><h3 id=configuración-y-cosas-útiles-para-descargar>configuración y cosas útiles para descargar</h3><p>Yo utilizo la versión de Battle.net. Es probable que el lector de pantallas no lea nada cuando abras el juego por primera vez, pero abordaremos eso más adelante. ¡sigue leyendo!
+Nota para usuarios de Steam o Xbox: para hacer las cosas mucho más fáciles, deberías conectar o <a href=https://account.blizzard.com/connections>enlazar tus cuentas de Steam o Xbox y Battle.net desde esta página</a> antes de comenzar el juego. Te conectarás automáticamente tan pronto como el juego se ejecute y el lector de pantalla te notificará todo, también automáticamente.</p><p>La primera pantalla en la que aterrizas si ya estás conectado es el lector de pantalla para el juego. Al presionar confirmar aquí (el botón A en los controladores de Xbox, el botón X en los controladores de PlayStation) dejarás que el juego sepa que deseas habilitar el lector de pantalla y luego serás llevado a una pantalla de brillo. Puedes presionar el mismo botón de confirmación y luego serás llevado a la pantalla de selección de resaltado. Desde aquí, deberías haber recibido algún discurso ya sea a través de cualquier voz de OneCore, o cualquiera de las disponibles en el panel de control de Windows 10/11. Si este no es el caso, consulta la sección de solución de problemas del lector de pantalla a continuación.</p><p>Si llegas a la pantalla de configuración, usa los botones R1 o R2 para moverte entre las distintas categorías. Luego, confirma tus cambios cuando estés en la última categoría a la derecha y estarás casi listo. También puedes habilitar lectores de pantalla de terceros como NVDA (asegurándote de obtener los archivos del cliente de controlador de NVDA dentro de la carpeta ejecutable de Diablo) y JAWS (funciona sin necesidad de utilizar ninguna configuración).</p><p>A lo largo de todo este tiempo la comunidad ha estado creando cosas increíbles para el juego. Puedes instalar el <a href=https://cloud.tiflo-games.ru/s/XqtenYdado83CWy>complemento de normalizador de codificación</a> y <a href=https://forum.audiogames.net/topic/52685/fix-broken-encoding-in-diablo-iv-for-nonenglish-players>ver su hilo en el foro de audiogames en inglés aquí</a>. También puedes obtener los archivos del cliente de NVDA para colocar dentro del directorio en el que Diablo está instalado, en Steam es: <code>C:\Program Files (x86)\Steam\steamapps\common\Diablo IV</code> y por defecto desde Battle.net es: <code>C:\Program Files\Diablo\</code>. Usa <a href=https://www.nvaccess.org/files/nvda/releases/stable/>este enlace, luego busca el último enlace para el zip del cliente de controlador</a>.</p><h3 id=navegación-y-uso-del-juego>navegación y uso del juego</h3><p>Una de las preguntas más comunes que la gente tiene es cómo navegar por el juego.</p><p>Uno de los botones que usarás mucho es el botón para la pantalla del mapa. En Xbox es el botón de vista o menú (el izquierdo opuesto a pausa/inicio), en el teclado es m, y en PlayStation es el panel táctil.</p><p>Necesitas recordar dos cosas. primero, puedes teletransportarte a los puntos de referencia en el mapa una vez que los hayas encontrado. segundo, necesitas explorar usando el mapa y haciendo zoom para encontrar cosas.</p><p>Por ejemplo, abre la pantalla del mapa. Para hacer zoom usas el stick derecho (escucharás un sonido de vibración cuando cambie el nivel de zoom), usa el stick derecho hacia abajo para alejar, el stick derecho hacia arriba para acercar. aleja todo el camino, luego acércate un nivel. usa el stick izquierdo, muévelo ligeramente hacia la derecha, luego presiónalo para centrar la cámara en ti mismo. muévelo hacia arriba y hacia la derecha, centra. luego hacia arriba, luego centra. luego hacia arriba y hacia la izquierda, luego presiónalo para centrar de nuevo.</p><p>Así es como encuentras cosas. también puedes ir arriba arriba centro, abajo abajo centro, si algo está más lejos.</p><p>También puedes presionar el stick derecho en la pantalla del mapa para filtrar qué lugares se te anuncian a medida que te mueves por el mapa. Cuando desbloqueas un punto de referencia, en el mapa, cada vez que lo encuentras puedes presionar el botón X en él para teletransportarte.</p><p>Una vez has seleccionado un objetivo en el mapa y has salido de él se activará el sistema de navegación de audio si lo tienes activado en las opciones del juego.</p><p>Es un sistema confuso al principio, pero potente. Consta de tres sonidos:</p><ul><li>Uno de ellos es una especie de tambor tocando 3 veces. Significa que vas mal encaminado.</li><li>Otro es el mismo tambor, pero con un ligero click. Eso significa que estás yendo a una dirección aproximada de tu objetivo.</li><li>Si se oye más el click que el tambor, estás bien encaminado.</li></ul><p>Cuando estés en la primera parte del prólogo, Anochecer en la Montaña, te encontrarás con algunos enemigos a los que tendrás que atacar. El juego tiene audio posicional para que puedas apuntar y atacar con éxito. También puedes configurar desde las opciones si el bloqueo de enemigos se realiza automáticamente y también puedes usar el stick derecho para seleccionar y presionarlo para bloquear un objetivo.</p><p>También es una buena idea tener el complemento de Speech history de NVDA, ya que algunos controles, como en la pantalla del mapa, no se anuncian ya que el discurso se trunca de alguna manera incluso con el lector de pantalla incluido, y anuncia los dos últimos, pero si revisas el texto anunciado aquí se revelará todo.</p><h3 id=solución-de-problemas-del-lector-de-pantalla>solución de problemas del lector de pantalla</h3><p>Entonces, comenzaste el juego y cero discurso, incluso después de saltarte el mensaje del lector de pantalla&mldr; ¿qué hacer ahora? primero que todo, usa OCR para confirmar que las pantallas están cambiando. Los sonidos cuando mueves el cursor y confirmas opciones se reproducen incluso si no se lee nada.
 Esto normalmente y a menudo ocurre cuando tienes un idioma diferente y no está completamente instalado, o voces rotas en la configuración de Windows 10/11. Ten en cuenta que incluso si obtienes asistencia visual, el lector de pantalla no se habilitará hasta que resuelvas cualquier problema con las voces de OneCore y/o sapi5 de Windows.
 Así que primero, sal del juego, y ve al panel de control, y abre la categoría de idioma, hora y región, luego tabula para elegir la subsección voz que es la última en la lista. Luego tabula alrededor hasta que escuches, elige una voz, y cambia la voz a la primera disponible. Esa es la que el juego espera y usará. Para asegurarte de que se reproduce, selecciona el botón de vista previa de voz. Si no se reproduce, entonces necesitas reinstalar los paquetes de idiomas haciendo lo siguiente:
 Desde esta pantalla, vuelve a la lista de subsecciones para hora e idioma, y luego desde allí elige la segunda, idioma y región. Tabula dos veces para agregar un idioma, selecciónalo de la lista, asegúrate de que haya texto a voz disponible para él (se anunciará cuando selecciones el idioma), y luego presiona siguiente. Luego, una vez dentro de ese diálogo, desmarca todo excepto texto a voz y luego presiona instalar. Dale unos minutos, se anunciará el progreso y la instalación se completará. Luego previsualiza tus voces nuevamente. Si no suenan, hay un último recurso en el juego pero tienes que asegurarte de tener instalado y funcionando el idioma inglés de Estados Unidos de texto a voz, más específicamente la voz de Microsoft David (escritorio).
-Luego ve a Steam y cambia el idioma del juego a inglés, esto provocará y desencadenará una descarga de 1 GB. El juego debería funcionar ahora en inglés. Luego puedes habilitar el lector de pantalla de terceros, guardar tus opciones, y tan pronto como lo hagas, sal del juego y luego cámbialo al idioma que quieras usar (en este momento sé que inglés, español, francés, italiano y portugués son compatibles con lectores de pantalla). Esto provocará otra descarga de aproximadamente 1 GB (imagino que para diálogos y demás), pero al menos obtendrás el juego funcionando. Para comprobar que las preferencias se están guardando correctamente, puedes inspeccionar el archivo local prefs.txt en tu carpeta de documentos\diablo IV.</p>
-
-                                
-                                <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
-                                <a class="hidden" href="https://brid.gy/publish/twitter"></a>
-                                <a class="hidden" href="https://fed.brid.gy/"></a>
-                                <data class="p-bridgy-omit-link" value="false"></data>
-                            </article>
-                            <div class="flex properties__row properties">
-    <div class="flex left properties">
-        <span class="properties">
-            
-            <span class="dt-published hidden">2024-06-24 00:00:00 &#43;0000 UTC</span>
-            <a class="icon u-url" href="https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/">
-                
-                
-                
-                
-                
-                hace 843 días
-                
-            </a>
-            
-        </span>
-    </div>
-    <div class="flex right">
-        
-    </div>
-</div>
-
-                </div>
-                
-<a id="wm-link" href="https://webmention.io/jesuspavonabian.es/webmention" target="_blank">Haz una webmention&nbsp;
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-external-link">
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-        <polyline points="15 3 21 3 21 9"></polyline>
-        <line x1="10" y1="14" x2="21" y2="3"></line>
-    </svg>
-</a>
-
-
-
-<script src="/js/wm.min.js" data-wordcount="10000" async></script>
-
-                
-                <div id="webmentions"></div>
-            </li>
-        </ul>
-    </section>
-</main>
-
-</body>
-</html>
+Luego ve a Steam y cambia el idioma del juego a inglés, esto provocará y desencadenará una descarga de 1 GB. El juego debería funcionar ahora en inglés. Luego puedes habilitar el lector de pantalla de terceros, guardar tus opciones, y tan pronto como lo hagas, sal del juego y luego cámbialo al idioma que quieras usar (en este momento sé que inglés, español, francés, italiano y portugués son compatibles con lectores de pantalla). Esto provocará otra descarga de aproximadamente 1 GB (imagino que para diálogos y demás), pero al menos obtendrás el juego funcionando. Para comprobar que las preferencias se están guardando correctamente, puedes inspeccionar el archivo local prefs.txt en tu carpeta de documentos\diablo IV.</p></div><footer class=post-meta><div class=post-author><span class=meta>By <a href=https://jesuspavonabian.es class="p-author h-card">Jesús Pavón Abián</a></span></div><div class=post-permalink><span class=meta>Permalink: <a href=https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/ class=u-url>https://jesuspavonabian.es/post/guia-de-configuracion-de-accesibilidad-de-diablo-iv/</a></span></div></footer></article><section class=webmentions><h2>Webmentions</h2><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://comunidad.nvda.es/@cansino21 class="u-url p-name">Raul</a>
+</span><a href=https://comunidad.nvda.es/@cansino21/113732788970639570 class=u-url><time datetime=2024-12-28T22:23:56+00:00 class="dt-published webmention-time">December 28, 2024 at 22:23</time></a></header><div class="webmention-content p-content">@jpavonabian @developelx @DApesteguia Lo del mapa me interesa. En cuanto a los sonidos, yo descubrí tarde que hay sonidos para los objetos como el oro, ropa y demás jajaja</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mst.universoalterno.es/@jpavonabian class="u-url p-name">Jesús Pavón Abián</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/113732571499946420 class=u-url><time datetime=2024-12-28T21:28:38+00:00 class="dt-published webmention-time">December 28, 2024 at 21:28</time></a></header><div class="webmention-content p-content">@developelx @DApesteguia @cansino21 Para el mapa hay una forma más fácil si lo que quieres es localizar misiones. Cuando llegues a eso y empieces a jugar te cuento.</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://comunidad.nvda.es/@developelx class="u-url p-name">Antonio Cascales</a>
+</span><a href=https://comunidad.nvda.es/@developelx/113732565116340974 class=u-url><time datetime=2024-12-28T21:27:00+00:00 class="dt-published webmention-time">December 28, 2024 at 21:27</time></a></header><div class="webmention-content p-content">@jpavonabian @DApesteguia @cansino21 Gracias. voy a leerlo.</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mastodon.social/@pildain class="u-url p-name">Joaquín</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/113278121889715560#favorited-by-109509423591243012 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://comunidad.nvda.es/@cansino21 class="u-url p-name">Raul</a>
+</span><a href=https://comunidad.nvda.es/@cansino21/112926766569212346 class=u-url><time datetime=2024-08-08T14:01:50+00:00 class="dt-published webmention-time">August 8, 2024 at 14:01</time></a></header><div class="webmention-content p-content">@jpavonabian Me mareo con tantas versiones, pero yo creo que si compro ahora el estándar no incluye la futura expansión, así que de momento lo voy a dejar</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mst.universoalterno.es/@jpavonabian class="u-url p-name">Jesús Pavón Abián</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112926702090581421 class=u-url><time datetime=2024-08-08T13:45:26+00:00 class="dt-published webmention-time">August 8, 2024 at 13:45</time></a></header><div class="webmention-content p-content">@cansino21 Lo que no tengo claro es si en Octubre el juego base se considera la expansión.</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mst.universoalterno.es/@jpavonabian class="u-url p-name">Jesús Pavón Abián</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112926700273609540 class=u-url><time datetime=2024-08-08T13:44:59+00:00 class="dt-published webmention-time">August 8, 2024 at 13:44</time></a></header><div class="webmention-content p-content">@cansino21 Lo ideal es pillar el pac con el juego y la expansión, ahorras dinero. Cada año sale una expansión que se compra a parte del juego base.</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://comunidad.nvda.es/@cansino21 class="u-url p-name">Raul</a>
+</span><a href=https://comunidad.nvda.es/@cansino21/112926693832081487 class=u-url><time datetime=2024-08-08T13:43:20+00:00 class="dt-published webmention-time">August 8, 2024 at 13:43</time></a></header><div class="webmention-content p-content">@jpavonabian Ahora mismo no la tengo, por eso digo si merece la pena para octubre. O es mejor pillar un pack que incluya la expansión</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://mst.universoalterno.es/@jpavonabian class="u-url p-name">Jesús Pavón Abián</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112926644037180622 class=u-url><time datetime=2024-08-08T13:30:40+00:00 class="dt-published webmention-time">August 8, 2024 at 13:30</time></a></header><div class="webmention-content p-content">@cansino21 en octubre la actualizaré.</div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://tiflo.social/@javido class="u-url p-name">Javier Dorado</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112673158313028407#favorited-by-109296287274904969 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://maaw.social/@edgarlopeznl class="u-url p-name">Édgar López Rendón????️‍????</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112673158313028407#reblogged-by-112455218922310185 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://maaw.social/@arielfmeza class="u-url p-name">ariel</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112673158313028407#reblogged-by-112455139990379867 class=u-url></a></header><div class="webmention-content p-content"></div></article><article class="webmention h-cite"><header><span class="webmention-author p-author h-card"><a href=https://tkz.one/@muchanchoasado class="u-url p-name">El Muchancho Envuelto ????‍????</a>
+</span><a href=https://mst.universoalterno.es/@jpavonabian/112673158313028407#reblogged-by-109344775382021877 class=u-url></a></header><div class="webmention-content p-content"></div></article></section></div></main><footer role=contentinfo><div class=container><div class=footer-content><p class=copyright>&copy; 2026 Jesús Pavón Abián.
+<a href=https://creativecommons.org/licenses/by/4.0/ rel=license>CC BY 4.0</a> &
+<a href=https://opensource.org/licenses/AGPL-3.0 rel=license>AGPL-3.0</a>.
+· <a href=https://github.com/brennanbrown/indiepaper>Theme</a> by <a href=https://berryhouse.ca>Berry House</a></p><p class=contact-support><a href=mailto:correo@jesuspavonabian.es class=u-email rel=me>&lt;correo@jesuspavonabian.es></a></p><p class=badge><a href=https://512kb.club><img src=https://512kb.club/assets/images/green-team.svg alt="Web miembro del equipo verde del 512KB club"></a></p><p class=links><a href=https://mst.universoalterno.es/@jpavonabian rel=me>Mastodon</a>
+· <a href=https://github.com/jpavonabian rel=me>GitHub</a>
+· <a href=https://twitter.com/jpa_apj rel=me>Twitter</a>
+· <a href=/feed.xml>RSS</a></p></div></div></footer></body></html>

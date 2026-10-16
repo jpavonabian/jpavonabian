@@ -1,3 +1,3 @@
-[submodule "themes/indiefeed"]
-	path = themes/indiefeed
-	url = https://github.com/dianoetic/indiefeed.git
+[submodule "themes/indiepaper"]
+	path = themes/indiepaper
+	url = https://github.com/brennanbrown/indiepaper

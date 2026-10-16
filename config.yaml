@@ -1,80 +1,78 @@
 baseURL: https://jesuspavonabian.es
 languageCode: es-es
 title: El Blog de un informático que sueña con mejorar el mundo
-theme: indiefeed
+theme: indiepaper
+enableRobotsTXT: true
 
-# How many feed entries to load at once
 paginate: 12
 
+params:
+  description: La tecnología debe estar al servicio de las personas.
+  mainSections:
+    - post
+  author:
+    name: Jesús Pavón Abián
+    email: correo@jesuspavonabian.es
+    url: https://jesuspavonabian.es
+    bio: La tecnología debe estar al servicio de las personas.
+    twitter: jpa_apj
+  indieweb:
+    webmention_endpoint: https://webmention.io/jesuspavonabian.es/webmention
+    webmention_api: https://webmention.io/api/mentions.jf2
+    token_endpoint: https://tokens.indieauth.com/token
+    authorization_endpoint: https://indieauth.com/auth
+    micropub_endpoint: https://jesuspavonabian.es/netlify/functions/micropub
+    microsub_endpoint: https://aperture.p3k.io/microsub/969
+  social:
+    - name: Mastodon
+      url: https://mst.universoalterno.es/@jpavonabian
+    - name: GitHub
+      url: https://github.com/jpavonabian
+    - name: Twitter
+      url: https://twitter.com/jpa_apj
+
 taxonomies:
-  category: categorias
-  tag: etiquetas
+  tag: tags
+  category: categories
 
-author:
-  name: Jesús Pavón Abián
-  image: # relative to static/
-  about: La tecnología debe estar al servicio de las personas.
-  nickname: "@jpavonabian"
-  email: correo@jesuspavonabian.es
-  domain: https://jesuspavonabian.es
-
-params: # All of these are optional
-  # logo: heart.png # relative to ./static/
-  dateform: January 2, 2006
-  customCSS: css/style.css # relative to ./static/
-  webmentionUrl: https://webmention.io/jesuspavonabian.es/webmention
-  pingbackUrl: https://webmention.io/jesuspavonabian.es/xmlrpc
-  micropubUrl: https://jesuspavonabian.es/netlify/functions/micropub
-  microsubUrl: https://aperture.p3k.io/microsub/969
-  # For IndieAuth
-  githubuser: jpavonabian
-  twitteruser: jpa_apj # no @ in front
-  mastodon: https://mst.universoalterno.es/@jpavonabian # full link to your instance profile
-  # monetization: $xxxxxxx # Web Monetization payment pointer
-  # socialImage: static/img/social.png
-
-mediaTypes:
-  "application/atom+xml":
-    suffixes:
-      - "xml"
-
-outputFormats:
-  Atom:
-    name: "Atom"
-    mediaType: "application/atom+xml"
-    # generated file: <baseName>.<mediaType."application/atom+xml".suffixes[0]> = atom.xml
-    baseName: "atom"
-    isPlainText: false
-    rel: "alternate"
-    isHTML: false
-    permalinkable: false
-  Json:
-    name: "Json"
-    mediaType: "application/json"
-    # generated file: <baseName>.<mediaType."application/feed+json".suffixes[0]> = feed.json
-    baseName: "feed"
-    isPlainText: false
-    rel: "alternate"
-    isHTML: false
-    permalinkable: false
+# Static del tema que no es del blog (zip del tema, capturas, favicons de ejemplo)
+module:
+  imports:
+    - path: indiepaper
+      mounts:
+        - source: archetypes
+          target: archetypes
+        - source: assets
+          target: assets
+        - source: data
+          target: data
+        - source: i18n
+          target: i18n
+        - source: layouts
+          target: layouts
+        - source: static
+          target: static
+          excludeFiles:
+            - favicon/**
+            - indiepaper-theme.zip
+            - lighthouse.jpg
+            - screenshot.jpg
+            - author-photo.svg
 
 outputs:
-  home:
-    - HTML
-    - ATOM
-    - JSON
-    - RSS
-  page:
-    - HTML
-  section:
-    - HTML
-  taxonomy:
-    - HTML
-  term:
-    - HTML
-    - ATOM
-    - JSON
-    - RSS
+  home: [HTML, RSS, JSON]
+  page: [HTML]
+  section: [HTML, RSS]
+  taxonomy: [HTML, RSS]
+  term: [HTML, RSS]
+
+outputFormats:
+  RSS:
+    mediatype: application/rss+xml
+    baseName: feed
+  JSON:
+    mediatype: application/json
+    baseName: feed
 
 markup:
   goldmark:
