@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vibecoding on El Blog de un informático que sueña con mejorar el mundo</title>
+    <link>https://jesuspavonabian.es/tags/vibecoding/</link>
+    <description>Recent content in Vibecoding on El Blog de un informático que sueña con mejorar el mundo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language>
+    <managingEditor>correo@jesuspavonabian.es (Jesús Pavón Abián)</managingEditor>
+    <webMaster>correo@jesuspavonabian.es (Jesús Pavón Abián)</webMaster>
+    <lastBuildDate>Wed, 21 Oct 2026 18:02:10 +0200</lastBuildDate>
+    <atom:link href="https://jesuspavonabian.es/tags/vibecoding/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Traducción: Deja de hacer lectores de pantalla con vibecoding</title>
+      <link>https://jesuspavonabian.es/post/deja-vibecoding-lector/</link>
+      <pubDate>Wed, 21 Oct 2026 18:02:10 +0200</pubDate><author>correo@jesuspavonabian.es (Jesús Pavón Abián)</author>
+      <guid>https://jesuspavonabian.es/post/deja-vibecoding-lector/</guid>
+      <description>A riesgo de ganarme enemigos varios y variados, dejo por aquí una traducción un tanto chapucera de Este post de Aaron, pues lo considero bastante interesante.&#xA;Si teneis conocimientos de inglés o sabéis usar un traductor recomiendo echarle un ojo al Blog, merece bastante la pena.&#xA;El post en cuestión Hay una tendencia en Android ahora mismo que va a acabar haciendo daño a alguien. Daño en el sentido de que una persona ciega coja su teléfono en el peor momento posible y descubra que aquello de lo que depende para interactuar con el mundo ha decidido, sencillamente, dejar de funcionar.</description>
+    </item>
+  </channel>
+</rss>

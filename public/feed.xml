@@ -5,8 +5,18 @@
     <link>https://jesuspavonabian.es/</link>
     <description>La tecnología debe estar al servicio de las personas.</description>
     <language>es-es</language>
-    <lastBuildDate>Thu, 15 Oct 2026 00:00:00 &#43;0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 18:02:10 &#43;0200</lastBuildDate>
     <atom:link href="https://jesuspavonabian.es/feed.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>Traducción: Deja de hacer lectores de pantalla con vibecoding</title>
+      <link>https://jesuspavonabian.es/post/deja-vibecoding-lector/</link>
+      <pubDate>Wed, 21 Oct 2026 18:02:10 &#43;0200</pubDate>
+      <guid>https://jesuspavonabian.es/post/deja-vibecoding-lector/</guid>
+      <description>A riesgo de ganarme enemigos varios y variados, dejo por aquí una traducción un tanto chapucera de Este post de Aaron, pues lo considero bastante interesante.
+Si teneis conocimientos de inglés o sabéis usar un traductor recomiendo echarle un ojo al Blog, merece bastante la pena.
+El post en cuestión Hay una tendencia en Android ahora mismo que va a acabar haciendo daño a alguien. Daño en el sentido de que una persona ciega coja su teléfono en el peor momento posible y descubra que aquello de lo que depende para interactuar con el mundo ha decidido, sencillamente, dejar de funcionar.</description>
+    </item>
     
     <item>
       <title>Pi-hole con Unbound: un DNS sin depender de nadie</title>
@@ -189,15 +199,6 @@ Nunca he entendido a la gente que recalienta el café. No hay una cosa más mala
       <description>Esta vez vengo a quejarme. Porque estoy harto de ser un ciudadano de segunda.
 Videojuegos Últimamente se ha puesto de moda hacer Mods para videojuegos. Gente con tiempo libre y con ganas de que podamos jugar han hecho modificaciones a algunos juegos. Esto nos permite jugar&amp;hellip; con cuidado. Citaré alguno de los más conocidos.
 Hearthstone es uno de los más famosos. Las modificaciones para jugar con lector de pantalla son libres y el código es auditable y mejorable.</description>
-    </item>
-    
-    <item>
-      <title>Pmr446</title>
-      <link>https://jesuspavonabian.es/post/pmr446/</link>
-      <pubDate>Wed, 01 Oct 2025 15:15:05 &#43;0200</pubDate>
-      <guid>https://jesuspavonabian.es/post/pmr446/</guid>
-      <description>Empuñé el bolígrafo como el asesino que empuña una daga, listo para apuñalar a su enemigo mortal por la espalda; lo acerqué al papel con un gesto rápido y con una sonrisa de suficiencia estampé la firma. Le había ganado al sistema y me había convertido en un joven con piso, que como está la cosa es algo difícil de conseguir.
-&amp;ldquo;Perfecto, ahora lo escaneamos y&amp;hellip; ¡Jorge, la luz otra vez, macho!</description>
     </item>
     
   </channel>

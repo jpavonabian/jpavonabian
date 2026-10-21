@@ -3,17 +3,42 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jesuspavonabian.es/tags/dns/</loc>
-    <lastmod>2026-10-15T00:00:00&#43;00:00</lastmod>
+    <loc>https://jesuspavonabian.es/tags/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://jesuspavonabian.es/tags/</loc>
-    <lastmod>2026-10-15T00:00:00&#43;00:00</lastmod>
+    <loc>https://jesuspavonabian.es/tags/ia/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
   </url>
   
   <url>
     <loc>https://jesuspavonabian.es/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jesuspavonabian.es/tags/lector-de-pantalla/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jesuspavonabian.es/post/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jesuspavonabian.es/post/deja-vibecoding-lector/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jesuspavonabian.es/tags/vibecoding/</loc>
+    <lastmod>2026-10-21T18:02:10&#43;02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jesuspavonabian.es/tags/dns/</loc>
     <lastmod>2026-10-15T00:00:00&#43;00:00</lastmod>
   </url>
   
@@ -24,11 +49,6 @@
   
   <url>
     <loc>https://jesuspavonabian.es/tags/pihole/</loc>
-    <lastmod>2026-10-15T00:00:00&#43;00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jesuspavonabian.es/post/</loc>
     <lastmod>2026-10-15T00:00:00&#43;00:00</lastmod>
   </url>
   
