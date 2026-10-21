@@ -17,7 +17,7 @@ Si teneis conocimientos de inglés o sabéis usar un traductor recomiendo echarl
 
 Hay una tendencia en Android ahora mismo que va a acabar haciendo daño a alguien. Daño en el sentido de que una persona ciega coja su teléfono en el peor momento posible y descubra que aquello de lo que depende para interactuar con el mundo ha decidido, sencillamente, dejar de funcionar.
 
-Las bifurcaciones de TalkBack están por todas partes. Cada pocas semanas aparece un proyecto nuevo, cada uno repleto de promesas. Más parecido a VoiceOver. Gestos más rápidos. Mejor verbosidad. Menor latencia. Algunos incluso consiguen cumplir una o dos de esas promesas. Pero todos y cada uno salen a la calle con errores tan evidentes, tan vergonzosos, tan fáciles de detectar para un desarrollador que sepa lo que está haciendo, que solo hay una explicación posible para que hayan llegado a publicarse.
+Las bifurcaciones de TalkBack están por todas partes. Cada pocas semanas aparece un proyecto nuevo, cada uno repleto de promesas. Más parecido a VoiceOver. Gestos más rápidos. Mejor verbosidad. Menor latencia. Algunos incluso consiguen cumplir una o dos de esas promesas. Pero todos y cada uno salen a la calle con errores tan evidentes, tan vergonzosos, tan fáciles de detectar para un desarrollador que sabe lo que está haciendo, que solo hay una explicación posible para que hayan llegado a publicarse.
 
 El desarrollador no tenía ni idea de lo que estaba construyendo.
 
